@@ -1,0 +1,9 @@
+{
+  "name": "gerami",
+  "version": "0.0.0",
+  "description": "Kelal's Gerami Design components' library using React.",
+  "main": "index.js",
+  "repository": "git@gitlab.com:kelal/dev/gerami.git",
+  "license": "MIT",
+  "private": false
+}
