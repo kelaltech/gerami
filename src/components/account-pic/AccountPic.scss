@@ -1,0 +1,9 @@
+@import '../../styles/theme';
+
+.account-pic {
+  display: inline-block;
+  border-radius: 50%;
+  background: darken($bg, 7%) no-repeat center center;
+  background-size: cover;
+  box-shadow: $shade-M;
+}

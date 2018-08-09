@@ -1,0 +1,14 @@
+@import '../../styles/theme';
+
+.block {
+  display: block;
+  padding-right: $space * 2;
+  padding-left: $space * 2;
+}
+
+@media (max-width: $mobile) {
+  .block {
+    padding-right: $space;
+    padding-left: $space;
+  }
+}

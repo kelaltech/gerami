@@ -1,0 +1,26 @@
+@import '../../styles/theme';
+
+.label {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: ($font-S - $space / 10) 0 0;
+}
+
+.placeholder {
+  position: absolute;
+  top: $font-S;
+  left: 0;
+  font: inherit;
+  color: lighten($fg, 56%);
+  transition: all 140ms ease;
+  cursor: text;
+  pointer-events: none;
+}
+
+.float {
+  top: 0;
+  font-size: $font-S;
+  line-height: $font-S;
+  color: $primary;
+}

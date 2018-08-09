@@ -1,0 +1,30 @@
+@import '../../styles/theme';
+
+@keyframes spinner {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.loading {
+  padding: $space * 2;
+  text-align: center;
+}
+
+.svg {
+  display: inline-block;
+  animation: spinner 700ms linear 0ms infinite forwards;
+}
+
+.big-circle {
+  fill: none;
+  stroke: lighten($fg, 91%);
+}
+
+.small-circle {
+  fill: none;
+  stroke: $primary;
+}

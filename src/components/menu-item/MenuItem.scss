@@ -1,0 +1,27 @@
+@import '../../styles/theme';
+
+.menu-item {
+  display: block;
+  padding: ($space / 2) $space;
+  width: initial;
+  font-weight: 400;
+  background-color: transparent;
+  color: lighten($fg, 28%);
+  cursor: pointer;
+}
+.menu-item:hover,
+.menu-item:focus,
+.menu-item:active {
+  background-color: darken($bg, 14%);
+}
+
+.menu-item > button {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  font: inherit !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  cursor: inherit !important;
+}

@@ -1,0 +1,13 @@
+@import '../../styles/theme';
+
+.button-primary {
+  border-color: $primary;
+  background-color: $primary;
+  color: darken($bg, 7%);
+}
+.button-primary:focus,
+.button-primary:hover {
+  border-color: $primary;
+  background-color: lighten($primary, 3%);
+  color: $bg;
+}

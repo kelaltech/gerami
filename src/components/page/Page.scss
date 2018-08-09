@@ -1,0 +1,13 @@
+@import '../../styles/theme';
+
+.page {
+  padding-right: $space;
+  padding-left: $space;
+}
+
+@media (max-width: $mobile) {
+  .page {
+    padding-right: $space / 2;
+    padding-left: $space / 2;
+  }
+}

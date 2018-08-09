@@ -1,0 +1,8 @@
+@import '../../styles/theme';
+
+.warning {
+  border: $border solid $warn;
+  text-align: center;
+  background-color: lighten($warn, 28%) !important;
+  color: $fg;
+}

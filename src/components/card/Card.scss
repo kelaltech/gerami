@@ -1,0 +1,21 @@
+@import '../../styles/theme';
+
+.card {
+  box-shadow: $shade-M !important;
+  transition: all 150ms !important;
+
+  &:active {
+    box-shadow: $shade-S !important;
+  }
+
+  &:focus,
+  &:hover {
+    box-shadow: $shade-M, $shade-S !important;
+  }
+}
+
+.card-img {
+  height: 220px;
+  background: darken($bg, 3%) center center;
+  background-size: cover;
+}

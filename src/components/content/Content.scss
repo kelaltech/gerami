@@ -1,0 +1,15 @@
+@import '../../styles/theme';
+
+.content {
+  margin: auto;
+  width: 100%;
+  overflow: hidden;
+  text-align: left;
+}
+
+.content-card {
+  border-radius: $radius;
+  background-color: transparentize($bg, 0.03);
+  color: $fg;
+  box-shadow: $shade-L;
+}

@@ -1,0 +1,46 @@
+@import '../../styles/theme';
+
+@keyframes fade-in {
+  from {
+    filter: opacity(0);
+  }
+  to {
+    filter: opacity(1);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.left-drawer-container {
+  position: fixed;
+  z-index: 7;
+}
+
+.left-drawer-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparentize($fg, 0.42);
+  animation: fade-in 150ms linear 0ms 1 forwards;
+}
+
+.left-drawer {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  width: 84%;
+  animation: fade-in 150ms linear 0ms 1 forwards,
+    slide-in 200ms linear 0ms 1 forwards;
+}
