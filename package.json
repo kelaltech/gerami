@@ -1,7 +1,7 @@
 {
   "name": "gerami",
-  "version": "1.0.0",
-  "description": "gerami React component",
+  "version": "0.0.0",
+  "description": "gerami react components",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -28,11 +28,12 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Kelal",
+  "homepage": "https://gerami.herokuapp.com",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://gitlab.com/kelal/dev/gerami",
   "keywords": [
+    "gerami",
     "react-component"
   ]
 }
