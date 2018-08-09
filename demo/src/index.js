@@ -1,15 +1,12 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
+import React, { StrictMode } from 'react'
+import ReactDOM from 'react-dom'
 
-import {Sample} from '../../src'
+import './_styles/index.scss'
+import App from './_app/App'
 
-class Demo extends Component {
-  render() {
-    return <div>
-      <h1>gerami Demo</h1>
-      <Sample/>
-    </div>
-  }
-}
-
-render(<Demo/>, document.querySelector('#demo'))
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.querySelector('#demo')
+)
