@@ -1,13 +1,28 @@
-# Library
+# Project
 coverage/
-demo/dist/
-es/
-lib/
-umd/
+demo/
+tests/
+src/
+.eslintrc
+.gitignore
+.npmignore
+.prettierrc
+.travis.yml
+nwb.config.js
 
-# IDEs
-.idea/
-.vscode/
+# Default
+.*.swp
+._*
+.DS_Store
+.git
+.hg
+.npmrc
+.lock-wscript
+.svn
+.wafpickle-*
+config.gypi
+CVS
+npm-debug.log
 
 # Logs
 logs
@@ -40,7 +55,7 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
+# Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
@@ -68,5 +83,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
+# IDEs
+.idea/
+.vscode/
