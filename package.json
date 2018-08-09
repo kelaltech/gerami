@@ -34,7 +34,8 @@
   "author": "Kelal",
   "homepage": "https://gerami.herokuapp.com",
   "license": "MIT",
-  "repository": "https://gitlab.com/kelal/dev/gerami",
+  "private": false,
+  "repository": "git@gitlab.com:kelal/dev/gerami.git",
   "keywords": [
     "gerami",
     "react-component"
