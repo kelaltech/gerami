@@ -8,5 +8,13 @@ module.exports = {
         react: 'React'
       }
     }
+  },
+  webpack: {
+    rules: {
+      'sass-css': {
+        modules: true,
+        localIdentName:  '[hash:base64:5]'
+      }
+    }
   }
 }
