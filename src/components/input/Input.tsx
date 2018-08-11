@@ -6,7 +6,7 @@ export class Input extends Component <any,any>{
   input:any= this.props.inputRef || createRef()
   placeholder:any = createRef();
 
-  constructor(props) {
+  constructor(props:any) {
     super(props);
     this.updateFloat = this.updateFloat.bind(this)
   }

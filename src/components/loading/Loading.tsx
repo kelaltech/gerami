@@ -5,9 +5,9 @@ import './Loading.scss'
 import { Warning } from '../warning/Warning'
 
 export class Loading extends Component<any,any>{
-  dead = null;
+  dead:any = null;
 
-  constructor(props) {
+  constructor(props:any) {
     super(props);
 
     this.state = {

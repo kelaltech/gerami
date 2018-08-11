@@ -33,7 +33,7 @@ export class Warning extends React.Component <any,any>{
         title={shy ? 'Double click to hide warning' : undefined}
         {...rest}
         className={`warning${className ? ' ' + className : ''}`}
-        onDoubleClick={(e) => {this.shyAway()
+        onDoubleClick={(e:any) => {this.shyAway()
           if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
         }}
       >

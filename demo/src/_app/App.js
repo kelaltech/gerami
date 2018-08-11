@@ -16,7 +16,7 @@ import {
   Page,
   TextArea,
   Warning
-} from '../../../src'
+} from '../../../...'
 
 import Logo from '../_assets/images/logo.svg'
 
