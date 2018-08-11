@@ -1,23 +1,20 @@
-import React, { Component } from 'react'
-
+import * as React from 'react'
 import './Warning.scss'
 import { Content } from '../content/Content'
 import { Block } from '../block/Block'
 
-export class Warning extends Component {
-  constructor(props) {
+export class Warning extends React.Component <any,any>{
+    private dead: boolean;
+  constructor(props:any) {
     super(props)
-
     this.state = {
       hidden: false
     }
-
     this.shyAway = this.shyAway.bind(this)
   }
 
   componentDidMount() {
     const { bomb } = this.props
-
     if (bomb)
       window.setTimeout(this.shyAway, typeof bomb === 'number' ? bomb : 7000)
   }
@@ -27,8 +24,8 @@ export class Warning extends Component {
   }
 
   render() {
-    const { children, className, problem, shy, ...rest } = this.props
-
+    const { children, className, problem, shy, ...rest } = this.props;
+      //@ts-ignore
     !rest || delete rest.bomb
 
     return this.dead || this.state.hidden ? null : (
@@ -36,8 +33,7 @@ export class Warning extends Component {
         title={shy ? 'Double click to hide warning' : undefined}
         {...rest}
         className={`warning${className ? ' ' + className : ''}`}
-        onDoubleClick={e => {
-          this.shyAway()
+        onDoubleClick={(e) => {this.shyAway()
           if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
         }}
       >
@@ -55,7 +51,7 @@ export class Warning extends Component {
     )
   }
 
-  shyAway() {
+  shyAway():any {
     const { shy } = this.props
 
     if (shy && !this.dead) {

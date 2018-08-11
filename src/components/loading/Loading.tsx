@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import  * as React from 'react'
+import { Component } from 'react'
 
 import './Loading.scss'
 import { Warning } from '../warning/Warning'
 
-export class Loading extends Component {
-  dead = null
+export class Loading extends Component<any,any>{
+  dead = null;
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       pastCustomDelay: !!props.delay ? !props.delay : true
@@ -35,10 +36,12 @@ export class Loading extends Component {
       problem,
       timedOut,
       ...rest
-    } = this.props
+    } = this.props;
 
     if (rest) {
+      //@ts-ignore
       delete rest.delay
+      //@ts-ignore
       delete rest.isLoading
     }
 

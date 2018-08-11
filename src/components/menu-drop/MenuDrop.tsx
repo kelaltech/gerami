@@ -1,35 +1,31 @@
-import React, { Component, createRef } from 'react'
-import './LeftDrawer.scss'
-
+import * as React from  'react';
+import { Component } from 'react'
+import './MenuDrop.scss'
 import { Content } from '../content/Content'
 
 const sizeSpec = {
-  XXS: 175,
-  XS: 210,
-  S: 245,
-  M: 280,
-  L: 315,
-  XL: 350,
-  XXL: 385,
-  X3L: 420,
-  X4L: 455,
-  X5L: 490,
-  X6L: 525,
-  X7L: 560,
-  X8L: 595,
-  X9L: 630
+  XXS: 70,
+  XS: 105,
+  S: 140,
+  M: 175,
+  L: 210,
+  XL: 245,
+  XXL: 280,
+  X3L: 315,
+  X4L: 350,
+  X5L: 385,
+  X6L: 420,
+  X7L: 455,
+  X8L: 490,
+  X9L: 525
 }
 
-export class LeftDrawer extends Component {
-  leftDrawer = createRef()
-
-  constructor(props) {
+export class MenuDrop extends Component<any,any> {
+  constructor(props:any) {
     super(props)
-
     this.state = {
       closed: this.props.open === false
-    }
-
+    };
     this.close = this.close.bind(this)
   }
 
@@ -41,6 +37,7 @@ export class LeftDrawer extends Component {
   render() {
     const {
       align,
+      anchorOffset,
       backgroundStyle,
       children,
       className,
@@ -49,42 +46,53 @@ export class LeftDrawer extends Component {
       size,
       style,
       ...rest
-    } = this.props
+    } = this.props;
 
-    let maxWidth
+    let width;
     switch (typeof size) {
       case 'number':
-        maxWidth = size
+        width = size
         break
       case 'string':
-        maxWidth = sizeSpec[size.toUpperCase()]
+        width = sizeSpec[size.toUpperCase()]
         break
       default:
-        maxWidth = undefined
+        width = undefined
         break
     }
 
     if (rest) {
+      //@ts-ignore
       delete rest.noClose
+      //@ts-ignore
       delete rest.onClose
     }
 
     return open === false || this.state.closed ? null : (
-      <div className={'left-drawer-container'} style={containerStyle}>
+      <div
+        {...rest}
+        className={`menu-drop${className ? ' ' + className : ''}`}
+         //@ts-ignore
+        style={Object.assign(
+          {
+            width: anchorOffset || 0
+          },
+          containerStyle
+        )}
+      >
         <div
-          className={'left-drawer-background'}
+          className={'background'}
           onClick={this.close}
           style={backgroundStyle}
         />
         <Content
-          {...rest}
-          className={`left-drawer${className ? ' ' + className : ''}`}
-          ref={this.leftDrawer}
+          className={'menu'}
+          //@ts-ignore
           style={Object.assign(
-            typeof align === 'string' && align.toLowerCase() === 'right'
-              ? { right: 0 }
-              : { left: 0 },
-            { maxWidth: maxWidth },
+            {
+              width: width,
+              float: align || 'left'
+            },
             style
           )}
         >

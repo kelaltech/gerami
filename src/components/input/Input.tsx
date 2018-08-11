@@ -1,14 +1,13 @@
-import React, { Component, createRef } from 'react'
-
+import  { Component, createRef } from 'react'
+import *as React from 'react'
 import './Input.scss'
 
-export class Input extends Component {
-  input = this.props.inputRef || createRef()
-  placeholder = createRef()
+export class Input extends Component <any,any>{
+  input:any= this.props.inputRef || createRef()
+  placeholder:any = createRef();
 
   constructor(props) {
-    super(props)
-
+    super(props);
     this.updateFloat = this.updateFloat.bind(this)
   }
 
@@ -27,10 +26,10 @@ export class Input extends Component {
       onKeyUp,
       placeholder,
       ...rest
-    } = this.props
+    } = this.props;
 
-    !rest || delete rest.inputRef
-
+    //@ts-ignore
+    !rest || delete rest.inputRef;
     return (
       <label className={`label${className ? ' ' + className : ''}`}>
         <input
