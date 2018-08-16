@@ -1,7 +1,7 @@
-import * as React from  'react';
+import * as React from 'react'
 import { Component } from 'react'
 import './MenuDrop.scss'
-import { Content } from '../content/Content'
+import { Content } from '../..'
 
 const sizeSpec = {
   XXS: 70,
@@ -20,12 +20,12 @@ const sizeSpec = {
   X9L: 525
 }
 
-export class MenuDrop extends Component<any,any> {
-  constructor(props:any) {
+export class MenuDrop extends Component<any, any> {
+  constructor(props: any) {
     super(props)
     this.state = {
       closed: this.props.open === false
-    };
+    }
     this.close = this.close.bind(this)
   }
 
@@ -46,9 +46,9 @@ export class MenuDrop extends Component<any,any> {
       size,
       style,
       ...rest
-    } = this.props;
+    } = this.props
 
-    let width;
+    let width
     switch (typeof size) {
       case 'number':
         width = size
@@ -72,7 +72,7 @@ export class MenuDrop extends Component<any,any> {
       <div
         {...rest}
         className={`menu-drop${className ? ' ' + className : ''}`}
-         //@ts-ignore
+        //@ts-ignore
         style={Object.assign(
           {
             width: anchorOffset || 0

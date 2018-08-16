@@ -2,45 +2,35 @@
   "name": "gerami",
   "version": "0.0.1",
   "description": "gerami react components",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
-  ],
-  "scripts": {
-    "build": "nwb build-react-component",
-    "clean": "nwb clean-module && nwb clean-demo",
-    "prepublishOnly": "npm run build",
-    "start": "nwb serve-react-demo",
-    "test": "nwb test-react",
-    "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
-  },
-  "dependencies": {
-    "react-router-dom": "^4.3.1",
-    "typescript": "^3.0.1"
-  },
-  "peerDependencies": {
-    "react": "16.x"
-  },
-  "devDependencies": {
-    "@types/react": "^16.4.7",
-    "nwb": "0.23.x",
-    "nwb-sass": "^0.9.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "ts-loader": "^4.4.2"
-  },
+  "main": "src/index.jsx",
+  "types": "src/index.tsx",
+  "repository": "git@gitlab.com/kelal/dev/gerami.git",
   "author": "Kelal",
-  "homepage": "https://gerami.herokuapp.com",
   "license": "MIT",
   "private": false,
-  "repository": "git@gitlab.com:kelal/dev/gerami.git",
   "keywords": [
     "gerami",
-    "react-component"
-  ]
+    "kelal",
+    "react components"
+  ],
+  "scripts": {
+    "precommit": "pretty-quick --staged",
+    "lint": "prettier --write {.,src/**}/*.{tsx,ts,jsx,js,scss,sass,css,json,md}",
+    "build": "tsc",
+    "prepublishOnly": "yarn build && yarn lint"
+  },
+  "dependencies": {
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.4.11",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router-dom": "^4.3.0",
+    "husky": "^0.14.3",
+    "prettier": "^1.14.2",
+    "pretty-quick": "^1.6.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "typescript": "^3.0.1"
+  }
 }

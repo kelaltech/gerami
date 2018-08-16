@@ -17,45 +17,45 @@ const sizeSpec = {
   X8L: 182,
   X9L: 196
 }
-export class AccountPic extends React.Component<any,any>{
-  constructor(props:any){
-    super(props);
+export class AccountPic extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props)
   }
-  render(){
-    const { children, className, size, src, style, ...rest }=this.props;
+  render() {
+    const { children, className, size, src, style, ...rest } = this.props
     let width, height
-     switch (typeof size) {
-          case 'number':
-              width = size
-              height = size
-              break
-          case 'string':
-              width = sizeSpec[size.toUpperCase()]
-              height = sizeSpec[size.toUpperCase()]
-              break
-          default:
-              width = undefined
-              height = undefined
-              break
-      }
-    return(
-        <div
-            {...rest}
-            className={`account-pic${className ? ' ' + className : ''}`}
-            //@ts-ignore
-            style={Object.assign(
-                {
-                    width: width,
-                    height: height,
-                    backgroundImage: `url(${encodeURI(
-                        typeof src === 'string' ? src : '/api/account/me/picture'
-                    )})`
-                },
-                style
-            )}
-        >
-            {children}
-        </div>
-    );
+    switch (typeof size) {
+      case 'number':
+        width = size
+        height = size
+        break
+      case 'string':
+        width = sizeSpec[size.toUpperCase()]
+        height = sizeSpec[size.toUpperCase()]
+        break
+      default:
+        width = undefined
+        height = undefined
+        break
+    }
+    return (
+      <div
+        {...rest}
+        className={`account-pic${className ? ' ' + className : ''}`}
+        //@ts-ignore
+        style={Object.assign(
+          {
+            width: width,
+            height: height,
+            backgroundImage: `url(${encodeURI(
+              typeof src === 'string' ? src : '/api/account/me/picture'
+            )})`
+          },
+          style
+        )}
+      >
+        {children}
+      </div>
+    )
   }
 }

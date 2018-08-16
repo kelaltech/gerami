@@ -1,14 +1,13 @@
 # Project
-coverage/
-demo/
 tests/
-src/
-.eslintrc
 .gitignore
 .npmignore
 .prettierrc
 .travis.yml
-nwb.config.js
+
+# IDEs
+.idea/
+.vscode/
 
 # Default
 .*.swp
@@ -82,7 +81,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-# IDEs
-.idea/
-.vscode/

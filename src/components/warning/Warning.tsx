@@ -1,11 +1,11 @@
 import * as React from 'react'
 import './Warning.scss'
-import { Content } from '../content/Content'
-import { Block } from '../block/Block'
+import { Content } from '../..'
+import { Block } from '../..'
 
-export class Warning extends React.Component <any,any>{
-    private dead: boolean;
-  constructor(props:any) {
+export class Warning extends React.Component<any, any> {
+  private dead = false
+  constructor(props: any) {
     super(props)
     this.state = {
       hidden: false
@@ -24,8 +24,8 @@ export class Warning extends React.Component <any,any>{
   }
 
   render() {
-    const { children, className, problem, shy, ...rest } = this.props;
-      //@ts-ignore
+    const { children, className, problem, shy, ...rest } = this.props
+    //@ts-ignore
     !rest || delete rest.bomb
 
     return this.dead || this.state.hidden ? null : (
@@ -33,7 +33,8 @@ export class Warning extends React.Component <any,any>{
         title={shy ? 'Double click to hide warning' : undefined}
         {...rest}
         className={`warning${className ? ' ' + className : ''}`}
-        onDoubleClick={(e:any) => {this.shyAway()
+        onDoubleClick={(e: any) => {
+          this.shyAway()
           if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
         }}
       >
@@ -51,7 +52,7 @@ export class Warning extends React.Component <any,any>{
     )
   }
 
-  shyAway():any {
+  shyAway(): any {
     const { shy } = this.props
 
     if (shy && !this.dead) {

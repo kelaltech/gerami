@@ -18,36 +18,42 @@ const sizeSpec = {
   X8L: 1820,
   X9L: 1960
 }
-export class Content extends React.Component<any,any>{
-  constructor(props:any){
-    super(props);
+export class Content extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props)
   }
-  render(){
-    const { children, className, size, style, transparent, ...rest }=this.props;
-      let maxWidth;
-      switch (typeof size) {
-          case 'number':
-              maxWidth = size;
-              break;
-          case 'string':
-              maxWidth = sizeSpec[size.toUpperCase()]
-              break;
-          default:
-              maxWidth = undefined;
-              break
-      }
-      return (
-          <div
-              {...rest}
-              className={`content${!transparent ? ' content-card' : ''}${
-                  className ? ' ' + className : ''
-                  }`}
-              //@ts-ignore
-              style={Object.assign({ maxWidth: maxWidth }, style)}
-          >
-              {children}
-          </div>
-      )
+  render() {
+    const {
+      children,
+      className,
+      size,
+      style,
+      transparent,
+      ...rest
+    } = this.props
+    let maxWidth
+    switch (typeof size) {
+      case 'number':
+        maxWidth = size
+        break
+      case 'string':
+        maxWidth = sizeSpec[size.toUpperCase()]
+        break
+      default:
+        maxWidth = undefined
+        break
+    }
+    return (
+      <div
+        {...rest}
+        className={`content${!transparent ? ' content-card' : ''}${
+          className ? ' ' + className : ''
+        }`}
+        //@ts-ignore
+        style={Object.assign({ maxWidth: maxWidth }, style)}
+      >
+        {children}
+      </div>
+    )
   }
-
 }

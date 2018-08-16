@@ -1,28 +1,48 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "module": "commonjs",
+
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "pretty": true,
+    "lib": ["esnext", "dom"],
     "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
+
     "allowJs": true,
-    "declaration": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
+    "checkJs": true,
+
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "composite": false,
+    "noEmitOnError": true,
+
     "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "strict": true,
+    "alwaysStrict": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "skipLibCheck": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+
+    "preserveConstEnums": true,
+    "newLine": "lf"
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+  "exclude": ["./dist", "./demo", "./tests"],
+  "typeAcquisition": {
+    "enable": true
+  }
 }

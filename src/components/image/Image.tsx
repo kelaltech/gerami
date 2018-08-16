@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import './Image.scss'
-import { Anchor } from '../anchor/Anchor'
+import { Anchor } from '../..'
 
 const sizeSpec = {
   XXS: 14,
@@ -19,58 +19,58 @@ const sizeSpec = {
   X8L: 182,
   X9L: 196
 }
-export class Image extends React.Component<any,any>{
-    constructor(props:any){
-        super(props);
+export class Image extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props)
+  }
+  render() {
+    let { className, size, style, to, src, ...rest } = this.props
+    let width, height
+    switch (typeof size) {
+      case 'number':
+        width = size
+        height = size
+        break
+      case 'string':
+        width = sizeSpec[size.toUpperCase()]
+        height = sizeSpec[size.toUpperCase()]
+        break
+      default:
+        width = undefined
+        height = undefined
+        break
     }
-    render(){
-        let { className, size, style, to, src, ...rest }=this.props;
-        let width, height
-        switch (typeof size) {
-            case 'number':
-                width = size;
-                height = size;
-                break;
-            case 'string':
-                width = sizeSpec[size.toUpperCase()];
-                height = sizeSpec[size.toUpperCase()];
-                break;
-            default:
-                width = undefined;
-                height = undefined;
-                break
-        }
-        if (to === true) to = '/';
+    if (to === true) to = '/'
 
-        return typeof to === 'string' ? (
-            <Anchor
-                to={to}
-                {...rest}
-                className={`image${className ? ' ' + className : ''}`}
-                //@ts-ignore
-                style={Object.assign(
-                    {
-                        width: width,
-                        height: height,
-                        backgroundImage: `url('${src}')`
-                    },
-                    style
-                )}
-            />
-        ) : (
-            <div
-                {...rest}
-                className={`image${className ? ' ' + className : ''}`}
-                //@ts-ignore
-                style={Object.assign(
-                    {
-                        width: width,
-                        height: height,
-                        backgroundImage: `url('${src}')`
-                    },
-                    style
-                )}
-            />
-        )
-    }
+    return typeof to === 'string' ? (
+      <Anchor
+        to={to}
+        {...rest}
+        className={`image${className ? ' ' + className : ''}`}
+        //@ts-ignore
+        style={Object.assign(
+          {
+            width: width,
+            height: height,
+            backgroundImage: `url('${src}')`
+          },
+          style
+        )}
+      />
+    ) : (
+      <div
+        {...rest}
+        className={`image${className ? ' ' + className : ''}`}
+        //@ts-ignore
+        style={Object.assign(
+          {
+            width: width,
+            height: height,
+            backgroundImage: `url('${src}')`
+          },
+          style
+        )}
+      />
+    )
+  }
 }
