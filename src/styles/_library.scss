@@ -112,8 +112,7 @@ hr,
   border: 0;
   border-radius: 50%;
   outline: 0;
-  background: lighten($fg, 84%)
-    linear-gradient(lighten($fg, 77%) 50%, lighten($fg, 91%) 50%);
+  background: lighten($fg, 84%) linear-gradient(lighten($fg, 77%) 50%, lighten($fg, 91%) 50%);
 }
 
 h1,

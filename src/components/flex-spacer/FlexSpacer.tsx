@@ -7,11 +7,6 @@ export class FlexSpacer extends React.Component<any, any> {
   }
   render() {
     const { className, ...rest } = this.props
-    return (
-      <span
-        className={`flex-spacer${className ? ' ' + className : ''}`}
-        {...rest}
-      />
-    )
+    return <span className={`flex-spacer${className ? ' ' + className : ''}`} {...rest} />
   }
 }

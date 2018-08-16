@@ -4,7 +4,7 @@
     "rootDir": "./src",
     "module": "commonjs",
 
-    "jsx": "preserve",
+    "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
 
@@ -12,10 +12,10 @@
     "lib": ["esnext", "dom"],
     "target": "es5",
 
-    "allowJs": true,
-    "checkJs": true,
+    "allowJs": false,
+    "checkJs": false,
 
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "sourceMap": false,
     "composite": false,

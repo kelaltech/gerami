@@ -7,43 +7,23 @@ export class Card extends React.Component<any, any> {
     super(props)
   }
   render() {
-    const {
-      actions,
-      children,
-      className,
-      imgSrc,
-      imgStyle,
-      subtitle,
-      title,
-      ...rest
-    } = this.props
+    const { actions, children, className, imgSrc, imgStyle, subtitle, title, ...rest } = this.props
     return (
       <Content {...rest} className={`card${className ? ' ' + className : ''}`}>
         {imgSrc ? (
           <div
             className={`card-img`}
             //@ts-ignore
-            style={Object.assign(
-              { backgroundImage: `url(${imgSrc})` },
-              imgStyle
-            )}
+            style={Object.assign({ backgroundImage: `url(${imgSrc})` }, imgStyle)}
           />
         ) : null}
 
         {title || subtitle ? (
           <div className={'padding-big padding-bottom-none'}>
             {title ? (
-              <div
-                className={`font-L bold${
-                  subtitle ? ' padding-bottom-small' : ''
-                }`}
-              >
-                {title}
-              </div>
+              <div className={`font-L bold${subtitle ? ' padding-bottom-small' : ''}`}>{title}</div>
             ) : null}
-            {subtitle ? (
-              <div className={'font-XS fg-blackish'}>{subtitle}</div>
-            ) : null}
+            {subtitle ? <div className={'font-XS fg-blackish'}>{subtitle}</div> : null}
           </div>
         ) : null}
 

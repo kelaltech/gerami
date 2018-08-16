@@ -10,11 +10,7 @@ export class Anchor extends React.Component<any, any> {
     const { button, children, className, to, ...rest } = this.props
     const child = button ? <Button>{children}</Button> : children
     return typeof to === 'string' ? (
-      <Link
-        to={to}
-        {...rest}
-        className={`a${className ? ' ' + className : ''}`}
-      >
+      <Link to={to} {...rest} className={`a${className ? ' ' + className : ''}`}>
         {child}
       </Link>
     ) : (

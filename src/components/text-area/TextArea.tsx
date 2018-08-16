@@ -40,9 +40,7 @@ export class TextArea extends Component<any, any> {
   }
 
   updateFloat() {
-    this.placeholder.current.className = `placeholder${
-      this.textarea.current.value ? ' float' : ''
-    }`
+    this.placeholder.current.className = `placeholder${this.textarea.current.value ? ' float' : ''}`
   }
 
   get value() {

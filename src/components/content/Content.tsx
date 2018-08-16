@@ -23,14 +23,7 @@ export class Content extends React.Component<any, any> {
     super(props)
   }
   render() {
-    const {
-      children,
-      className,
-      size,
-      style,
-      transparent,
-      ...rest
-    } = this.props
+    const { children, className, size, style, transparent, ...rest } = this.props
     let maxWidth
     switch (typeof size) {
       case 'number':

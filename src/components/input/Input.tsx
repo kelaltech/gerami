@@ -67,9 +67,7 @@ export class Input extends Component<any, any> {
   }
 
   updateFloat() {
-    this.placeholder.current.className = `placeholder${
-      this.input.current.value ? ' float' : ''
-    }`
+    this.placeholder.current.className = `placeholder${this.input.current.value ? ' float' : ''}`
   }
 
   get value() {

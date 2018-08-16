@@ -18,8 +18,7 @@ export class Page extends React.Component<any, any> {
     const paddingBottom =
       bottom === true ||
       (typeof bottom === 'string' &&
-        (bottom.toLowerCase() === 'auto' ||
-          bottom.toLowerCase() === 'adaptive'))
+        (bottom.toLowerCase() === 'auto' || bottom.toLowerCase() === 'adaptive'))
         ? '7%'
         : typeof bottom === 'number' || typeof bottom === 'string'
           ? bottom

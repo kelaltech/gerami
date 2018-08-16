@@ -76,11 +76,7 @@ export class LeftDrawer extends Component<any, any> {
 
     return open === false || this.state.closed ? null : (
       <div className={'left-drawer-container'} style={containerStyle}>
-        <div
-          className={'left-drawer-background'}
-          onClick={this.close}
-          style={backgroundStyle}
-        />
+        <div className={'left-drawer-background'} onClick={this.close} style={backgroundStyle} />
         <Content
           {...rest}
           ref={this.leftDrawer}

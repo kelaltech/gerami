@@ -12,6 +12,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -69,15 +80,13 @@ var AccountPic = /** @class */ (function (_super) {
                 height = undefined;
                 break;
         }
-        return (<div {...rest} className={"account-pic" + (className ? ' ' + className : '')} 
-        //@ts-ignore
-        style={Object.assign({
-            width: width,
-            height: height,
-            backgroundImage: "url(" + encodeURI(typeof src === 'string' ? src : '/api/account/me/picture') + ")"
-        }, style)}>
-        {children}
-      </div>);
+        return (React.createElement("div", __assign({}, rest, { className: "account-pic" + (className ? ' ' + className : ''), 
+            //@ts-ignore
+            style: Object.assign({
+                width: width,
+                height: height,
+                backgroundImage: "url(" + encodeURI(typeof src === 'string' ? src : '/api/account/me/picture') + ")"
+            }, style) }), children));
     };
     return AccountPic;
 }(React.Component));

@@ -29,14 +29,7 @@ export class Loading extends Component<any, any> {
   }
 
   render() {
-    const {
-      className,
-      error,
-      pastDelay,
-      problem,
-      timedOut,
-      ...rest
-    } = this.props
+    const { className, error, pastDelay, problem, timedOut, ...rest } = this.props
 
     if (rest) {
       //@ts-ignore
@@ -47,9 +40,7 @@ export class Loading extends Component<any, any> {
 
     return problem ? (
       <Warning {...rest} className={className}>
-        <div className={'bold padding-bottom-normal'}>
-          Ohh, no! We have a problem.
-        </div>
+        <div className={'bold padding-bottom-normal'}>Ohh, no! We have a problem.</div>
         <div>
           <span className={'italic'}>Code</span>: {problem.code || '[N/A]'}
         </div>
@@ -69,20 +60,8 @@ export class Loading extends Component<any, any> {
     ) : pastDelay === false || !this.state.pastCustomDelay ? null : (
       <div {...rest} className={`loading${className ? ' ' + className : ''}`}>
         <svg className={'svg'} width={50} height={50}>
-          <circle
-            className="big-circle"
-            cx={25}
-            cy={25}
-            r={18}
-            strokeWidth={4}
-          />
-          <circle
-            className="small-circle"
-            cx={25}
-            cy={8}
-            r={4}
-            strokeWidth={8}
-          />
+          <circle className="big-circle" cx={25} cy={25} r={18} strokeWidth={4} />
+          <circle className="small-circle" cx={25} cy={8} r={4} strokeWidth={8} />
         </svg>
       </div>
     )

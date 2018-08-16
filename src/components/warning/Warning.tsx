@@ -15,8 +15,7 @@ export class Warning extends React.Component<any, any> {
 
   componentDidMount() {
     const { bomb } = this.props
-    if (bomb)
-      window.setTimeout(this.shyAway, typeof bomb === 'number' ? bomb : 7000)
+    if (bomb) window.setTimeout(this.shyAway, typeof bomb === 'number' ? bomb : 7000)
   }
 
   componentWillUnmount() {
@@ -43,8 +42,7 @@ export class Warning extends React.Component<any, any> {
             (problem ? (
               <div className={'font-S center'}>
                 {problem.code ? problem.code + ': ' : null}
-                {problem.message ||
-                  (typeof problem === 'string' ? problem : null)}
+                {problem.message || (typeof problem === 'string' ? problem : null)}
               </div>
             ) : null)}
         </Block>

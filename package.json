@@ -2,8 +2,8 @@
   "name": "gerami",
   "version": "0.0.1",
   "description": "gerami react components",
-  "main": "src/index.jsx",
-  "types": "src/index.tsx",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "repository": "git@gitlab.com/kelal/dev/gerami.git",
   "author": "Kelal",
   "license": "MIT",
@@ -17,7 +17,8 @@
     "precommit": "pretty-quick --staged",
     "lint": "prettier --write {.,src/**}/*.{tsx,ts,jsx,js,scss,sass,css,json,md}",
     "build": "tsc",
-    "prepublishOnly": "yarn build && yarn lint"
+    "prepare": "yarn build && yarn lint",
+    "prepublishOnly": "yarn prepare"
   },
   "dependencies": {
     "react-router-dom": "^4.3.1"

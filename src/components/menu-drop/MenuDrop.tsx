@@ -80,11 +80,7 @@ export class MenuDrop extends Component<any, any> {
           containerStyle
         )}
       >
-        <div
-          className={'background'}
-          onClick={this.close}
-          style={backgroundStyle}
-        />
+        <div className={'background'} onClick={this.close} style={backgroundStyle} />
         <Content
           className={'menu'}
           //@ts-ignore

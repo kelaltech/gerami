@@ -13,8 +13,7 @@ export class Button extends React.Component<any, any> {
       <button
         {...rest}
         className={`button ${
-          primary ||
-          (typeof type === 'string' && type.toLowerCase() === 'submit')
+          primary || (typeof type === 'string' && type.toLowerCase() === 'submit')
             ? 'button-primary'
             : ''
         }${className ? ' ' + className : ''}`}
