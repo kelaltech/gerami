@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import './Image.scss'
-import { Anchor } from '../..'
+import { Anchor } from '../anchor/Anchor'
 
 const sizeSpec = {
   XXS: 14,

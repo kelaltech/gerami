@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './Card.scss'
-import { Content } from '../..'
+import { Content } from '../content/Content'
 
 export class Card extends React.Component<any, any> {
   constructor(props: any) {

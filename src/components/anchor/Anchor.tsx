@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '../../'
+import { Button } from '../button/Button'
 
 export class Anchor extends React.Component<any, any> {
   constructor(props: any) {

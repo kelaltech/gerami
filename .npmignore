@@ -4,6 +4,9 @@ tests/
 .npmignore
 .prettierrc
 .travis.yml
+CHANGELOG.md
+tsconfig.json
+*.tsx
 
 # IDEs
 .idea/

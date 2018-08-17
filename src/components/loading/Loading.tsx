@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Component } from 'react'
 
 import './Loading.scss'
-import { Warning } from '../..'
+import { Warning } from '../warning/Warning'
 
 export class Loading extends Component<any, any> {
   dead: any = null

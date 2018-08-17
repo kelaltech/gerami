@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import './MenuItem.scss'
-import { Anchor } from '../..'
+import { Anchor } from '../anchor/Anchor'
 
 export class MenuItem extends React.Component<any, any> {
   constructor(props: any) {

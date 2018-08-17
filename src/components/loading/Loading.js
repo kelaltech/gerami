@@ -46,20 +46,11 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
-var __importStar =
-  (this && this.__importStar) ||
-  function(mod) {
-    if (mod && mod.__esModule) return mod
-    var result = {}
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
-    result['default'] = mod
-    return result
-  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = __importStar(require('react'))
+var React = require('react')
 var react_1 = require('react')
 require('./Loading.scss')
-var __1 = require('../..')
+var Warning_1 = require('../warning/Warning')
 var Loading = /** @class */ (function(_super) {
   __extends(Loading, _super)
   function Loading(props) {
@@ -96,7 +87,7 @@ var Loading = /** @class */ (function(_super) {
     }
     return problem
       ? React.createElement(
-          __1.Warning,
+          Warning_1.Warning,
           __assign({}, rest, { className: className }),
           React.createElement(
             'div',
@@ -121,13 +112,13 @@ var Loading = /** @class */ (function(_super) {
         )
       : error
         ? React.createElement(
-            __1.Warning,
+            Warning_1.Warning,
             __assign({}, rest, { className: className }),
             'Sorry, an unexpected error occurred.\u00A0\u00A0\u00A0\u00A0:('
           )
         : timedOut
           ? React.createElement(
-              __1.Warning,
+              Warning_1.Warning,
               __assign({}, rest, { className: className }),
               'Sorry, the request timed out.\u00A0\u00A0\u00A0\u00A0:('
             )

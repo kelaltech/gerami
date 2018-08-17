@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Component, createRef } from 'react'
 import './LeftDrawer.scss'
 
-import { Content } from '../..'
+import { Content } from '../content/Content'
 
 const sizeSpec = {
   XXS: 175,

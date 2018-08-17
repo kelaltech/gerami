@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Component } from 'react'
 import './MenuDrop.scss'
-import { Content } from '../..'
+import { Content } from '../content/Content'
 
 const sizeSpec = {
   XXS: 70,

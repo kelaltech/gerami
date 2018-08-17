@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "rootDir": "./src",
+    "baseUrl": "src",
+    "rootDir": "src",
     "module": "commonjs",
 
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
 
     "pretty": true,
     "lib": ["esnext", "dom"],
@@ -33,7 +33,7 @@
     "alwaysStrict": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
 
     "skipLibCheck": true,
     "suppressImplicitAnyIndexErrors": true,

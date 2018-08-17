@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './Warning.scss'
-import { Content } from '../..'
-import { Block } from '../..'
+import { Content } from '../content/Content'
+import { Block } from '../block/Block'
 
 export class Warning extends React.Component<any, any> {
   private dead = false

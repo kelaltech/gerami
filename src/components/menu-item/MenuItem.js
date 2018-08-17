@@ -46,19 +46,10 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
-var __importStar =
-  (this && this.__importStar) ||
-  function(mod) {
-    if (mod && mod.__esModule) return mod
-    var result = {}
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
-    result['default'] = mod
-    return result
-  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = __importStar(require('react'))
+var React = require('react')
 require('./MenuItem.scss')
-var __1 = require('../..')
+var Anchor_1 = require('../anchor/Anchor')
 var MenuItem = /** @class */ (function(_super) {
   __extends(MenuItem, _super)
   function MenuItem(props) {
@@ -70,7 +61,7 @@ var MenuItem = /** @class */ (function(_super) {
       className = _a.className,
       rest = __rest(_a, ['children', 'className'])
     return React.createElement(
-      __1.Anchor,
+      Anchor_1.Anchor,
       __assign({ button: true }, rest, {
         className: 'menu-item' + (className ? ' ' + className : '')
       }),
