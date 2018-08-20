@@ -32,3 +32,5 @@ var TextArea_js_1 = require('./components/text-area/TextArea.js')
 exports.TextArea = TextArea_js_1.TextArea
 var Warning_js_1 = require('./components/warning/Warning.js')
 exports.Warning = Warning_js_1.Warning
+var Dialog_js_1 = require('./components/dialog/Dialog.js')
+exports.Dialog = Dialog_js_1.Dialog
