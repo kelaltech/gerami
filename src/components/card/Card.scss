@@ -1,6 +1,6 @@
 @import '../../styles/theme';
 
-.card {
+.gerami-card {
   box-shadow: $shade-M !important;
   transition: all 150ms !important;
 
@@ -14,7 +14,7 @@
   }
 }
 
-.card-img {
+.gerami-card-img {
   height: 220px;
   background: darken($bg, 3%) center center;
   background-size: cover;

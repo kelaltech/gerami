@@ -1,13 +1,13 @@
 @import '../../styles/theme';
 
-.label {
+.gerami-label {
   display: inline-block;
   position: relative;
   margin: 0;
   padding: ($font-S - $space / 10) 0 0;
 }
 
-.placeholder {
+.gerami-placeholder {
   position: absolute;
   top: $font-S;
   left: 0;
@@ -18,7 +18,7 @@
   pointer-events: none;
 }
 
-.float {
+.gerami-float {
   top: 0;
   font-size: $font-S;
   line-height: $font-S;

@@ -9,12 +9,12 @@
   }
 }
 
-.menu-drop {
+.gerami-menu-drop {
   position: absolute;
   z-index: 7;
 }
 
-.background {
+.gerami-background {
   position: fixed;
   top: 0;
   right: 0;
@@ -24,7 +24,7 @@
   animation: fade-in 150ms linear 0ms 1 forwards;
 }
 
-.menu {
+.gerami-menu {
   position: relative;
   padding: ($space / 2) 0;
   width: initial;

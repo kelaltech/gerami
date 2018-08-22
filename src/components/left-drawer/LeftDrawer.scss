@@ -18,12 +18,12 @@
   }
 }
 
-.left-drawer-container {
+.gerami-left-drawer-container {
   position: fixed;
   z-index: 7;
 }
 
-.left-drawer-background {
+.gerami-left-drawer-background {
   position: fixed;
   top: 0;
   right: 0;
@@ -33,7 +33,7 @@
   animation: fade-in 150ms linear 0ms 1 forwards;
 }
 
-.left-drawer {
+.gerami-left-drawer {
   position: fixed;
   overflow: auto;
   top: 0;

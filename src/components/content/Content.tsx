@@ -39,7 +39,7 @@ export class Content extends React.Component<any, any> {
     return (
       <div
         {...rest}
-        className={`content${!transparent ? ' content-card' : ''}${
+        className={`gerami-content${!transparent ? ' gerami-content-card' : ''}${
           className ? ' ' + className : ''
         }`}
         //@ts-ignore

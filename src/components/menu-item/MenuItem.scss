@@ -1,6 +1,6 @@
 @import '../../styles/theme';
 
-.menu-item {
+.gerami-menu-item {
   display: block;
   padding: ($space / 2) $space;
   width: initial;
@@ -9,13 +9,13 @@
   color: lighten($fg, 28%);
   cursor: pointer;
 }
-.menu-item:hover,
-.menu-item:focus,
-.menu-item:active {
+.gerami-menu-item:hover,
+.gerami-menu-item:focus,
+.gerami-menu-item:active {
   background-color: darken($bg, 14%);
 }
 
-.menu-item > button {
+.gerami-menu-item > button {
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;

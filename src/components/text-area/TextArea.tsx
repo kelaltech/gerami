@@ -20,7 +20,7 @@ export class TextArea extends Component<any, any> {
     const { className, label, placeholder, ...rest } = this.props
 
     return (
-      <label className={`label${className ? ' ' + className : ''}`}>
+      <label className={`gerami-label${className ? ' ' + className : ''}`}>
         <textarea
           className={'textarea'}
           {...rest}
@@ -32,7 +32,7 @@ export class TextArea extends Component<any, any> {
           placeholder={''}
           ref={this.textarea}
         />
-        <div className={'placeholder'} ref={this.placeholder}>
+        <div className={'gerami-placeholder'} ref={this.placeholder}>
           {placeholder || label}
         </div>
       </label>
@@ -40,7 +40,7 @@ export class TextArea extends Component<any, any> {
   }
 
   updateFloat() {
-    this.placeholder.current.className = `placeholder${this.textarea.current.value ? ' float' : ''}`
+    this.placeholder.current.className = `gerami-placeholder${this.textarea.current.value ? ' gerami-float' : ''}`
   }
 
   get value() {

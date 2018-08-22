@@ -58,10 +58,10 @@ export class Loading extends Component<any, any> {
         Sorry, the request timed out.&nbsp;&nbsp;&nbsp;&nbsp;:(
       </Warning>
     ) : pastDelay === false || !this.state.pastCustomDelay ? null : (
-      <div {...rest} className={`loading${className ? ' ' + className : ''}`}>
-        <svg className={'svg'} width={50} height={50}>
-          <circle className="big-circle" cx={25} cy={25} r={18} strokeWidth={4} />
-          <circle className="small-circle" cx={25} cy={8} r={4} strokeWidth={8} />
+      <div {...rest} className={`gerami-loading${className ? ' ' + className : ''}`}>
+        <svg className={'gerami-svg'} width={50} height={50}>
+          <circle className="gerami-big-circle" cx={25} cy={25} r={18} strokeWidth={4} />
+          <circle className="gerami-small-circle" cx={25} cy={8} r={4} strokeWidth={8} />
         </svg>
       </div>
     )

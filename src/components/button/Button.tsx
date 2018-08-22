@@ -12,9 +12,9 @@ export class Button extends React.Component<any, any> {
     const button = (
       <button
         {...rest}
-        className={`button ${
+        className={`gerami-button ${
           primary || (typeof type === 'string' && type.toLowerCase() === 'submit')
-            ? 'button-primary'
+            ? 'gerami-button-primary'
             : ''
         }${className ? ' ' + className : ''}`}
         type={type || 'button'}

@@ -26,7 +26,7 @@ export class Page extends React.Component<any, any> {
     return (
       <div
         {...rest}
-        className={`page${className ? ' ' + className : ''}`}
+        className={`gerami-page${className ? ' ' + className : ''}`}
         //@ts-ignore
         style={Object.assign(
           {

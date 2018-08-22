@@ -41,7 +41,7 @@ export class AccountPic extends React.Component<any, any> {
     return (
       <div
         {...rest}
-        className={`account-pic${className ? ' ' + className : ''}`}
+        className={`gerami-account-pic${className ? ' ' + className : ''}`}
         //@ts-ignore
         style={Object.assign(
           {

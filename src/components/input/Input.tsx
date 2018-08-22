@@ -31,10 +31,10 @@ export class Input extends Component<any, any> {
     //@ts-ignore
     !rest || delete rest.inputRef
     return (
-      <label className={`label${className ? ' ' + className : ''}`}>
+      <label className={`gerami-label${className ? ' ' + className : ''}`}>
         <input
           type={'text'}
-          className={'input'}
+          className={'gerami-input'}
           {...rest}
           onBlur={e => {
             this.updateFloat()
@@ -59,7 +59,7 @@ export class Input extends Component<any, any> {
           placeholder={''}
           ref={this.input}
         />
-        <div className={'placeholder'} ref={this.placeholder}>
+        <div className={'gerami-placeholder'} ref={this.placeholder}>
           {placeholder || label}
         </div>
       </label>
@@ -67,7 +67,7 @@ export class Input extends Component<any, any> {
   }
 
   updateFloat() {
-    this.placeholder.current.className = `placeholder${this.input.current.value ? ' float' : ''}`
+    this.placeholder.current.className = `gerami-placeholder${this.input.current.value ? ' gerami-float' : ''}`
   }
 
   get value() {

@@ -71,7 +71,7 @@ export class MenuDrop extends Component<any, any> {
     return open === false || this.state.closed ? null : (
       <div
         {...rest}
-        className={`menu-drop${className ? ' ' + className : ''}`}
+        className={`gerami-menu-drop${className ? ' ' + className : ''}`}
         //@ts-ignore
         style={Object.assign(
           {
@@ -80,9 +80,9 @@ export class MenuDrop extends Component<any, any> {
           containerStyle
         )}
       >
-        <div className={'background'} onClick={this.close} style={backgroundStyle} />
+        <div className={'gerami-background'} onClick={this.close} style={backgroundStyle} />
         <Content
-          className={'menu'}
+          className={'gerami-menu'}
           //@ts-ignore
           style={Object.assign(
             {

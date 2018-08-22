@@ -1,12 +1,12 @@
 @import '../../styles/theme';
 
-.page {
+.gerami-page {
   padding-right: $space;
   padding-left: $space;
 }
 
 @media (max-width: $mobile) {
-  .page {
+  .gerami-page {
     padding-right: $space / 2;
     padding-left: $space / 2;
   }

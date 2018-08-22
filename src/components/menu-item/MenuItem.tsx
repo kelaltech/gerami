@@ -10,7 +10,7 @@ export class MenuItem extends React.Component<any, any> {
   render() {
     const { children, className, ...rest } = this.props
     return (
-      <Anchor button {...rest} className={`menu-item${className ? ' ' + className : ''}`}>
+      <Anchor button {...rest} className={`gerami-menu-item${className ? ' ' + className : ''}`}>
         {children}
       </Anchor>
     )

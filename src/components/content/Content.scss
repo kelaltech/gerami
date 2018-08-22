@@ -1,13 +1,13 @@
 @import '../../styles/theme';
 
-.content {
+.gerami-content {
   margin: auto;
   width: 100%;
   overflow: hidden;
   text-align: left;
 }
 
-.content-card {
+.gerami-content-card {
   border-radius: $radius;
   background-color: transparentize($bg, 0.03);
   color: $fg;

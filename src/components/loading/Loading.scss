@@ -9,22 +9,22 @@
   }
 }
 
-.loading {
+.gerami-loading {
   padding: $space * 2;
   text-align: center;
 }
 
-.svg {
+.gerami-svg {
   display: inline-block;
   animation: spinner 700ms linear 0ms infinite forwards;
 }
 
-.big-circle {
+.gerami-big-circle {
   fill: none;
   stroke: lighten($fg, 91%);
 }
 
-.small-circle {
+.gerami-small-circle {
   fill: none;
   stroke: $primary;
 }

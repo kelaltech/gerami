@@ -9,10 +9,10 @@ export class Card extends React.Component<any, any> {
   render() {
     const { actions, children, className, imgSrc, imgStyle, subtitle, title, ...rest } = this.props
     return (
-      <Content {...rest} className={`card${className ? ' ' + className : ''}`}>
+      <Content {...rest} className={`gerami-card${className ? ' ' + className : ''}`}>
         {imgSrc ? (
           <div
-            className={`card-img`}
+            className={`gerami-card-img`}
             //@ts-ignore
             style={Object.assign({ backgroundImage: `url(${imgSrc})` }, imgStyle)}
           />

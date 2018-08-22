@@ -60,7 +60,7 @@ export class Image extends React.Component<any, any> {
     ) : (
       <div
         {...rest}
-        className={`image${className ? ' ' + className : ''}`}
+        className={`gerami-image${className ? ' ' + className : ''}`}
         //@ts-ignore
         style={Object.assign(
           {

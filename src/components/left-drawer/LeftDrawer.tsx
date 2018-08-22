@@ -75,12 +75,12 @@ export class LeftDrawer extends Component<any, any> {
     }
 
     return open === false || this.state.closed ? null : (
-      <div className={'left-drawer-container'} style={containerStyle}>
-        <div className={'left-drawer-background'} onClick={this.close} style={backgroundStyle} />
+      <div className={'gerami-left-drawer-container'} style={containerStyle}>
+        <div className={'gerami-left-drawer-background'} onClick={this.close} style={backgroundStyle} />
         <Content
           {...rest}
           ref={this.leftDrawer}
-          className={`left-drawer${className ? ' ' + className : ''}`}
+          className={`gerami-left-drawer${className ? ' ' + className : ''}`}
           //@ts-ignore
           style={Object.assign(
             typeof align === 'string' && align.toLowerCase() === 'right'

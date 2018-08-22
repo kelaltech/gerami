@@ -14,7 +14,7 @@ export class Block extends React.Component<any, any> {
           paddingBottom: last ? 30 : 10
         }}
         {...rest}
-        className={`block${className ? ' ' + className : ''}`}
+        className={`gerami-block${className ? ' ' + className : ''}`}
       >
         {children}
       </div>
