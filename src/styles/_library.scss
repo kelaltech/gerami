@@ -16,7 +16,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-body,
+
 .body {
   font-family: 'Open Sans', sans-serif;
   font-size: $font-M;
@@ -25,28 +25,26 @@ body,
   background-color: darken($bg, 5%);
 }
 
-a,
+
 .a {
   display: inline-block;
   text-decoration: underline;
   color: darken($primary, 7%);
   transition: all 150ms;
 }
-a:active,
-a:focus,
-a:hover,
+
 .a:active,
 .a:focus,
 .a:hover {
   color: $primary;
 }
-a:active,
+
 .a:active {
   filter: drop-shadow($shade-S);
   transform: $touch;
 }
 
-button,
+
 .button {
   display: inline-block;
   margin: 0;
@@ -63,8 +61,7 @@ button,
   transition: all 150ms;
   cursor: pointer;
 }
-button:focus,
-button:hover,
+
 .button:focus,
 .button:hover {
   border-color: $primary;
@@ -72,16 +69,13 @@ button:hover,
   box-shadow: $shade-M;
   color: $fg;
 }
-button:active,
+
 .button:active {
   box-shadow: none;
   filter: drop-shadow($shade-S);
   transform: $touch;
 }
-button:disabled,
-button:disabled:active,
-button:disabled:focus,
-button:disabled:hover,
+
 .button:disabled,
 .button:disabled:active,
 .button:disabled:focus,
@@ -95,7 +89,7 @@ button:disabled:hover,
   cursor: default;
 }
 
-code,
+
 .code {
   display: inline-block;
   padding: ($space / 6) ($space / 3);
@@ -104,7 +98,7 @@ code,
   background-color: darken($bg, 7%);
 }
 
-hr,
+
 .hr {
   display: block;
   height: $border;
@@ -136,8 +130,7 @@ h6 {
   margin: 0 0 $space / 4;
 }
 
-input,
-textarea,
+
 .input,
 .textarea {
   display: inline-block;
@@ -159,12 +152,7 @@ textarea,
   box-shadow: none;
   transition: all 200ms ease;
 }
-input:active,
-input:focus,
-input:hover,
-textarea:active,
-textarea:focus,
-textarea:hover,
+
 .input:active,
 .input:focus,
 .input:hover,
@@ -175,8 +163,7 @@ textarea:hover,
   border-color: $primary;
   color: $fg;
 }
-input:disabled,
-textarea:disabled,
+
 .input:disabled,
 .textarea:disabled {
   border-color: darken($bg, 14%);
