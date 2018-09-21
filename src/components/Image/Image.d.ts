@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import './Image.scss'
 interface props {
   className?: string
   size?: string | number

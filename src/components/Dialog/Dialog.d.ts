@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
-import './Dialog.scss'
+import { Component } from 'react'
 interface props {
   open: boolean
-  children: React.ReactNode
   width?: string | number
 }
 export declare class Dialog extends Component<props, any> {

@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import './Button.scss'
-
 interface props {
-  children: React.ReactNode
   className?: string
   primary?: boolean
   to?: string
   type?: string | 'button' | 'submit' | 'reset'
 }
-export class Button extends Component<props> {
+export class Button extends Component<props, any> {
   render() {
     const { children, className, primary, to, type, ...rest } = this.props
     const button = (

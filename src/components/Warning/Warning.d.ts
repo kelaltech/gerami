@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
-import './Warning.scss'
+import { Component } from 'react'
 interface props {
-  children?: React.ReactNode
   className?: string
   problem?: {
     code: number
@@ -9,6 +7,7 @@ interface props {
   }
   shy?: boolean | Function
   bomb?: boolean
+  size?: string | number
 }
 export declare class Warning extends Component<props> {
   private dead

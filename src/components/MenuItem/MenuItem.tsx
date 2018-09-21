@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import './MenuItem.scss'
 import { Anchor } from '../Anchor/Anchor'
 
 interface props {
-  children: React.ReactNode
   className?: string
 }
 

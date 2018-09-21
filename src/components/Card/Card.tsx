@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import './Card.scss'
 import { Content } from '../Content/Content'
 
 interface props {
   actions?: string | Element | Element[]
-  children: React.ReactNode
   className?: string
   imgSrc?: string
   imgStyle?: React.CSSProperties

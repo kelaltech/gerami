@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
-import './Button.scss'
+import { Component } from 'react'
 interface props {
-  children: React.ReactNode
   className?: string
   primary?: boolean
   to?: string
   type?: string | 'button' | 'submit' | 'reset'
 }
-export declare class Button extends Component<props> {
+export declare class Button extends Component<props, any> {
   render(): JSX.Element
 }
 export {}

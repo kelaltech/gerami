@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Loading.scss'
 import { Warning } from '../Warning/Warning'
 
 interface props {

@@ -33,7 +33,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Dialog.scss')
 var Dialog = /** @class */ (function(_super) {
   __extends(Dialog, _super)
   function Dialog() {

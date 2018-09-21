@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 interface props {
   button?: boolean
-  children?: React.ReactNode
   className?: string
   to?: string
 }

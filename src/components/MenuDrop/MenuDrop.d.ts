@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import './MenuDrop.scss'
 interface props {
   align?: string
   anchorOffset?: string
   backgroundStyle?: React.CSSProperties
-  children: React.ReactNode
   className?: string
   containerStyle?: string
   open: string | boolean

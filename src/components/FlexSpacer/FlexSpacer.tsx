@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './FlexSpacer.scss'
 
 export class FlexSpacer extends Component<any, any> {
   constructor(props: any) {

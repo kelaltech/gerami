@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
-import './MenuItem.scss'
+import { Component } from 'react'
 interface props {
-  children: React.ReactNode
   className?: string
 }
 export declare class MenuItem extends Component<props> {

@@ -4,7 +4,6 @@ import { Button } from '../Button/Button'
 
 interface props {
   button?: boolean
-  children?: React.ReactNode
   className?: string
   to?: string
 }

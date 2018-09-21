@@ -1,5 +1,4 @@
 import React, { Component, createRef } from 'react'
-import './Input.scss'
 
 interface props {
   className?: string

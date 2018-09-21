@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Image.scss'
 import { Anchor } from '../Anchor/Anchor'
 
 const sizeSpec = {

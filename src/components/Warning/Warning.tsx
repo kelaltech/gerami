@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import './Warning.scss'
 import { Content } from '../Content/Content'
 import { Block } from '../Block/Block'
 
 interface props {
-  children?: React.ReactNode
   className?: string
   problem?: { code: number; message: string }
   shy?: boolean | Function
   bomb?: boolean
+  size?: string | number
 }
 
 export class Warning extends Component<props> {

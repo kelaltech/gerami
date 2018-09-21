@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import './Content.scss'
 interface props {
-  children: React.ReactNode
   className?: string
   size?: string | Number
   style?: string | React.CSSProperties

@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./FlexSpacer.scss')
 var FlexSpacer = /** @class */ (function(_super) {
   __extends(FlexSpacer, _super)
   function FlexSpacer(props) {

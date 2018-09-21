@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./TextArea.scss')
 var TextArea = /** @class */ (function(_super) {
   __extends(TextArea, _super)
   function TextArea(props) {

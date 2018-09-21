@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import './Loading.scss'
 interface props {
   className?: string
   error?: string

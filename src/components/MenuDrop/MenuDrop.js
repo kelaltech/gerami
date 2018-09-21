@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./MenuDrop.scss')
 var Content_1 = require('../Content/Content')
 var sizeSpec = {
   XXS: 70,

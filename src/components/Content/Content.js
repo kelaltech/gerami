@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Content.scss')
 var sizeSpec = {
   XXS: 140,
   XS: 280,

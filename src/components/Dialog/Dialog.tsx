@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import './Dialog.scss'
 
 interface props {
   open: boolean
-  children: React.ReactNode
   width?: string | number
 }
 

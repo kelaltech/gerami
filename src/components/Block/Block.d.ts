@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
-import './Block.scss'
+import { Component } from 'react'
 interface props {
-  children?: React.ReactNode
   className?: string
   first?: boolean
   last?: boolean

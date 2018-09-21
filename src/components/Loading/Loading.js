@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Loading.scss')
 var Warning_1 = require('../Warning/Warning')
 var Loading = /** @class */ (function(_super) {
   __extends(Loading, _super)

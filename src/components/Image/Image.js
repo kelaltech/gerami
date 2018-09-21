@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Image.scss')
 var Anchor_1 = require('../Anchor/Anchor')
 var sizeSpec = {
   XXS: 14,

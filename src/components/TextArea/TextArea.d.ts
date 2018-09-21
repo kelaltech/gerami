@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import './TextArea.scss'
 interface props {
   className?: string
   label?: string

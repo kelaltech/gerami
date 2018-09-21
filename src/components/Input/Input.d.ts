@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Input.scss'
 interface props {
   className?: string
   label: string

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Content.scss'
 
 const sizeSpec = {
   XXS: 140,
@@ -19,7 +18,6 @@ const sizeSpec = {
 }
 
 interface props {
-  children: React.ReactNode
   className?: string
   size?: string | Number
   style?: string | React.CSSProperties

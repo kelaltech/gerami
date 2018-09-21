@@ -57,7 +57,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Block.scss')
 var Block = /** @class */ (function(_super) {
   __extends(Block, _super)
   function Block() {

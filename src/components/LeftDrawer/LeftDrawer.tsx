@@ -1,5 +1,4 @@
 import React, { Component, createRef } from 'react'
-import './LeftDrawer.scss'
 
 import { Content } from '../Content/Content'
 
@@ -24,7 +23,6 @@ const sizeSpec = {
 interface props {
   align?: string
   backgroundStyle?: string | React.CSSProperties
-  children?: React.ReactNode
   className?: string
   containerStyle?: string | React.CSSProperties
   open?: boolean
