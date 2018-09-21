@@ -19,6 +19,20 @@ const sizeSpec = {
   X8L: 595,
   X9L: 630
 }
+
+//@ts-ignore
+interface props {
+  align?: string
+  backgroundStyle?: string | React.CSSProperties
+  children?: React.ReactNode
+  className?: string
+  containerStyle?: string | React.CSSProperties
+  open?: boolean
+  size?: string | number
+  style?: string | React.CSSProperties
+  noClose: boolean
+  onClose: boolean
+}
 export class LeftDrawer extends Component<any, any> {
   constructor(props: any) {
     super(props)

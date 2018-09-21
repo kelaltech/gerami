@@ -19,13 +19,23 @@ const sizeSpec = {
   X9L: 525
 }
 
-export class MenuDrop extends Component<any, any> {
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      closed: this.props.open === false
-    }
-    this.close = this.close.bind(this)
+interface props {
+  align?: string
+  anchorOffset?: string
+  backgroundStyle?: React.CSSProperties
+  children: React.ReactNode
+  className?: string
+  containerStyle?: string
+  open: string | boolean
+  size?: string | number
+  style?: React.CSSProperties
+  noClose: boolean
+  onClose: () => void
+}
+
+export class MenuDrop extends Component<props> {
+  state = {
+    closed: this.props.open === false
   }
 
   componentDidUpdate() {
@@ -48,18 +58,20 @@ export class MenuDrop extends Component<any, any> {
     } = this.props
 
     let width
-    switch (typeof size) {
-      case 'number':
-        width = size
-        break
-      case 'string':
-        width = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        width = undefined
-        break
+    if (size != undefined) {
+      switch (typeof size) {
+        case 'number':
+          width = size
+          break
+        case 'string':
+          width = sizeSpec[size.toString().toUpperCase()]
+          break
+        default:
+          width = undefined
+          break
+      }
     }
-
+    //@ts-ignore
     if (rest) {
       //@ts-ignore
       delete rest.noClose
@@ -96,8 +108,7 @@ export class MenuDrop extends Component<any, any> {
       </div>
     )
   }
-
-  close() {
+  close = () => {
     const { noClose, onClose } = this.props
 
     if (noClose !== true) {

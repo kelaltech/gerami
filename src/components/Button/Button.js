@@ -61,8 +61,8 @@ var react_router_dom_1 = require('react-router-dom')
 require('./Button.scss')
 var Button = /** @class */ (function(_super) {
   __extends(Button, _super)
-  function Button(props) {
-    return _super.call(this, props) || this
+  function Button() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Button.prototype.render = function() {
     var _a = this.props,

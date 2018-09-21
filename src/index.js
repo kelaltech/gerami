@@ -1,7 +1,5 @@
 'use strict'
 Object.defineProperty(exports, '__esModule', { value: true })
-var AccountPic_js_1 = require('./components/AccountPic/AccountPic.js')
-exports.AccountPic = AccountPic_js_1.AccountPic
 var Anchor_js_1 = require('./components/Anchor/Anchor.js')
 exports.Anchor = Anchor_js_1.Anchor
 var Block_js_1 = require('./components/Block/Block.js')

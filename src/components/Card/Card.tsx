@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 import './Card.scss'
 import { Content } from '../Content/Content'
 
-export class Card extends Component<any, any> {
-  constructor(props: any) {
-    super(props)
-  }
+interface props {
+  actions?: string | Element | Element[]
+  children: React.ReactNode
+  className?: string
+  imgSrc?: string
+  imgStyle?: React.CSSProperties
+  subtitle?: string
+  title?: string
+}
+
+export class Card extends Component<props> {
   render() {
     const { actions, children, className, imgSrc, imgStyle, subtitle, title, ...rest } = this.props
     return (

@@ -61,8 +61,8 @@ require('./Card.scss')
 var Content_1 = require('../Content/Content')
 var Card = /** @class */ (function(_super) {
   __extends(Card, _super)
-  function Card(props) {
-    return _super.call(this, props) || this
+  function Card() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Card.prototype.render = function() {
     var _a = this.props,

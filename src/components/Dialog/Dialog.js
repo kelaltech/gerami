@@ -36,12 +36,8 @@ var react_1 = __importStar(require('react'))
 require('./Dialog.scss')
 var Dialog = /** @class */ (function(_super) {
   __extends(Dialog, _super)
-  function Dialog(props) {
-    var _this = _super.call(this, props) || this
-    _this.state = {
-      open: false
-    }
-    return _this
+  function Dialog() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Dialog.prototype.render = function() {
     return react_1.default.createElement(

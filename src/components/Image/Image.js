@@ -77,8 +77,8 @@ var sizeSpec = {
 }
 var Image = /** @class */ (function(_super) {
   __extends(Image, _super)
-  function Image(props) {
-    return _super.call(this, props) || this
+  function Image() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Image.prototype.render = function() {
     var _a = this.props,
@@ -89,19 +89,21 @@ var Image = /** @class */ (function(_super) {
       src = _a.src,
       rest = __rest(_a, ['className', 'size', 'style', 'to', 'src'])
     var width, height
-    switch (typeof size) {
-      case 'number':
-        width = size
-        height = size
-        break
-      case 'string':
-        width = sizeSpec[size.toUpperCase()]
-        height = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        width = undefined
-        height = undefined
-        break
+    if (size != undefined) {
+      switch (typeof size) {
+        case 'number':
+          width = size
+          height = size
+          break
+        case 'string':
+          width = sizeSpec[size.toString().toUpperCase()]
+          height = sizeSpec[size.toString().toUpperCase()]
+          break
+        default:
+          width = undefined
+          height = undefined
+          break
+      }
     }
     if (to === true) to = '/'
     return typeof to === 'string'

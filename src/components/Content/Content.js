@@ -88,16 +88,15 @@ var Content = /** @class */ (function(_super) {
       transparent = _a.transparent,
       rest = __rest(_a, ['children', 'className', 'size', 'style', 'transparent'])
     var maxWidth
-    switch (typeof size) {
-      case 'number':
-        maxWidth = size
-        break
-      case 'string':
-        maxWidth = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        maxWidth = undefined
-        break
+    if (size != undefined) {
+      switch (typeof size) {
+        case 'number':
+          maxWidth = size
+          break
+        case 'string':
+          maxWidth = sizeSpec[size.toString().toUpperCase()]
+          break
+      }
     }
     return react_1.default.createElement(
       'div',

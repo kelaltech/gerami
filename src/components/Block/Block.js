@@ -60,8 +60,8 @@ var react_1 = __importStar(require('react'))
 require('./Block.scss')
 var Block = /** @class */ (function(_super) {
   __extends(Block, _super)
-  function Block(props) {
-    return _super.call(this, props) || this
+  function Block() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Block.prototype.render = function() {
     var _a = this.props,

@@ -92,13 +92,22 @@ var Warning = /** @class */ (function(_super) {
       ? null
       : react_1.default.createElement(
           Content_1.Content,
-          __assign({ title: shy ? 'Double click to hide Warning' : undefined }, rest, {
-            className: 'gerami-warning' + (className ? ' ' + className : ''),
-            onDoubleClick: function(e) {
-              _this.shyAway()
-              if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
+          // @ts-ignore
+          __assign(
+            {
+              // @ts-ignore
+              title: shy ? 'Double click to hide Warning' : undefined
+            },
+            rest,
+            {
+              className: 'gerami-warning' + (className ? ' ' + className : ''),
+              onDoubleClick: function(e) {
+                _this.shyAway()
+                //@ts-ignore
+                if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
+              }
             }
-          }),
+          ),
           react_1.default.createElement(
             Block_1.Block,
             null,

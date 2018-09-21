@@ -77,12 +77,20 @@ var sizeSpec = {
 }
 var MenuDrop = /** @class */ (function(_super) {
   __extends(MenuDrop, _super)
-  function MenuDrop(props) {
-    var _this = _super.call(this, props) || this
+  function MenuDrop() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
       closed: _this.props.open === false
     }
-    _this.close = _this.close.bind(_this)
+    _this.close = function() {
+      var _a = _this.props,
+        noClose = _a.noClose,
+        onClose = _a.onClose
+      if (noClose !== true) {
+        _this.setState({ closed: false })
+        if (typeof onClose === 'function') onClose()
+      }
+    }
     return _this
   }
   MenuDrop.prototype.componentDidUpdate = function() {
@@ -112,17 +120,20 @@ var MenuDrop = /** @class */ (function(_super) {
         'style'
       ])
     var width
-    switch (typeof size) {
-      case 'number':
-        width = size
-        break
-      case 'string':
-        width = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        width = undefined
-        break
+    if (size != undefined) {
+      switch (typeof size) {
+        case 'number':
+          width = size
+          break
+        case 'string':
+          width = sizeSpec[size.toString().toUpperCase()]
+          break
+        default:
+          width = undefined
+          break
+      }
     }
+    //@ts-ignore
     if (rest) {
       //@ts-ignore
       delete rest.noClose
@@ -164,15 +175,6 @@ var MenuDrop = /** @class */ (function(_super) {
             children
           )
         )
-  }
-  MenuDrop.prototype.close = function() {
-    var _a = this.props,
-      noClose = _a.noClose,
-      onClose = _a.onClose
-    if (noClose !== true) {
-      this.setState({ closed: false })
-      if (typeof onClose === 'function') onClose()
-    }
   }
   return MenuDrop
 })(react_1.Component)

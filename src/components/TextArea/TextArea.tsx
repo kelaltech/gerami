@@ -1,7 +1,13 @@
 import React, { Component, createRef } from 'react'
 import './TextArea.scss'
 
-export class TextArea extends Component<any, any> {
+interface props {
+  className?: string
+  label?: string
+  placeholder?: string
+}
+
+export class TextArea extends Component<props> {
   textarea: any = createRef()
   placeholder: any = createRef()
 

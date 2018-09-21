@@ -2,10 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '../Button/Button'
 
-export class Anchor extends Component<any, any> {
-  constructor(props: any) {
-    super(props)
-  }
+interface props {
+  button?: boolean
+  children?: React.ReactNode
+  className?: string
+  to?: string
+}
+
+export class Anchor extends Component<props, any> {
   render() {
     const { button, children, className, to, ...rest } = this.props
     const child = button ? <Button>{children}</Button> : children

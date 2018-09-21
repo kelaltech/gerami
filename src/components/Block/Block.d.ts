@@ -1,6 +1,12 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import './Block.scss'
-export declare class Block extends Component<any, any> {
-  constructor(props: any)
+interface props {
+  children?: React.ReactNode
+  className?: string
+  first?: boolean
+  last?: boolean
+}
+export declare class Block extends Component<props> {
   render(): JSX.Element
 }
+export {}

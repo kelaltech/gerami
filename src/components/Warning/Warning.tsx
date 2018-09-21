@@ -3,13 +3,22 @@ import './Warning.scss'
 import { Content } from '../Content/Content'
 import { Block } from '../Block/Block'
 
-export class Warning extends Component<any, any> {
+interface props {
+  children?: React.ReactNode
+  className?: string
+  problem?: { code: number; message: string }
+  shy?: boolean | Function
+  bomb?: boolean
+}
+
+export class Warning extends Component<props> {
   private dead = false
+  state = {
+    hidden: false
+  }
   constructor(props: any) {
     super(props)
-    this.state = {
-      hidden: false
-    }
+
     this.shyAway = this.shyAway.bind(this)
   }
 
@@ -29,11 +38,13 @@ export class Warning extends Component<any, any> {
 
     return this.dead || this.state.hidden ? null : (
       <Content
+        // @ts-ignore
         title={shy ? 'Double click to hide Warning' : undefined}
         {...rest}
         className={`gerami-warning${className ? ' ' + className : ''}`}
         onDoubleClick={(e: any) => {
           this.shyAway()
+          //@ts-ignore
           if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
         }}
       >

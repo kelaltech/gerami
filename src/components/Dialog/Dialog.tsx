@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import './Dialog.scss'
 
-export class Dialog extends Component<any, any> {
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      open: false
-    }
-  }
+interface props {
+  open: boolean
+  children: React.ReactNode
+  width?: string | number
+}
 
+export class Dialog extends Component<props, any> {
   render() {
     return (
       <div className="gerami-modal center" style={{ display: this.props.open ? 'block' : 'none' }}>

@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import './Page.scss'
 
-export class Page extends Component<any, any> {
+interface props {
+  bottom?: string | number | boolean
+  children: React.ReactNode
+  className?: string
+  top?: string | number | boolean
+  style: string | React.CSSProperties
+}
+
+export class Page extends Component<props> {
   constructor(props: any) {
     super(props)
   }

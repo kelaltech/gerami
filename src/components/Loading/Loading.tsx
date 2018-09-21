@@ -2,7 +2,15 @@ import React, { Component } from 'react'
 import './Loading.scss'
 import { Warning } from '../Warning/Warning'
 
-export class Loading extends Component<any, any> {
+interface props {
+  className?: string
+  error?: string
+  pastDelay?: number | boolean
+  problem?: { code: number; message: string } | string
+  timedOut?: number
+}
+
+export class Loading extends Component<props, { pastCustomDelay?: any }> {
   dead: any = null
 
   constructor(props: any) {
@@ -40,11 +48,13 @@ export class Loading extends Component<any, any> {
       <Warning {...rest} className={className}>
         <div className={'bold padding-bottom-normal'}>Ohh, no! We have a problem.</div>
         <div>
-          <span className={'italic'}>Code</span>: {problem.code || '[N/A]'}
+          <span className={'italic'}>Code</span>:{' '}
+          {(typeof problem != 'string' && problem.code) || '[N/A]'}
         </div>
         <div>
           <span className={'italic'}>Message</span>:{' '}
-          {problem.message || (typeof problem === 'string' ? problem : '[N/A]')}
+          {(typeof problem != 'string' && problem.message) ||
+            (typeof problem === 'string' ? problem : '[N/A]')}
         </div>
       </Warning>
     ) : error ? (

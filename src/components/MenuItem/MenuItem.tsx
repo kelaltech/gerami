@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 import './MenuItem.scss'
 import { Anchor } from '../Anchor/Anchor'
 
-export class MenuItem extends Component<any, any> {
+interface props {
+  children: React.ReactNode
+  className?: string
+}
+
+export class MenuItem extends Component<props> {
   constructor(props: any) {
     super(props)
   }

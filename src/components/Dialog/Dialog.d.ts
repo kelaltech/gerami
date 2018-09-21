@@ -1,6 +1,11 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import './Dialog.scss'
-export declare class Dialog extends Component<any, any> {
-  constructor(props: any)
+interface props {
+  open: boolean
+  children: React.ReactNode
+  width?: string | number
+}
+export declare class Dialog extends Component<props, any> {
   render(): JSX.Element
 }
+export {}

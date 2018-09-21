@@ -106,8 +106,9 @@ var Loading = /** @class */ (function(_super) {
             'div',
             null,
             react_1.default.createElement('span', { className: 'italic' }, 'Code'),
-            ': ',
-            problem.code || '[N/A]'
+            ':',
+            ' ',
+            (typeof problem != 'string' && problem.code) || '[N/A]'
           ),
           react_1.default.createElement(
             'div',
@@ -115,7 +116,8 @@ var Loading = /** @class */ (function(_super) {
             react_1.default.createElement('span', { className: 'italic' }, 'Message'),
             ':',
             ' ',
-            problem.message || (typeof problem === 'string' ? problem : '[N/A]')
+            (typeof problem != 'string' && problem.message) ||
+              (typeof problem === 'string' ? problem : '[N/A]')
           )
         )
       : error

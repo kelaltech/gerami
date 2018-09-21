@@ -17,23 +17,32 @@ const sizeSpec = {
   X8L: 1820,
   X9L: 1960
 }
-export class Content extends Component<any, any> {
+
+interface props {
+  children: React.ReactNode
+  className?: string
+  size?: string | Number
+  style?: string | React.CSSProperties
+  transparent?: boolean
+}
+
+export class Content extends Component<props> {
   constructor(props: any) {
     super(props)
   }
+
   render() {
     const { children, className, size, style, transparent, ...rest } = this.props
     let maxWidth
-    switch (typeof size) {
-      case 'number':
-        maxWidth = size
-        break
-      case 'string':
-        maxWidth = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        maxWidth = undefined
-        break
+    if (size != undefined) {
+      switch (typeof size) {
+        case 'number':
+          maxWidth = size
+          break
+        case 'string':
+          maxWidth = sizeSpec[size.toString().toUpperCase()]
+          break
+      }
     }
     return (
       <div

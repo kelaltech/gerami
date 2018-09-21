@@ -1,8 +1,20 @@
 import React, { Component, createRef } from 'react'
 import './Input.scss'
 
-export class Input extends Component<any, any> {
-  input: any = this.props.inputRef || createRef()
+interface props {
+  className?: string
+  label: string
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  placeholder?: string
+  inputRef?: any
+}
+
+export class Input extends Component<props> {
+  input = this.props.inputRef || createRef()
   placeholder: any = createRef()
 
   constructor(props: any) {

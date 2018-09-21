@@ -1,6 +1,11 @@
 import { Component } from 'react'
 import './TextArea.scss'
-export declare class TextArea extends Component<any, any> {
+interface props {
+  className?: string
+  label?: string
+  placeholder?: string
+}
+export declare class TextArea extends Component<props> {
   textarea: any
   placeholder: any
   constructor(props: any)
@@ -9,3 +14,4 @@ export declare class TextArea extends Component<any, any> {
   updateFloat(): void
   readonly value: any
 }
+export {}

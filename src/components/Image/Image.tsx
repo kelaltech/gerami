@@ -18,26 +18,34 @@ const sizeSpec = {
   X8L: 182,
   X9L: 196
 }
-export class Image extends Component<any, any> {
-  constructor(props: any) {
-    super(props)
-  }
+
+interface props {
+  className?: string
+  size?: string | number
+  style?: string
+  to?: string | boolean
+  src: string
+}
+
+export class Image extends Component<props> {
   render() {
     let { className, size, style, to, src, ...rest } = this.props
     let width, height
-    switch (typeof size) {
-      case 'number':
-        width = size
-        height = size
-        break
-      case 'string':
-        width = sizeSpec[size.toUpperCase()]
-        height = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        width = undefined
-        height = undefined
-        break
+    if (size != undefined) {
+      switch (typeof size) {
+        case 'number':
+          width = size
+          height = size
+          break
+        case 'string':
+          width = sizeSpec[size.toString().toUpperCase()]
+          height = sizeSpec[size.toString().toUpperCase()]
+          break
+        default:
+          width = undefined
+          height = undefined
+          break
+      }
     }
     if (to === true) to = '/'
 
