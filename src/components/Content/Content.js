@@ -65,13 +65,13 @@ var sizeSpec = {
   L: 700,
   XL: 840,
   XXL: 980,
-  X3L: 1120,
-  X4L: 1260,
-  X5L: 1400,
-  X6L: 1540,
-  X7L: 1680,
-  X8L: 1820,
-  X9L: 1960
+  '3XL': 1120,
+  '4XL': 1260,
+  '5XL': 1400,
+  '6XL': 1540,
+  '7XL': 1680,
+  '8XL': 1820,
+  '9XL': 1960
 }
 var Content = /** @class */ (function(_super) {
   __extends(Content, _super)

@@ -8,18 +8,33 @@ const sizeSpec = {
   L: 700,
   XL: 840,
   XXL: 980,
-  X3L: 1120,
-  X4L: 1260,
-  X5L: 1400,
-  X6L: 1540,
-  X7L: 1680,
-  X8L: 1820,
-  X9L: 1960
+  '3XL': 1120,
+  '4XL': 1260,
+  '5XL': 1400,
+  '6XL': 1540,
+  '7XL': 1680,
+  '8XL': 1820,
+  '9XL': 1960
 }
 
 interface props {
   className?: string
-  size?: string | Number
+  size?:
+    | 'XXS'
+    | 'XS'
+    | 'S'
+    | 'M'
+    | 'L'
+    | 'XL'
+    | 'XXL'
+    | '3XL'
+    | '4XL'
+    | '5XL'
+    | '6XL'
+    | '7XL'
+    | '8XL'
+    | '9XL'
+    | number
   style?: string | React.CSSProperties
   transparent?: boolean
 }

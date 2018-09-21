@@ -1,1 +1,28 @@
 @import '../../styles/theme';
+
+%gerami-yoga {
+  display: inline-block;
+  padding: $space / 2;
+
+  > * {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+@for $i from 1 through 9 {
+  .gerami-yoga-#{$i} {
+    @extend %gerami-yoga;
+    width: 100% / $i;
+  }
+
+  @if ($i > 1) {
+    @for $j from $i through 1 {
+      @media (max-width: $mobile * $j / 2) {
+        .gerami-yoga-#{$i} {
+          width: 100% / ($j - 1);
+        }
+      }
+    }
+  }
+}
