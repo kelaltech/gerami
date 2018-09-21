@@ -18,7 +18,7 @@
     "declaration": true,
     "declarationMap": false,
     "sourceMap": false,
-    "composite": false,
+    "composite": true,
     "noEmitOnError": true,
 
     "strictNullChecks": true,
@@ -33,7 +33,7 @@
     "alwaysStrict": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "forceConsistentCasingInFileNames": false,
+    "forceConsistentCasingInFileNames": true,
 
     "skipLibCheck": true,
     "suppressImplicitAnyIndexErrors": true,
