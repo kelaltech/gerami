@@ -46,8 +46,17 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
+var __importStar =
+  (this && this.__importStar) ||
+  function(mod) {
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
+  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = require('react')
+var react_1 = __importStar(require('react'))
 require('./Block.scss')
 var Block = /** @class */ (function(_super) {
   __extends(Block, _super)
@@ -61,7 +70,7 @@ var Block = /** @class */ (function(_super) {
       first = _a.first,
       last = _a.last,
       rest = __rest(_a, ['children', 'className', 'first', 'last'])
-    return React.createElement(
+    return react_1.default.createElement(
       'div',
       __assign(
         {
@@ -77,5 +86,5 @@ var Block = /** @class */ (function(_super) {
     )
   }
   return Block
-})(React.Component)
+})(react_1.Component)
 exports.Block = Block

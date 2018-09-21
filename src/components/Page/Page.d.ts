@@ -1,6 +1,6 @@
-import * as React from 'react'
+import { Component } from 'react'
 import './Page.scss'
-export declare class Page extends React.Component<any, any> {
+export declare class Page extends Component<any, any> {
   constructor(props: any)
   render(): JSX.Element
 }

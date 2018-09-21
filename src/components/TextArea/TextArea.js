@@ -46,9 +46,17 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
+var __importStar =
+  (this && this.__importStar) ||
+  function(mod) {
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
+  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var react_1 = require('react')
-var React = require('react')
+var react_1 = __importStar(require('react'))
 require('./TextArea.scss')
 var TextArea = /** @class */ (function(_super) {
   __extends(TextArea, _super)
@@ -68,10 +76,10 @@ var TextArea = /** @class */ (function(_super) {
       label = _a.label,
       placeholder = _a.placeholder,
       rest = __rest(_a, ['className', 'label', 'placeholder'])
-    return React.createElement(
+    return react_1.default.createElement(
       'label',
       { className: 'gerami-label' + (className ? ' ' + className : '') },
-      React.createElement(
+      react_1.default.createElement(
         'textarea',
         __assign({ className: 'textarea' }, rest, {
           onBlur: this.updateFloat,
@@ -83,7 +91,7 @@ var TextArea = /** @class */ (function(_super) {
           ref: this.textarea
         })
       ),
-      React.createElement(
+      react_1.default.createElement(
         'div',
         { className: 'gerami-placeholder', ref: this.placeholder },
         placeholder || label

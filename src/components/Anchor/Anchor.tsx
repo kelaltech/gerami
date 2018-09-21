@@ -1,8 +1,8 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '../Button/Button'
 
-export class Anchor extends React.Component<any, any> {
+export class Anchor extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }

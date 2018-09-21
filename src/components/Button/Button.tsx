@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import './Button.scss'
 
-export class Button extends React.Component<any, any> {
+export class Button extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }

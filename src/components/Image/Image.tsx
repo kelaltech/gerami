@@ -1,5 +1,4 @@
-import * as React from 'react'
-
+import React, { Component } from 'react'
 import './Image.scss'
 import { Anchor } from '../Anchor/Anchor'
 
@@ -19,7 +18,7 @@ const sizeSpec = {
   X8L: 182,
   X9L: 196
 }
-export class Image extends React.Component<any, any> {
+export class Image extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }

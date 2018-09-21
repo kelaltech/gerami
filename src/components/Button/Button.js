@@ -46,8 +46,17 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
+var __importStar =
+  (this && this.__importStar) ||
+  function(mod) {
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
+  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = require('react')
+var react_1 = __importStar(require('react'))
 var react_router_dom_1 = require('react-router-dom')
 require('./Button.scss')
 var Button = /** @class */ (function(_super) {
@@ -63,7 +72,7 @@ var Button = /** @class */ (function(_super) {
       to = _a.to,
       type = _a.type,
       rest = __rest(_a, ['children', 'className', 'primary', 'to', 'type'])
-    var button = React.createElement(
+    var button = react_1.default.createElement(
       'button',
       __assign({}, rest, {
         className:
@@ -76,8 +85,8 @@ var Button = /** @class */ (function(_super) {
       }),
       children
     )
-    return to ? React.createElement(react_router_dom_1.Link, { to: to }, button) : button
+    return to ? react_1.default.createElement(react_router_dom_1.Link, { to: to }, button) : button
   }
   return Button
-})(React.Component)
+})(react_1.Component)
 exports.Button = Button

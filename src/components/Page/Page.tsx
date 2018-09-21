@@ -1,12 +1,14 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import './Page.scss'
 
-export class Page extends React.Component<any, any> {
+export class Page extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }
+
   render() {
     const { bottom, children, className, top, style, ...rest } = this.props
+
     const paddingTop =
       top === true ||
       (typeof top === 'string' &&
@@ -23,11 +25,11 @@ export class Page extends React.Component<any, any> {
         : typeof bottom === 'number' || typeof bottom === 'string'
           ? bottom
           : 20
+
     return (
       <div
         {...rest}
         className={`gerami-page${className ? ' ' + className : ''}`}
-        //@ts-ignore
         style={Object.assign(
           {
             paddingTop: paddingTop,

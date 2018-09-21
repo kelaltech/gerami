@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import './Warning.scss'
 import { Content } from '../Content/Content'
 import { Block } from '../Block/Block'
 
-export class Warning extends React.Component<any, any> {
+export class Warning extends Component<any, any> {
   private dead = false
   constructor(props: any) {
     super(props)

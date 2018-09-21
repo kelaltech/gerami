@@ -1,7 +1,7 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import './Block.scss'
 
-export class Block extends React.Component<any, any> {
+export class Block extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }

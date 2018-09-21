@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Component, createRef } from 'react'
+import React, { Component, createRef } from 'react'
 import './LeftDrawer.scss'
 
 import { Content } from '../Content/Content'

@@ -46,9 +46,17 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
+var __importStar =
+  (this && this.__importStar) ||
+  function(mod) {
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
+  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = require('react')
-var react_1 = require('react')
+var react_1 = __importStar(require('react'))
 require('./Loading.scss')
 var Warning_1 = require('../Warning/Warning')
 var Loading = /** @class */ (function(_super) {
@@ -86,60 +94,60 @@ var Loading = /** @class */ (function(_super) {
       delete rest.isLoading
     }
     return problem
-      ? React.createElement(
+      ? react_1.default.createElement(
           Warning_1.Warning,
           __assign({}, rest, { className: className }),
-          React.createElement(
+          react_1.default.createElement(
             'div',
             { className: 'bold padding-bottom-normal' },
             'Ohh, no! We have a problem.'
           ),
-          React.createElement(
+          react_1.default.createElement(
             'div',
             null,
-            React.createElement('span', { className: 'italic' }, 'Code'),
+            react_1.default.createElement('span', { className: 'italic' }, 'Code'),
             ': ',
             problem.code || '[N/A]'
           ),
-          React.createElement(
+          react_1.default.createElement(
             'div',
             null,
-            React.createElement('span', { className: 'italic' }, 'Message'),
+            react_1.default.createElement('span', { className: 'italic' }, 'Message'),
             ':',
             ' ',
             problem.message || (typeof problem === 'string' ? problem : '[N/A]')
           )
         )
       : error
-        ? React.createElement(
+        ? react_1.default.createElement(
             Warning_1.Warning,
             __assign({}, rest, { className: className }),
             'Sorry, an unexpected error occurred.\u00A0\u00A0\u00A0\u00A0:('
           )
         : timedOut
-          ? React.createElement(
+          ? react_1.default.createElement(
               Warning_1.Warning,
               __assign({}, rest, { className: className }),
               'Sorry, the request timed out.\u00A0\u00A0\u00A0\u00A0:('
             )
           : pastDelay === false || !this.state.pastCustomDelay
             ? null
-            : React.createElement(
+            : react_1.default.createElement(
                 'div',
                 __assign({}, rest, {
                   className: 'gerami-loading' + (className ? ' ' + className : '')
                 }),
-                React.createElement(
+                react_1.default.createElement(
                   'svg',
                   { className: 'gerami-svg', width: 50, height: 50 },
-                  React.createElement('circle', {
+                  react_1.default.createElement('circle', {
                     className: 'gerami-big-circle',
                     cx: 25,
                     cy: 25,
                     r: 18,
                     strokeWidth: 4
                   }),
-                  React.createElement('circle', {
+                  react_1.default.createElement('circle', {
                     className: 'gerami-small-circle',
                     cx: 25,
                     cy: 8,

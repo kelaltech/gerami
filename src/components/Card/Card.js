@@ -46,8 +46,17 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
+var __importStar =
+  (this && this.__importStar) ||
+  function(mod) {
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
+  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = require('react')
+var react_1 = __importStar(require('react'))
 require('./Card.scss')
 var Content_1 = require('../Content/Content')
 var Card = /** @class */ (function(_super) {
@@ -73,37 +82,37 @@ var Card = /** @class */ (function(_super) {
         'subtitle',
         'title'
       ])
-    return React.createElement(
+    return react_1.default.createElement(
       Content_1.Content,
       __assign({}, rest, { className: 'gerami-card' + (className ? ' ' + className : '') }),
       imgSrc
-        ? React.createElement('div', {
+        ? react_1.default.createElement('div', {
             className: 'gerami-card-img',
             //@ts-ignore
             style: Object.assign({ backgroundImage: 'url(' + imgSrc + ')' }, imgStyle)
           })
         : null,
       title || subtitle
-        ? React.createElement(
+        ? react_1.default.createElement(
             'div',
             { className: 'padding-big padding-bottom-none' },
             title
-              ? React.createElement(
+              ? react_1.default.createElement(
                   'div',
                   { className: 'font-L bold' + (subtitle ? ' padding-bottom-small' : '') },
                   title
                 )
               : null,
             subtitle
-              ? React.createElement('div', { className: 'font-XS fg-blackish' }, subtitle)
+              ? react_1.default.createElement('div', { className: 'font-XS fg-blackish' }, subtitle)
               : null
           )
         : null,
       children
-        ? React.createElement('div', { className: 'padding-big' }, children)
-        : React.createElement('div', { className: 'padding-top-big' }),
+        ? react_1.default.createElement('div', { className: 'padding-big' }, children)
+        : react_1.default.createElement('div', { className: 'padding-top-big' }),
       actions
-        ? React.createElement(
+        ? react_1.default.createElement(
             'div',
             {
               className:
@@ -115,5 +124,5 @@ var Card = /** @class */ (function(_super) {
     )
   }
   return Card
-})(React.Component)
+})(react_1.Component)
 exports.Card = Card

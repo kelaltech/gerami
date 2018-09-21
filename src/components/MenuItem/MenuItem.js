@@ -46,8 +46,17 @@ var __rest =
         if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
     return t
   }
+var __importStar =
+  (this && this.__importStar) ||
+  function(mod) {
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
+  }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = require('react')
+var react_1 = __importStar(require('react'))
 require('./MenuItem.scss')
 var Anchor_1 = require('../Anchor/Anchor')
 var MenuItem = /** @class */ (function(_super) {
@@ -60,7 +69,7 @@ var MenuItem = /** @class */ (function(_super) {
       children = _a.children,
       className = _a.className,
       rest = __rest(_a, ['children', 'className'])
-    return React.createElement(
+    return react_1.default.createElement(
       Anchor_1.Anchor,
       __assign({ button: true }, rest, {
         className: 'gerami-menu-item' + (className ? ' ' + className : '')
@@ -69,5 +78,5 @@ var MenuItem = /** @class */ (function(_super) {
     )
   }
   return MenuItem
-})(React.Component)
+})(react_1.Component)
 exports.MenuItem = MenuItem

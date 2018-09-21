@@ -1,5 +1,4 @@
-import { Component, createRef } from 'react'
-import * as React from 'react'
+import React, { Component, createRef } from 'react'
 import './Input.scss'
 
 export class Input extends Component<any, any> {

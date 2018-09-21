@@ -1,6 +1,6 @@
-import * as React from 'react'
+import { Component } from 'react'
 import './FlexSpacer.scss'
-export declare class FlexSpacer extends React.Component<any, any> {
+export declare class FlexSpacer extends Component<any, any> {
   constructor(props: any)
   render(): JSX.Element
 }

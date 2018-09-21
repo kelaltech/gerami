@@ -1,5 +1,4 @@
-import * as React from 'react'
-
+import React, { Component } from 'react'
 import './Content.scss'
 
 const sizeSpec = {
@@ -18,7 +17,7 @@ const sizeSpec = {
   X8L: 1820,
   X9L: 1960
 }
-export class Content extends React.Component<any, any> {
+export class Content extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }
@@ -39,7 +38,7 @@ export class Content extends React.Component<any, any> {
     return (
       <div
         {...rest}
-        className={`gerami-content${!transparent ? ' gerami-Content-card' : ''}${
+        className={`gerami-content${!transparent ? ' gerami-content-card' : ''}${
           className ? ' ' + className : ''
         }`}
         //@ts-ignore

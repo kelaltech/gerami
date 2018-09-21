@@ -33,27 +33,15 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Dialog.scss')
-var Dialog = /** @class */ (function(_super) {
-  __extends(Dialog, _super)
-  function Dialog(props) {
-    var _this = _super.call(this, props) || this
-    _this.state = {
-      open: false
-    }
-    return _this
+require('./Yoga.scss')
+var Yoga = /** @class */ (function(_super) {
+  __extends(Yoga, _super)
+  function Yoga() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
-  Dialog.prototype.render = function() {
-    return react_1.default.createElement(
-      'div',
-      { className: 'gerami-modal center', style: { display: this.props.open ? 'block' : 'none' } },
-      react_1.default.createElement(
-        'div',
-        { className: 'gerami-modal-content', style: { width: this.props.width } },
-        this.props.children
-      )
-    )
+  Yoga.prototype.render = function() {
+    return react_1.default.createElement('div', null, 'todo')
   }
-  return Dialog
+  return Yoga
 })(react_1.Component)
-exports.Dialog = Dialog
+exports.Yoga = Yoga

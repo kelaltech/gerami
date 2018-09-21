@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import './AccountPic.scss'
 
 const sizeSpec = {
@@ -17,7 +17,7 @@ const sizeSpec = {
   X8L: 182,
   X9L: 196
 }
-export class AccountPic extends React.Component<any, any> {
+export class AccountPic extends Component<any, any> {
   constructor(props: any) {
     super(props)
   }

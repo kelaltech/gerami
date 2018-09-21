@@ -1,7 +1,7 @@
-import * as React from 'react'
+import React, { Component } from 'react'
 import './Dialog.scss'
 
-export class Dialog extends React.Component<any, any> {
+export class Dialog extends Component<any, any> {
   constructor(props: any) {
     super(props)
     this.state = {

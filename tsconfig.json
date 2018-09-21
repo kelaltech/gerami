@@ -6,7 +6,7 @@
 
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
 
     "pretty": true,
     "lib": ["esnext", "dom"],
@@ -18,7 +18,7 @@
     "declaration": true,
     "declarationMap": false,
     "sourceMap": false,
-    "composite": true,
+    "composite": false,
     "noEmitOnError": true,
 
     "strictNullChecks": true,
