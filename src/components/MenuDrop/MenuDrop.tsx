@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Content } from '../Content/Content'
+import { Content } from '../Content/Content.js'
 
 const sizeSpec = {
   XXS: 70,

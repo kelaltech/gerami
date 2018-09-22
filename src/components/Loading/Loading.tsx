@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Warning } from '../Warning/Warning'
+import { Warning } from '../Warning/Warning.js'
 
 interface props {
   className?: string

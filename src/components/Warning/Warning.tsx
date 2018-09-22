@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Content } from '../Content/Content'
-import { Block } from '../Block/Block'
+import { Content } from '../Content/Content.js'
+import { Block } from '../Block/Block.js'
 
 interface props {
   className?: string

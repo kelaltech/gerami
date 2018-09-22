@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Content_1 = require('../Content/Content')
+var Content_js_1 = require('../Content/Content.js')
 var sizeSpec = {
   XXS: 70,
   XS: 105,
@@ -159,7 +159,7 @@ var MenuDrop = /** @class */ (function(_super) {
             style: backgroundStyle
           }),
           react_1.default.createElement(
-            Content_1.Content,
+            Content_js_1.Content,
             {
               className: 'gerami-menu',
               //@ts-ignore

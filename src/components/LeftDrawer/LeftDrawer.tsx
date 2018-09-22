@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 
-import { Content } from '../Content/Content'
+import { Content } from '../Content/Content.js'
 
 const sizeSpec = {
   XXS: 175,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Anchor } from '../Anchor/Anchor'
+import { Anchor } from '../Anchor/Anchor.js'
 
 const sizeSpec = {
   XXS: 14,

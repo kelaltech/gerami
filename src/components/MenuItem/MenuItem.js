@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Anchor_1 = require('../Anchor/Anchor')
+var Anchor_js_1 = require('../Anchor/Anchor.js')
 var MenuItem = /** @class */ (function(_super) {
   __extends(MenuItem, _super)
   function MenuItem(props) {
@@ -69,7 +69,7 @@ var MenuItem = /** @class */ (function(_super) {
       className = _a.className,
       rest = __rest(_a, ['children', 'className'])
     return react_1.default.createElement(
-      Anchor_1.Anchor,
+      Anchor_js_1.Anchor,
       __assign({ button: true }, rest, {
         className: 'gerami-menu-item' + (className ? ' ' + className : '')
       }),
