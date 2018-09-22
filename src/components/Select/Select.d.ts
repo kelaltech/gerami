@@ -1,26 +1,27 @@
 import { Component } from 'react'
-interface props {
+export interface ISelectProps {
   className?: string
-  style?: object
-  size?:
-    | 'XXS'
-    | 'XS'
-    | 'S'
-    | 'M'
-    | 'L'
-    | 'XL'
-    | 'XXL'
-    | '3XL'
-    | '4XL'
-    | '5XL'
-    | '6XL'
-    | '7XL'
-    | '8XL'
-    | '9XL'
-    | number
+  placeholder?: string
+  options: any[]
+  multiple?: boolean
 }
-export declare class Select extends Component<props> {
+export interface ISelectState {
+  showOptions: boolean
+  multipleSelectedItems: any[]
+  singleSelectedItem: string
+  options: any[]
+}
+export declare class Select extends Component<ISelectProps, ISelectState> {
   constructor(props: any)
+  state: {
+    options: any[]
+    showOptions: boolean
+    multipleSelectedItems: never[]
+    singleSelectedItem: string
+  }
   render(): JSX.Element
+  handleShow: () => void
+  dropDown: () => void
+  handleSelectedOption: (option: any) => void
+  handleDisSelect: (option: any) => void
 }
-export {}

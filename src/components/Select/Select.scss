@@ -1,1 +1,60 @@
 @import '../../styles/theme';
+
+.gerami-select-container {
+  margin: 0 auto;
+  //padding: 0;
+  width: 300px;
+  min-height: 50px;
+  //overflow: hidden;
+}
+
+.gerami-select-header {
+  border: 2px solid $primary;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.gerami-select-placeholder {
+  flex: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5em;
+  font-size: 11px;
+  color: $accent;
+}
+.gerami-select-placeholder > div {
+  margin: 2px;
+}
+.gerami-multi {
+  border: 1px solid $primary;
+  padding: 1px;
+}
+.gerami-dis-select:before {
+  content: 'x';
+  padding-right: 3px;
+  padding-left: 3px;
+  text-align: center;
+  border-right: 1px solid $primary;
+}
+.gerami-arrow-container {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  background-color: cadetblue;
+}
+.gerami-options-container {
+  box-shadow: $shade-L;
+}
+.gerami-options-container > div {
+  padding: 7px;
+}
+.gerami-options-container > div:hover {
+  background-color: $accent;
+}
+
+.gerami-options-container > div > span {
+  padding: 7px;
+}
