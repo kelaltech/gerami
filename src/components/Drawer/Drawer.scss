@@ -9,7 +9,7 @@
   }
 }
 
-@keyframes slide-in {
+@keyframes slide-in-from-left {
   from {
     transform: translateX(-100%);
   }
@@ -18,12 +18,21 @@
   }
 }
 
-.gerami-left-drawer-container {
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.gerami-drawer-container {
   position: fixed;
   z-index: 7;
 }
 
-.gerami-left-drawer-background {
+.gerami-drawer-background {
   position: fixed;
   top: 0;
   right: 0;
@@ -33,13 +42,19 @@
   animation: fade-in 150ms linear 0ms 1 forwards;
 }
 
-.gerami-left-drawer {
+.gerami-drawer {
   position: fixed;
   overflow: auto;
   top: 0;
   bottom: 0;
-  left: 0;
   border-radius: 0;
   width: 84%;
-  animation: fade-in 150ms linear 0ms 1 forwards, slide-in 200ms linear 0ms 1 forwards;
+}
+
+.gerami-drawer-animate-left {
+  animation: fade-in 150ms linear 0ms 1 forwards, slide-in-from-left 200ms linear 0ms 1 forwards;
+}
+
+.gerami-drawer-animate-right {
+  animation: fade-in 150ms linear 0ms 1 forwards, slide-in-from-right 200ms linear 0ms 1 forwards;
 }

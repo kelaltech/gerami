@@ -19,7 +19,7 @@ const sizeSpec = {
 }
 
 export interface IDrawerProps extends IContentProps {
-  align?: 'left' | 'right'
+  align: 'left' | 'right'
   backgroundStyle?: React.CSSProperties
   containerStyle?: React.CSSProperties
   open?: boolean
@@ -47,7 +47,7 @@ export interface IDrawerState {
   closed: boolean
 }
 
-export class LeftDrawer extends Component<IDrawerProps, IDrawerState> {
+export class Drawer extends Component<IDrawerProps, IDrawerState> {
   state = {
     closed: !this.props.open
   }
@@ -80,16 +80,12 @@ export class LeftDrawer extends Component<IDrawerProps, IDrawerState> {
     }
 
     return !open || this.state.closed ? null : (
-      <div className={'gerami-left-drawer-container'} style={containerStyle}>
-        <div
-          className={'gerami-left-drawer-background'}
-          onClick={this.close}
-          style={backgroundStyle}
-        />
+      <div className={'gerami-drawer-container'} style={containerStyle}>
+        <div className={'gerami-drawer-background'} onClick={this.close} style={backgroundStyle} />
         <Content
           {...rest}
           ref={this.drawerRef}
-          className={`gerami-left-drawer ${className || ''}`}
+          className={`gerami-drawer gerami-drawer-animate-${align} ${className || ''}`}
           style={Object.assign(align === 'right' ? { right: 0 } : { left: 0 }, { maxWidth }, style)}
         >
           {children}
