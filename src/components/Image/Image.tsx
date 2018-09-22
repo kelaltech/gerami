@@ -50,23 +50,8 @@ export class Image extends Component<IImageProps, IImageState> {
   render() {
     let { className, size, style, to, src, ...rest } = this.props
 
-    let width, height
-    if (size != undefined) {
-      switch (typeof size) {
-        case 'number':
-          width = size
-          height = size
-          break
-        case 'string':
-          width = sizeSpec[size.toString().toUpperCase()]
-          height = sizeSpec[size.toString().toUpperCase()]
-          break
-        default:
-          width = undefined
-          height = undefined
-          break
-      }
-    }
+    const width = size && (typeof size === 'string' ? sizeSpec[size] : size)
+    const height = size && (typeof size === 'string' ? sizeSpec[size] : size)
 
     if (to === true) to = '/'
 
@@ -75,27 +60,13 @@ export class Image extends Component<IImageProps, IImageState> {
         to={to}
         {...rest as any}
         className={`image${className ? ' ' + className : ''}`}
-        style={Object.assign(
-          {
-            width: width,
-            height: height,
-            backgroundImage: `url('${src}')`
-          },
-          style
-        )}
+        style={Object.assign({ width, height, backgroundImage: `url('${src}')` }, style)}
       />
     ) : (
       <div
         {...rest as any}
         className={`gerami-image${className ? ' ' + className : ''}`}
-        style={Object.assign(
-          {
-            width: width,
-            height: height,
-            backgroundImage: `url('${src}')`
-          },
-          style
-        )}
+        style={Object.assign({ width, height, backgroundImage: `url('${src}')` }, style)}
       />
     )
   }

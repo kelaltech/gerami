@@ -42,24 +42,14 @@ export class Content extends Component<IContentProps> {
   render() {
     const { children, className, size, style, transparent, ...rest } = this.props
 
-    let maxWidth
-    if (size != undefined) {
-      switch (typeof size) {
-        case 'number':
-          maxWidth = size
-          break
-        case 'string':
-          maxWidth = sizeSpec[size.toString().toUpperCase()]
-          break
-      }
-    }
+    const maxWidth = size && (typeof size === 'string' ? sizeSpec[size] : size)
 
     return (
       <div
         {...rest as any}
         className={`gerami-content ${(!transparent && 'gerami-content-card') || ''} ${className ||
           ''}`}
-        style={Object.assign({ maxWidth: maxWidth }, style)}
+        style={Object.assign({ maxWidth }, style)}
       >
         {children}
       </div>

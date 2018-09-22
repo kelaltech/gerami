@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import { FloatProperty } from 'csstype'
 export interface IMenuDropProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  align?: string
-  anchorOffset?: string
+  align?: FloatProperty
+  anchorOffset?: string | number
   backgroundStyle?: React.CSSProperties
-  containerStyle?: string
-  open: string | boolean
+  containerStyle?: React.CSSProperties
+  open: boolean
   noClose?: boolean
-  onClose?: () => void
+  onClose?: () => any
   size?:
     | 'XXS'
     | 'XS'

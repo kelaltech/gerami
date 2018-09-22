@@ -87,23 +87,8 @@ var Image = /** @class */ (function(_super) {
       to = _a.to,
       src = _a.src,
       rest = __rest(_a, ['className', 'size', 'style', 'to', 'src'])
-    var width, height
-    if (size != undefined) {
-      switch (typeof size) {
-        case 'number':
-          width = size
-          height = size
-          break
-        case 'string':
-          width = sizeSpec[size.toString().toUpperCase()]
-          height = sizeSpec[size.toString().toUpperCase()]
-          break
-        default:
-          width = undefined
-          height = undefined
-          break
-      }
-    }
+    var width = size && (typeof size === 'string' ? sizeSpec[size] : size)
+    var height = size && (typeof size === 'string' ? sizeSpec[size] : size)
     if (to === true) to = '/'
     return typeof to === 'string'
       ? react_1.default.createElement(
@@ -111,11 +96,7 @@ var Image = /** @class */ (function(_super) {
           __assign({ to: to }, rest, {
             className: 'image' + (className ? ' ' + className : ''),
             style: Object.assign(
-              {
-                width: width,
-                height: height,
-                backgroundImage: "url('" + src + "')"
-              },
+              { width: width, height: height, backgroundImage: "url('" + src + "')" },
               style
             )
           })
@@ -125,11 +106,7 @@ var Image = /** @class */ (function(_super) {
           __assign({}, rest, {
             className: 'gerami-image' + (className ? ' ' + className : ''),
             style: Object.assign(
-              {
-                width: width,
-                height: height,
-                backgroundImage: "url('" + src + "')"
-              },
+              { width: width, height: height, backgroundImage: "url('" + src + "')" },
               style
             )
           })

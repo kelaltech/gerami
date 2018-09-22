@@ -79,7 +79,7 @@ var MenuDrop = /** @class */ (function(_super) {
   function MenuDrop() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
-      closed: _this.props.open === false
+      closed: !_this.props.open
     }
     _this.close = function() {
       var _a = _this.props,
@@ -93,8 +93,7 @@ var MenuDrop = /** @class */ (function(_super) {
     return _this
   }
   MenuDrop.prototype.componentDidUpdate = function() {
-    if (this.state.closed !== (this.props.open === false))
-      this.setState({ closed: this.props.open === false })
+    if (this.state.closed !== !this.props.open) this.setState({ closed: !this.props.open })
   }
   MenuDrop.prototype.render = function() {
     var _a = this.props,
@@ -118,25 +117,12 @@ var MenuDrop = /** @class */ (function(_super) {
         'size',
         'style'
       ])
-    var width
-    if (size != undefined) {
-      switch (typeof size) {
-        case 'number':
-          width = size
-          break
-        case 'string':
-          width = sizeSpec[size.toString().toUpperCase()]
-          break
-        default:
-          width = undefined
-          break
-      }
-    }
+    var width = size && (typeof size === 'string' ? sizeSpec[size] : size)
     if (rest) {
       delete rest.noClose
       delete rest.onClose
     }
-    return open === false || this.state.closed
+    return !open || this.state.closed
       ? null
       : react_1.default.createElement(
           'div',
@@ -158,13 +144,7 @@ var MenuDrop = /** @class */ (function(_super) {
             Content_js_1.Content,
             {
               className: 'gerami-menu',
-              style: Object.assign(
-                {
-                  width: width,
-                  float: align || 'left'
-                },
-                style
-              )
+              style: Object.assign({ width: width, float: align || 'left' }, style)
             },
             children
           )
