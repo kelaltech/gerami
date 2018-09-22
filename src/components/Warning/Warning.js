@@ -57,8 +57,8 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Content_1 = require('../Content/Content')
-var Block_1 = require('../Block/Block')
+var Content_js_1 = require('../Content/Content.js')
+var Block_js_1 = require('../Block/Block.js')
 var Warning = /** @class */ (function(_super) {
   __extends(Warning, _super)
   function Warning(props) {
@@ -90,7 +90,7 @@ var Warning = /** @class */ (function(_super) {
     return this.dead || this.state.hidden
       ? null
       : react_1.default.createElement(
-          Content_1.Content,
+          Content_js_1.Content,
           // @ts-ignore
           __assign(
             {
@@ -108,7 +108,7 @@ var Warning = /** @class */ (function(_super) {
             }
           ),
           react_1.default.createElement(
-            Block_1.Block,
+            Block_js_1.Block,
             null,
             children ||
               (problem

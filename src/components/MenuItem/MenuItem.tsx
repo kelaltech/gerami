@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Anchor } from '../Anchor/Anchor'
+import { Anchor } from '../Anchor/Anchor.js'
 
 interface props {
   className?: string

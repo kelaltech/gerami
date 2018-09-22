@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Anchor_1 = require('../Anchor/Anchor')
+var Anchor_js_1 = require('../Anchor/Anchor.js')
 var sizeSpec = {
   XXS: 14,
   XS: 28,
@@ -107,7 +107,7 @@ var Image = /** @class */ (function(_super) {
     if (to === true) to = '/'
     return typeof to === 'string'
       ? react_1.default.createElement(
-          Anchor_1.Anchor,
+          Anchor_js_1.Anchor,
           __assign({ to: to }, rest, {
             className: 'image' + (className ? ' ' + className : ''),
             //@ts-ignore

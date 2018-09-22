@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Warning_1 = require('../Warning/Warning')
+var Warning_js_1 = require('../Warning/Warning.js')
 var Loading = /** @class */ (function(_super) {
   __extends(Loading, _super)
   function Loading(props) {
@@ -94,7 +94,7 @@ var Loading = /** @class */ (function(_super) {
     }
     return problem
       ? react_1.default.createElement(
-          Warning_1.Warning,
+          Warning_js_1.Warning,
           __assign({}, rest, { className: className }),
           react_1.default.createElement(
             'div',
@@ -121,13 +121,13 @@ var Loading = /** @class */ (function(_super) {
         )
       : error
         ? react_1.default.createElement(
-            Warning_1.Warning,
+            Warning_js_1.Warning,
             __assign({}, rest, { className: className }),
             'Sorry, an unexpected error occurred.\u00A0\u00A0\u00A0\u00A0:('
           )
         : timedOut
           ? react_1.default.createElement(
-              Warning_1.Warning,
+              Warning_js_1.Warning,
               __assign({}, rest, { className: className }),
               'Sorry, the request timed out.\u00A0\u00A0\u00A0\u00A0:('
             )

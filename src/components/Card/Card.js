@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Content_1 = require('../Content/Content')
+var Content_js_1 = require('../Content/Content.js')
 var Card = /** @class */ (function(_super) {
   __extends(Card, _super)
   function Card() {
@@ -82,7 +82,7 @@ var Card = /** @class */ (function(_super) {
         'title'
       ])
     return react_1.default.createElement(
-      Content_1.Content,
+      Content_js_1.Content,
       __assign({}, rest, { className: 'gerami-card' + (className ? ' ' + className : '') }),
       imgSrc
         ? react_1.default.createElement('div', {

@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Content_1 = require('../Content/Content')
+var Content_js_1 = require('../Content/Content.js')
 var sizeSpec = {
   XXS: 175,
   XS: 210,
@@ -147,7 +147,7 @@ var LeftDrawer = /** @class */ (function(_super) {
             style: backgroundStyle
           }),
           react_1.default.createElement(
-            Content_1.Content,
+            Content_js_1.Content,
             __assign({}, rest, {
               ref: this.leftDrawer,
               className: 'gerami-left-drawer' + (className ? ' ' + className : ''),

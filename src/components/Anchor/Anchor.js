@@ -58,7 +58,7 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var react_router_dom_1 = require('react-router-dom')
-var Button_1 = require('../Button/Button')
+var Button_js_1 = require('../Button/Button.js')
 var Anchor = /** @class */ (function(_super) {
   __extends(Anchor, _super)
   function Anchor() {
@@ -71,7 +71,9 @@ var Anchor = /** @class */ (function(_super) {
       className = _a.className,
       to = _a.to,
       rest = __rest(_a, ['button', 'children', 'className', 'to'])
-    var child = button ? react_1.default.createElement(Button_1.Button, null, children) : children
+    var child = button
+      ? react_1.default.createElement(Button_js_1.Button, null, children)
+      : children
     return typeof to === 'string'
       ? react_1.default.createElement(
           react_router_dom_1.Link,
