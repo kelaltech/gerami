@@ -1,17 +1,32 @@
 import React, { Component } from 'react'
-interface props {
+export interface IMenuDropProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   align?: string
   anchorOffset?: string
   backgroundStyle?: React.CSSProperties
-  className?: string
   containerStyle?: string
   open: string | boolean
-  size?: string | number
-  style?: React.CSSProperties
-  noClose: boolean
-  onClose: () => void
+  noClose?: boolean
+  onClose?: () => void
+  size?:
+    | 'XXS'
+    | 'XS'
+    | 'S'
+    | 'M'
+    | 'L'
+    | 'XL'
+    | 'XXL'
+    | '3XL'
+    | '4XL'
+    | '5XL'
+    | '6XL'
+    | '7XL'
+    | '8XL'
+    | '9XL'
+    | number
 }
-export declare class MenuDrop extends Component<props> {
+export interface IMenuDropState {}
+export declare class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
   state: {
     closed: boolean
   }
@@ -19,4 +34,3 @@ export declare class MenuDrop extends Component<props> {
   render(): JSX.Element | null
   close: () => void
 }
-export {}

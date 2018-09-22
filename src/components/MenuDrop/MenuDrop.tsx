@@ -9,29 +9,45 @@ const sizeSpec = {
   L: 210,
   XL: 245,
   XXL: 280,
-  X3L: 315,
-  X4L: 350,
-  X5L: 385,
-  X6L: 420,
-  X7L: 455,
-  X8L: 490,
-  X9L: 525
+  '3XL': 315,
+  '4XL': 350,
+  '5XL': 385,
+  '6XL': 420,
+  '7XL': 455,
+  '8XL': 490,
+  '9XL': 525
 }
 
-interface props {
+export interface IMenuDropProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   align?: string
   anchorOffset?: string
   backgroundStyle?: React.CSSProperties
-  className?: string
   containerStyle?: string
   open: string | boolean
-  size?: string | number
-  style?: React.CSSProperties
-  noClose: boolean
-  onClose: () => void
+  noClose?: boolean
+  onClose?: () => void
+  size?:
+    | 'XXS'
+    | 'XS'
+    | 'S'
+    | 'M'
+    | 'L'
+    | 'XL'
+    | 'XXL'
+    | '3XL'
+    | '4XL'
+    | '5XL'
+    | '6XL'
+    | '7XL'
+    | '8XL'
+    | '9XL'
+    | number
 }
 
-export class MenuDrop extends Component<props> {
+export interface IMenuDropState {}
+
+export class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
   state = {
     closed: this.props.open === false
   }
@@ -69,19 +85,15 @@ export class MenuDrop extends Component<props> {
           break
       }
     }
-    //@ts-ignore
     if (rest) {
-      //@ts-ignore
       delete rest.noClose
-      //@ts-ignore
       delete rest.onClose
     }
 
     return open === false || this.state.closed ? null : (
       <div
-        {...rest}
+        {...rest as any}
         className={`gerami-menu-drop${className ? ' ' + className : ''}`}
-        //@ts-ignore
         style={Object.assign(
           {
             width: anchorOffset || 0
@@ -92,7 +104,6 @@ export class MenuDrop extends Component<props> {
         <div className={'gerami-background'} onClick={this.close} style={backgroundStyle} />
         <Content
           className={'gerami-menu'}
-          //@ts-ignore
           style={Object.assign(
             {
               width: width,
@@ -106,10 +117,11 @@ export class MenuDrop extends Component<props> {
       </div>
     )
   }
+
   close = () => {
     const { noClose, onClose } = this.props
 
-    if (noClose !== true) {
+    if (!noClose) {
       this.setState({ closed: false })
       if (typeof onClose === 'function') onClose()
     }

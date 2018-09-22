@@ -1,10 +1,10 @@
 /* STRUCTURE */
 
-$mobile: 420px !default;
+$mobile: 480px !default;
 
 $space: 20px !default;
-$radius: 7px !default;
-$border: 2px !default;
+$radius: 20px !default;
+$border: 1px !default;
 
 /* FONT */
 
@@ -17,14 +17,14 @@ $font-L: 20px !default;
 $bg: rgb(255, 255, 255) !default;
 $fg: rgb(0, 0, 0) !default;
 
-$primary: rgb(0, 180, 120) !default;
-$accent: rgb(0, 140, 220) !default;
+$primary: rgb(0, 120, 180) !default;
+$accent: rgb(255, 135, 75) !default;
 $warn: rgb(240, 70, 90) !default;
 
 /* EFFECTS */
 
-$shade-S: 0 1px 3px 0 transparentize($fg, 0.91) !default;
-$shade-M: 0 2px 5px 0 transparentize($fg, 0.84) !default;
-$shade-L: 0 3px 7px 0 transparentize($fg, 0.77) !default;
+$shade-S: 0 1px 3px 1px transparentize($fg, 0.98), 0 0px 1px 0px transparentize($fg, 0.945) !default;
+$shade-M: 0 2px 5px 0 transparentize($fg, 0.945), 0 0px 1px 0px transparentize($fg, 0.91) !default;
+$shade-L: 0 3px 7px 0 transparentize($fg, 0.91), 0 0px 1px 0px transparentize($fg, 0.84) !default;
 
 $touch: scale3d(0.98, 0.98, 1) !default;

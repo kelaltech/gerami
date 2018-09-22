@@ -66,13 +66,13 @@ var sizeSpec = {
   L: 210,
   XL: 245,
   XXL: 280,
-  X3L: 315,
-  X4L: 350,
-  X5L: 385,
-  X6L: 420,
-  X7L: 455,
-  X8L: 490,
-  X9L: 525
+  '3XL': 315,
+  '4XL': 350,
+  '5XL': 385,
+  '6XL': 420,
+  '7XL': 455,
+  '8XL': 490,
+  '9XL': 525
 }
 var MenuDrop = /** @class */ (function(_super) {
   __extends(MenuDrop, _super)
@@ -85,7 +85,7 @@ var MenuDrop = /** @class */ (function(_super) {
       var _a = _this.props,
         noClose = _a.noClose,
         onClose = _a.onClose
-      if (noClose !== true) {
+      if (!noClose) {
         _this.setState({ closed: false })
         if (typeof onClose === 'function') onClose()
       }
@@ -132,11 +132,8 @@ var MenuDrop = /** @class */ (function(_super) {
           break
       }
     }
-    //@ts-ignore
     if (rest) {
-      //@ts-ignore
       delete rest.noClose
-      //@ts-ignore
       delete rest.onClose
     }
     return open === false || this.state.closed
@@ -145,7 +142,6 @@ var MenuDrop = /** @class */ (function(_super) {
           'div',
           __assign({}, rest, {
             className: 'gerami-menu-drop' + (className ? ' ' + className : ''),
-            //@ts-ignore
             style: Object.assign(
               {
                 width: anchorOffset || 0
@@ -162,7 +158,6 @@ var MenuDrop = /** @class */ (function(_super) {
             Content_js_1.Content,
             {
               className: 'gerami-menu',
-              //@ts-ignore
               style: Object.assign(
                 {
                   width: width,
