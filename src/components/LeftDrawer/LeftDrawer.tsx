@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react'
-
-import { Content } from '../Content/Content.js'
+import { Content, IContentProps } from '../Content/Content.js'
 
 const sizeSpec = {
   XXS: 175,
@@ -10,50 +9,56 @@ const sizeSpec = {
   L: 315,
   XL: 350,
   XXL: 385,
-  X3L: 420,
-  X4L: 455,
-  X5L: 490,
-  X6L: 525,
-  X7L: 560,
-  X8L: 595,
-  X9L: 630
+  '3XL': 420,
+  '4XL': 455,
+  '5XL': 490,
+  '6XL': 525,
+  '7XL': 560,
+  '8XL': 595,
+  '9XL': 630
 }
 
-//@ts-ignore
-interface props {
-  align?: string
-  backgroundStyle?: string | React.CSSProperties
-  className?: string
-  containerStyle?: string | React.CSSProperties
+export interface IDrawerProps extends IContentProps {
+  align?: 'left' | 'right'
+  backgroundStyle?: React.CSSProperties
+  containerStyle?: React.CSSProperties
   open?: boolean
-  size?: string | number
-  style?: string | React.CSSProperties
-  noClose: boolean
-  onClose: boolean
+  noClose?: boolean
+  onClose?: () => any
+  size?:
+    | 'XXS'
+    | 'XS'
+    | 'S'
+    | 'M'
+    | 'L'
+    | 'XL'
+    | 'XXL'
+    | '3XL'
+    | '4XL'
+    | '5XL'
+    | '6XL'
+    | '7XL'
+    | '8XL'
+    | '9XL'
+    | number
 }
-export class LeftDrawer extends Component<any, any> {
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      closed: this.props.open === false
-    }
-    this.close = this.close.bind(this)
+
+export interface IDrawerState {
+  closed: boolean
+}
+
+export class LeftDrawer extends Component<IDrawerProps, IDrawerState> {
+  state = {
+    closed: !this.props.open
   }
 
-  leftDrawer: any = createRef()
-  close() {
-    const { noClose, onClose } = this.props
-
-    if (noClose !== true) {
-      this.setState({ closed: false })
-      if (typeof onClose === 'function') onClose()
-    }
-  }
+  drawerRef: any = createRef()
 
   componentDidUpdate() {
     if (this.state.closed !== (this.props.open === false))
       this.setState({ closed: this.props.open === false })
   }
+
   render() {
     const {
       align,
@@ -66,26 +71,15 @@ export class LeftDrawer extends Component<any, any> {
       style,
       ...rest
     } = this.props
-    let maxWidth
-    switch (typeof size) {
-      case 'number':
-        maxWidth = size
-        break
-      case 'string':
-        maxWidth = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        maxWidth = undefined
-        break
-    }
+
+    const maxWidth = size && (typeof size === 'string' ? sizeSpec[size] : size)
+
     if (rest) {
-      //@ts-ignore
       delete rest.noClose
-      //@ts-ignore
       delete rest.onClose
     }
 
-    return open === false || this.state.closed ? null : (
+    return !open || this.state.closed ? null : (
       <div className={'gerami-left-drawer-container'} style={containerStyle}>
         <div
           className={'gerami-left-drawer-background'}
@@ -94,20 +88,22 @@ export class LeftDrawer extends Component<any, any> {
         />
         <Content
           {...rest}
-          ref={this.leftDrawer}
-          className={`gerami-left-drawer${className ? ' ' + className : ''}`}
-          //@ts-ignore
-          style={Object.assign(
-            typeof align === 'string' && align.toLowerCase() === 'right'
-              ? { right: 0 }
-              : { left: 0 },
-            { maxWidth: maxWidth },
-            style
-          )}
+          ref={this.drawerRef}
+          className={`gerami-left-drawer ${className || ''}`}
+          style={Object.assign(align === 'right' ? { right: 0 } : { left: 0 }, { maxWidth }, style)}
         >
           {children}
         </Content>
       </div>
     )
+  }
+
+  close = () => {
+    const { noClose, onClose } = this.props
+
+    if (!noClose) {
+      this.setState({ closed: false })
+      if (typeof onClose === 'function') onClose()
+    }
   }
 }

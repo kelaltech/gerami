@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FloatProperty } from 'csstype'
 import { Content } from '../Content/Content.js'
 
 const sizeSpec = {
@@ -20,13 +21,13 @@ const sizeSpec = {
 
 export interface IMenuDropProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  align?: string
-  anchorOffset?: string
+  align?: FloatProperty
+  anchorOffset?: string | number
   backgroundStyle?: React.CSSProperties
-  containerStyle?: string
-  open: string | boolean
+  containerStyle?: React.CSSProperties
+  open: boolean
   noClose?: boolean
-  onClose?: () => void
+  onClose?: () => any
   size?:
     | 'XXS'
     | 'XS'
@@ -49,12 +50,11 @@ export interface IMenuDropState {}
 
 export class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
   state = {
-    closed: this.props.open === false
+    closed: !this.props.open
   }
 
   componentDidUpdate() {
-    if (this.state.closed !== (this.props.open === false))
-      this.setState({ closed: this.props.open === false })
+    if (this.state.closed !== !this.props.open) this.setState({ closed: !this.props.open })
   }
 
   render() {
@@ -71,26 +71,14 @@ export class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
       ...rest
     } = this.props
 
-    let width
-    if (size != undefined) {
-      switch (typeof size) {
-        case 'number':
-          width = size
-          break
-        case 'string':
-          width = sizeSpec[size.toString().toUpperCase()]
-          break
-        default:
-          width = undefined
-          break
-      }
-    }
+    const width = size && (typeof size === 'string' ? sizeSpec[size] : size)
+
     if (rest) {
       delete rest.noClose
       delete rest.onClose
     }
 
-    return open === false || this.state.closed ? null : (
+    return !open || this.state.closed ? null : (
       <div
         {...rest as any}
         className={`gerami-menu-drop${className ? ' ' + className : ''}`}
@@ -104,13 +92,7 @@ export class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
         <div className={'gerami-background'} onClick={this.close} style={backgroundStyle} />
         <Content
           className={'gerami-menu'}
-          style={Object.assign(
-            {
-              width: width,
-              float: align || 'left'
-            },
-            style
-          )}
+          style={Object.assign({ width, float: align || 'left' }, style)}
         >
           {children}
         </Content>

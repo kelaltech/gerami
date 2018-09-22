@@ -66,33 +66,32 @@ var sizeSpec = {
   L: 315,
   XL: 350,
   XXL: 385,
-  X3L: 420,
-  X4L: 455,
-  X5L: 490,
-  X6L: 525,
-  X7L: 560,
-  X8L: 595,
-  X9L: 630
+  '3XL': 420,
+  '4XL': 455,
+  '5XL': 490,
+  '6XL': 525,
+  '7XL': 560,
+  '8XL': 595,
+  '9XL': 630
 }
 var LeftDrawer = /** @class */ (function(_super) {
   __extends(LeftDrawer, _super)
-  function LeftDrawer(props) {
-    var _this = _super.call(this, props) || this
-    _this.leftDrawer = react_1.createRef()
+  function LeftDrawer() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
-      closed: _this.props.open === false
+      closed: !_this.props.open
     }
-    _this.close = _this.close.bind(_this)
+    _this.drawerRef = react_1.createRef()
+    _this.close = function() {
+      var _a = _this.props,
+        noClose = _a.noClose,
+        onClose = _a.onClose
+      if (!noClose) {
+        _this.setState({ closed: false })
+        if (typeof onClose === 'function') onClose()
+      }
+    }
     return _this
-  }
-  LeftDrawer.prototype.close = function() {
-    var _a = this.props,
-      noClose = _a.noClose,
-      onClose = _a.onClose
-    if (noClose !== true) {
-      this.setState({ closed: false })
-      if (typeof onClose === 'function') onClose()
-    }
   }
   LeftDrawer.prototype.componentDidUpdate = function() {
     if (this.state.closed !== (this.props.open === false))
@@ -118,25 +117,12 @@ var LeftDrawer = /** @class */ (function(_super) {
         'size',
         'style'
       ])
-    var maxWidth
-    switch (typeof size) {
-      case 'number':
-        maxWidth = size
-        break
-      case 'string':
-        maxWidth = sizeSpec[size.toUpperCase()]
-        break
-      default:
-        maxWidth = undefined
-        break
-    }
+    var maxWidth = size && (typeof size === 'string' ? sizeSpec[size] : size)
     if (rest) {
-      //@ts-ignore
       delete rest.noClose
-      //@ts-ignore
       delete rest.onClose
     }
-    return open === false || this.state.closed
+    return !open || this.state.closed
       ? null
       : react_1.default.createElement(
           'div',
@@ -149,13 +135,10 @@ var LeftDrawer = /** @class */ (function(_super) {
           react_1.default.createElement(
             Content_js_1.Content,
             __assign({}, rest, {
-              ref: this.leftDrawer,
-              className: 'gerami-left-drawer' + (className ? ' ' + className : ''),
-              //@ts-ignore
+              ref: this.drawerRef,
+              className: 'gerami-left-drawer ' + (className || ''),
               style: Object.assign(
-                typeof align === 'string' && align.toLowerCase() === 'right'
-                  ? { right: 0 }
-                  : { left: 0 },
+                align === 'right' ? { right: 0 } : { left: 0 },
                 { maxWidth: maxWidth },
                 style
               )
