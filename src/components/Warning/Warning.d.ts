@@ -1,10 +1,13 @@
 import { Component } from 'react'
-interface props {
+import { IContentProps } from '../Content/Content.js'
+interface IWarningProps extends IContentProps {
   className?: string
-  problem?: {
-    code: number
-    message: string
-  }
+  problem?:
+    | {
+        code: number
+        message: string
+      }
+    | string
   shy?: boolean | Function
   bomb?: boolean
   size?:
@@ -24,7 +27,7 @@ interface props {
     | '9XL'
     | number
 }
-export declare class Warning extends Component<props> {
+export declare class Warning extends Component<IWarningProps> {
   private dead
   state: {
     hidden: boolean

@@ -66,13 +66,13 @@ var sizeSpec = {
   L: 70,
   XL: 84,
   XXL: 98,
-  X3L: 112,
-  X4L: 126,
-  X5L: 140,
-  X6L: 154,
-  X7L: 168,
-  X8L: 182,
-  X9L: 196
+  '3XL': 112,
+  '4XL': 126,
+  '5XL': 140,
+  '6XL': 154,
+  '7XL': 168,
+  '8XL': 182,
+  '9XL': 196
 }
 var Image = /** @class */ (function(_super) {
   __extends(Image, _super)
@@ -110,7 +110,6 @@ var Image = /** @class */ (function(_super) {
           Anchor_js_1.Anchor,
           __assign({ to: to }, rest, {
             className: 'image' + (className ? ' ' + className : ''),
-            //@ts-ignore
             style: Object.assign(
               {
                 width: width,
@@ -125,7 +124,6 @@ var Image = /** @class */ (function(_super) {
           'div',
           __assign({}, rest, {
             className: 'gerami-image' + (className ? ' ' + className : ''),
-            //@ts-ignore
             style: Object.assign(
               {
                 width: width,

@@ -75,8 +75,8 @@ var sizeSpec = {
 }
 var Content = /** @class */ (function(_super) {
   __extends(Content, _super)
-  function Content(props) {
-    return _super.call(this, props) || this
+  function Content() {
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Content.prototype.render = function() {
     var _a = this.props,
@@ -101,10 +101,10 @@ var Content = /** @class */ (function(_super) {
       'div',
       __assign({}, rest, {
         className:
-          'gerami-content' +
-          (!transparent ? ' gerami-content-card' : '') +
-          (className ? ' ' + className : ''),
-        //@ts-ignore
+          'gerami-content ' +
+          ((!transparent && 'gerami-content-card') || '') +
+          ' ' +
+          (className || ''),
         style: Object.assign({ maxWidth: maxWidth }, style)
       }),
       children

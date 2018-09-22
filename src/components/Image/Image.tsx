@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Anchor } from '../Anchor/Anchor.js'
+import { LocationDescriptor } from 'history'
+import { Anchor, IAnchorProps } from '../Anchor/Anchor.js'
 
 const sizeSpec = {
   XXS: 14,
@@ -9,26 +10,46 @@ const sizeSpec = {
   L: 70,
   XL: 84,
   XXL: 98,
-  X3L: 112,
-  X4L: 126,
-  X5L: 140,
-  X6L: 154,
-  X7L: 168,
-  X8L: 182,
-  X9L: 196
+  '3XL': 112,
+  '4XL': 126,
+  '5XL': 140,
+  '6XL': 154,
+  '7XL': 168,
+  '8XL': 182,
+  '9XL': 196
 }
 
-interface props {
-  className?: string
-  size?: string | number
-  style?: string
-  to?: string | boolean
+export interface IImageAttributes {
   src: string
+  size?:
+    | 'XXS'
+    | 'XS'
+    | 'S'
+    | 'M'
+    | 'L'
+    | 'XL'
+    | 'XXL'
+    | '3XL'
+    | '4XL'
+    | '5XL'
+    | '6XL'
+    | '7XL'
+    | '8XL'
+    | '9XL'
+    | number
 }
 
-export class Image extends Component<props> {
+type IImageProps = IImageAttributes &
+  (IAnchorProps | React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) & {
+    to?: boolean | LocationDescriptor
+  }
+
+export interface IImageState {}
+
+export class Image extends Component<IImageProps, IImageState> {
   render() {
     let { className, size, style, to, src, ...rest } = this.props
+
     let width, height
     if (size != undefined) {
       switch (typeof size) {
@@ -46,14 +67,14 @@ export class Image extends Component<props> {
           break
       }
     }
+
     if (to === true) to = '/'
 
     return typeof to === 'string' ? (
       <Anchor
         to={to}
-        {...rest}
+        {...rest as any}
         className={`image${className ? ' ' + className : ''}`}
-        //@ts-ignore
         style={Object.assign(
           {
             width: width,
@@ -65,9 +86,8 @@ export class Image extends Component<props> {
       />
     ) : (
       <div
-        {...rest}
+        {...rest as any}
         className={`gerami-image${className ? ' ' + className : ''}`}
-        //@ts-ignore
         style={Object.assign(
           {
             width: width,

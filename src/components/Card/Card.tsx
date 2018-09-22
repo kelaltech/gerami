@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import { Content } from '../Content/Content.js'
+import React, { Component, ReactNode } from 'react'
+import { Content, IContentProps } from '../Content/Content.js'
 
-interface props {
-  actions?: string | Element | Element[]
-  className?: string
+export interface ICardProps extends IContentProps {
+  actions?: ReactNode
   imgSrc?: string
   imgStyle?: React.CSSProperties
-  subtitle?: string
   title?: string
+  subtitle?: string
 }
 
-export class Card extends Component<props> {
+export interface ICardState {}
+
+export class Card extends Component<ICardProps, ICardState> {
   render() {
     const { actions, children, className, imgSrc, imgStyle, subtitle, title, ...rest } = this.props
     return (
-      <Content {...rest} className={`gerami-card${className ? ' ' + className : ''}`}>
+      <Content {...rest as any} className={`gerami-card ${className || ''}`}>
         {imgSrc ? (
           <div
             className={`gerami-card-img`}
-            //@ts-ignore
             style={Object.assign({ backgroundImage: `url(${imgSrc})` }, imgStyle)}
           />
         ) : null}

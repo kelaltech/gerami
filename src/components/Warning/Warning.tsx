@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Content } from '../Content/Content.js'
+import { Content, IContentProps } from '../Content/Content.js'
 import { Block } from '../Block/Block.js'
 
-interface props {
+interface IWarningProps extends IContentProps {
   className?: string
-  problem?: { code: number; message: string }
+  problem?: { code: number; message: string } | string
   shy?: boolean | Function
   bomb?: boolean
   size?:
@@ -25,7 +25,7 @@ interface props {
     | number
 }
 
-export class Warning extends Component<props> {
+export class Warning extends Component<IWarningProps> {
   private dead = false
   state = {
     hidden: false
@@ -47,27 +47,26 @@ export class Warning extends Component<props> {
 
   render() {
     const { children, className, problem, shy, ...rest } = this.props
-    //@ts-ignore
     !rest || delete rest.bomb
 
     return this.dead || this.state.hidden ? null : (
       <Content
-        // @ts-ignore
         title={shy ? 'Double click to hide Warning' : undefined}
-        {...rest}
+        {...rest as any}
         className={`gerami-warning${className ? ' ' + className : ''}`}
         onDoubleClick={(e: any) => {
           this.shyAway()
-          //@ts-ignore
-          if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
+          if (typeof rest.onClick === 'function' && typeof rest.onDoubleClick === 'function')
+            rest.onClick(e)
         }}
       >
         <Block>
           {children ||
             (problem ? (
               <div className={'font-S center'}>
-                {problem.code ? problem.code + ': ' : null}
-                {problem.message || (typeof problem === 'string' ? problem : null)}
+                {typeof problem !== 'string' && problem.code ? problem.code + ': ' : null}
+                {(typeof problem !== 'string' && problem.message) ||
+                  (typeof problem === 'string' ? problem : null)}
               </div>
             ) : null)}
         </Block>

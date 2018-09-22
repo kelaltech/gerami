@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { LocationDescriptor } from 'history'
 import { Button } from '../Button/Button.js'
 
-interface props {
+export interface IAnchorProps
+  extends React.DetailedHTMLProps<
+      React.AnchorHTMLAttributes<HTMLAnchorElement>,
+      HTMLAnchorElement
+    > {
   button?: boolean
-  className?: string
-  to?: string
+  to?: LocationDescriptor
+  replace?: boolean
+  innerRef?: (node: HTMLAnchorElement | null) => void
 }
 
-export class Anchor extends Component<props, any> {
+export interface IAnchorState {}
+
+export class Anchor extends Component<IAnchorProps, IAnchorState> {
   render() {
     const { button, children, className, to, ...rest } = this.props
+
     const child = button ? <Button>{children}</Button> : children
-    return typeof to === 'string' ? (
-      <Link to={to} {...rest} className={`a${className ? ' ' + className : ''}`}>
+
+    return to ? (
+      <Link to={to} {...rest as any} className={`a ${className || ''}`}>
         {child}
       </Link>
     ) : (
-      <a {...rest} className={`a${className ? ' ' + className : ''}`}>
+      <a {...rest as any} className={`a ${className || ''}`}>
         {child}
       </a>
     )

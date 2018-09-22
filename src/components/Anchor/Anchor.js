@@ -74,15 +74,15 @@ var Anchor = /** @class */ (function(_super) {
     var child = button
       ? react_1.default.createElement(Button_js_1.Button, null, children)
       : children
-    return typeof to === 'string'
+    return to
       ? react_1.default.createElement(
           react_router_dom_1.Link,
-          __assign({ to: to }, rest, { className: 'a' + (className ? ' ' + className : '') }),
+          __assign({ to: to }, rest, { className: 'a ' + (className || '') }),
           child
         )
       : react_1.default.createElement(
           'a',
-          __assign({}, rest, { className: 'a' + (className ? ' ' + className : '') }),
+          __assign({}, rest, { className: 'a ' + (className || '') }),
           child
         )
   }

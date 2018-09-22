@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-interface props {
-  className?: string
+export interface IContentProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  transparent?: boolean
   size?:
     | 'XXS'
     | 'XS'
@@ -17,11 +18,7 @@ interface props {
     | '8XL'
     | '9XL'
     | number
-  style?: string | React.CSSProperties
-  transparent?: boolean
 }
-export declare class Content extends Component<props> {
-  constructor(props: any)
+export declare class Content extends Component<IContentProps> {
   render(): JSX.Element
 }
-export {}

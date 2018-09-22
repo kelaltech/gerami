@@ -87,9 +87,7 @@ var Loading = /** @class */ (function(_super) {
       timedOut = _a.timedOut,
       rest = __rest(_a, ['className', 'error', 'pastDelay', 'problem', 'timedOut'])
     if (rest) {
-      //@ts-ignore
       delete rest.delay
-      //@ts-ignore
       delete rest.isLoading
     }
     return problem

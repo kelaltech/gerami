@@ -85,28 +85,19 @@ var Warning = /** @class */ (function(_super) {
       problem = _a.problem,
       shy = _a.shy,
       rest = __rest(_a, ['children', 'className', 'problem', 'shy'])
-    //@ts-ignore
     !rest || delete rest.bomb
     return this.dead || this.state.hidden
       ? null
       : react_1.default.createElement(
           Content_js_1.Content,
-          // @ts-ignore
-          __assign(
-            {
-              // @ts-ignore
-              title: shy ? 'Double click to hide Warning' : undefined
-            },
-            rest,
-            {
-              className: 'gerami-warning' + (className ? ' ' + className : ''),
-              onDoubleClick: function(e) {
-                _this.shyAway()
-                //@ts-ignore
-                if (typeof rest.onDoubleClick === 'function') rest.onClick(e)
-              }
+          __assign({ title: shy ? 'Double click to hide Warning' : undefined }, rest, {
+            className: 'gerami-warning' + (className ? ' ' + className : ''),
+            onDoubleClick: function(e) {
+              _this.shyAway()
+              if (typeof rest.onClick === 'function' && typeof rest.onDoubleClick === 'function')
+                rest.onClick(e)
             }
-          ),
+          }),
           react_1.default.createElement(
             Block_js_1.Block,
             null,
@@ -115,8 +106,9 @@ var Warning = /** @class */ (function(_super) {
                 ? react_1.default.createElement(
                     'div',
                     { className: 'font-S center' },
-                    problem.code ? problem.code + ': ' : null,
-                    problem.message || (typeof problem === 'string' ? problem : null)
+                    typeof problem !== 'string' && problem.code ? problem.code + ': ' : null,
+                    (typeof problem !== 'string' && problem.message) ||
+                      (typeof problem === 'string' ? problem : null)
                   )
                 : null)
           )

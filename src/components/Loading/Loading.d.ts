@@ -1,6 +1,6 @@
-import { Component } from 'react'
-interface props {
-  className?: string
+import React, { Component } from 'react'
+interface ILoadingProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   error?: string
   pastDelay?: number | boolean
   problem?:
@@ -10,13 +10,13 @@ interface props {
       }
     | string
   timedOut?: number
+  isLoading?: boolean
+  delay?: boolean | number
 }
-export declare class Loading extends Component<
-  props,
-  {
-    pastCustomDelay?: any
-  }
-> {
+interface ILoadingState {
+  pastCustomDelay?: any
+}
+export declare class Loading extends Component<ILoadingProps, ILoadingState> {
   dead: any
   constructor(props: any)
   componentDidMount(): void

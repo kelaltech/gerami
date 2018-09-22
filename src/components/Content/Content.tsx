@@ -17,8 +17,9 @@ const sizeSpec = {
   '9XL': 1960
 }
 
-interface props {
-  className?: string
+export interface IContentProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  transparent?: boolean
   size?:
     | 'XXS'
     | 'XS'
@@ -35,17 +36,12 @@ interface props {
     | '8XL'
     | '9XL'
     | number
-  style?: string | React.CSSProperties
-  transparent?: boolean
 }
 
-export class Content extends Component<props> {
-  constructor(props: any) {
-    super(props)
-  }
-
+export class Content extends Component<IContentProps> {
   render() {
     const { children, className, size, style, transparent, ...rest } = this.props
+
     let maxWidth
     if (size != undefined) {
       switch (typeof size) {
@@ -57,13 +53,12 @@ export class Content extends Component<props> {
           break
       }
     }
+
     return (
       <div
-        {...rest}
-        className={`gerami-content${!transparent ? ' gerami-content-card' : ''}${
-          className ? ' ' + className : ''
-        }`}
-        //@ts-ignore
+        {...rest as any}
+        className={`gerami-content ${(!transparent && 'gerami-content-card') || ''} ${className ||
+          ''}`}
         style={Object.assign({ maxWidth: maxWidth }, style)}
       >
         {children}

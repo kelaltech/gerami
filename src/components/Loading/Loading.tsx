@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { Warning } from '../Warning/Warning.js'
 
-interface props {
-  className?: string
+interface ILoadingProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   error?: string
   pastDelay?: number | boolean
   problem?: { code: number; message: string } | string
   timedOut?: number
+  isLoading?: boolean
+  delay?: boolean | number
 }
 
-export class Loading extends Component<props, { pastCustomDelay?: any }> {
+interface ILoadingState {
+  pastCustomDelay?: any
+}
+
+export class Loading extends Component<ILoadingProps, ILoadingState> {
   dead: any = null
 
   constructor(props: any) {
@@ -37,14 +43,12 @@ export class Loading extends Component<props, { pastCustomDelay?: any }> {
     const { className, error, pastDelay, problem, timedOut, ...rest } = this.props
 
     if (rest) {
-      //@ts-ignore
       delete rest.delay
-      //@ts-ignore
       delete rest.isLoading
     }
 
     return problem ? (
-      <Warning {...rest} className={className}>
+      <Warning {...rest as any} className={className}>
         <div className={'bold padding-bottom-normal'}>Ohh, no! We have a problem.</div>
         <div>
           <span className={'italic'}>Code</span>:{' '}
@@ -57,15 +61,15 @@ export class Loading extends Component<props, { pastCustomDelay?: any }> {
         </div>
       </Warning>
     ) : error ? (
-      <Warning {...rest} className={className}>
+      <Warning {...rest as any} className={className}>
         Sorry, an unexpected error occurred.&nbsp;&nbsp;&nbsp;&nbsp;:(
       </Warning>
     ) : timedOut ? (
-      <Warning {...rest} className={className}>
+      <Warning {...rest as any} className={className}>
         Sorry, the request timed out.&nbsp;&nbsp;&nbsp;&nbsp;:(
       </Warning>
     ) : pastDelay === false || !this.state.pastCustomDelay ? null : (
-      <div {...rest} className={`gerami-loading${className ? ' ' + className : ''}`}>
+      <div {...rest as any} className={`gerami-loading${className ? ' ' + className : ''}`}>
         <svg className={'gerami-svg'} width={50} height={50}>
           <circle className="gerami-big-circle" cx={25} cy={25} r={18} strokeWidth={4} />
           <circle className="gerami-small-circle" cx={25} cy={8} r={4} strokeWidth={8} />

@@ -83,11 +83,10 @@ var Card = /** @class */ (function(_super) {
       ])
     return react_1.default.createElement(
       Content_js_1.Content,
-      __assign({}, rest, { className: 'gerami-card' + (className ? ' ' + className : '') }),
+      __assign({}, rest, { className: 'gerami-card ' + (className || '') }),
       imgSrc
         ? react_1.default.createElement('div', {
             className: 'gerami-card-img',
-            //@ts-ignore
             style: Object.assign({ backgroundImage: 'url(' + imgSrc + ')' }, imgStyle)
           })
         : null,
