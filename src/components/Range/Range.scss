@@ -1,0 +1,52 @@
+@import '../../styles/theme';
+
+.gerami-range {
+  position: relative;
+  height: 0;
+  text-align: left;
+}
+
+.gerami-range-background-line {
+  display: inline-block;
+  position: absolute;
+  float: left;
+  width: 100%;
+  height: $border * 4;
+  border-radius: $radius;
+  background-color: darken($bg, 14%);
+}
+
+.gerami-range-selected-line {
+  display: inline-block;
+  position: absolute;
+  float: left;
+  margin-top: $border * 0;
+  height: $border * 4;
+  border-radius: $radius;
+  background-color: $accent;
+}
+
+.gerami-range-btn-vault {
+  display: inline-block;
+  position: absolute;
+  float: left;
+}
+
+.gerami-range-btn {
+  display: inline-block;
+  position: absolute;
+  float: left;
+  margin-top: -$space * 1 / 2 + $border * 2;
+  margin-left: -$space * 1 / 2 + $border * 2;
+  width: $space * 1;
+  height: $space * 1;
+  border-radius: 50%;
+  background-color: $primary;
+  box-shadow: $shade-M;
+  cursor: pointer !important;
+  transition: all 300ms;
+}
+.gerami-range-btn:active {
+  background-color: darken($primary, 3%);
+  box-shadow: $shade-L;
+}
