@@ -90,7 +90,7 @@ var Image = /** @class */ (function(_super) {
     var width = size && (typeof size === 'string' ? sizeSpec[size] : size)
     var height = size && (typeof size === 'string' ? sizeSpec[size] : size)
     if (to === true) to = '/'
-    return typeof to === 'string'
+    return to || rest.href != undefined
       ? react_1.default.createElement(
           Anchor_js_1.Anchor,
           __assign({ to: to }, rest, {

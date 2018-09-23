@@ -9,6 +9,7 @@ export interface IImageAttributes {
 declare type IImageProps = IImageAttributes &
   (IAnchorProps | React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) & {
     to?: boolean | LocationDescriptor
+    href?: string
   }
 export interface IImageState {}
 export declare class Image extends Component<IImageProps, IImageState> {

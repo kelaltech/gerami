@@ -58,6 +58,11 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var Anchor_js_1 = require('../Anchor/Anchor.js')
+/**
+ * A gerami form control element that receives absolute minimum and maximum
+ * numbers (optionally, with a unit) and allows the user to select a range of
+ * number values within the provided scale.
+ */
 var Range = /** @class */ (function(_super) {
   __extends(Range, _super)
   function Range() {

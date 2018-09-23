@@ -28,6 +28,7 @@ export interface IImageAttributes {
 type IImageProps = IImageAttributes &
   (IAnchorProps | React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) & {
     to?: boolean | LocationDescriptor
+    href?: string
   }
 
 export interface IImageState {}
@@ -41,7 +42,7 @@ export class Image extends Component<IImageProps, IImageState> {
 
     if (to === true) to = '/'
 
-    return typeof to === 'string' ? (
+    return to || rest.href != undefined ? (
       <Anchor
         to={to}
         {...rest as any}
