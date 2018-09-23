@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { geramiSizeTypes } from '../../index'
 
 const sizeSpec = {
   XXS: 140,
@@ -20,22 +21,7 @@ const sizeSpec = {
 export interface IContentProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   transparent?: boolean
-  size?:
-    | 'XXS'
-    | 'XS'
-    | 'S'
-    | 'M'
-    | 'L'
-    | 'XL'
-    | 'XXL'
-    | '3XL'
-    | '4XL'
-    | '5XL'
-    | '6XL'
-    | '7XL'
-    | '8XL'
-    | '9XL'
-    | number
+  size?: geramiSizeTypes
 }
 
 export class Content extends Component<IContentProps> {

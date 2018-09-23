@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react'
+import { geramiSizeTypes } from '../../index'
 import { Content, IContentProps } from '../Content/Content.js'
 
 const sizeSpec = {
@@ -25,22 +26,7 @@ export interface IDrawerProps extends IContentProps {
   open?: boolean
   noClose?: boolean
   onClose?: () => any
-  size?:
-    | 'XXS'
-    | 'XS'
-    | 'S'
-    | 'M'
-    | 'L'
-    | 'XL'
-    | 'XXL'
-    | '3XL'
-    | '4XL'
-    | '5XL'
-    | '6XL'
-    | '7XL'
-    | '8XL'
-    | '9XL'
-    | number
+  size?: geramiSizeTypes
 }
 
 export interface IDrawerState {

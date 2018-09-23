@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { geramiSizeTypes } from '../../index'
 import { Content, IContentProps } from '../Content/Content.js'
 import { Block } from '../Block/Block.js'
 
@@ -7,22 +8,7 @@ interface IWarningProps extends IContentProps {
   problem?: { code: number; message: string } | string
   shy?: boolean | Function
   bomb?: boolean
-  size?:
-    | 'XXS'
-    | 'XS'
-    | 'S'
-    | 'M'
-    | 'L'
-    | 'XL'
-    | 'XXL'
-    | '3XL'
-    | '4XL'
-    | '5XL'
-    | '6XL'
-    | '7XL'
-    | '8XL'
-    | '9XL'
-    | number
+  size?: geramiSizeTypes
 }
 
 export class Warning extends Component<IWarningProps> {
