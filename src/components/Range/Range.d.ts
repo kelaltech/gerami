@@ -9,7 +9,7 @@ export interface IRangeProps
   absoluteMax: number
   inputMin?: number
   inputMax?: number
-  integersOnly?: boolean
+  roundValues?: boolean
   showNumbers?: boolean
   showUnit?: boolean
   unit?: string
@@ -25,8 +25,12 @@ export declare class Range extends Component<IRangeProps, IRangeState> {
   topEle: React.RefObject<HTMLDivElement>
   readonly min: number
   readonly max: number
+  componentDidMount(): void
+  componentDidUpdate(): void
   render(): JSX.Element
+  private doChecks
   private startDrag
+  private _calcDrag
   private dragMin
   private dragMax
   private stopDrag

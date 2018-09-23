@@ -12,7 +12,7 @@ export interface IRangeProps
   absoluteMax: number
   inputMin?: number
   inputMax?: number
-  integersOnly?: boolean
+  roundValues?: boolean
   showNumbers?: boolean
   showUnit?: boolean
   unit?: string
@@ -28,11 +28,11 @@ export interface IRangeState {
 export class Range extends Component<IRangeProps, IRangeState> {
   state: IRangeState = {
     currentMin:
-      (this.props.integersOnly && Math.round(this.props.inputMin || this.props.absoluteMin)) ||
+      (this.props.roundValues && Math.round(this.props.inputMin || this.props.absoluteMin)) ||
       this.props.inputMin ||
       this.props.absoluteMin,
     currentMax:
-      (this.props.integersOnly && Math.round(this.props.inputMax || this.props.absoluteMax)) ||
+      (this.props.roundValues && Math.round(this.props.inputMax || this.props.absoluteMax)) ||
       this.props.inputMax ||
       this.props.absoluteMax
   }
@@ -45,6 +45,14 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
   get max(): number {
     return this.state.currentMax
+  }
+
+  componentDidMount() {
+    this.doChecks()
+  }
+
+  componentDidUpdate() {
+    this.doChecks()
   }
 
   render() {
@@ -63,7 +71,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
     delete rest.inputMin
     delete rest.inputMax
-    delete rest.integersOnly
+    delete rest.roundValues
     delete rest.showNumbers
     delete rest.showUnit
     delete rest.unit
@@ -97,42 +105,62 @@ export class Range extends Component<IRangeProps, IRangeState> {
     )
   }
 
+  private doChecks = () => {
+    const { absoluteMin, absoluteMax, inputMin, inputMax } = this.props
+
+    if (absoluteMin >= absoluteMax)
+      throw Error(
+        `gerami component error: in Range: 'absoluteMin' value ${absoluteMin} cannot be greater than or equal to 'absoluteMax' value ${absoluteMax}.`
+      )
+    if (inputMin != undefined && (inputMin < absoluteMin || inputMin > absoluteMax))
+      throw Error(
+        `gerami component error: in Range: 'inputMin' value ${inputMin} is out of the absolute range of values ${absoluteMin} - ${absoluteMax}.`
+      )
+    if (inputMax != undefined && (inputMax < absoluteMin || inputMax > absoluteMax))
+      throw Error(
+        `gerami component error: in Range: 'inputMax' value ${inputMax} is out of the absolute range of values ${absoluteMin} - ${absoluteMax}.`
+      )
+    if (inputMin != undefined && inputMax != undefined && inputMin >= inputMax) {
+      throw Error(
+        `gerami component error: in Range: 'inputMin' value ${inputMin} cannot be greater than or equal to 'inputMax' value ${inputMax}.`
+      )
+    }
+  }
+
   private startDrag = (e: React.DragEvent): void => {
     const dragIcon = document.createElement('img')
     dragIcon.style.display = 'none'
     e.dataTransfer.setDragImage(dragIcon, 0, 0)
   }
 
+  private _calcDrag = (e: React.DragEvent): number | null => {
+    if (!this.topEle.current) return null
+
+    const { absoluteMin, absoluteMax, roundValues } = this.props
+
+    const absoluteDiff = absoluteMax - absoluteMin
+    const eleLeftPx = this.topEle.current.offsetLeft
+    const eleWidthPx = this.topEle.current.scrollWidth
+    const pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
+
+    let ret = absoluteMin + absoluteDiff * pxPercent
+    if (roundValues) ret = Math.round(ret)
+
+    return ret >= absoluteMin && ret <= absoluteMax ? ret : null
+  }
+
   private dragMin = (e: React.DragEvent): void => {
-    if (this.topEle.current) {
-      const { absoluteMin, absoluteMax, integersOnly } = this.props
+    const { currentMax } = this.state
 
-      const absoluteDiff = absoluteMax - absoluteMin
-      const eleLeftPx = this.topEle.current.offsetLeft
-      const eleWidthPx = this.topEle.current.scrollWidth
-      const pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
-
-      let currentMin = absoluteMin + absoluteDiff * pxPercent
-      if (integersOnly) currentMin = Math.round(currentMin)
-
-      if (currentMin >= absoluteMin && currentMin <= absoluteMax) this.setState({ currentMin })
-    }
+    const currentMin = this._calcDrag(e)
+    if (currentMin != null && currentMin < currentMax) this.setState({ currentMin })
   }
 
   private dragMax = (e: React.DragEvent) => {
-    if (this.topEle.current) {
-      const { absoluteMin, absoluteMax, integersOnly } = this.props
+    const { currentMin } = this.state
 
-      const absoluteDiff = absoluteMax - absoluteMin
-      const eleLeftPx = this.topEle.current.offsetLeft
-      const eleWidthPx = this.topEle.current.scrollWidth
-      const pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
-
-      let currentMax = absoluteMin + absoluteDiff * pxPercent
-      if (integersOnly) currentMax = Math.round(currentMax)
-
-      if (currentMax >= absoluteMin && currentMax <= absoluteMax) this.setState({ currentMax })
-    }
+    const currentMax = this._calcDrag(e)
+    if (currentMax != null && currentMin < currentMax) this.setState({ currentMax })
   }
 
   private stopDrag = () => {

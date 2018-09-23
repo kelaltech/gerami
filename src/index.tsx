@@ -1,3 +1,4 @@
+// components
 export { Anchor } from './components/Anchor/Anchor.js'
 export { Block } from './components/Block/Block.js'
 export { Button } from './components/Button/Button.js'
@@ -17,3 +18,21 @@ export { Select } from './components/Select/Select.js'
 export { TextArea } from './components/TextArea/TextArea.js'
 export { Warning } from './components/Warning/Warning.js'
 export { Yoga } from './components/Yoga/Yoga.js'
+
+// misc.
+export type geramiSizeTypes =
+  | 'XXS'
+  | 'XS'
+  | 'S'
+  | 'M'
+  | 'L'
+  | 'XL'
+  | 'XXL'
+  | '3XL'
+  | '4XL'
+  | '5XL'
+  | '6XL'
+  | '7XL'
+  | '8XL'
+  | '9XL'
+  | number

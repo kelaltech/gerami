@@ -64,51 +64,87 @@ var Range = /** @class */ (function(_super) {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
       currentMin:
-        (_this.props.integersOnly && Math.round(_this.props.inputMin || _this.props.absoluteMin)) ||
+        (_this.props.roundValues && Math.round(_this.props.inputMin || _this.props.absoluteMin)) ||
         _this.props.inputMin ||
         _this.props.absoluteMin,
       currentMax:
-        (_this.props.integersOnly && Math.round(_this.props.inputMax || _this.props.absoluteMax)) ||
+        (_this.props.roundValues && Math.round(_this.props.inputMax || _this.props.absoluteMax)) ||
         _this.props.inputMax ||
         _this.props.absoluteMax
     }
     _this.topEle = react_1.createRef()
+    _this.doChecks = function() {
+      var _a = _this.props,
+        absoluteMin = _a.absoluteMin,
+        absoluteMax = _a.absoluteMax,
+        inputMin = _a.inputMin,
+        inputMax = _a.inputMax
+      if (absoluteMin >= absoluteMax)
+        throw Error(
+          "gerami component error: in Range: 'absoluteMin' value " +
+            absoluteMin +
+            " cannot be greater than or equal to 'absoluteMax' value " +
+            absoluteMax +
+            '.'
+        )
+      if (inputMin != undefined && (inputMin < absoluteMin || inputMin > absoluteMax))
+        throw Error(
+          "gerami component error: in Range: 'inputMin' value " +
+            inputMin +
+            ' is out of the absolute range of values ' +
+            absoluteMin +
+            ' - ' +
+            absoluteMax +
+            '.'
+        )
+      if (inputMax != undefined && (inputMax < absoluteMin || inputMax > absoluteMax))
+        throw Error(
+          "gerami component error: in Range: 'inputMax' value " +
+            inputMax +
+            ' is out of the absolute range of values ' +
+            absoluteMin +
+            ' - ' +
+            absoluteMax +
+            '.'
+        )
+      if (inputMin != undefined && inputMax != undefined && inputMin >= inputMax) {
+        throw Error(
+          "gerami component error: in Range: 'inputMin' value " +
+            inputMin +
+            " cannot be greater than or equal to 'inputMax' value " +
+            inputMax +
+            '.'
+        )
+      }
+    }
     _this.startDrag = function(e) {
       var dragIcon = document.createElement('img')
       dragIcon.style.display = 'none'
       e.dataTransfer.setDragImage(dragIcon, 0, 0)
     }
+    _this._calcDrag = function(e) {
+      if (!_this.topEle.current) return null
+      var _a = _this.props,
+        absoluteMin = _a.absoluteMin,
+        absoluteMax = _a.absoluteMax,
+        roundValues = _a.roundValues
+      var absoluteDiff = absoluteMax - absoluteMin
+      var eleLeftPx = _this.topEle.current.offsetLeft
+      var eleWidthPx = _this.topEle.current.scrollWidth
+      var pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
+      var ret = absoluteMin + absoluteDiff * pxPercent
+      if (roundValues) ret = Math.round(ret)
+      return ret >= absoluteMin && ret <= absoluteMax ? ret : null
+    }
     _this.dragMin = function(e) {
-      if (_this.topEle.current) {
-        var _a = _this.props,
-          absoluteMin = _a.absoluteMin,
-          absoluteMax = _a.absoluteMax,
-          integersOnly = _a.integersOnly
-        var absoluteDiff = absoluteMax - absoluteMin
-        var eleLeftPx = _this.topEle.current.offsetLeft
-        var eleWidthPx = _this.topEle.current.scrollWidth
-        var pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
-        var currentMin = absoluteMin + absoluteDiff * pxPercent
-        if (integersOnly) currentMin = Math.round(currentMin)
-        if (currentMin >= absoluteMin && currentMin <= absoluteMax)
-          _this.setState({ currentMin: currentMin })
-      }
+      var currentMax = _this.state.currentMax
+      var currentMin = _this._calcDrag(e)
+      if (currentMin != null && currentMin < currentMax) _this.setState({ currentMin: currentMin })
     }
     _this.dragMax = function(e) {
-      if (_this.topEle.current) {
-        var _a = _this.props,
-          absoluteMin = _a.absoluteMin,
-          absoluteMax = _a.absoluteMax,
-          integersOnly = _a.integersOnly
-        var absoluteDiff = absoluteMax - absoluteMin
-        var eleLeftPx = _this.topEle.current.offsetLeft
-        var eleWidthPx = _this.topEle.current.scrollWidth
-        var pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
-        var currentMax = absoluteMin + absoluteDiff * pxPercent
-        if (integersOnly) currentMax = Math.round(currentMax)
-        if (currentMax >= absoluteMin && currentMax <= absoluteMax)
-          _this.setState({ currentMax: currentMax })
-      }
+      var currentMin = _this.state.currentMin
+      var currentMax = _this._calcDrag(e)
+      if (currentMax != null && currentMin < currentMax) _this.setState({ currentMax: currentMax })
     }
     _this.stopDrag = function() {
       var onMoved = _this.props.onMoved
@@ -136,6 +172,12 @@ var Range = /** @class */ (function(_super) {
     enumerable: true,
     configurable: true
   })
+  Range.prototype.componentDidMount = function() {
+    this.doChecks()
+  }
+  Range.prototype.componentDidUpdate = function() {
+    this.doChecks()
+  }
   Range.prototype.render = function() {
     var _a = this.props,
       absoluteMin = _a.absoluteMin,
@@ -155,7 +197,7 @@ var Range = /** @class */ (function(_super) {
     var maxBtnVaultStyle = { marginLeft: (leftPercent + widthPercent) * 100 + '%' }
     delete rest.inputMin
     delete rest.inputMax
-    delete rest.integersOnly
+    delete rest.roundValues
     delete rest.showNumbers
     delete rest.showUnit
     delete rest.unit

@@ -1,5 +1,6 @@
 'use strict'
 Object.defineProperty(exports, '__esModule', { value: true })
+// components
 var Anchor_js_1 = require('./components/Anchor/Anchor.js')
 exports.Anchor = Anchor_js_1.Anchor
 var Block_js_1 = require('./components/Block/Block.js')
