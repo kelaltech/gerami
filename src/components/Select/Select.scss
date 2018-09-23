@@ -1,6 +1,10 @@
 @import '../../styles/theme';
 
 .gerami-select-container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  min-width: 230px;
 }
 
 .gerami-select-header {
@@ -64,6 +68,10 @@
 .gerami-options-container {
   box-shadow: $shade-L;
   border-radius: $radius;
+  background-color: $bg;
+  position: absolute;
+  max-width: 300px;
+  min-width: 230px;
 }
 .gerami-options-container > div {
   padding: $padding-S;
