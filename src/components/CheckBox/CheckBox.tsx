@@ -1,13 +1,17 @@
 import React from 'react'
-
 import './CheckBox.scss'
 
 interface ICheckBox {
-  status : false,
+  status : boolean,
   checkMark : any
 }
 
-export class CheckBox extends React.Component<any>{
+interface props {
+  className: string
+  checked? : string | boolean | number
+}
+
+export class CheckBox extends React.Component<props>{
   state: ICheckBox = {
     status : false,
     checkMark : null
@@ -19,6 +23,8 @@ export class CheckBox extends React.Component<any>{
       status : false,
       checkMark : null
     }
+
+    this.toggleCheckbox = this.toggleCheckbox.bind(this);
 
     const checked = this.props.checked
     let status
@@ -48,15 +54,16 @@ export class CheckBox extends React.Component<any>{
   }
 
   componentDidMount() {
-    this.setState({checkMark : document.getElementById(this.props.className + 'check-mark')})
+    this.setState({
+      status : this.props.checked,
+      checkMark : document.getElementById(this.props.className + 'check-mark')})
   }
 
 
-  toggleCheckbox () { //TODO Figure out a way to enable and disable the checkboxes
+  toggleCheckbox () {
     const checkMark = this.state.checkMark
 
-    if (checkMark.style.backgroundColor === "rgb(238, 238, 238)") {
-      console.log("Checkbox clicked when on true");
+    if (!this.state.status) {
       checkMark.style.backgroundColor = "rgb(0, 180, 120)";
       this.setState({
         status: true
@@ -72,9 +79,10 @@ export class CheckBox extends React.Component<any>{
 
   render () {
     return (
-      <div className={this.props.className + " button-container"} style={this.props.style}>
-        <input type="checkbox" checked={this.props.checked} onClick={this.toggleCheckbox.bind(this)} className={"input-element"}/>
-        <span className="check-mark" id={this.props.className + "check-mark"} onClick={this.toggleCheckbox.bind(this)}></span>
+      <div className={((this.props.className == undefined) ?
+        "gerami-checkbox" : this.props.className + " gerami-checkbox")}>
+        <input type="checkbox" checked={this.state.status} onClick={this.toggleCheckbox.bind(this)} className={"input-element"}/>
+        <span className="check-mark" id={this.props.className + "check-mark"} onClick={this.toggleCheckbox}></span>
       </div>
     )
   }

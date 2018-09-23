@@ -7,11 +7,11 @@
   width: 25px;
 }
 
-.button-container {
+.gerami-checkbox {
   display: inline-block;
   position: relative;
-  margin: 0 15px 17px 0;
-  width: 25px;
+  margin: 0 25px 25px 0;
+  width: 15px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -20,7 +20,7 @@
 }
 
 //Hide the browsers default checkbox
-.button-container input {
+.gerami-checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -34,17 +34,17 @@
   height: 25px;
   width: 25px;
   background-color: #eee;
-  //border: 5px #000 !important;
   border-radius: 3px;
+  margin: 0 5px 5px 5px;
 }
 
 //Add bgcolor on hover
-.button-container:hover input ~ .check-mark {
+.gerami-checkbox:hover input ~ .check-mark {
   //background-color: #ccc;
 }
 
 //Do smt when checkbox is checked
-.button-container input:checked ~ .check-mark {
+.gerami-checkbox input:checked ~ .check-mark {
   background-color: $primary;
 }
 
@@ -56,12 +56,12 @@
 }
 
 //Show check mark when clicked
-.button-container input:checked ~ .check-mark:after {
+.gerami-checkbox input:checked ~ .check-mark:after {
   display: block;
 }
 
 //Styling the check mark
-.button-container .check-mark:after {
+.gerami-checkbox .check-mark:after {
   left: 9px;
   top: 5px;
   width: 5px;
