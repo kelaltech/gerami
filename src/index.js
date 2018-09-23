@@ -39,3 +39,7 @@ var Warning_js_1 = require('./components/Warning/Warning.js')
 exports.Warning = Warning_js_1.Warning
 var Yoga_js_1 = require('./components/Yoga/Yoga.js')
 exports.Yoga = Yoga_js_1.Yoga
+var SlideShow_js_1 = require('./components/SlideShow/SlideShow.js')
+exports.SlideShow = SlideShow_js_1.SlideShow
+var ImageInput_js_1 = require('./components/ImageInput/ImageInput.js')
+exports.ImageInput = ImageInput_js_1.ImageInput

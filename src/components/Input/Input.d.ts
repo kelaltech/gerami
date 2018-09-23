@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 interface props {
   className?: string
-  label: string
+  label?: string
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
