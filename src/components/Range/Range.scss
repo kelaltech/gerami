@@ -24,12 +24,14 @@
   height: $border * 4;
   border-radius: $radius;
   background-color: $accent;
+  transition: all 300ms;
 }
 
 .gerami-range-btn-vault {
   display: inline-block;
   position: absolute;
   float: left;
+  transition: all 300ms;
 }
 
 .gerami-range-btn {

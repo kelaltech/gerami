@@ -63,8 +63,14 @@ var Range = /** @class */ (function(_super) {
   function Range() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
-      currentMin: _this.props.inputMin || _this.props.absoluteMin,
-      currentMax: _this.props.inputMax || _this.props.absoluteMax
+      currentMin:
+        (_this.props.integersOnly && Math.round(_this.props.inputMin || _this.props.absoluteMin)) ||
+        _this.props.inputMin ||
+        _this.props.absoluteMin,
+      currentMax:
+        (_this.props.integersOnly && Math.round(_this.props.inputMax || _this.props.absoluteMax)) ||
+        _this.props.inputMax ||
+        _this.props.absoluteMax
     }
     _this.topEle = react_1.createRef()
     _this.startDrag = function(e) {
@@ -76,12 +82,14 @@ var Range = /** @class */ (function(_super) {
       if (_this.topEle.current) {
         var _a = _this.props,
           absoluteMin = _a.absoluteMin,
-          absoluteMax = _a.absoluteMax
+          absoluteMax = _a.absoluteMax,
+          integersOnly = _a.integersOnly
         var absoluteDiff = absoluteMax - absoluteMin
         var eleLeftPx = _this.topEle.current.offsetLeft
         var eleWidthPx = _this.topEle.current.scrollWidth
         var pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
         var currentMin = absoluteMin + absoluteDiff * pxPercent
+        if (integersOnly) currentMin = Math.round(currentMin)
         if (currentMin >= absoluteMin && currentMin <= absoluteMax)
           _this.setState({ currentMin: currentMin })
       }
@@ -90,15 +98,27 @@ var Range = /** @class */ (function(_super) {
       if (_this.topEle.current) {
         var _a = _this.props,
           absoluteMin = _a.absoluteMin,
-          absoluteMax = _a.absoluteMax
+          absoluteMax = _a.absoluteMax,
+          integersOnly = _a.integersOnly
         var absoluteDiff = absoluteMax - absoluteMin
         var eleLeftPx = _this.topEle.current.offsetLeft
         var eleWidthPx = _this.topEle.current.scrollWidth
         var pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
         var currentMax = absoluteMin + absoluteDiff * pxPercent
+        if (integersOnly) currentMax = Math.round(currentMax)
         if (currentMax >= absoluteMin && currentMax <= absoluteMax)
           _this.setState({ currentMax: currentMax })
       }
+    }
+    _this.stopDrag = function() {
+      var onMoved = _this.props.onMoved
+      var _a = _this.state,
+        min = _a.currentMin,
+        max = _a.currentMax
+      onMoved &&
+        setTimeout(function() {
+          return onMoved({ min: min, max: max })
+        }, 0)
     }
     return _this
   }
@@ -133,6 +153,14 @@ var Range = /** @class */ (function(_super) {
     }
     var minBtnVaultStyle = { marginLeft: leftPercent * 100 + '%' }
     var maxBtnVaultStyle = { marginLeft: (leftPercent + widthPercent) * 100 + '%' }
+    delete rest.inputMin
+    delete rest.inputMax
+    delete rest.integersOnly
+    delete rest.showNumbers
+    delete rest.showUnit
+    delete rest.unit
+    delete rest.unitPosition
+    delete rest.onMoved
     return react_1.default.createElement(
       'div',
       __assign({}, rest, { className: 'gerami-range ' + (className || ''), ref: this.topEle }),
@@ -149,8 +177,7 @@ var Range = /** @class */ (function(_super) {
           draggable: true,
           onDragStart: this.startDrag,
           onDragCapture: this.dragMin,
-          onDragOver: this.dragMin,
-          onDragEnd: this.dragMin
+          onDragEnd: this.stopDrag
         })
       ),
       react_1.default.createElement(
@@ -161,8 +188,7 @@ var Range = /** @class */ (function(_super) {
           draggable: true,
           onDragStart: this.startDrag,
           onDragCapture: this.dragMax,
-          onDragOver: this.dragMax,
-          onDragEnd: this.dragMax
+          onDragEnd: this.stopDrag
         })
       )
     )

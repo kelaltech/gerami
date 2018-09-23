@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
+export interface IRangeMovedEvent {
+  min: number
+  max: number
+}
 export interface IRangeProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   absoluteMin: number
   absoluteMax: number
   inputMin?: number
   inputMax?: number
-  showNumbers?: number
-  showUnit?: number
+  integersOnly?: boolean
+  showNumbers?: boolean
+  showUnit?: boolean
   unit?: string
   unitPosition?: 'prefix' | 'suffix'
+  onMoved?: (e: IRangeMovedEvent) => void
 }
 export interface IRangeState {
   currentMin: number
@@ -23,4 +29,5 @@ export declare class Range extends Component<IRangeProps, IRangeState> {
   private startDrag
   private dragMin
   private dragMax
+  private stopDrag
 }

@@ -1,16 +1,23 @@
 import React, { Component, CSSProperties, createRef } from 'react'
 import { Anchor } from '../Anchor/Anchor.js'
 
+export interface IRangeMovedEvent {
+  min: number
+  max: number
+}
+
 export interface IRangeProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   absoluteMin: number
   absoluteMax: number
   inputMin?: number
   inputMax?: number
-  showNumbers?: number
-  showUnit?: number
+  integersOnly?: boolean
+  showNumbers?: boolean
+  showUnit?: boolean
   unit?: string
   unitPosition?: 'prefix' | 'suffix'
+  onMoved?: (e: IRangeMovedEvent) => void
 }
 
 export interface IRangeState {
@@ -20,8 +27,14 @@ export interface IRangeState {
 
 export class Range extends Component<IRangeProps, IRangeState> {
   state: IRangeState = {
-    currentMin: this.props.inputMin || this.props.absoluteMin,
-    currentMax: this.props.inputMax || this.props.absoluteMax
+    currentMin:
+      (this.props.integersOnly && Math.round(this.props.inputMin || this.props.absoluteMin)) ||
+      this.props.inputMin ||
+      this.props.absoluteMin,
+    currentMax:
+      (this.props.integersOnly && Math.round(this.props.inputMax || this.props.absoluteMax)) ||
+      this.props.inputMax ||
+      this.props.absoluteMax
   }
 
   topEle = createRef<HTMLDivElement>()
@@ -48,6 +61,15 @@ export class Range extends Component<IRangeProps, IRangeState> {
     const minBtnVaultStyle: CSSProperties = { marginLeft: `${leftPercent * 100}%` }
     const maxBtnVaultStyle: CSSProperties = { marginLeft: `${(leftPercent + widthPercent) * 100}%` }
 
+    delete rest.inputMin
+    delete rest.inputMax
+    delete rest.integersOnly
+    delete rest.showNumbers
+    delete rest.showUnit
+    delete rest.unit
+    delete rest.unitPosition
+    delete rest.onMoved
+
     return (
       <div {...rest as any} className={`gerami-range ${className || ''}`} ref={this.topEle}>
         <div className={'gerami-range-background-line'} />
@@ -59,8 +81,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
             draggable
             onDragStart={this.startDrag}
             onDragCapture={this.dragMin}
-            onDragOver={this.dragMin}
-            onDragEnd={this.dragMin}
+            onDragEnd={this.stopDrag}
           />
         </div>
         <div className={'gerami-range-btn-vault'} style={maxBtnVaultStyle}>
@@ -69,8 +90,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
             draggable
             onDragStart={this.startDrag}
             onDragCapture={this.dragMax}
-            onDragOver={this.dragMax}
-            onDragEnd={this.dragMax}
+            onDragEnd={this.stopDrag}
           />
         </div>
       </div>
@@ -85,14 +105,15 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
   private dragMin = (e: React.DragEvent): void => {
     if (this.topEle.current) {
-      const { absoluteMin, absoluteMax } = this.props
+      const { absoluteMin, absoluteMax, integersOnly } = this.props
 
       const absoluteDiff = absoluteMax - absoluteMin
       const eleLeftPx = this.topEle.current.offsetLeft
       const eleWidthPx = this.topEle.current.scrollWidth
       const pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
 
-      const currentMin = absoluteMin + absoluteDiff * pxPercent
+      let currentMin = absoluteMin + absoluteDiff * pxPercent
+      if (integersOnly) currentMin = Math.round(currentMin)
 
       if (currentMin >= absoluteMin && currentMin <= absoluteMax) this.setState({ currentMin })
     }
@@ -100,16 +121,24 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
   private dragMax = (e: React.DragEvent) => {
     if (this.topEle.current) {
-      const { absoluteMin, absoluteMax } = this.props
+      const { absoluteMin, absoluteMax, integersOnly } = this.props
 
       const absoluteDiff = absoluteMax - absoluteMin
       const eleLeftPx = this.topEle.current.offsetLeft
       const eleWidthPx = this.topEle.current.scrollWidth
       const pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
 
-      const currentMax = absoluteMin + absoluteDiff * pxPercent
+      let currentMax = absoluteMin + absoluteDiff * pxPercent
+      if (integersOnly) currentMax = Math.round(currentMax)
 
       if (currentMax >= absoluteMin && currentMax <= absoluteMax) this.setState({ currentMax })
     }
+  }
+
+  private stopDrag = () => {
+    const { onMoved } = this.props
+    const { currentMin: min, currentMax: max } = this.state
+
+    onMoved && setTimeout(() => onMoved({ min, max }), 0)
   }
 }
