@@ -2,10 +2,8 @@
 
 .gerami-select-container {
   margin: 0 auto;
-  //padding: 0;
   width: 300px;
   min-height: 50px;
-  //overflow: hidden;
 }
 
 .gerami-select-header {
@@ -22,7 +20,7 @@
   display: flex;
   flex-wrap: wrap;
   line-height: 1.5em;
-  font-size: 11px;
+  font-size: $font-S;
   color: $accent;
 }
 .gerami-select-placeholder > div {
@@ -43,18 +41,17 @@
   width: 24px;
   height: 24px;
   text-align: center;
-  background-color: cadetblue;
 }
 .gerami-options-container {
   box-shadow: $shade-L;
 }
 .gerami-options-container > div {
-  padding: 7px;
+  padding: $padding-S;
 }
 .gerami-options-container > div:hover {
-  background-color: $accent;
+  background-color: #ededed;
 }
 
 .gerami-options-container > div > span {
-  padding: 7px;
+  padding: $padding-S;
 }
