@@ -65,12 +65,23 @@ var Select = /** @class */ (function(_super) {
       options: _this.props.options || [],
       showOptions: false,
       multipleSelectedItems: [],
-      singleSelectedItem: _this.props.placeholder || 'select any thing'
+      singleSelectedItem: null,
+      showPlaceholder: true
     }
     _this.handleShow = function() {
       _this.setState({
         showOptions: true
       })
+    }
+    _this.clearAllSelection = function() {
+      _this.setState({
+        options: _this.props.options || [],
+        showOptions: false,
+        multipleSelectedItems: [],
+        singleSelectedItem: null,
+        showPlaceholder: true
+      })
+      _this.props.selectedvalue()
     }
     _this.dropDown = function() {
       _this.setState(function(prevState) {
@@ -79,63 +90,139 @@ var Select = /** @class */ (function(_super) {
         }
       })
     }
-    _this.handleSelectedOption = function(option) {
-      _this.props.multiple
-        ? _this.setState({
-            multipleSelectedItems: _this.state.multipleSelectedItems.concat(option)
-          })
-        : _this.setState({
-            singleSelectedItem: option
-          })
-    }
     _this.handleDisSelect = function(option) {
-      _this.setState({
-        multipleSelectedItems: _this.state.multipleSelectedItems.filter(function(item) {
+      if (_this.props.multiple) {
+        var arr = _this.state.multipleSelectedItems.filter(function(item) {
           return item !== option
         })
-      })
+        arr.length == 0 && _this.state.singleSelectedItem == null
+          ? (_this.state.showPlaceholder = true)
+          : (_this.state.showPlaceholder = false)
+        _this.setState({
+          multipleSelectedItems: arr
+        })
+        _this.setState({
+          options: _this.state.options.concat(option)
+        })
+        _this.props.selectedvalue(arr)
+      }
+    }
+    _this.handleSelectedOption = function(option) {
+      _this.state.showPlaceholder = false
+      if (_this.props.multiple) {
+        var selectedItems = _this.state.multipleSelectedItems.concat(option)
+        _this.setState({
+          multipleSelectedItems: selectedItems
+        })
+        _this.props.selectedvalue(selectedItems)
+        _this.setState({
+          options: _this.state.options.filter(function(item) {
+            return item !== option
+          })
+        })
+      } else {
+        _this.setState({
+          singleSelectedItem: option
+        })
+        _this.props.selectedvalue(option)
+      }
+      /*   this.props.multiple
+                 ? ( this.setState({
+                     multipleSelectedItems: this.state.multipleSelectedItems.concat(option)
+                   }),
+                 this.props.selectedValue(this.state.multipleSelectedItems)
+                 )
+                 : (this.setState({
+                     singleSelectedItem: option
+                   }),
+               this.props.selectedValue(option)
+                 )*/
     }
     return _this
   }
+  Select.prototype.componentDidMount = function() {}
   Select.prototype.render = function() {
     var _this = this
     var _a = this.props,
       className = _a.className,
       placeholder = _a.placeholder,
-      options = _a.options,
       multiple = _a.multiple,
-      rest = __rest(_a, ['className', 'placeholder', 'options', 'multiple'])
+      rest = __rest(_a, ['className', 'placeholder', 'multiple'])
+    var options = this.state.options
     return react_1.default.createElement(
       'div',
-      __assign({ className: 'gerami-select-container' }, rest),
+      __assign({ className: 'gerami-select-container ' + (className || '') }, rest),
       react_1.default.createElement(
         'div',
         { className: 'gerami-select-header' },
         react_1.default.createElement(
           'div',
           { className: 'gerami-select-placeholder', onClick: this.handleShow },
-          multiple
-            ? this.state.multipleSelectedItems.map(function(option, key) {
-                return react_1.default.createElement(
-                  'div',
-                  { key: key, className: 'gerami-multi' },
-                  react_1.default.createElement('span', {
-                    className: 'gerami-dis-select',
+          react_1.default.createElement(
+            'span',
+            { className: 'gerami-selected-options-container' },
+            multiple
+              ? this.state.multipleSelectedItems.map(function(option, key) {
+                  return react_1.default.createElement(
+                    'span',
+                    {
+                      key: key,
+                      style: {
+                        display: '' + (_this.state.showPlaceholder ? 'none' : 'inline')
+                      },
+                      className: 'gerami-multi-option-container'
+                    },
+                    react_1.default.createElement(
+                      'span',
+                      { className: 'gerami-multi-option' },
+                      option,
+                      react_1.default.createElement('i', {
+                        className: 'fa fa-times',
+                        onClick: function() {
+                          return _this.handleDisSelect(option)
+                        }
+                      })
+                    )
+                  )
+                })
+              : react_1.default.createElement(
+                  'span',
+                  {
+                    className: 'gerami-single-option-container',
                     onClick: function() {
-                      return _this.handleDisSelect(option)
+                      return _this.handleDisSelect(_this.state.singleSelectedItem)
+                    },
+                    style: {
+                      display: '' + (this.state.showPlaceholder ? 'none' : 'inline')
                     }
-                  }),
-                  option
-                )
-              })
-            : react_1.default.createElement('div', null, this.state.singleSelectedItem)
+                  },
+                  this.state.singleSelectedItem
+                ),
+            react_1.default.createElement(
+              'span',
+              null,
+              this.state.showPlaceholder ? '' + (placeholder || 'Select...') : ''
+            )
+          )
         ),
         react_1.default.createElement(
           'div',
-          { className: 'gerami-arrow-container', onClick: this.dropDown },
+          { className: 'gerami-arrow-container' },
+          this.state.showPlaceholder
+            ? null
+            : react_1.default.createElement('i', {
+                className: 'fa fa-times gerami-cancel-all',
+                onClick: this.clearAllSelection
+              }),
           this.state.showOptions
-            ? react_1.default.createElement('i', { className: 'fa fa-chevron-up' })
-            : react_1.default.createElement('i', { className: 'fa fa-chevron-down' })
+            ? react_1.default.createElement('i', {
+                className: 'fa fa-chevron-up',
+                onClick: this.dropDown
+              })
+            : react_1.default.createElement('i', {
+                className: 'fa fa-chevron-down',
+                onClick: this.dropDown
+              })
         )
       ),
       react_1.default.createElement(
@@ -146,7 +233,7 @@ var Select = /** @class */ (function(_super) {
             display: this.state.showOptions ? 'block' : 'none'
           }
         },
-        this.props.options.map(function(option, key) {
+        options.map(function(option, key) {
           return react_1.default.createElement(
             'div',
             {

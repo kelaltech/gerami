@@ -1,55 +1,76 @@
 @import '../../styles/theme';
 
 .gerami-select-container {
-  margin: 0 auto;
-  width: 300px;
-  min-height: 50px;
 }
 
 .gerami-select-header {
-  border: 2px solid $primary;
+  border: 1px solid $primary;
   width: inherit;
   height: inherit;
   display: flex;
   justify-content: space-evenly;
-  padding: 5px;
+  padding: $padding-S;
+  border-radius: $radius;
 }
 
 .gerami-select-placeholder {
   flex: 80%;
   display: flex;
   flex-wrap: wrap;
-  line-height: 1.5em;
-  font-size: $font-S;
-  color: $accent;
+  color: darken($bg, 75%);
 }
-.gerami-select-placeholder > div {
+
+.gerami-selected-options-container {
+  margin-left: 9px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gerami-multi-option-container {
   margin: 2px;
+  background-color: #ededed;
 }
-.gerami-multi {
-  border: 1px solid $primary;
-  padding: 1px;
+
+.gerami-multi-option > i {
+  margin-left: 7px;
 }
-.gerami-dis-select:before {
-  content: 'x';
-  padding-right: 3px;
-  padding-left: 3px;
-  text-align: center;
-  border-right: 1px solid $primary;
+.gerami-multi-option > i:hover {
+  color: $warn;
+  cursor: pointer;
 }
+
+.gerami-single-option-container,
+.gerami-multi-option-container {
+  padding: 4px;
+  font-size: 13px;
+}
+
 .gerami-arrow-container {
-  width: 24px;
+  min-width: 24px;
   height: 24px;
+  display: flex;
   text-align: center;
 }
+.gerami-arrow-container > i {
+  font-size: 13px;
+}
+.gerami-arrow-container > i {
+  margin: 2px;
+  align-self: center;
+}
+.gerami-cancel-all:hover {
+  color: $warn;
+}
+
 .gerami-options-container {
   box-shadow: $shade-L;
+  border-radius: $radius;
 }
 .gerami-options-container > div {
   padding: $padding-S;
 }
 .gerami-options-container > div:hover {
   background-color: #ededed;
+  cursor: pointer;
 }
 
 .gerami-options-container > div > span {

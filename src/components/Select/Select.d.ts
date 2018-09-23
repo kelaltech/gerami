@@ -4,12 +4,14 @@ export interface ISelectProps {
   placeholder?: string
   options: any[]
   multiple?: boolean
+  selectedvalue?: any
 }
 export interface ISelectState {
   showOptions: boolean
   multipleSelectedItems: any[]
-  singleSelectedItem: string
+  singleSelectedItem: any
   options: any[]
+  showPlaceholder: boolean
 }
 export declare class Select extends Component<ISelectProps, ISelectState> {
   constructor(props: any)
@@ -17,11 +19,14 @@ export declare class Select extends Component<ISelectProps, ISelectState> {
     options: any[]
     showOptions: boolean
     multipleSelectedItems: never[]
-    singleSelectedItem: string
+    singleSelectedItem: null
+    showPlaceholder: boolean
   }
+  componentDidMount(): void
   render(): JSX.Element
   handleShow: () => void
+  clearAllSelection: () => void
   dropDown: () => void
-  handleSelectedOption: (option: any) => void
   handleDisSelect: (option: any) => void
+  handleSelectedOption: (option: any) => void
 }
