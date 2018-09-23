@@ -73,6 +73,9 @@ var sizeSpec = {
   '8XL': 1820,
   '9XL': 1960
 }
+/**
+ * A responsive container that does not stretch its child elements to fill vacant spaces.
+ */
 var Yoga = /** @class */ (function(_super) {
   __extends(Yoga, _super)
   function Yoga() {
