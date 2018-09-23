@@ -74,6 +74,9 @@ var sizeSpec = {
   '8XL': 595,
   '9XL': 630
 }
+/**
+ * A Drawer gerami components. (sometimes a.k.a side bar). It hides and shows.
+ */
 var Drawer = /** @class */ (function(_super) {
   __extends(Drawer, _super)
   function Drawer() {
