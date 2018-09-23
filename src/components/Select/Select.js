@@ -127,16 +127,16 @@ var Select = /** @class */ (function(_super) {
         _this.props.selectedvalue(option)
       }
       /*   this.props.multiple
-                 ? ( this.setState({
-                     multipleSelectedItems: this.state.multipleSelectedItems.concat(option)
-                   }),
-                 this.props.selectedValue(this.state.multipleSelectedItems)
-                 )
-                 : (this.setState({
-                     singleSelectedItem: option
-                   }),
-               this.props.selectedValue(option)
-                 )*/
+              ? ( this.setState({
+                  multipleSelectedItems: this.state.multipleSelectedItems.concat(option)
+                }),
+              this.props.selectedValue(this.state.multipleSelectedItems)
+              )
+              : (this.setState({
+                  singleSelectedItem: option
+                }),
+            this.props.selectedValue(option)
+              )*/
     }
     return _this
   }
