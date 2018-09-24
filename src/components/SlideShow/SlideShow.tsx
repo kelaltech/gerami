@@ -4,7 +4,7 @@ import './SlideShow.scss'
 interface props {
   className?: string
   height?: number | string
-  Images?: { Image: Object; Caption?: string }[]
+  Images?: { Image: Object | string; Caption?: string }[]
   Data?: JSX.Element[]
   interval?: number
   autoplay?: boolean
