@@ -139,6 +139,8 @@ export class Range extends Component<IRangeProps, IRangeState> {
             draggable
             onDragStart={this.startDrag}
             onDragCapture={this.dragMin}
+            onTouchMove={this.dragMin}
+            onTouchEnd={this.stopDrag}
             onDragEnd={this.stopDrag}
           />
         </div>
@@ -148,6 +150,8 @@ export class Range extends Component<IRangeProps, IRangeState> {
             draggable
             onDragStart={this.startDrag}
             onDragCapture={this.dragMax}
+            onTouchMove={this.dragMax}
+            onTouchEnd={this.stopDrag}
             onDragEnd={this.stopDrag}
           />
         </div>
@@ -183,7 +187,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
     e.dataTransfer.setDragImage(dragIcon, 0, 0)
   }
 
-  private _calcDrag = (e: React.DragEvent): number | null => {
+  private _calcDrag = (e: React.TouchEvent | React.DragEvent): number | null => {
     if (!this.topEle.current) return null
 
     const { absoluteMin, absoluteMax, roundValues } = this.props
@@ -191,7 +195,13 @@ export class Range extends Component<IRangeProps, IRangeState> {
     const absoluteDiff = absoluteMax - absoluteMin
     const eleLeftPx = this.topEle.current.offsetLeft
     const eleWidthPx = this.topEle.current.scrollWidth
-    const pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
+    const pxPercent =
+      (((e as React.TouchEvent).touches
+        ? (e as React.TouchEvent).touches[0]
+        : (e as React.DragEvent)
+      ).pageX -
+        eleLeftPx) /
+      eleWidthPx
 
     let ret = absoluteMin + absoluteDiff * pxPercent
     if (roundValues) ret = Math.round(ret)
@@ -199,14 +209,14 @@ export class Range extends Component<IRangeProps, IRangeState> {
     return ret >= absoluteMin && ret <= absoluteMax ? ret : null
   }
 
-  private dragMin = (e: React.DragEvent): void => {
+  private dragMin = (e: React.TouchEvent | React.DragEvent): void => {
     const { currentMax } = this.state
 
     const currentMin = this._calcDrag(e)
     if (currentMin != null && currentMin < currentMax) this.setState({ currentMin })
   }
 
-  private dragMax = (e: React.DragEvent) => {
+  private dragMax = (e: React.TouchEvent | React.DragEvent) => {
     const { currentMin } = this.state
 
     const currentMax = this._calcDrag(e)

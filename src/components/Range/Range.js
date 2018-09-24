@@ -136,7 +136,7 @@ var Range = /** @class */ (function(_super) {
       var absoluteDiff = absoluteMax - absoluteMin
       var eleLeftPx = _this.topEle.current.offsetLeft
       var eleWidthPx = _this.topEle.current.scrollWidth
-      var pxPercent = (e.pageX - eleLeftPx) / eleWidthPx
+      var pxPercent = ((e.touches ? e.touches[0] : e).pageX - eleLeftPx) / eleWidthPx
       var ret = absoluteMin + absoluteDiff * pxPercent
       if (roundValues) ret = Math.round(ret)
       return ret >= absoluteMin && ret <= absoluteMax ? ret : null
@@ -224,6 +224,8 @@ var Range = /** @class */ (function(_super) {
           draggable: true,
           onDragStart: this.startDrag,
           onDragCapture: this.dragMin,
+          onTouchMove: this.dragMin,
+          onTouchEnd: this.stopDrag,
           onDragEnd: this.stopDrag
         })
       ),
@@ -235,6 +237,8 @@ var Range = /** @class */ (function(_super) {
           draggable: true,
           onDragStart: this.startDrag,
           onDragCapture: this.dragMax,
+          onTouchMove: this.dragMax,
+          onTouchEnd: this.stopDrag,
           onDragEnd: this.stopDrag
         })
       )

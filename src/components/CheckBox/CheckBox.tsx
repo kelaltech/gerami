@@ -2,29 +2,29 @@ import React from 'react'
 import './CheckBox.scss'
 
 interface ICheckBox {
-  status : boolean,
-  checkMark : any
+  status: boolean
+  checkMark: any
 }
 
 interface props {
   className: string
-  checked? : string | boolean | number
+  checked?: string | boolean | number
 }
 
-export class CheckBox extends React.Component<props>{
+export class CheckBox extends React.Component<props> {
   state: ICheckBox = {
-    status : false,
-    checkMark : null
+    status: false,
+    checkMark: null
   }
 
-  constructor (props:any) {
-    super(props);
+  constructor(props: any) {
+    super(props)
     this.state = {
-      status : false,
-      checkMark : null
+      status: false,
+      checkMark: null
     }
 
-    this.toggleCheckbox = this.toggleCheckbox.bind(this);
+    this.toggleCheckbox = this.toggleCheckbox.bind(this)
 
     const checked = this.props.checked
     let status
@@ -50,39 +50,52 @@ export class CheckBox extends React.Component<props>{
       status: status
     })
 
-    console.log(this.props.checked);
+    console.log(this.props.checked)
   }
 
   componentDidMount() {
     this.setState({
-      status : this.props.checked,
-      checkMark : document.getElementById(this.props.className + 'check-mark')})
+      status: this.props.checked,
+      checkMark: document.getElementById(this.props.className + 'check-mark')
+    })
   }
 
-
-  toggleCheckbox () {
+  toggleCheckbox() {
     const checkMark = this.state.checkMark
 
     if (!this.state.status) {
-      checkMark.style.backgroundColor = "rgb(0, 180, 120)";
+      checkMark.style.backgroundColor = 'rgb(0, 180, 120)'
       this.setState({
         status: true
-      });
-    }
-    else {
+      })
+    } else {
       this.setState({
         status: false
-      });
-      checkMark.style.backgroundColor = "#eee";
+      })
+      checkMark.style.backgroundColor = '#eee'
     }
   }
 
-  render () {
+  render() {
     return (
-      <div className={((this.props.className == undefined) ?
-        "gerami-checkbox" : this.props.className + " gerami-checkbox")}>
-        <input type="checkbox" checked={this.state.status} onClick={this.toggleCheckbox.bind(this)} className={"input-element"}/>
-        <span className="check-mark" id={this.props.className + "check-mark"} onClick={this.toggleCheckbox}></span>
+      <div
+        className={
+          this.props.className == undefined
+            ? 'gerami-checkbox'
+            : this.props.className + ' gerami-checkbox'
+        }
+      >
+        <input
+          type="checkbox"
+          checked={this.state.status}
+          onClick={this.toggleCheckbox.bind(this)}
+          className={'input-element'}
+        />
+        <span
+          className="check-mark"
+          id={this.props.className + 'check-mark'}
+          onClick={this.toggleCheckbox}
+        />
       </div>
     )
   }
