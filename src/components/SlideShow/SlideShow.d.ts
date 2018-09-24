@@ -4,7 +4,7 @@ interface props {
   className?: string
   height?: number | string
   Images?: {
-    Image: Object
+    Image: Object | string
     Caption?: string
   }[]
   Data?: JSX.Element[]
