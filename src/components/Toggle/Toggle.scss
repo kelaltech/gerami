@@ -2,23 +2,30 @@
   display: none;
 }
 
-.slider {
+.span {
+  width: 30px;
+  height: 15px;
+  background-color: rgb(116, 116, 116);
+  border-radius: 45%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: absolute;
   cursor: pointer;
   transition: 0.4s;
 }
+.span:hover {
+  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-.slider:before {
+.span:before {
   position: absolute;
+  border-radius: 100%;
   content: '';
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 15px;
+  width: 15px;
   background-color: greenyellow;
   transition: 0.4s;
 }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
+input:checked + .span:before {
+  transform: translateX(15px);
 }
