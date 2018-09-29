@@ -101,10 +101,6 @@ export class Range extends Component<IRangeProps, IRangeState> {
     this.doChecks()
   }
 
-  componentDidUpdate() {
-    this.doChecks()
-  }
-
   render() {
     const { absoluteMin, absoluteMax, className, ...rest } = this.props
     const { currentMin, currentMax } = this.state
@@ -182,9 +178,11 @@ export class Range extends Component<IRangeProps, IRangeState> {
   }
 
   private startDrag = (e: React.DragEvent): void => {
-    const dragIcon = document.createElement('img')
-    dragIcon.style.display = 'none'
-    e.dataTransfer.setDragImage(dragIcon, 0, 0)
+    try {
+      const dragIcon = document.createElement('img')
+      dragIcon.style.display = 'none'
+      e.dataTransfer.setDragImage(dragIcon, 0, 0)
+    } catch (e) {}
   }
 
   private _calcDrag = (e: React.TouchEvent | React.DragEvent): number | null => {

@@ -76,7 +76,6 @@ export declare class Range extends Component<IRangeProps, IRangeState> {
   readonly min: number
   readonly max: number
   componentDidMount(): void
-  componentDidUpdate(): void
   render(): JSX.Element
   private doChecks
   private startDrag

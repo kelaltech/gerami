@@ -123,9 +123,11 @@ var Range = /** @class */ (function(_super) {
       }
     }
     _this.startDrag = function(e) {
-      var dragIcon = document.createElement('img')
-      dragIcon.style.display = 'none'
-      e.dataTransfer.setDragImage(dragIcon, 0, 0)
+      try {
+        var dragIcon = document.createElement('img')
+        dragIcon.style.display = 'none'
+        e.dataTransfer.setDragImage(dragIcon, 0, 0)
+      } catch (e) {}
     }
     _this._calcDrag = function(e) {
       if (!_this.topEle.current) return null
@@ -178,9 +180,6 @@ var Range = /** @class */ (function(_super) {
     configurable: true
   })
   Range.prototype.componentDidMount = function() {
-    this.doChecks()
-  }
-  Range.prototype.componentDidUpdate = function() {
     this.doChecks()
   }
   Range.prototype.render = function() {
