@@ -129,7 +129,7 @@ var Range = /** @class */ (function(_super) {
         e.dataTransfer.setDragImage(dragIcon, 0, 0)
       } catch (e) {}
     }
-    _this._calcDrag = function(e) {
+    _this._calcDrag = function(pageX) {
       if (!_this.topEle.current) return null
       var _a = _this.props,
         absoluteMin = _a.absoluteMin,
@@ -138,19 +138,19 @@ var Range = /** @class */ (function(_super) {
       var absoluteDiff = absoluteMax - absoluteMin
       var eleLeftPx = _this.topEle.current.offsetLeft
       var eleWidthPx = _this.topEle.current.scrollWidth
-      var pxPercent = ((e.touches ? e.touches[0] : e).pageX - eleLeftPx) / eleWidthPx
+      var pxPercent = (pageX - eleLeftPx) / eleWidthPx
       var ret = absoluteMin + absoluteDiff * pxPercent
       if (roundValues) ret = Math.round(ret)
       return ret >= absoluteMin && ret <= absoluteMax ? ret : null
     }
-    _this.dragMin = function(e) {
+    _this.dragMin = function(pageX) {
       var currentMax = _this.state.currentMax
-      var currentMin = _this._calcDrag(e)
+      var currentMin = _this._calcDrag(pageX)
       if (currentMin != null && currentMin < currentMax) _this.setState({ currentMin: currentMin })
     }
-    _this.dragMax = function(e) {
+    _this.dragMax = function(pageX) {
       var currentMin = _this.state.currentMin
-      var currentMax = _this._calcDrag(e)
+      var currentMax = _this._calcDrag(pageX)
       if (currentMax != null && currentMin < currentMax) _this.setState({ currentMax: currentMax })
     }
     _this.stopDrag = function() {
@@ -183,6 +183,7 @@ var Range = /** @class */ (function(_super) {
     this.doChecks()
   }
   Range.prototype.render = function() {
+    var _this = this
     var _a = this.props,
       absoluteMin = _a.absoluteMin,
       absoluteMax = _a.absoluteMax,
@@ -222,8 +223,12 @@ var Range = /** @class */ (function(_super) {
           className: 'gerami-range-btn',
           draggable: true,
           onDragStart: this.startDrag,
-          onDragCapture: this.dragMin,
-          onTouchMove: this.dragMin,
+          onDragCapture: function(e) {
+            return _this.dragMin(e.pageX)
+          },
+          onTouchMove: function(e) {
+            return _this.dragMin(e.touches[0].pageX)
+          },
           onTouchEnd: this.stopDrag,
           onDragEnd: this.stopDrag
         })
@@ -235,8 +240,12 @@ var Range = /** @class */ (function(_super) {
           className: 'gerami-range-btn',
           draggable: true,
           onDragStart: this.startDrag,
-          onDragCapture: this.dragMax,
-          onTouchMove: this.dragMax,
+          onDragCapture: function(e) {
+            return _this.dragMax(e.pageX)
+          },
+          onTouchMove: function(e) {
+            return _this.dragMax(e.touches[0].pageX)
+          },
           onTouchEnd: this.stopDrag,
           onDragEnd: this.stopDrag
         })

@@ -134,8 +134,8 @@ export class Range extends Component<IRangeProps, IRangeState> {
             className={'gerami-range-btn'}
             draggable
             onDragStart={this.startDrag}
-            onDragCapture={this.dragMin}
-            onTouchMove={this.dragMin}
+            onDragCapture={e => this.dragMin(e.pageX)}
+            onTouchMove={e => this.dragMin(e.touches[0].pageX)}
             onTouchEnd={this.stopDrag}
             onDragEnd={this.stopDrag}
           />
@@ -145,8 +145,8 @@ export class Range extends Component<IRangeProps, IRangeState> {
             className={'gerami-range-btn'}
             draggable
             onDragStart={this.startDrag}
-            onDragCapture={this.dragMax}
-            onTouchMove={this.dragMax}
+            onDragCapture={e => this.dragMax(e.pageX)}
+            onTouchMove={e => this.dragMax(e.touches[0].pageX)}
             onTouchEnd={this.stopDrag}
             onDragEnd={this.stopDrag}
           />
@@ -185,7 +185,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
     } catch (e) {}
   }
 
-  private _calcDrag = (e: React.TouchEvent | React.DragEvent): number | null => {
+  private _calcDrag = (pageX: number): number | null => {
     if (!this.topEle.current) return null
 
     const { absoluteMin, absoluteMax, roundValues } = this.props
@@ -193,13 +193,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
     const absoluteDiff = absoluteMax - absoluteMin
     const eleLeftPx = this.topEle.current.offsetLeft
     const eleWidthPx = this.topEle.current.scrollWidth
-    const pxPercent =
-      (((e as React.TouchEvent).touches
-        ? (e as React.TouchEvent).touches[0]
-        : (e as React.DragEvent)
-      ).pageX -
-        eleLeftPx) /
-      eleWidthPx
+    const pxPercent = (pageX - eleLeftPx) / eleWidthPx
 
     let ret = absoluteMin + absoluteDiff * pxPercent
     if (roundValues) ret = Math.round(ret)
@@ -207,17 +201,17 @@ export class Range extends Component<IRangeProps, IRangeState> {
     return ret >= absoluteMin && ret <= absoluteMax ? ret : null
   }
 
-  private dragMin = (e: React.TouchEvent | React.DragEvent): void => {
+  private dragMin = (pageX: number): void => {
     const { currentMax } = this.state
 
-    const currentMin = this._calcDrag(e)
+    const currentMin = this._calcDrag(pageX)
     if (currentMin != null && currentMin < currentMax) this.setState({ currentMin })
   }
 
-  private dragMax = (e: React.TouchEvent | React.DragEvent) => {
+  private dragMax = (pageX: number) => {
     const { currentMin } = this.state
 
-    const currentMax = this._calcDrag(e)
+    const currentMax = this._calcDrag(pageX)
     if (currentMax != null && currentMin < currentMax) this.setState({ currentMax })
   }
 
