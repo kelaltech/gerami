@@ -68,6 +68,7 @@ var Range = /** @class */ (function(_super) {
   function Range() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
+      checked: false,
       currentMin:
         (_this.props.roundValues && Math.round(_this.props.inputMin || _this.props.absoluteMin)) ||
         _this.props.inputMin ||
@@ -75,7 +76,9 @@ var Range = /** @class */ (function(_super) {
       currentMax:
         (_this.props.roundValues && Math.round(_this.props.inputMax || _this.props.absoluteMax)) ||
         _this.props.inputMax ||
-        _this.props.absoluteMax
+        _this.props.absoluteMax,
+      minMoving: false,
+      maxMoving: false
     }
     _this.topEle = react_1.createRef()
     _this.doChecks = function() {
@@ -121,15 +124,19 @@ var Range = /** @class */ (function(_super) {
             '.'
         )
       }
+      _this.setState({ checked: true })
     }
-    _this.startDrag = function(e) {
-      try {
-        var dragIcon = document.createElement('img')
-        dragIcon.style.display = 'none'
-        e.dataTransfer.setDragImage(dragIcon, 0, 0)
-      } catch (e) {}
+    _this.dragMin = function(clientX) {
+      var currentMax = _this.state.currentMax
+      var currentMin = _this._calcDrag(clientX)
+      if (currentMin != null && currentMin < currentMax) _this.setState({ currentMin: currentMin })
     }
-    _this._calcDrag = function(pageX) {
+    _this.dragMax = function(clientX) {
+      var currentMin = _this.state.currentMin
+      var currentMax = _this._calcDrag(clientX)
+      if (currentMax != null && currentMin < currentMax) _this.setState({ currentMax: currentMax })
+    }
+    _this._calcDrag = function(clientX) {
       if (!_this.topEle.current) return null
       var _a = _this.props,
         absoluteMin = _a.absoluteMin,
@@ -138,26 +145,21 @@ var Range = /** @class */ (function(_super) {
       var absoluteDiff = absoluteMax - absoluteMin
       var eleLeftPx = _this.topEle.current.offsetLeft
       var eleWidthPx = _this.topEle.current.scrollWidth
-      var pxPercent = (pageX - eleLeftPx) / eleWidthPx
+      var pxPercent = (clientX - eleLeftPx) / eleWidthPx
       var ret = absoluteMin + absoluteDiff * pxPercent
       if (roundValues) ret = Math.round(ret)
       return ret >= absoluteMin && ret <= absoluteMax ? ret : null
     }
-    _this.dragMin = function(pageX) {
-      var currentMax = _this.state.currentMax
-      var currentMin = _this._calcDrag(pageX)
-      if (currentMin != null && currentMin < currentMax) _this.setState({ currentMin: currentMin })
-    }
-    _this.dragMax = function(pageX) {
-      var currentMin = _this.state.currentMin
-      var currentMax = _this._calcDrag(pageX)
-      if (currentMax != null && currentMin < currentMax) _this.setState({ currentMax: currentMax })
-    }
-    _this.stopDrag = function() {
+    _this.stopDrag = function(dragFunc, clientX) {
       var onMoved = _this.props.onMoved
       var _a = _this.state,
         min = _a.currentMin,
         max = _a.currentMax
+      dragFunc(clientX)
+      _this.setState({
+        minMoving: false,
+        maxMoving: false
+      })
       onMoved &&
         setTimeout(function() {
           return onMoved({ min: min, max: max })
@@ -190,8 +192,12 @@ var Range = /** @class */ (function(_super) {
       className = _a.className,
       rest = __rest(_a, ['absoluteMin', 'absoluteMax', 'className'])
     var _b = this.state,
+      checked = _b.checked,
       currentMin = _b.currentMin,
-      currentMax = _b.currentMax
+      currentMax = _b.currentMax,
+      minMoving = _b.minMoving,
+      maxMoving = _b.maxMoving
+    if (!checked) return null
     var leftPercent = (currentMin - absoluteMin) / (absoluteMax - absoluteMin)
     var widthPercent = (currentMax - currentMin) / (absoluteMax - absoluteMin)
     var selectedLineStyle = {
@@ -221,34 +227,62 @@ var Range = /** @class */ (function(_super) {
         { className: 'gerami-range-btn-vault', style: minBtnVaultStyle },
         react_1.default.createElement(Anchor_js_1.Anchor, {
           className: 'gerami-range-btn',
-          draggable: true,
-          onDragStart: this.startDrag,
-          onDragCapture: function(e) {
-            return _this.dragMin(e.pageX)
+          draggable: false,
+          onClick: function(e) {
+            return e.preventDefault()
           },
           onTouchMove: function(e) {
-            return _this.dragMin(e.touches[0].pageX)
+            return _this.dragMin(e.touches[0].clientX)
           },
-          onTouchEnd: this.stopDrag,
-          onDragEnd: this.stopDrag
-        })
+          onTouchEnd: function(e) {
+            return _this.stopDrag(_this.dragMin, e.touches[0].clientX)
+          },
+          onMouseDown: function(e) {
+            e.preventDefault()
+            _this.setState({ minMoving: true })
+          }
+        }),
+        minMoving &&
+          react_1.default.createElement('div', {
+            className: 'gerami-range-full-filled-ghost',
+            onMouseMove: function(e) {
+              return _this.dragMin(e.clientX)
+            },
+            onMouseUp: function(e) {
+              return _this.stopDrag(_this.dragMin, e.clientX)
+            }
+          })
       ),
       react_1.default.createElement(
         'div',
         { className: 'gerami-range-btn-vault', style: maxBtnVaultStyle },
         react_1.default.createElement(Anchor_js_1.Anchor, {
           className: 'gerami-range-btn',
-          draggable: true,
-          onDragStart: this.startDrag,
-          onDragCapture: function(e) {
-            return _this.dragMax(e.pageX)
+          draggable: false,
+          onClick: function(e) {
+            return e.preventDefault()
           },
           onTouchMove: function(e) {
-            return _this.dragMax(e.touches[0].pageX)
+            return _this.dragMin(e.touches[0].clientX)
           },
-          onTouchEnd: this.stopDrag,
-          onDragEnd: this.stopDrag
-        })
+          onTouchEnd: function(e) {
+            return _this.stopDrag(_this.dragMax, e.touches[0].clientX)
+          },
+          onMouseDown: function(e) {
+            e.preventDefault()
+            _this.setState({ maxMoving: true })
+          }
+        }),
+        maxMoving &&
+          react_1.default.createElement('div', {
+            className: 'gerami-range-full-filled-ghost',
+            onMouseMove: function(e) {
+              return _this.dragMax(e.clientX)
+            },
+            onMouseUp: function(e) {
+              return _this.stopDrag(_this.dragMax, e.clientX)
+            }
+          })
       )
     )
   }

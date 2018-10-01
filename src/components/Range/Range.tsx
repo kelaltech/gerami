@@ -66,8 +66,11 @@ export interface IRangeProps
 }
 
 export interface IRangeState {
+  checked: boolean
   currentMin: number
   currentMax: number
+  minMoving: boolean
+  maxMoving: boolean
 }
 
 /**
@@ -77,6 +80,7 @@ export interface IRangeState {
  */
 export class Range extends Component<IRangeProps, IRangeState> {
   state: IRangeState = {
+    checked: false,
     currentMin:
       (this.props.roundValues && Math.round(this.props.inputMin || this.props.absoluteMin)) ||
       this.props.inputMin ||
@@ -84,7 +88,9 @@ export class Range extends Component<IRangeProps, IRangeState> {
     currentMax:
       (this.props.roundValues && Math.round(this.props.inputMax || this.props.absoluteMax)) ||
       this.props.inputMax ||
-      this.props.absoluteMax
+      this.props.absoluteMax,
+    minMoving: false,
+    maxMoving: false
   }
 
   topEle = createRef<HTMLDivElement>()
@@ -103,7 +109,9 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
   render() {
     const { absoluteMin, absoluteMax, className, ...rest } = this.props
-    const { currentMin, currentMax } = this.state
+    const { checked, currentMin, currentMax, minMoving, maxMoving } = this.state
+
+    if (!checked) return null
 
     const leftPercent = (currentMin - absoluteMin) / (absoluteMax - absoluteMin)
     const widthPercent = (currentMax - currentMin) / (absoluteMax - absoluteMin)
@@ -132,24 +140,42 @@ export class Range extends Component<IRangeProps, IRangeState> {
         <div className={'gerami-range-btn-vault'} style={minBtnVaultStyle}>
           <Anchor
             className={'gerami-range-btn'}
-            draggable
-            onDragStart={this.startDrag}
-            onDragCapture={e => this.dragMin(e.pageX)}
-            onTouchMove={e => this.dragMin(e.touches[0].pageX)}
-            onTouchEnd={this.stopDrag}
-            onDragEnd={this.stopDrag}
+            draggable={false}
+            onClick={e => e.preventDefault()}
+            onTouchMove={e => this.dragMin(e.touches[0].clientX)}
+            onTouchEnd={e => this.stopDrag(this.dragMin, e.touches[0].clientX)}
+            onMouseDown={e => {
+              e.preventDefault()
+              this.setState({ minMoving: true })
+            }}
           />
+          {minMoving && (
+            <div
+              className={'gerami-range-full-filled-ghost'}
+              onMouseMove={e => this.dragMin(e.clientX)}
+              onMouseUp={e => this.stopDrag(this.dragMin, e.clientX)}
+            />
+          )}
         </div>
         <div className={'gerami-range-btn-vault'} style={maxBtnVaultStyle}>
           <Anchor
             className={'gerami-range-btn'}
-            draggable
-            onDragStart={this.startDrag}
-            onDragCapture={e => this.dragMax(e.pageX)}
-            onTouchMove={e => this.dragMax(e.touches[0].pageX)}
-            onTouchEnd={this.stopDrag}
-            onDragEnd={this.stopDrag}
+            draggable={false}
+            onClick={e => e.preventDefault()}
+            onTouchMove={e => this.dragMin(e.touches[0].clientX)}
+            onTouchEnd={e => this.stopDrag(this.dragMax, e.touches[0].clientX)}
+            onMouseDown={e => {
+              e.preventDefault()
+              this.setState({ maxMoving: true })
+            }}
           />
+          {maxMoving && (
+            <div
+              className={'gerami-range-full-filled-ghost'}
+              onMouseMove={e => this.dragMax(e.clientX)}
+              onMouseUp={e => this.stopDrag(this.dragMax, e.clientX)}
+            />
+          )}
         </div>
       </div>
     )
@@ -175,17 +201,25 @@ export class Range extends Component<IRangeProps, IRangeState> {
         `gerami component error: in Range: 'inputMin' value ${inputMin} cannot be greater than or equal to 'inputMax' value ${inputMax}.`
       )
     }
+
+    this.setState({ checked: true })
   }
 
-  private startDrag = (e: React.DragEvent): void => {
-    try {
-      const dragIcon = document.createElement('img')
-      dragIcon.style.display = 'none'
-      e.dataTransfer.setDragImage(dragIcon, 0, 0)
-    } catch (e) {}
+  private dragMin = (clientX: number): void => {
+    const { currentMax } = this.state
+
+    let currentMin = this._calcDrag(clientX)
+    if (currentMin != null && currentMin < currentMax) this.setState({ currentMin })
   }
 
-  private _calcDrag = (pageX: number): number | null => {
+  private dragMax = (clientX: number) => {
+    const { currentMin } = this.state
+
+    let currentMax = this._calcDrag(clientX)
+    if (currentMax != null && currentMin < currentMax) this.setState({ currentMax })
+  }
+
+  private _calcDrag = (clientX: number): number | null => {
     if (!this.topEle.current) return null
 
     const { absoluteMin, absoluteMax, roundValues } = this.props
@@ -193,7 +227,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
     const absoluteDiff = absoluteMax - absoluteMin
     const eleLeftPx = this.topEle.current.offsetLeft
     const eleWidthPx = this.topEle.current.scrollWidth
-    const pxPercent = (pageX - eleLeftPx) / eleWidthPx
+    const pxPercent = (clientX - eleLeftPx) / eleWidthPx
 
     let ret = absoluteMin + absoluteDiff * pxPercent
     if (roundValues) ret = Math.round(ret)
@@ -201,23 +235,16 @@ export class Range extends Component<IRangeProps, IRangeState> {
     return ret >= absoluteMin && ret <= absoluteMax ? ret : null
   }
 
-  private dragMin = (pageX: number): void => {
-    const { currentMax } = this.state
-
-    const currentMin = this._calcDrag(pageX)
-    if (currentMin != null && currentMin < currentMax) this.setState({ currentMin })
-  }
-
-  private dragMax = (pageX: number) => {
-    const { currentMin } = this.state
-
-    const currentMax = this._calcDrag(pageX)
-    if (currentMax != null && currentMin < currentMax) this.setState({ currentMax })
-  }
-
-  private stopDrag = () => {
+  private stopDrag = (dragFunc: Function, clientX: number) => {
     const { onMoved } = this.props
     const { currentMin: min, currentMax: max } = this.state
+
+    dragFunc(clientX)
+
+    this.setState({
+      minMoving: false,
+      maxMoving: false
+    })
 
     onMoved && setTimeout(() => onMoved({ min, max }), 0)
   }

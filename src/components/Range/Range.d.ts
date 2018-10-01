@@ -62,8 +62,11 @@ export interface IRangeProps
   onMoved?: (e: IRangeMovedEvent) => void
 }
 export interface IRangeState {
+  checked: boolean
   currentMin: number
   currentMax: number
+  minMoving: boolean
+  maxMoving: boolean
 }
 /**
  * A gerami form control element that receives absolute minimum and maximum
@@ -76,11 +79,10 @@ export declare class Range extends Component<IRangeProps, IRangeState> {
   readonly min: number
   readonly max: number
   componentDidMount(): void
-  render(): JSX.Element
+  render(): JSX.Element | null
   private doChecks
-  private startDrag
-  private _calcDrag
   private dragMin
   private dragMax
+  private _calcDrag
   private stopDrag
 }
