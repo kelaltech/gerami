@@ -16,9 +16,9 @@
   "scripts": {
     "build": "tsc",
     "lint": "prettier ./{*,src/**/*}.{tsx,ts,jsx,js,scss,sass,css,json,md} --write",
-    "prepare": "yarn build && yarn lint",
-    "prepublishOnly": "yarn prepare",
-    "precommit": "yarn prepare && git add -u"
+    "prod": "yarn build && yarn lint",
+    "prepublishOnly": "yarn prod",
+    "precommit": "yarn prod && git update-index --again"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.3.1",
