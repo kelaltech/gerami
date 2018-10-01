@@ -95,10 +95,15 @@ var Yoga = /** @class */ (function(_super) {
     )
     if (Array.isArray(children)) {
       content = []
+      var i = 0
       for (var _i = 0, children_1 = children; _i < children_1.length; _i++) {
         var child = children_1[_i]
         content.push(
-          react_1.default.createElement('div', { className: 'gerami-yoga-' + maxCol }, child)
+          react_1.default.createElement(
+            'div',
+            { key: i++, className: 'gerami-yoga-' + maxCol },
+            child
+          )
         )
       }
     }

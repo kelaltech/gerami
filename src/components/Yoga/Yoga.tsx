@@ -43,8 +43,13 @@ export class Yoga extends Component<IYogaProps, IYogaState> {
 
     if (Array.isArray(children)) {
       content = []
+      let i = 0
       for (const child of children) {
-        ;(content as ReactNodeArray).push(<div className={`gerami-yoga-${maxCol}`}>{child}</div>)
+        ;(content as ReactNodeArray).push(
+          <div key={i++} className={`gerami-yoga-${maxCol}`}>
+            {child}
+          </div>
+        )
       }
     }
 
