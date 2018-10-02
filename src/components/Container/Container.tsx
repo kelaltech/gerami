@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import './Container.scss'
-
 interface IContainer {
   paddingTop: number
   paddingBottom: number

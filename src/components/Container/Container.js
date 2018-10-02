@@ -33,7 +33,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Container.scss')
 var Container = /** @class */ (function(_super) {
   __extends(Container, _super)
   function Container(props) {

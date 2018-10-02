@@ -38,7 +38,6 @@ var __importDefault =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var React = __importStar(require('react'))
-require('./ImageInput.scss')
 var _3_jpg_1 = __importDefault(require('./3.jpg'))
 var ImageInput = /** @class */ (function(_super) {
   __extends(ImageInput, _super)

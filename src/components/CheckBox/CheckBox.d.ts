@@ -1,5 +1,4 @@
 import React from 'react'
-import './CheckBox.scss'
 interface ICheckBox {
   status: boolean
   checkMark: any

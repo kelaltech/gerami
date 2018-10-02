@@ -33,7 +33,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-require('./Flex.scss')
 var Flex = /** @class */ (function(_super) {
   __extends(Flex, _super)
   function Flex(props) {

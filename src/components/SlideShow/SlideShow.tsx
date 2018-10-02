@@ -1,5 +1,4 @@
 import * as React from 'react'
-import './SlideShow.scss'
 
 interface props {
   className?: string

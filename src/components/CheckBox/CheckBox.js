@@ -29,7 +29,6 @@ var __importDefault =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importDefault(require('react'))
-require('./CheckBox.scss')
 var CheckBox = /** @class */ (function(_super) {
   __extends(CheckBox, _super)
   function CheckBox(props) {

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import './ImageInput.scss'
 interface props {
   image?: Object
   className?: string

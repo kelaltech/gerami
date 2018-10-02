@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import './Flex.scss'
-
 export class Flex extends Component<any> {
   constructor(props: any) {
     super(props)

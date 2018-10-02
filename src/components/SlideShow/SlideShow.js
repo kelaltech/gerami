@@ -33,7 +33,6 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var React = __importStar(require('react'))
-require('./SlideShow.scss')
 var SlideShow = /** @class */ (function(_super) {
   __extends(SlideShow, _super)
   function SlideShow() {
