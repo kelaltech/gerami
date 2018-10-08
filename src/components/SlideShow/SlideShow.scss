@@ -9,15 +9,15 @@ img {
 }
 
 /* Slideshow container */
-.SlideShowContainer {
+.gerami-slideShow-SlideShowContainer {
   max-width: 100%;
   position: relative;
   margin: auto;
 }
 
 /* Next & previous buttons */
-.prev,
-.next {
+.gerami-slideShow-prev,
+.gerami-slideShow-next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -31,21 +31,21 @@ img {
   border-radius: 0 3px 3px 0;
 }
 
-.next {
+.gerami-slideShow-next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-.prev {
+.gerami-slideShow-prev {
   left: 0;
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover,
-.next:hover {
+.gerami-slideShow-prev:hover,
+.gerami-slideShow-next:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.text {
+.gerami-slideShow-text {
   color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
@@ -55,7 +55,7 @@ img {
   text-align: center;
 }
 
-.dot {
+.gerami-slideShow-dot {
   cursor: pointer;
   height: 15px;
   width: 15px;
@@ -66,7 +66,7 @@ img {
   transition: background-color 1s ease-in;
 }
 
-.dot-style {
+.gerami-slideShow-dot-style {
   opacity: 0.7;
   font-size: 15px;
   padding: 8px 12px;
@@ -76,13 +76,13 @@ img {
   text-align: center;
 }
 
-.active,
-.dot:hover {
+.gerami-slideShow-active,
+.gerami-slideShow-dot:hover {
   background-color: #717171;
 }
 
 /* Fading animation */
-.fade {
+.gerami-slideShow-fade {
   animation: fade 3s ease-in;
 }
 
@@ -97,17 +97,17 @@ img {
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev,
-  .next,
-  .text {
+  .gerami-slideShow-prev,
+  .gerami-slideShow-next,
+  .gerami-slideShow-text {
     font-size: 11px;
   }
 }
 
 /* Other Animations */
 
-.none {
+.gerami-slideShow-none {
 }
-.invisible {
+.gerami-slideShow-invisible {
   display: none;
 }

@@ -28,13 +28,17 @@ class SlideShow extends React.Component<props> {
   }
 
   automatic = () => {
-    let x = document.getElementsByClassName('slides') as HTMLCollectionOf<HTMLElement>
-    let dots = document.getElementsByClassName('dot') as HTMLCollectionOf<HTMLElement>
+    let x = document.getElementsByClassName('gerami-slideShow-slides') as HTMLCollectionOf<
+      HTMLElement
+    >
+    let dots = document.getElementsByClassName('gerami-slideShow-dot') as HTMLCollectionOf<
+      HTMLElement
+    >
     for (let i = 0; i < x.length; i++) {
       x[i].style.display = 'none'
     }
     for (let i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(' active', '')
+      dots[i].className = dots[i].className.replace('gerami-slideShow-active', '')
     }
     this.slideIndex++
     if (this.slideIndex > x.length) {
@@ -47,8 +51,12 @@ class SlideShow extends React.Component<props> {
   }
 
   slides = (n: number) => {
-    let slides = document.getElementsByClassName('slides') as HTMLCollectionOf<HTMLElement>
-    let dots = document.getElementsByClassName('dot') as HTMLCollectionOf<HTMLElement>
+    let slides = document.getElementsByClassName('gerami-slideShow-slides') as HTMLCollectionOf<
+      HTMLElement
+    >
+    let dots = document.getElementsByClassName('gerami-slideShow-dot') as HTMLCollectionOf<
+      HTMLElement
+    >
     if (n > slides.length) {
       this.slideIndex = 1
     }
@@ -59,7 +67,7 @@ class SlideShow extends React.Component<props> {
       slides[i].style.display = 'none'
     }
     for (let i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(' active', '')
+      dots[i].className = dots[i].className.replace('gerami-slideShow-active', '')
     }
 
     slides[this.slideIndex - 1].style.display = 'block'
@@ -69,17 +77,17 @@ class SlideShow extends React.Component<props> {
   render() {
     return (
       <div>
-        <div className="SlideShowContainer">
+        <div className="gerami-slideShow-SlideShowContainer">
           {this.props.Images ? (
             <div>
               {this.props.Images.map((Image: any) => (
-                <div className={'slides ' + this.props.animation}>
+                <div className={'gerami-slideShow-slides ' + this.props.animation}>
                   <img
                     src={Image.Image}
                     style={{ width: '100%' }}
                     height={this.props.height ? this.props.height : ''}
                   />
-                  <div className="text">{Image.Caption}</div>
+                  <div className="gerami-slideShow-text">{Image.Caption}</div>
                 </div>
               ))}
             </div>
@@ -90,7 +98,10 @@ class SlideShow extends React.Component<props> {
           {this.props.Data ? (
             <div>
               {this.props.Data.map((Data: any) => (
-                <div ref={'slides'} className={'mySlides fade'}>
+                <div
+                  ref={'gerami-slideShow-slides'}
+                  className={'gerami-slideShow-mySlides gerami-slideShow-fade'}
+                >
                   <div style={{ width: '100%' }}>{Data}</div>
                 </div>
               ))}
@@ -100,11 +111,11 @@ class SlideShow extends React.Component<props> {
           )}
           {this.props.showControls ? (
             <span>
-              <a className={'prev'} onClick={() => this.movement(-1)}>
+              <a className={'gerami-slideShow-prev'} onClick={() => this.movement(-1)}>
                 {' '}
                 &#10094;{' '}
               </a>
-              <a className={'next'} onClick={() => this.movement(1)}>
+              <a className={'gerami-slideShow-next'} onClick={() => this.movement(1)}>
                 {' '}
                 &#10095;
               </a>
@@ -113,7 +124,7 @@ class SlideShow extends React.Component<props> {
             ''
           )}
           {this.props.showControls ? (
-            <div className={'dot-style'} style={{ textAlign: 'center' }}>
+            <div className={'gerami-slideShow-dot-style'} style={{ textAlign: 'center' }}>
               {this.props.Images ? (
                 <div>
                   {this.props.Images.map((Image: any, index) => (
@@ -122,7 +133,10 @@ class SlideShow extends React.Component<props> {
                         {' '}
                         <img src={Image.Image} />
                       </span>
-                      <span className={'dot'} onClick={() => this.currentSlide(index + 1)}>
+                      <span
+                        className={'gerami-slideShow-dot'}
+                        onClick={() => this.currentSlide(index + 1)}
+                      >
                         {' '}
                       </span>
                     </span>
@@ -133,7 +147,7 @@ class SlideShow extends React.Component<props> {
               )}
             </div>
           ) : (
-            <div className={'dot-style'} style={{ textAlign: 'center' }}>
+            <div className={'gerami-slideShow-dot-style'} style={{ textAlign: 'center' }}>
               {this.props.Data ? (
                 <div>
                   {this.props.Data.map((Image: any, index) => (
@@ -142,7 +156,10 @@ class SlideShow extends React.Component<props> {
                         {' '}
                         <img src={Image.Image} />
                       </span>
-                      <span className={'dot'} onClick={() => this.currentSlide(index + 1)}>
+                      <span
+                        className={'gerami-slideShow-dot'}
+                        onClick={() => this.currentSlide(index + 1)}
+                      >
                         {' '}
                       </span>
                     </span>
