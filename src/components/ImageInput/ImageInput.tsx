@@ -27,10 +27,12 @@ export class ImageInput extends React.Component<props> {
   render() {
     return (
       <div>
-        <div className={'Camera-Image'}>
+        <div className={'gerami-imageInput-Camera-Image'}>
           <label htmlFor={'Cover'}>
             <img
-              className={this.props.circular ? 'image' : 'image-input'}
+              className={
+                this.props.circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'
+              }
               src={this.state.image}
               width={this.props.width ? this.props.width : '100px'}
               height={this.props.width ? this.props.width : '100px'}
@@ -39,7 +41,7 @@ export class ImageInput extends React.Component<props> {
             />
           </label>
           <input
-            className={'File none'}
+            className={'gerami-imageInput-File gerami-imageInput-none'}
             id="Cover"
             name="picture"
             onChange={(e: any) => {
