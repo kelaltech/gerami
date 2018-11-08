@@ -6,6 +6,9 @@ export interface ISelectProps {
   options: any[]
   multiple?: boolean
   selectedvalue?: any
+  minWidth?: number | string
+  maxWidth?: number | string
+  size?: number | string
 }
 
 export interface ISelectState {
@@ -31,10 +34,18 @@ export class Select extends Component<ISelectProps, ISelectState> {
   componentDidMount() {}
 
   render() {
-    const { className, placeholder, multiple, ...rest } = this.props
+    const { className, placeholder, multiple, maxWidth, minWidth, size, ...rest } = this.props
     const { options } = this.state
     return (
-      <div className={`gerami-select-container ${className || ''}`} {...rest}>
+      <div
+        style={{
+          width: size ? size : '',
+          minWidth: minWidth ? minWidth : '230px',
+          maxWidth: maxWidth ? maxWidth : '300px'
+        }}
+        className={`gerami-select-container ${className || ''}`}
+        {...rest}
+      >
         <div className={'gerami-select-header'}>
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
             <span className={'gerami-selected-options-container'}>
@@ -83,6 +94,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
         <div
           className={'gerami-options-container'}
           style={{
+            width: size ? size : '',
             display: this.state.showOptions ? 'block' : 'none'
           }}
         >
@@ -154,6 +166,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
       this.props.selectedvalue(option)
     }
 
+    //comment
     /*   this.props.multiple
       ? ( this.setState({
           multipleSelectedItems: this.state.multipleSelectedItems.concat(option)

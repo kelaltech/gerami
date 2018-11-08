@@ -5,6 +5,9 @@ export interface ISelectProps {
   options: any[]
   multiple?: boolean
   selectedvalue?: any
+  minWidth?: number | string
+  maxWidth?: number | string
+  size?: number | string
 }
 export interface ISelectState {
   showOptions: boolean

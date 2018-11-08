@@ -1,8 +1,6 @@
 @import '../../styles/theme';
 
 .gerami-select-container {
-  position: relative;
-  z-index: 1;
   max-width: 300px;
   min-width: 230px;
 }
@@ -53,16 +51,23 @@
   height: 24px;
   display: flex;
   text-align: center;
+  cursor: pointer;
 }
-.gerami-arrow-container > i {
-  font-size: 13px;
+.gerami-arrow-container {
+  i {
+    font-size: 14px;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+  .gerami-cancel-all:hover {
+    color: $warn;
+  }
 }
 .gerami-arrow-container > i {
   margin: 2px;
   align-self: center;
-}
-.gerami-cancel-all:hover {
-  color: $warn;
 }
 
 .gerami-options-container {
@@ -70,8 +75,8 @@
   border-radius: $radius;
   background-color: $bg;
   position: absolute;
-  max-width: 300px;
-  min-width: 230px;
+  min-width: inherit;
+  width: inherit !important;
 }
 .gerami-options-container > div {
   padding: $padding-S;

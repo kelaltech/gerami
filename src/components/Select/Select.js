@@ -126,6 +126,7 @@ var Select = /** @class */ (function(_super) {
         })
         _this.props.selectedvalue(option)
       }
+      //comment
       /*   this.props.multiple
               ? ( this.setState({
                   multipleSelectedItems: this.state.multipleSelectedItems.concat(option)
@@ -147,11 +148,24 @@ var Select = /** @class */ (function(_super) {
       className = _a.className,
       placeholder = _a.placeholder,
       multiple = _a.multiple,
-      rest = __rest(_a, ['className', 'placeholder', 'multiple'])
+      maxWidth = _a.maxWidth,
+      minWidth = _a.minWidth,
+      size = _a.size,
+      rest = __rest(_a, ['className', 'placeholder', 'multiple', 'maxWidth', 'minWidth', 'size'])
     var options = this.state.options
     return react_1.default.createElement(
       'div',
-      __assign({ className: 'gerami-select-container ' + (className || '') }, rest),
+      __assign(
+        {
+          style: {
+            width: size ? size : '',
+            minWidth: minWidth ? minWidth : '230px',
+            maxWidth: maxWidth ? maxWidth : '300px'
+          },
+          className: 'gerami-select-container ' + (className || '')
+        },
+        rest
+      ),
       react_1.default.createElement(
         'div',
         { className: 'gerami-select-header' },
@@ -230,6 +244,7 @@ var Select = /** @class */ (function(_super) {
         {
           className: 'gerami-options-container',
           style: {
+            width: size ? size : '',
             display: this.state.showOptions ? 'block' : 'none'
           }
         },
