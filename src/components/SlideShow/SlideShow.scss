@@ -7,6 +7,10 @@
 img {
   vertical-align: middle;
 }
+.gerami-slideShow-slides{
+  background: darken($bg, 3%) center center;
+  background-size: cover;
+}
 
 /* Slideshow container */
 .gerami-slideShow-SlideShowContainer {
