@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 export interface IRangeMovedEvent {
   min: number
   max: number
 }
-export interface IRangeProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IRangeProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Absolute minimum value in the range's scale.
    */
@@ -61,7 +60,7 @@ export interface IRangeProps
    */
   onMoved?: (e: IRangeMovedEvent) => void
 }
-export interface IRangeState {
+interface IRangeState {
   checked: boolean
   currentMin: number
   currentMax: number
@@ -86,3 +85,4 @@ export declare class Range extends Component<IRangeProps, IRangeState> {
   private _calcDrag
   private stopDrag
 }
+export {}

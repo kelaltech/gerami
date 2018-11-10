@@ -61,7 +61,9 @@ var react_router_dom_1 = require('react-router-dom')
 var Button = /** @class */ (function(_super) {
   __extends(Button, _super)
   function Button() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Button.prototype.render = function() {
     var _a = this.props,
@@ -76,9 +78,7 @@ var Button = /** @class */ (function(_super) {
       __assign({}, rest, {
         className:
           'gerami-button ' +
-          (primary || (typeof type === 'string' && type.toLowerCase() === 'submit')
-            ? 'gerami-Button-primary'
-            : '') +
+          (primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary' : '') +
           (className ? ' ' + className : ''),
         type: type || 'button'
       }),

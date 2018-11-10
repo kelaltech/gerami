@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
 
 const sizeSpec = {
@@ -18,17 +18,20 @@ const sizeSpec = {
   '9XL': 1960
 }
 
-export interface props
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  className?: string
+export interface ITitleProps extends HTMLAttributes<HTMLDivElement> {
   color?: string | 'green' | 'blue'
   size?: geramiSizeTypes
 }
 
-export class Title extends Component<props, any> {
+interface ITitleState {}
+
+export class Title extends Component<ITitleProps, ITitleState> {
+  state = {}
+
   render() {
     const { size, color, className, children } = this.props
     const header = size && (typeof size === 'string' ? sizeSpec[size] : size)
+
     return (
       <div
         className={`gerami-title

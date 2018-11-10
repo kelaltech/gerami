@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 
-export interface ISelectProps {
+export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
   placeholder?: string
   options: any[]
   multiple?: boolean
-  selectedvalue?: any
+  selectedValue?: any
   minWidth?: number | string
   maxWidth?: number | string
   size?: number | string
 }
 
-export interface ISelectState {
+interface ISelectState {
   showOptions: boolean
   multipleSelectedItems: any[]
   singleSelectedItem: any
@@ -20,9 +20,6 @@ export interface ISelectState {
 }
 
 export class Select extends Component<ISelectProps, ISelectState> {
-  constructor(props: any) {
-    super(props)
-  }
   state = {
     options: this.props.options || [],
     showOptions: false,
@@ -31,11 +28,10 @@ export class Select extends Component<ISelectProps, ISelectState> {
     showPlaceholder: true
   }
 
-  componentDidMount() {}
-
   render() {
     const { className, placeholder, multiple, maxWidth, minWidth, size, ...rest } = this.props
     const { options } = this.state
+
     return (
       <div
         style={{
@@ -44,7 +40,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
           maxWidth: maxWidth ? maxWidth : '300px'
         }}
         className={`gerami-select-container ${className || ''}`}
-        {...rest}
+        {...rest as any}
       >
         <div className={'gerami-select-header'}>
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
@@ -122,8 +118,9 @@ export class Select extends Component<ISelectProps, ISelectState> {
       singleSelectedItem: null,
       showPlaceholder: true
     })
-    this.props.selectedvalue()
+    this.props.selectedValue()
   }
+
   dropDown = () => {
     this.setState(prevState => ({
       showOptions: !prevState.showOptions
@@ -143,7 +140,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
       this.setState({
         options: this.state.options.concat(option)
       })
-      this.props.selectedvalue(arr)
+      this.props.selectedValue(arr)
     }
   }
 
@@ -154,7 +151,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
       this.setState({
         multipleSelectedItems: selectedItems
       })
-      this.props.selectedvalue(selectedItems)
+      this.props.selectedValue(selectedItems)
 
       this.setState({
         options: this.state.options.filter(item => item !== option)
@@ -163,7 +160,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
       this.setState({
         singleSelectedItem: option
       })
-      this.props.selectedvalue(option)
+      this.props.selectedValue(option)
     }
 
     //comment

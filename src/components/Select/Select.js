@@ -59,8 +59,8 @@ Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var Select = /** @class */ (function(_super) {
   __extends(Select, _super)
-  function Select(props) {
-    var _this = _super.call(this, props) || this
+  function Select() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
       options: _this.props.options || [],
       showOptions: false,
@@ -81,7 +81,7 @@ var Select = /** @class */ (function(_super) {
         singleSelectedItem: null,
         showPlaceholder: true
       })
-      _this.props.selectedvalue()
+      _this.props.selectedValue()
     }
     _this.dropDown = function() {
       _this.setState(function(prevState) {
@@ -104,7 +104,7 @@ var Select = /** @class */ (function(_super) {
         _this.setState({
           options: _this.state.options.concat(option)
         })
-        _this.props.selectedvalue(arr)
+        _this.props.selectedValue(arr)
       }
     }
     _this.handleSelectedOption = function(option) {
@@ -114,7 +114,7 @@ var Select = /** @class */ (function(_super) {
         _this.setState({
           multipleSelectedItems: selectedItems
         })
-        _this.props.selectedvalue(selectedItems)
+        _this.props.selectedValue(selectedItems)
         _this.setState({
           options: _this.state.options.filter(function(item) {
             return item !== option
@@ -124,7 +124,7 @@ var Select = /** @class */ (function(_super) {
         _this.setState({
           singleSelectedItem: option
         })
-        _this.props.selectedvalue(option)
+        _this.props.selectedValue(option)
       }
       //comment
       /*   this.props.multiple
@@ -141,7 +141,6 @@ var Select = /** @class */ (function(_super) {
     }
     return _this
   }
-  Select.prototype.componentDidMount = function() {}
   Select.prototype.render = function() {
     var _this = this
     var _a = this.props,

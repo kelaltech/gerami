@@ -59,13 +59,25 @@ Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var TextArea = /** @class */ (function(_super) {
   __extends(TextArea, _super)
-  function TextArea(props) {
-    var _this = _super.call(this, props) || this
+  function TextArea() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
     _this.textarea = react_1.createRef()
     _this.placeholder = react_1.createRef()
-    _this.updateFloat = _this.updateFloat.bind(_this)
+    _this.updateFloat = function() {
+      _this.placeholder.current &&
+        (_this.placeholder.current.className =
+          'gerami-placeholder ' + (_this.value && 'gerami-float'))
+    }
     return _this
   }
+  Object.defineProperty(TextArea.prototype, 'value', {
+    get: function() {
+      return this.textarea.current && this.textarea.current.value
+    },
+    enumerable: true,
+    configurable: true
+  })
   TextArea.prototype.componentDidMount = function() {
     this.updateFloat()
   }
@@ -97,17 +109,6 @@ var TextArea = /** @class */ (function(_super) {
       )
     )
   }
-  TextArea.prototype.updateFloat = function() {
-    this.placeholder.current.className =
-      'gerami-placeholder' + (this.textarea.current.value ? ' gerami-float' : '')
-  }
-  Object.defineProperty(TextArea.prototype, 'value', {
-    get: function() {
-      return this.textarea.current.value
-    },
-    enumerable: true,
-    configurable: true
-  })
   return TextArea
 })(react_1.Component)
 exports.TextArea = TextArea

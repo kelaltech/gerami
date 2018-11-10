@@ -60,8 +60,10 @@ var react_1 = __importStar(require('react'))
 var Anchor_js_1 = require('../Anchor/Anchor.js')
 var MenuItem = /** @class */ (function(_super) {
   __extends(MenuItem, _super)
-  function MenuItem(props) {
-    return _super.call(this, props) || this
+  function MenuItem() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   MenuItem.prototype.render = function() {
     var _a = this.props,
@@ -70,9 +72,7 @@ var MenuItem = /** @class */ (function(_super) {
       rest = __rest(_a, ['children', 'className'])
     return react_1.default.createElement(
       Anchor_js_1.Anchor,
-      __assign({ button: true }, rest, {
-        className: 'gerami-menu-item' + (className ? ' ' + className : '')
-      }),
+      __assign({ button: true }, rest, { className: 'gerami-menu-item ' + className }),
       children
     )
   }

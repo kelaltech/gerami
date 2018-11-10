@@ -63,10 +63,10 @@ var Warning = /** @class */ (function(_super) {
   __extends(Warning, _super)
   function Warning(props) {
     var _this = _super.call(this, props) || this
-    _this.dead = false
     _this.state = {
       hidden: false
     }
+    _this.dead = false
     _this.shyAway = _this.shyAway.bind(_this)
     return _this
   }

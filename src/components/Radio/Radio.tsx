@@ -1,41 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component, InputHTMLAttributes } from 'react'
 
-interface IRadio {
-  status: boolean
-}
-
-interface props {
-  className?: string
+export interface IRadioProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string
   type?: string
   name?: string
 }
 
-export class Radio extends Component<props, any> {
-  state: IRadio = {
+interface IRadioState {
+  status: boolean
+}
+
+export class Radio extends Component<IRadioProps, IRadioState> {
+  state = {
     status: false
   }
 
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      status: false
-    }
-  }
-  f() {
-    if (!this.state.status) {
-      this.setState({
-        status: true
-      })
-    } else {
-      this.setState({
-        status: false
-      })
-    }
-  }
-
   render() {
-    const { className, value, name, children } = this.props
+    const { className, value, name, children, ...rest } = this.props
     return (
       <div>
         <input
@@ -44,11 +25,16 @@ export class Radio extends Component<props, any> {
           name={name}
           value={value}
           checked={this.state.status}
-          onClick={this.f.bind(this)}
+          onClick={this.toggle}
+          {...rest as any}
         />
         {name ? '' : null}
         {children}
       </div>
     )
+  }
+
+  toggle = () => {
+    this.setState(old => ({ status: !old.status }))
   }
 }

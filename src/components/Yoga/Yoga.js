@@ -79,7 +79,9 @@ var sizeSpec = {
 var Yoga = /** @class */ (function(_super) {
   __extends(Yoga, _super)
   function Yoga() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Yoga.prototype.render = function() {
     var _a = this.props,

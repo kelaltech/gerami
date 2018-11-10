@@ -59,8 +59,10 @@ Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var Page = /** @class */ (function(_super) {
   __extends(Page, _super)
-  function Page(props) {
-    return _super.call(this, props) || this
+  function Page() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Page.prototype.render = function() {
     var _a = this.props,

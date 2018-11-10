@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 
-interface props {
-  open: boolean
+export interface IDialogProps {
+  open?: boolean
   width?: string | number
 }
 
-export class Dialog extends Component<props, any> {
+interface IDialogState {}
+
+export class Dialog extends Component<IDialogProps, IDialogState> {
+  state = {}
+
   render() {
+    const { open, children, width } = this.props
+
     return (
-      <div className="gerami-modal center" style={{ display: this.props.open ? 'block' : 'none' }}>
-        <div className="gerami-modal-content" style={{ width: this.props.width }}>
-          {this.props.children}
+      <div className="gerami-modal center" style={{ display: open ? 'block' : 'none' }}>
+        <div className="gerami-modal-content" style={{ width }}>
+          {children}
         </div>
       </div>
     )

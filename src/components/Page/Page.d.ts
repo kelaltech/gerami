@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-interface props {
+import { Component, HTMLAttributes } from 'react'
+export interface IPageProps extends HTMLAttributes<HTMLDivElement> {
   bottom?: string | number | boolean
-  className?: string
   top?: string | number | boolean
-  style?: string | React.CSSProperties
 }
-export declare class Page extends Component<props> {
-  constructor(props: any)
+interface IPageState {}
+export declare class Page extends Component<IPageProps, IPageState> {
+  state: {}
   render(): JSX.Element
 }
 export {}

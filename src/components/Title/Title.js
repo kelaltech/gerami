@@ -52,7 +52,9 @@ var sizeSpec = {
 var Title = /** @class */ (function(_super) {
   __extends(Title, _super)
   function Title() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Title.prototype.render = function() {
     var _a = this.props,

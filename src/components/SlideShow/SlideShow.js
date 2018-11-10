@@ -22,6 +22,30 @@ var __extends =
       d.prototype = b === null ? Object.create(b) : ((__.prototype = b.prototype), new __())
     }
   })()
+var __assign =
+  (this && this.__assign) ||
+  function() {
+    __assign =
+      Object.assign ||
+      function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i]
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
+        }
+        return t
+      }
+    return __assign.apply(this, arguments)
+  }
+var __rest =
+  (this && this.__rest) ||
+  function(s, e) {
+    var t = {}
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p]
+    if (s != null && typeof Object.getOwnPropertySymbols === 'function')
+      for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)
+        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
+    return t
+  }
 var __importStar =
   (this && this.__importStar) ||
   function(mod) {
@@ -32,11 +56,12 @@ var __importStar =
     return result
   }
 Object.defineProperty(exports, '__esModule', { value: true })
-var React = __importStar(require('react'))
+var react_1 = __importStar(require('react'))
 var SlideShow = /** @class */ (function(_super) {
   __extends(SlideShow, _super)
   function SlideShow() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
     _this.slideIndex = 0
     _this.movement = function(n) {
       _this.slides((_this.slideIndex += n))
@@ -45,13 +70,13 @@ var SlideShow = /** @class */ (function(_super) {
       _this.slides((_this.slideIndex = n))
     }
     _this.automatic = function() {
-      var x = document.getElementsByClassName('slides')
-      var dots = document.getElementsByClassName('dot')
+      var x = document.getElementsByClassName('gerami-slideShow-slides')
+      var dots = document.getElementsByClassName('gerami-slideShow-dot')
       for (var i = 0; i < x.length; i++) {
         x[i].style.display = 'none'
       }
       for (var i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(' active', '')
+        dots[i].className = dots[i].className.replace('gerami-slideShow-active', '')
       }
       _this.slideIndex++
       if (_this.slideIndex > x.length) {
@@ -63,8 +88,8 @@ var SlideShow = /** @class */ (function(_super) {
       else setTimeout(_this.automatic, 2000)
     }
     _this.slides = function(n) {
-      var slides = document.getElementsByClassName('slides')
-      var dots = document.getElementsByClassName('dot')
+      var slides = document.getElementsByClassName('gerami-slideShow-slides')
+      var dots = document.getElementsByClassName('gerami-slideShow-dot')
       if (n > slides.length) {
         _this.slideIndex = 1
       }
@@ -75,7 +100,7 @@ var SlideShow = /** @class */ (function(_super) {
         slides[i].style.display = 'none'
       }
       for (var i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(' active', '')
+        dots[i].className = dots[i].className.replace('gerami-slideShow-active', '')
       }
       slides[_this.slideIndex - 1].style.display = 'block'
       dots[_this.slideIndex - 1].className += ' active'
@@ -89,51 +114,65 @@ var SlideShow = /** @class */ (function(_super) {
   }
   SlideShow.prototype.render = function() {
     var _this = this
-    return React.createElement(
+    var _a = this.props,
+      height = _a.height,
+      Images = _a.Images,
+      Data = _a.Data,
+      showControls = _a.showControls,
+      animation = _a.animation,
+      rest = __rest(_a, ['height', 'Images', 'Data', 'showControls', 'animation'])
+    return react_1.default.createElement(
       'div',
-      null,
-      React.createElement(
+      __assign({}, rest),
+      react_1.default.createElement(
         'div',
-        { className: 'SlideShowContainer' },
-        this.props.Images
-          ? React.createElement(
+        { className: 'gerami-slideShow-SlideShowContainer' },
+        Images
+          ? react_1.default.createElement(
               'div',
               null,
-              this.props.Images.map(function(Image) {
-                return React.createElement(
+              Images.map(function(Image) {
+                return react_1.default.createElement(
                   'div',
-                  { className: 'slides ' + _this.props.animation },
-                  React.createElement('img', {
+                  { className: 'gerami-slideShow-slides ' + animation },
+                  react_1.default.createElement('img', {
                     src: Image.Image,
                     style: { width: '100%' },
-                    height: _this.props.height ? _this.props.height : ''
+                    height: height || ''
                   }),
-                  React.createElement('div', { className: 'text' }, Image.Caption)
+                  react_1.default.createElement(
+                    'div',
+                    { className: 'gerami-slideShow-text' },
+                    Image.Caption
+                  )
                 )
               })
             )
           : '',
-        this.props.Data
-          ? React.createElement(
+        Data
+          ? react_1.default.createElement(
               'div',
               null,
-              this.props.Data.map(function(Data) {
-                return React.createElement(
+              Data.map(function(Data) {
+                return react_1.default.createElement(
                   'div',
-                  { ref: 'slides', className: 'mySlides fade' },
-                  React.createElement('div', { style: { width: '100%' } }, Data)
+                  {
+                    ref: 'gerami-slideShow-slides',
+                    className: 'gerami-slideShow-mySlides gerami-slideShow-fade'
+                  },
+                  react_1.default.createElement('div', { style: { width: '100%' } }, Data)
                 )
               })
             )
           : '',
-        this.props.showControls
-          ? React.createElement(
+        showControls
+          ? react_1.default.createElement(
               'span',
               null,
-              React.createElement(
+              react_1.default.createElement(
                 'a',
                 {
-                  className: 'prev',
+                  className: 'gerami-slideShow-prev',
                   onClick: function() {
                     return _this.movement(-1)
                   }
@@ -142,10 +181,10 @@ var SlideShow = /** @class */ (function(_super) {
                 '\u276E',
                 ' '
               ),
-              React.createElement(
+              react_1.default.createElement(
                 'a',
                 {
-                  className: 'next',
+                  className: 'gerami-slideShow-next',
                   onClick: function() {
                     return _this.movement(1)
                   }
@@ -155,28 +194,28 @@ var SlideShow = /** @class */ (function(_super) {
               )
             )
           : '',
-        this.props.showControls
-          ? React.createElement(
+        showControls
+          ? react_1.default.createElement(
               'div',
-              { className: 'dot-style', style: { textAlign: 'center' } },
-              this.props.Images
-                ? React.createElement(
+              { className: 'gerami-slideShow-dot-style', style: { textAlign: 'center' } },
+              Images
+                ? react_1.default.createElement(
                     'div',
                     null,
-                    this.props.Images.map(function(Image, index) {
-                      return React.createElement(
+                    Images.map(function(Image, index) {
+                      return react_1.default.createElement(
                         'span',
                         null,
-                        React.createElement(
+                        react_1.default.createElement(
                           'span',
                           { style: { display: 'none' } },
                           ' ',
-                          React.createElement('img', { src: Image.Image })
+                          react_1.default.createElement('img', { src: Image.Image })
                         ),
-                        React.createElement(
+                        react_1.default.createElement(
                           'span',
                           {
-                            className: 'dot',
+                            className: 'gerami-slideShow-dot',
                             onClick: function() {
                               return _this.currentSlide(index + 1)
                             }
@@ -188,27 +227,27 @@ var SlideShow = /** @class */ (function(_super) {
                   )
                 : ''
             )
-          : React.createElement(
+          : react_1.default.createElement(
               'div',
-              { className: 'dot-style', style: { textAlign: 'center' } },
-              this.props.Data
-                ? React.createElement(
+              { className: 'gerami-slideShow-dot-style', style: { textAlign: 'center' } },
+              Data
+                ? react_1.default.createElement(
                     'div',
                     null,
-                    this.props.Data.map(function(Image, index) {
-                      return React.createElement(
+                    Data.map(function(Image, index) {
+                      return react_1.default.createElement(
                         'span',
                         null,
-                        React.createElement(
+                        react_1.default.createElement(
                           'span',
                           { style: { display: 'none' } },
                           ' ',
-                          React.createElement('img', { src: Image.Image })
+                          react_1.default.createElement('img', { src: Image.Image })
                         ),
-                        React.createElement(
+                        react_1.default.createElement(
                           'span',
                           {
-                            className: 'dot',
+                            className: 'gerami-slideShow-dot',
                             onClick: function() {
                               return _this.currentSlide(index + 1)
                             }
@@ -221,9 +260,9 @@ var SlideShow = /** @class */ (function(_super) {
                 : ''
             )
       ),
-      React.createElement('br', null)
+      react_1.default.createElement('br', null)
     )
   }
   return SlideShow
-})(React.Component)
+})(react_1.Component)
 exports.SlideShow = SlideShow

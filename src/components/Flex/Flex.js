@@ -35,14 +35,14 @@ Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var Flex = /** @class */ (function(_super) {
   __extends(Flex, _super)
-  function Flex(props) {
-    return _super.call(this, props) || this
+  function Flex() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Flex.prototype.render = function() {
-    return react_1.default.createElement('div', {
-      className: this.props.className,
-      style: this.props.style
-    })
+    var className = this.props.className
+    return react_1.default.createElement('div', { className: 'gerami-flex ' + className })
   }
   return Flex
 })(react_1.Component)

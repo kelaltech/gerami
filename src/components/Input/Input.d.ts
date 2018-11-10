@@ -1,22 +1,16 @@
-import React, { Component } from 'react'
-interface props {
-  className?: string
+import React, { Component, InputHTMLAttributes, RefObject } from 'react'
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
-  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void
-  placeholder?: string
-  inputRef?: any
+  inputRef?: RefObject<HTMLInputElement>
 }
-export declare class Input extends Component<props> {
-  input: any
-  placeholder: any
-  constructor(props: any)
+interface IInputState {}
+export declare class Input extends Component<IInputProps, IInputState> {
+  state: {}
+  input: React.RefObject<HTMLInputElement>
+  placeholder: React.RefObject<HTMLDivElement>
+  readonly value: string | null
   componentDidMount(): void
   render(): JSX.Element
   updateFloat(): void
-  readonly value: any
 }
 export {}

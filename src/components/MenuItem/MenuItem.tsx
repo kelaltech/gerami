@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import { Anchor } from '../Anchor/Anchor.js'
+import { Anchor, IAnchorProps } from '../Anchor/Anchor.js'
 
-interface props {
-  className?: string
-}
+export interface IMenuItemProps extends IAnchorProps {}
 
-export class MenuItem extends Component<props> {
-  constructor(props: any) {
-    super(props)
-  }
+interface IMenuItemState {}
+
+export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
+  state = {}
+
   render() {
     const { children, className, ...rest } = this.props
+
     return (
-      <Anchor button {...rest} className={`gerami-menu-item${className ? ' ' + className : ''}`}>
+      <Anchor button {...rest} className={`gerami-menu-item ${className}`}>
         {children}
       </Anchor>
     )

@@ -1,10 +1,11 @@
-import { Component } from 'react'
-interface props {
-  className?: string
+import { Component, HTMLAttributes } from 'react'
+export interface IBlockProps extends HTMLAttributes<HTMLDivElement> {
   first?: boolean
   last?: boolean
 }
-export declare class Block extends Component<props> {
+interface IBlockState {}
+export declare class Block extends Component<IBlockProps, IBlockState> {
+  state: {}
   render(): JSX.Element
 }
 export {}

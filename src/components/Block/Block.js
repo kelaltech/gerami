@@ -60,7 +60,9 @@ var react_1 = __importStar(require('react'))
 var Block = /** @class */ (function(_super) {
   __extends(Block, _super)
   function Block() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Block.prototype.render = function() {
     var _a = this.props,
@@ -79,7 +81,7 @@ var Block = /** @class */ (function(_super) {
           }
         },
         rest,
-        { className: 'gerami-block' + (className ? ' ' + className : '') }
+        { className: 'gerami-block ' + (className || '') }
       ),
       children
     )

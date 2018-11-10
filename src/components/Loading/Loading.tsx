@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import { Warning } from '../Warning/Warning.js'
 
-interface ILoadingProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface ILoadingProps extends HTMLAttributes<HTMLDivElement> {
   error?: string
   pastDelay?: number | boolean
   problem?: { code: number; message: string } | string
@@ -16,14 +15,14 @@ interface ILoadingState {
 }
 
 export class Loading extends Component<ILoadingProps, ILoadingState> {
+  state = {
+    pastCustomDelay: !!this.props.delay ? !this.props.delay : true
+  }
+
   dead: any = null
 
   constructor(props: any) {
     super(props)
-
-    this.state = {
-      pastCustomDelay: !!props.delay ? !props.delay : true
-    }
 
     if (props.delay)
       setTimeout(() => {

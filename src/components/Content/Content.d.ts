@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import { Component, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
-export interface IContentProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IContentProps extends HTMLAttributes<HTMLDivElement> {
   transparent?: boolean
   size?: geramiSizeTypes
 }
-export declare class Content extends Component<IContentProps> {
+interface IContentState {}
+export declare class Content extends Component<IContentProps, IContentState> {
+  state: {}
   render(): JSX.Element
 }
+export {}

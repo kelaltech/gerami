@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties, createRef } from 'react'
+import React, { Component, CSSProperties, createRef, HTMLAttributes } from 'react'
 import { Anchor } from '../Anchor/Anchor.js'
 
 export interface IRangeMovedEvent {
@@ -6,8 +6,7 @@ export interface IRangeMovedEvent {
   max: number
 }
 
-export interface IRangeProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IRangeProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Absolute minimum value in the range's scale.
    */
@@ -65,7 +64,7 @@ export interface IRangeProps
   onMoved?: (e: IRangeMovedEvent) => void
 }
 
-export interface IRangeState {
+interface IRangeState {
   checked: boolean
   currentMin: number
   currentMax: number

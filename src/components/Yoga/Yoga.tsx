@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, ReactNodeArray } from 'react'
+import React, { Component, HTMLAttributes, ReactNode, ReactNodeArray } from 'react'
 import { geramiSizeTypes } from '../../index'
 
 const sizeSpec = {
@@ -18,8 +18,7 @@ const sizeSpec = {
   '9XL': 1960
 }
 
-export interface IYogaProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IYogaProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Number of maximum items in a row (max number of columns).
    */
@@ -30,12 +29,14 @@ export interface IYogaProps
   size?: geramiSizeTypes
 }
 
-export interface IYogaState {}
+interface IYogaState {}
 
 /**
  * A responsive container that does not stretch its child elements to fill vacant spaces.
  */
 export class Yoga extends Component<IYogaProps, IYogaState> {
+  state = {}
+
   render() {
     const { children, maxCol, size, style, ...rest } = this.props
 

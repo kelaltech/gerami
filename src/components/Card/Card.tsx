@@ -1,19 +1,22 @@
-import React, { Component, ReactNode } from 'react'
+import React, { Component, CSSProperties, ReactNode } from 'react'
 import { Content, IContentProps } from '../Content/Content.js'
 
 export interface ICardProps extends IContentProps {
   actions?: ReactNode
   imgSrc?: string
-  imgStyle?: React.CSSProperties
+  imgStyle?: CSSProperties
   title?: string
   subtitle?: string
 }
 
-export interface ICardState {}
+interface ICardState {}
 
 export class Card extends Component<ICardProps, ICardState> {
+  state = {}
+
   render() {
     const { actions, children, className, imgSrc, imgStyle, subtitle, title, ...rest } = this.props
+
     return (
       <Content {...rest as any} className={`gerami-card ${className || ''}`}>
         {imgSrc ? (

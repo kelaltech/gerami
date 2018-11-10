@@ -1,16 +1,47 @@
 import * as React from 'react'
-import icon from './3.jpg'
-interface props {
-  image?: Object
+import defaultPlaceholderSrc from './3.jpg'
+import { Component, HTMLAttributes } from 'react'
+
+export interface IImageInputProps extends HTMLAttributes<HTMLDivElement> {
+  placeholderSrc?: string
   className?: string
   width?: number | string
   circular?: boolean
   borderRadius?: string | number
 }
 
-export class ImageInput extends React.Component<props> {
-  state = {
-    image: this.props.image ? this.props.image : icon
+interface IImageInputState {}
+
+export class ImageInput extends Component<IImageInputProps, IImageInputState> {
+  state = {}
+
+  render() {
+    const { circular, placeholderSrc, width, borderRadius, ...rest } = this.props
+
+    return (
+      <div {...rest as any}>
+        <div className={'gerami-imageInput-Camera-Image'}>
+          <label htmlFor={'Cover'}>
+            <img
+              className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
+              src={placeholderSrc || defaultPlaceholderSrc}
+              width={width ? width : '100px'}
+              height={width ? width : '100px'}
+              style={borderRadius ? { borderRadius } : {}}
+              alt="Insert image"
+            />
+          </label>
+          <input
+            className={'gerami-imageInput-File gerami-imageInput-none'}
+            id="Cover"
+            name="picture"
+            onChange={this.changeImg}
+            type="file"
+            required
+          />
+        </div>
+      </div>
+    )
   }
 
   private changeImg(e: any) {
@@ -22,36 +53,5 @@ export class ImageInput extends React.Component<props> {
     const reader = new FileReader()
     reader.onload = ev => this.setState({ image: (ev.target as any).result })
     reader.readAsDataURL(file)
-  }
-
-  render() {
-    return (
-      <div>
-        <div className={'gerami-imageInput-Camera-Image'}>
-          <label htmlFor={'Cover'}>
-            <img
-              className={
-                this.props.circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'
-              }
-              src={this.state.image}
-              width={this.props.width ? this.props.width : '100px'}
-              height={this.props.width ? this.props.width : '100px'}
-              style={this.props.borderRadius ? { borderRadius: this.props.borderRadius } : {}}
-              alt="Insert image"
-            />
-          </label>
-          <input
-            className={'gerami-imageInput-File gerami-imageInput-none'}
-            id="Cover"
-            name="picture"
-            onChange={(e: any) => {
-              this.changeImg(e)
-            }}
-            type="file"
-            required
-          />
-        </div>
-      </div>
-    )
   }
 }

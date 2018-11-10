@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import { AnchorHTMLAttributes, Component } from 'react'
 import { LocationDescriptor } from 'history'
-export interface IAnchorProps
-  extends React.DetailedHTMLProps<
-      React.AnchorHTMLAttributes<HTMLAnchorElement>,
-      HTMLAnchorElement
-    > {
+export interface IAnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   button?: boolean
   to?: LocationDescriptor
   replace?: boolean
   innerRef?: (node: HTMLAnchorElement | null) => void
 }
-export interface IAnchorState {}
+interface IAnchorState {}
 export declare class Anchor extends Component<IAnchorProps, IAnchorState> {
+  state: {}
   render(): JSX.Element
 }
+export {}

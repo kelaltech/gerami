@@ -59,13 +59,20 @@ Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var Input = /** @class */ (function(_super) {
   __extends(Input, _super)
-  function Input(props) {
-    var _this = _super.call(this, props) || this
+  function Input() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
     _this.input = _this.props.inputRef || react_1.createRef()
     _this.placeholder = react_1.createRef()
-    _this.updateFloat = _this.updateFloat.bind(_this)
     return _this
   }
+  Object.defineProperty(Input.prototype, 'value', {
+    get: function() {
+      return this.input.current && this.input.current.value
+    },
+    enumerable: true,
+    configurable: true
+  })
   Input.prototype.componentDidMount = function() {
     this.updateFloat()
   }
@@ -90,7 +97,6 @@ var Input = /** @class */ (function(_super) {
         'onKeyUp',
         'placeholder'
       ])
-    //@ts-ignore
     !rest || delete rest.inputRef
     return react_1.default.createElement(
       'label',
@@ -130,16 +136,9 @@ var Input = /** @class */ (function(_super) {
     )
   }
   Input.prototype.updateFloat = function() {
-    this.placeholder.current.className =
-      'gerami-placeholder' + (this.input.current.value ? ' gerami-float' : '')
+    this.placeholder.current &&
+      (this.placeholder.current.className = 'gerami-placeholder ' + (this.value && 'gerami-float'))
   }
-  Object.defineProperty(Input.prototype, 'value', {
-    get: function() {
-      return this.input.current.value
-    },
-    enumerable: true,
-    configurable: true
-  })
   return Input
 })(react_1.Component)
 exports.Input = Input

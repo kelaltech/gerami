@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import { LocationDescriptor } from 'history'
 import { geramiSizeTypes } from '../../index'
 import { Anchor, IAnchorProps } from '../Anchor/Anchor.js'
@@ -20,13 +20,13 @@ const sizeSpec = {
   '9XL': 196
 }
 
-export interface IImageAttributes {
+interface IImageAttributes {
   src: string
   size?: geramiSizeTypes
 }
 
-type IImageProps = IImageAttributes &
-  (IAnchorProps | React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) & {
+export type IImageProps = IImageAttributes &
+  (IAnchorProps | HTMLAttributes<HTMLDivElement>) & {
     to?: boolean | LocationDescriptor
     href?: string
   }
@@ -34,6 +34,8 @@ type IImageProps = IImageAttributes &
 export interface IImageState {}
 
 export class Image extends Component<IImageProps, IImageState> {
+  state = {}
+
   render() {
     let { className, size, style, to, src, ...rest } = this.props
 

@@ -1,101 +1,37 @@
-import React from 'react'
+import React, { Component, InputHTMLAttributes } from 'react'
 
-interface ICheckBox {
+export interface ICheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
+  checked?: boolean
+}
+
+interface ICheckBoxState {
   status: boolean
-  checkMark: any
 }
 
-interface props {
-  className: string
-  checked?: string | boolean | number
-}
-
-export class CheckBox extends React.Component<props> {
-  state: ICheckBox = {
-    status: false,
-    checkMark: null
-  }
-
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      status: false,
-      checkMark: null
-    }
-
-    this.toggleCheckbox = this.toggleCheckbox.bind(this)
-
-    const checked = this.props.checked
-    let status
-
-    switch (typeof checked) {
-      case 'number':
-        if (checked === 0) status = true
-        else status = true
-        break
-      case 'string':
-        if (checked === 'true') status = true
-        else if (checked === 'false') status = false
-        break
-      case 'boolean':
-        status = checked
-        break
-      default:
-        status = false
-        break
-    }
-
-    this.setState({
-      status: status
-    })
-
-    console.log(this.props.checked)
-  }
-
-  componentDidMount() {
-    this.setState({
-      status: this.props.checked,
-      checkMark: document.getElementById(this.props.className + 'check-mark')
-    })
-  }
-
-  toggleCheckbox() {
-    const checkMark = this.state.checkMark
-
-    if (!this.state.status) {
-      checkMark.style.backgroundColor = 'rgb(0, 180, 120)'
-      this.setState({
-        status: true
-      })
-    } else {
-      this.setState({
-        status: false
-      })
-      checkMark.style.backgroundColor = '#eee'
-    }
+export class CheckBox extends Component<ICheckBoxProps, ICheckBoxState> {
+  state = {
+    status: this.props.checked || false
   }
 
   render() {
+    const { className, ...rest } = this.props
+    const { status } = this.state
+
     return (
-      <div
-        className={
-          this.props.className == undefined
-            ? 'gerami-checkbox'
-            : this.props.className + ' gerami-checkbox'
-        }
-      >
+      <div className={`gerami-checkbox ${className || ''}`}>
         <input
           type="checkbox"
-          checked={this.state.status}
-          onClick={this.toggleCheckbox.bind(this)}
+          checked={status}
+          onClick={this.toggle}
+          {...rest as any}
           className={'input-element'}
         />
-        <span
-          className="check-mark"
-          id={this.props.className + 'check-mark'}
-          onClick={this.toggleCheckbox}
-        />
+        <span className="check-mark" onClick={this.toggle} />
       </div>
     )
+  }
+
+  toggle = (): void => {
+    this.setState(old => ({ status: !old.status }))
   }
 }

@@ -62,10 +62,10 @@ var Loading = /** @class */ (function(_super) {
   __extends(Loading, _super)
   function Loading(props) {
     var _this = _super.call(this, props) || this
-    _this.dead = null
     _this.state = {
-      pastCustomDelay: !!props.delay ? !props.delay : true
+      pastCustomDelay: !!_this.props.delay ? !_this.props.delay : true
     }
+    _this.dead = null
     if (props.delay)
       setTimeout(function() {
         !(_this.dead === false) || _this.setState({ pastCustomDelay: true })

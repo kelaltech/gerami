@@ -1,15 +1,15 @@
-import { Component } from 'react'
-export interface ISelectProps {
+import { Component, HTMLAttributes } from 'react'
+export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
   placeholder?: string
   options: any[]
   multiple?: boolean
-  selectedvalue?: any
+  selectedValue?: any
   minWidth?: number | string
   maxWidth?: number | string
   size?: number | string
 }
-export interface ISelectState {
+interface ISelectState {
   showOptions: boolean
   multipleSelectedItems: any[]
   singleSelectedItem: any
@@ -17,7 +17,6 @@ export interface ISelectState {
   showPlaceholder: boolean
 }
 export declare class Select extends Component<ISelectProps, ISelectState> {
-  constructor(props: any)
   state: {
     options: any[]
     showOptions: boolean
@@ -25,7 +24,6 @@ export declare class Select extends Component<ISelectProps, ISelectState> {
     singleSelectedItem: null
     showPlaceholder: boolean
   }
-  componentDidMount(): void
   render(): JSX.Element
   handleShow: () => void
   clearAllSelection: () => void
@@ -33,3 +31,4 @@ export declare class Select extends Component<ISelectProps, ISelectState> {
   handleDisSelect: (option: any) => void
   handleSelectedOption: (option: any) => void
 }
+export {}

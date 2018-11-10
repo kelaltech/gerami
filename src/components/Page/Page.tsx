@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 
-interface props {
+export interface IPageProps extends HTMLAttributes<HTMLDivElement> {
   bottom?: string | number | boolean
-  className?: string
   top?: string | number | boolean
-  style?: string | React.CSSProperties
 }
 
-export class Page extends Component<props> {
-  constructor(props: any) {
-    super(props)
-  }
+interface IPageState {}
+
+export class Page extends Component<IPageProps, IPageState> {
+  state = {}
 
   render() {
     const { bottom, children, className, top, style, ...rest } = this.props
@@ -34,7 +32,7 @@ export class Page extends Component<props> {
 
     return (
       <div
-        {...rest}
+        {...rest as any}
         className={`gerami-page${className ? ' ' + className : ''}`}
         style={Object.assign(
           {

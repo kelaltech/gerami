@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
-export interface IButtonProps
-  extends React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    > {
+import { ButtonHTMLAttributes, Component } from 'react'
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean
   to?: string
 }
-export interface IButtonState {}
+interface IButtonState {}
 export declare class Button extends Component<IButtonProps, IButtonState> {
+  state: {}
   render(): JSX.Element
 }
+export {}

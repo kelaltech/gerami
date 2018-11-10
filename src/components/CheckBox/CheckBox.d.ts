@@ -1,17 +1,15 @@
-import React from 'react'
-interface ICheckBox {
+import { Component, InputHTMLAttributes } from 'react'
+export interface ICheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
+  checked?: boolean
+}
+interface ICheckBoxState {
   status: boolean
-  checkMark: any
 }
-interface props {
-  className: string
-  checked?: string | boolean | number
-}
-export declare class CheckBox extends React.Component<props> {
-  state: ICheckBox
-  constructor(props: any)
-  componentDidMount(): void
-  toggleCheckbox(): void
+export declare class CheckBox extends Component<ICheckBoxProps, ICheckBoxState> {
+  state: {
+    status: boolean
+  }
   render(): JSX.Element
+  toggle: () => void
 }
 export {}

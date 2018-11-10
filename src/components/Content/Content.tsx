@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
 
 const sizeSpec = {
@@ -18,16 +18,18 @@ const sizeSpec = {
   '9XL': 1960
 }
 
-export interface IContentProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IContentProps extends HTMLAttributes<HTMLDivElement> {
   transparent?: boolean
   size?: geramiSizeTypes
 }
 
-export class Content extends Component<IContentProps> {
+interface IContentState {}
+
+export class Content extends Component<IContentProps, IContentState> {
+  state = {}
+
   render() {
     const { children, className, size, style, transparent, ...rest } = this.props
-
     const maxWidth = size && (typeof size === 'string' ? sizeSpec[size] : size)
 
     return (

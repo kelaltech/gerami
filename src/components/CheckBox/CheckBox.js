@@ -22,92 +22,72 @@ var __extends =
       d.prototype = b === null ? Object.create(b) : ((__.prototype = b.prototype), new __())
     }
   })()
-var __importDefault =
-  (this && this.__importDefault) ||
+var __assign =
+  (this && this.__assign) ||
+  function() {
+    __assign =
+      Object.assign ||
+      function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i]
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]
+        }
+        return t
+      }
+    return __assign.apply(this, arguments)
+  }
+var __rest =
+  (this && this.__rest) ||
+  function(s, e) {
+    var t = {}
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p]
+    if (s != null && typeof Object.getOwnPropertySymbols === 'function')
+      for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)
+        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
+    return t
+  }
+var __importStar =
+  (this && this.__importStar) ||
   function(mod) {
-    return mod && mod.__esModule ? mod : { default: mod }
+    if (mod && mod.__esModule) return mod
+    var result = {}
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k]
+    result['default'] = mod
+    return result
   }
 Object.defineProperty(exports, '__esModule', { value: true })
-var react_1 = __importDefault(require('react'))
+var react_1 = __importStar(require('react'))
 var CheckBox = /** @class */ (function(_super) {
   __extends(CheckBox, _super)
-  function CheckBox(props) {
-    var _this = _super.call(this, props) || this
+  function CheckBox() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
-      status: false,
-      checkMark: null
+      status: _this.props.checked || false
     }
-    _this.state = {
-      status: false,
-      checkMark: null
+    _this.toggle = function() {
+      _this.setState(function(old) {
+        return { status: !old.status }
+      })
     }
-    _this.toggleCheckbox = _this.toggleCheckbox.bind(_this)
-    var checked = _this.props.checked
-    var status
-    switch (typeof checked) {
-      case 'number':
-        if (checked === 0) status = true
-        else status = true
-        break
-      case 'string':
-        if (checked === 'true') status = true
-        else if (checked === 'false') status = false
-        break
-      case 'boolean':
-        status = checked
-        break
-      default:
-        status = false
-        break
-    }
-    _this.setState({
-      status: status
-    })
-    console.log(_this.props.checked)
     return _this
   }
-  CheckBox.prototype.componentDidMount = function() {
-    this.setState({
-      status: this.props.checked,
-      checkMark: document.getElementById(this.props.className + 'check-mark')
-    })
-  }
-  CheckBox.prototype.toggleCheckbox = function() {
-    var checkMark = this.state.checkMark
-    if (!this.state.status) {
-      checkMark.style.backgroundColor = 'rgb(0, 180, 120)'
-      this.setState({
-        status: true
-      })
-    } else {
-      this.setState({
-        status: false
-      })
-      checkMark.style.backgroundColor = '#eee'
-    }
-  }
   CheckBox.prototype.render = function() {
+    var _a = this.props,
+      className = _a.className,
+      rest = __rest(_a, ['className'])
+    var status = this.state.status
     return react_1.default.createElement(
       'div',
-      {
-        className:
-          this.props.className == undefined
-            ? 'gerami-checkbox'
-            : this.props.className + ' gerami-checkbox'
-      },
-      react_1.default.createElement('input', {
-        type: 'checkbox',
-        checked: this.state.status,
-        onClick: this.toggleCheckbox.bind(this),
-        className: 'input-element'
-      }),
-      react_1.default.createElement('span', {
-        className: 'check-mark',
-        id: this.props.className + 'check-mark',
-        onClick: this.toggleCheckbox
-      })
+      { className: 'gerami-checkbox ' + (className || '') },
+      react_1.default.createElement(
+        'input',
+        __assign({ type: 'checkbox', checked: status, onClick: this.toggle }, rest, {
+          className: 'input-element'
+        })
+      ),
+      react_1.default.createElement('span', { className: 'check-mark', onClick: this.toggle })
     )
   }
   return CheckBox
-})(react_1.default.Component)
+})(react_1.Component)
 exports.CheckBox = CheckBox

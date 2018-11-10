@@ -1,9 +1,11 @@
 import { Component } from 'react'
-interface props {
-  open: boolean
+export interface IDialogProps {
+  open?: boolean
   width?: string | number
 }
-export declare class Dialog extends Component<props, any> {
+interface IDialogState {}
+export declare class Dialog extends Component<IDialogProps, IDialogState> {
+  state: {}
   render(): JSX.Element
 }
 export {}

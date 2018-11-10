@@ -76,7 +76,9 @@ var sizeSpec = {
 var Content = /** @class */ (function(_super) {
   __extends(Content, _super)
   function Content() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Content.prototype.render = function() {
     var _a = this.props,

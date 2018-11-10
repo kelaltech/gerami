@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, CSSProperties, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
 import { Content } from '../Content/Content.js'
 
@@ -19,19 +19,18 @@ const sizeSpec = {
   '9XL': 525
 }
 
-export interface IMenuDropProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface IMenuDropProps extends HTMLAttributes<HTMLDivElement> {
   align?: 'left' | 'right'
   anchorOffset?: string | number
-  backgroundStyle?: React.CSSProperties
-  containerStyle?: React.CSSProperties
+  backgroundStyle?: CSSProperties
+  containerStyle?: CSSProperties
   open: boolean
   noClose?: boolean
   onClose?: () => any
   size?: geramiSizeTypes
 }
 
-export interface IMenuDropState {}
+interface IMenuDropState {}
 
 export class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
   state = {

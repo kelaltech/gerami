@@ -1,24 +1,20 @@
-import React, { Component, createRef } from 'react'
+import React, { Component, createRef, InputHTMLAttributes, RefObject } from 'react'
 
-interface props {
-  className?: string
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
-  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void
-  placeholder?: string
-  inputRef?: any
+  inputRef?: RefObject<HTMLInputElement>
 }
 
-export class Input extends Component<props> {
-  input = this.props.inputRef || createRef()
-  placeholder: any = createRef()
+interface IInputState {}
 
-  constructor(props: any) {
-    super(props)
-    this.updateFloat = this.updateFloat.bind(this)
+export class Input extends Component<IInputProps, IInputState> {
+  state = {}
+
+  input = this.props.inputRef || createRef<HTMLInputElement>()
+  placeholder = createRef<HTMLDivElement>()
+
+  get value(): string | null {
+    return this.input.current && this.input.current.value
   }
 
   componentDidMount() {
@@ -38,14 +34,13 @@ export class Input extends Component<props> {
       ...rest
     } = this.props
 
-    //@ts-ignore
     !rest || delete rest.inputRef
     return (
       <label className={`gerami-label${className ? ' ' + className : ''}`}>
         <input
           type={'text'}
           className={'gerami-Input'}
-          {...rest}
+          {...rest as any}
           onBlur={e => {
             this.updateFloat()
             !(typeof onBlur === 'function') || onBlur(e)
@@ -77,12 +72,7 @@ export class Input extends Component<props> {
   }
 
   updateFloat() {
-    this.placeholder.current.className = `gerami-placeholder${
-      this.input.current.value ? ' gerami-float' : ''
-    }`
-  }
-
-  get value() {
-    return this.input.current.value
+    this.placeholder.current &&
+      (this.placeholder.current.className = `gerami-placeholder ${this.value && 'gerami-float'}`)
   }
 }

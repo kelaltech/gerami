@@ -1,9 +1,9 @@
 import { Component } from 'react'
-interface props {
-  className?: string
-}
-export declare class MenuItem extends Component<props> {
-  constructor(props: any)
+import { IAnchorProps } from '../Anchor/Anchor.js'
+export interface IMenuItemProps extends IAnchorProps {}
+interface IMenuItemState {}
+export declare class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
+  state: {}
   render(): JSX.Element
 }
 export {}

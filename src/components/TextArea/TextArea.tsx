@@ -1,19 +1,21 @@
-import React, { Component, createRef } from 'react'
+import React, { Component, createRef, TextareaHTMLAttributes } from 'react'
 
-interface props {
+export interface ITextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string
   label?: string
   placeholder?: string
 }
 
-export class TextArea extends Component<props> {
-  textarea: any = createRef()
-  placeholder: any = createRef()
+interface ITextAreaState {}
 
-  constructor(props: any) {
-    super(props)
+export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
+  state = {}
 
-    this.updateFloat = this.updateFloat.bind(this)
+  textarea = createRef<HTMLTextAreaElement>()
+  placeholder = createRef<HTMLDivElement>()
+
+  get value(): string | null {
+    return this.textarea.current && this.textarea.current.value
   }
 
   componentDidMount() {
@@ -27,7 +29,7 @@ export class TextArea extends Component<props> {
       <label className={`gerami-label${className ? ' ' + className : ''}`}>
         <textarea
           className={'textarea'}
-          {...rest}
+          {...rest as any}
           onBlur={this.updateFloat}
           onChange={this.updateFloat}
           onFocus={this.updateFloat}
@@ -43,13 +45,8 @@ export class TextArea extends Component<props> {
     )
   }
 
-  updateFloat() {
-    this.placeholder.current.className = `gerami-placeholder${
-      this.textarea.current.value ? ' gerami-float' : ''
-    }`
-  }
-
-  get value() {
-    return this.textarea.current.value
+  updateFloat = (): void => {
+    this.placeholder.current &&
+      (this.placeholder.current.className = `gerami-placeholder ${this.value && 'gerami-float'}`)
   }
 }

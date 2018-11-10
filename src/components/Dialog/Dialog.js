@@ -36,16 +36,22 @@ var react_1 = __importStar(require('react'))
 var Dialog = /** @class */ (function(_super) {
   __extends(Dialog, _super)
   function Dialog() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Dialog.prototype.render = function() {
+    var _a = this.props,
+      open = _a.open,
+      children = _a.children,
+      width = _a.width
     return react_1.default.createElement(
       'div',
-      { className: 'gerami-modal center', style: { display: this.props.open ? 'block' : 'none' } },
+      { className: 'gerami-modal center', style: { display: open ? 'block' : 'none' } },
       react_1.default.createElement(
         'div',
-        { className: 'gerami-modal-content', style: { width: this.props.width } },
-        this.props.children
+        { className: 'gerami-modal-content', style: { width: width } },
+        children
       )
     )
   }

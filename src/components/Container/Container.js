@@ -33,41 +33,36 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
+/**
+ * @deprecated Will be replaced by Page.Anti
+ */
 var Container = /** @class */ (function(_super) {
   __extends(Container, _super)
-  function Container(props) {
-    var _this = _super.call(this, props) || this
-    _this.state = {
-      paddingTop: 0,
-      paddingBottom: 0,
-      paddingLeft: 0,
-      paddingRight: 0,
-      id: Math.random()
-    }
-    _this.setState({
-      paddingTop: _this.props.top,
-      paddingBottom: _this.props.bottom,
-      paddingLeft: _this.props.left,
-      paddingRight: _this.props.right
-    })
+  function Container() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
     return _this
   }
   Container.prototype.render = function() {
+    var _a = this.props,
+      className = _a.className,
+      top = _a.top,
+      right = _a.right,
+      bottom = _a.bottom,
+      left = _a.left,
+      style = _a.style
     return react_1.default.createElement(
       'div',
       {
-        className:
-          this.props.className == undefined
-            ? 'gerami-container'
-            : this.props.className + ' gerami-container',
+        className: 'gerami-container ' + (className || ''),
         style: Object.assign(
           {
-            paddingTop: this.state.paddingTop,
-            paddingBottom: this.state.paddingBottom,
-            paddingLeft: this.state.paddingLeft,
-            paddingRight: this.state.paddingRight
+            paddingTop: top,
+            paddingRight: right,
+            paddingBottom: bottom,
+            paddingLeft: left
           },
-          this.props.style
+          style
         )
       },
       this.props.children

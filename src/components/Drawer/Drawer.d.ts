@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, CSSProperties } from 'react'
 import { geramiSizeTypes } from '../../index'
-import { IContentProps } from '../Content/Content.js'
+import { Content, IContentProps } from '../Content/Content.js'
 export interface IDrawerProps extends IContentProps {
   /**
    * Decides whether the dialog opens from the left or the right.
@@ -9,12 +9,12 @@ export interface IDrawerProps extends IContentProps {
   /**
    * CSS style for the darkened background.
    */
-  backgroundStyle?: React.CSSProperties
+  backgroundStyle?: CSSProperties
   /**
    * CSS style for the container of the entire Drawer.
    * The container holds the darkened background and the Drawer content in it.
    */
-  containerStyle?: React.CSSProperties
+  containerStyle?: CSSProperties
   /**
    * Decides whether the Drawer is visible or hidden.
    */
@@ -32,7 +32,7 @@ export interface IDrawerProps extends IContentProps {
    */
   size?: geramiSizeTypes
 }
-export interface IDrawerState {
+interface IDrawerState {
   closed: boolean
 }
 /**
@@ -42,8 +42,9 @@ export declare class Drawer extends Component<IDrawerProps, IDrawerState> {
   state: {
     closed: boolean
   }
-  drawerRef: any
+  drawerRef: React.RefObject<Content>
   componentDidUpdate(): void
   render(): JSX.Element | null
   close: () => void
 }
+export {}

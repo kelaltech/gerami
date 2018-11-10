@@ -62,7 +62,9 @@ var Button_js_1 = require('../Button/Button.js')
 var Anchor = /** @class */ (function(_super) {
   __extends(Anchor, _super)
   function Anchor() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Anchor.prototype.render = function() {
     var _a = this.props,

@@ -1,18 +1,16 @@
-import React, { Component } from 'react'
+import React, { ButtonHTMLAttributes, Component } from 'react'
 import { Link } from 'react-router-dom'
 
-export interface IButtonProps
-  extends React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    > {
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean
   to?: string
 }
 
-export interface IButtonState {}
+interface IButtonState {}
 
 export class Button extends Component<IButtonProps, IButtonState> {
+  state = {}
+
   render() {
     const { children, className, primary, to, type, ...rest } = this.props
 
@@ -20,9 +18,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
       <button
         {...rest as any}
         className={`gerami-button ${
-          primary || (typeof type === 'string' && type.toLowerCase() === 'submit')
-            ? 'gerami-Button-primary'
-            : ''
+          primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary' : ''
         }${className ? ' ' + className : ''}`}
         type={type || 'button'}
       >

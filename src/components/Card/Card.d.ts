@@ -1,13 +1,15 @@
-import React, { Component, ReactNode } from 'react'
+import { Component, CSSProperties, ReactNode } from 'react'
 import { IContentProps } from '../Content/Content.js'
 export interface ICardProps extends IContentProps {
   actions?: ReactNode
   imgSrc?: string
-  imgStyle?: React.CSSProperties
+  imgStyle?: CSSProperties
   title?: string
   subtitle?: string
 }
-export interface ICardState {}
+interface ICardState {}
 export declare class Card extends Component<ICardProps, ICardState> {
+  state: {}
   render(): JSX.Element
 }
+export {}

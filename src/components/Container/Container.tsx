@@ -1,49 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 
-interface IContainer {
-  paddingTop: number
-  paddingBottom: number
-  paddingLeft: number
-  paddingRight: number
-  id: number
+export interface IContainerProps extends HTMLAttributes<HTMLDivElement> {
+  top?: number
+  right?: number
+  bottom?: number
+  left?: number
 }
 
-export class Container extends Component<any> {
-  state: IContainer = {
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    id: Math.random()
-  }
+interface IContainerState {}
 
-  constructor(props: any) {
-    super(props)
-
-    this.setState({
-      paddingTop: this.props.top,
-      paddingBottom: this.props.bottom,
-      paddingLeft: this.props.left,
-      paddingRight: this.props.right
-    })
-  }
+/**
+ * @deprecated Will be replaced by Page.Anti
+ */
+export class Container extends Component<IContainerProps, IContainerState> {
+  state = {}
 
   render() {
+    const { className, top, right, bottom, left, style } = this.props
+
     return (
       <div
-        className={
-          this.props.className == undefined
-            ? 'gerami-container'
-            : this.props.className + ' gerami-container'
-        }
+        className={`gerami-container ${className || ''}`}
         style={Object.assign(
           {
-            paddingTop: this.state.paddingTop,
-            paddingBottom: this.state.paddingBottom,
-            paddingLeft: this.state.paddingLeft,
-            paddingRight: this.state.paddingRight
+            paddingTop: top,
+            paddingRight: right,
+            paddingBottom: bottom,
+            paddingLeft: left
           },
-          this.props.style
+          style
         )}
       >
         {this.props.children}

@@ -1,8 +1,6 @@
 import { Component } from 'react'
-import { geramiSizeTypes } from '../../index'
 import { IContentProps } from '../Content/Content.js'
-interface IWarningProps extends IContentProps {
-  className?: string
+export interface IWarningProps extends IContentProps {
   problem?:
     | {
         code: number
@@ -11,13 +9,15 @@ interface IWarningProps extends IContentProps {
     | string
   shy?: boolean | Function
   bomb?: boolean
-  size?: geramiSizeTypes
 }
-export declare class Warning extends Component<IWarningProps> {
-  private dead
+interface IWarningState {
+  hidden: boolean
+}
+export declare class Warning extends Component<IWarningProps, IWarningState> {
   state: {
     hidden: boolean
   }
+  dead: boolean
   constructor(props: any)
   componentDidMount(): void
   componentWillUnmount(): void

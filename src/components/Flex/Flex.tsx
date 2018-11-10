@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 
-export class Flex extends Component<any> {
-  constructor(props: any) {
-    super(props)
-  }
+export interface IFlexProps extends HTMLAttributes<HTMLDivElement> {}
+
+interface IFlexState {}
+
+export class Flex extends Component<IFlexProps, IFlexState> {
+  state = {}
 
   render() {
-    return <div className={this.props.className} style={this.props.style} />
+    const { className } = this.props
+
+    return <div className={`gerami-flex ${className}`} />
   }
 }

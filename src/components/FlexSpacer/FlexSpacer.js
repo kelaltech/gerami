@@ -57,10 +57,15 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
+/**
+ * @deprecated Will be replaced by Flex.Space
+ */
 var FlexSpacer = /** @class */ (function(_super) {
   __extends(FlexSpacer, _super)
-  function FlexSpacer(props) {
-    return _super.call(this, props) || this
+  function FlexSpacer() {
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   FlexSpacer.prototype.render = function() {
     var _a = this.props,
@@ -68,7 +73,7 @@ var FlexSpacer = /** @class */ (function(_super) {
       rest = __rest(_a, ['className'])
     return react_1.default.createElement(
       'span',
-      __assign({ className: 'gerami-flex-spacer' + (className ? ' ' + className : '') }, rest)
+      __assign({ className: 'gerami-flex-spacer ' + className }, rest)
     )
   }
   return FlexSpacer

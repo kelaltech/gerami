@@ -1,16 +1,17 @@
-import { Component } from 'react'
-interface props {
+import React, { Component, TextareaHTMLAttributes } from 'react'
+export interface ITextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string
   label?: string
   placeholder?: string
 }
-export declare class TextArea extends Component<props> {
-  textarea: any
-  placeholder: any
-  constructor(props: any)
+interface ITextAreaState {}
+export declare class TextArea extends Component<ITextAreaProps, ITextAreaState> {
+  state: {}
+  textarea: React.RefObject<HTMLTextAreaElement>
+  placeholder: React.RefObject<HTMLDivElement>
+  readonly value: string | null
   componentDidMount(): void
   render(): JSX.Element
-  updateFloat(): void
-  readonly value: any
+  updateFloat: () => void
 }
 export {}

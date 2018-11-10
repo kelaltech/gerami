@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import { Component, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
-export interface props
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  className?: string
+export interface ITitleProps extends HTMLAttributes<HTMLDivElement> {
   color?: string | 'green' | 'blue'
   size?: geramiSizeTypes
 }
-export declare class Title extends Component<props, any> {
+interface ITitleState {}
+export declare class Title extends Component<ITitleProps, ITitleState> {
+  state: {}
   render(): JSX.Element
 }
+export {}

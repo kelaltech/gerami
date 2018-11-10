@@ -61,7 +61,9 @@ var Content_js_1 = require('../Content/Content.js')
 var Card = /** @class */ (function(_super) {
   __extends(Card, _super)
   function Card() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Card.prototype.render = function() {
     var _a = this.props,

@@ -1,16 +1,15 @@
-import * as React from 'react'
-interface props {
-  image?: Object
+import { Component, HTMLAttributes } from 'react'
+export interface IImageInputProps extends HTMLAttributes<HTMLDivElement> {
+  placeholderSrc?: string
   className?: string
   width?: number | string
   circular?: boolean
   borderRadius?: string | number
 }
-export declare class ImageInput extends React.Component<props> {
-  state: {
-    image: any
-  }
-  private changeImg
+interface IImageInputState {}
+export declare class ImageInput extends Component<IImageInputProps, IImageInputState> {
+  state: {}
   render(): JSX.Element
+  private changeImg
 }
 export {}

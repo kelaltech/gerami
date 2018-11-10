@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react'
+import React, { Component, createRef, CSSProperties } from 'react'
 import { geramiSizeTypes } from '../../index'
 import { Content, IContentProps } from '../Content/Content.js'
 
@@ -27,12 +27,12 @@ export interface IDrawerProps extends IContentProps {
   /**
    * CSS style for the darkened background.
    */
-  backgroundStyle?: React.CSSProperties
+  backgroundStyle?: CSSProperties
   /**
    * CSS style for the container of the entire Drawer.
    * The container holds the darkened background and the Drawer content in it.
    */
-  containerStyle?: React.CSSProperties
+  containerStyle?: CSSProperties
   /**
    * Decides whether the Drawer is visible or hidden.
    */
@@ -51,7 +51,7 @@ export interface IDrawerProps extends IContentProps {
   size?: geramiSizeTypes
 }
 
-export interface IDrawerState {
+interface IDrawerState {
   closed: boolean
 }
 
@@ -63,7 +63,7 @@ export class Drawer extends Component<IDrawerProps, IDrawerState> {
     closed: !this.props.open
   }
 
-  drawerRef: any = createRef()
+  drawerRef = createRef<Content>()
 
   componentDidUpdate() {
     if (this.state.closed !== (this.props.open === false))
