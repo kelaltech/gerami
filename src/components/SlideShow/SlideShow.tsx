@@ -2,10 +2,10 @@ import React, { Component, HTMLAttributes } from 'react'
 
 export interface ISlideShowProps extends HTMLAttributes<HTMLDivElement> {
   height?: number | string
-  Images?: { Image: Object | string; Caption?: string }[]
-  Data?: JSX.Element[]
+  images?: { image: string; caption?: string }[]
+  data?: JSX.Element[]
   interval?: number
-  autoplay?: boolean
+  autoPlay?: boolean
   showControls?: boolean
   animation?: 'none' | 'fade'
 }
@@ -18,23 +18,25 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
   slideIndex = 0
 
   componentDidMount() {
-    if (this.props.autoplay != undefined) {
-      this.automatic()
-    } else this.slides(this.slideIndex)
+    if (this.props.autoPlay != undefined) this.automatic()
+    else this.slides(this.slideIndex)
   }
 
   render() {
-    const { height, Images, Data, showControls, animation, ...rest } = this.props
+    const { height, images, data, showControls, animation, ...rest } = this.props
+
+    delete rest.inlist
+    delete rest.autoPlay
 
     return (
       <div {...rest as any}>
         <div className="gerami-slideShow-SlideShowContainer">
-          {Images ? (
+          {images ? (
             <div>
-              {Images.map((Image: any) => (
-                <div className={'gerami-slideShow-slides ' + animation}>
-                  <img src={Image.Image} style={{ width: '100%' }} height={height || ''} />
-                  <div className="gerami-slideShow-text">{Image.Caption}</div>
+              {images.map((Image, i) => (
+                <div key={i} className={'gerami-slideShow-slides ' + animation}>
+                  <img src={Image.image} style={{ width: '100%' }} height={height || ''} />
+                  <div className="gerami-slideShow-text">{Image.caption}</div>
                 </div>
               ))}
             </div>
@@ -42,10 +44,11 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
             ''
           )}
 
-          {Data ? (
+          {data ? (
             <div>
-              {Data.map((Data: any) => (
+              {data.map((Data, i) => (
                 <div
+                  key={i}
                   ref={'gerami-slideShow-slides'}
                   className={'gerami-slideShow-mySlides gerami-slideShow-fade'}
                 >
@@ -72,17 +75,17 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
           )}
           {showControls ? (
             <div className={'gerami-slideShow-dot-style'} style={{ textAlign: 'center' }}>
-              {Images ? (
+              {images ? (
                 <div>
-                  {Images.map((Image: any, index) => (
-                    <span>
+                  {images.map((Image, i) => (
+                    <span key={i}>
                       <span style={{ display: 'none' }}>
                         {' '}
-                        <img src={Image.Image} />
+                        <img src={Image.image} />
                       </span>
                       <span
                         className={'gerami-slideShow-dot'}
-                        onClick={() => this.currentSlide(index + 1)}
+                        onClick={() => this.currentSlide(i + 1)}
                       >
                         {' '}
                       </span>
@@ -95,17 +98,17 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
             </div>
           ) : (
             <div className={'gerami-slideShow-dot-style'} style={{ textAlign: 'center' }}>
-              {Data ? (
+              {data ? (
                 <div>
-                  {Data.map((Image: any, index) => (
-                    <span>
+                  {data.map((Image, i) => (
+                    <span key={i}>
                       <span style={{ display: 'none' }}>
                         {' '}
-                        <img src={Image.Image} />
+                        <img src={(Image as any).image} /> {/* todo: test this line */}
                       </span>
                       <span
                         className={'gerami-slideShow-dot'}
-                        onClick={() => this.currentSlide(index + 1)}
+                        onClick={() => this.currentSlide(i + 1)}
                       >
                         {' '}
                       </span>

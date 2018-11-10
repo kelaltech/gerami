@@ -85,7 +85,7 @@ var Warning = /** @class */ (function(_super) {
       problem = _a.problem,
       shy = _a.shy,
       rest = __rest(_a, ['children', 'className', 'problem', 'shy'])
-    !rest || delete rest.bomb
+    delete rest.bomb
     return this.dead || this.state.hidden
       ? null
       : react_1.default.createElement(

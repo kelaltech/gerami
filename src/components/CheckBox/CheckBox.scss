@@ -1,76 +1,63 @@
 @import '../../styles/theme';
 
-.input-element {
-}
-
-.parent {
-  width: 25px;
-}
+$geramiCheckBoxSize: $space * 1.4;
 
 .gerami-checkbox {
-  display: inline-block;
+  display: flex;
   position: relative;
-  margin: 0 25px 25px 0;
-  width: 15px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-}
-
-//Hide the browsers default checkbox
-.gerami-checkbox input {
-  position: absolute;
-  opacity: 0;
   cursor: pointer;
+
+  &:active > .gerami-checkbox-input ~ .gerami-checkbox-span {
+    background-color: $accent !important;
+    transform: $poke;
+    transition-timing-function: ease-in-out;
+    transition-duration: 90ms;
+  }
+
+  &:hover > .gerami-checkbox-input ~ .gerami-checkbox-span {
+    box-shadow: $shade-M;
+    background-color: darken($bg, 10%);
+  }
+
+  &:hover > .gerami-checkbox-input:checked ~ .gerami-checkbox-span {
+    background-color: $accent;
+    box-shadow: $shade-M;
+  }
+
+  > .gerami-checkbox-input {
+    display: none;
+
+    &:checked ~ .gerami-checkbox-span {
+      background-color: $primary;
+    }
+  }
+
+  > .gerami-checkbox-span {
+    position: absolute;
+    height: $geramiCheckBoxSize;
+    width: $geramiCheckBoxSize;
+    background-color: darken($bg, 7%);
+    border-radius: $radius;
+    box-shadow: $shade-S;
+    transition: all 300ms;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: $geramiCheckBoxSize / 3 - $border;
+      left: $geramiCheckBoxSize / 3.7 - $border;
+      width: $geramiCheckBoxSize / 2;
+      height: $geramiCheckBoxSize / 5;
+      border: 0 solid darken($bg, 7%);
+      border-bottom-left-radius: $border;
+      border-bottom-width: $border * 2;
+      border-left-width: $border * 2;
+      transform: rotate(-45deg);
+    }
+  }
 }
 
-//Create a custom checkbox
-.check-mark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 3px;
-  margin: 0 5px 5px 5px;
-}
-
-//Add bgcolor on hover
-.gerami-checkbox:hover input ~ .check-mark {
-  //background-color: #ccc;
-}
-
-//Do smt when checkbox is checked
-.gerami-checkbox input:checked ~ .check-mark {
-  background-color: $primary;
-}
-
-//Create check mark indicator
-.check-mark:after {
-  content: '';
-  position: absolute;
-  //display: none;
-}
-
-//Show check mark when clicked
-.gerami-checkbox input:checked ~ .check-mark:after {
-  display: block;
-}
-
-//Styling the check mark
-.gerami-checkbox .check-mark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid #eee;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
+.gerami-checkbox-child {
+  margin: ($space / 6) ($space / 6) ($space / 6) ($geramiCheckBoxSize + $space / 2);
 }

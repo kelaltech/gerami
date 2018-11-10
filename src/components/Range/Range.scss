@@ -1,5 +1,9 @@
 @import '../../styles/theme';
 
+$geramiRangeLineHeight: $border * 7;
+$geramiRangeSelectedLineDiff: $border * 0;
+$geramiRangeButtonDiameter: $space * 1.25;
+
 .gerami-range {
   position: relative;
   height: 0;
@@ -11,7 +15,7 @@
   position: absolute;
   float: left;
   width: 100%;
-  height: $border * 4;
+  height: $geramiRangeLineHeight;
   border-radius: $radius;
   background-color: darken($bg, 14%);
   cursor: pointer;
@@ -21,8 +25,8 @@
   display: inline-block;
   position: absolute;
   float: left;
-  margin-top: $border * 0;
-  height: $border * 4;
+  margin-top: -$geramiRangeSelectedLineDiff;
+  height: $geramiRangeLineHeight + 2 * $geramiRangeSelectedLineDiff;
   border-radius: $radius;
   background-color: $accent;
   transition: all 150ms;
@@ -40,19 +44,22 @@
   display: inline-block;
   position: absolute;
   float: left;
-  margin-top: -$space * 1 / 2 + $border * 2;
-  margin-left: -$space * 1 / 2 + $border * 2;
-  width: $space * 1;
-  height: $space * 1;
+  margin-top: -$geramiRangeButtonDiameter / 2 + $geramiRangeLineHeight / 2;
+  margin-left: -$geramiRangeButtonDiameter / 2 + $geramiRangeLineHeight / 2;
+  width: $geramiRangeButtonDiameter;
+  height: $geramiRangeButtonDiameter;
   border-radius: 50%;
   background-color: $primary;
   box-shadow: $shade-M;
-  cursor: move;
+  cursor: pointer;
   transition: all 150ms;
 }
 .gerami-range-btn:active {
   background-color: darken($primary, 3%);
   box-shadow: $shade-L;
+  transform: $poke;
+  filter: $shy;
+  cursor: pointer;
 }
 
 .gerami-range-full-filled-ghost {
@@ -62,5 +69,5 @@
   right: 0;
   bottom: 0;
   left: 0;
-  cursor: move;
+  cursor: pointer;
 }

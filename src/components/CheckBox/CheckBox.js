@@ -71,21 +71,37 @@ var CheckBox = /** @class */ (function(_super) {
     }
     return _this
   }
+  Object.defineProperty(CheckBox.prototype, 'value', {
+    get: function() {
+      return this.state.status
+    },
+    enumerable: true,
+    configurable: true
+  })
   CheckBox.prototype.render = function() {
     var _a = this.props,
       className = _a.className,
-      rest = __rest(_a, ['className'])
+      children = _a.children,
+      rest = __rest(_a, ['className', 'children'])
     var status = this.state.status
+    delete rest.checked
     return react_1.default.createElement(
       'div',
-      { className: 'gerami-checkbox ' + (className || '') },
+      { className: 'gerami-checkbox ' + (className || ''), onClick: this.toggle },
       react_1.default.createElement(
         'input',
-        __assign({ type: 'checkbox', checked: status, onClick: this.toggle }, rest, {
-          className: 'input-element'
-        })
+        __assign(
+          {
+            className: 'gerami-checkbox-input',
+            type: 'checkbox',
+            checked: status,
+            onChange: this.toggle
+          },
+          rest
+        )
       ),
-      react_1.default.createElement('span', { className: 'check-mark', onClick: this.toggle })
+      react_1.default.createElement('span', { className: 'gerami-checkbox-span' }),
+      react_1.default.createElement('span', { className: 'gerami-checkbox-child' }, children)
     )
   }
   return CheckBox

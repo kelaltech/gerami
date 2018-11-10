@@ -32,6 +32,8 @@ export class Select extends Component<ISelectProps, ISelectState> {
     const { className, placeholder, multiple, maxWidth, minWidth, size, ...rest } = this.props
     const { options } = this.state
 
+    delete rest.selectedValue
+
     return (
       <div
         style={{
@@ -46,9 +48,9 @@ export class Select extends Component<ISelectProps, ISelectState> {
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
             <span className={'gerami-selected-options-container'}>
               {multiple ? (
-                this.state.multipleSelectedItems.map((option, key) => (
+                this.state.multipleSelectedItems.map((option, i) => (
                   <span
-                    key={key}
+                    key={i}
                     style={{
                       display: `${this.state.showPlaceholder ? 'none' : 'inline'}`
                     }}
@@ -94,8 +96,8 @@ export class Select extends Component<ISelectProps, ISelectState> {
             display: this.state.showOptions ? 'block' : 'none'
           }}
         >
-          {options.map((option, key) => (
-            <div key={key} onClick={() => this.handleSelectedOption(option)}>
+          {options.map((option, i) => (
+            <div key={i} onClick={() => this.handleSelectedOption(option)}>
               <span>{option}</span>
             </div>
           ))}

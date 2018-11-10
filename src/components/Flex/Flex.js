@@ -41,8 +41,14 @@ var Flex = /** @class */ (function(_super) {
     return _this
   }
   Flex.prototype.render = function() {
-    var className = this.props.className
-    return react_1.default.createElement('div', { className: 'gerami-flex ' + className })
+    var _a = this.props,
+      className = _a.className,
+      children = _a.children
+    return react_1.default.createElement(
+      'div',
+      { className: 'gerami-flex ' + (className || '') },
+      children
+    )
   }
   return Flex
 })(react_1.Component)

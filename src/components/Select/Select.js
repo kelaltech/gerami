@@ -152,6 +152,7 @@ var Select = /** @class */ (function(_super) {
       size = _a.size,
       rest = __rest(_a, ['className', 'placeholder', 'multiple', 'maxWidth', 'minWidth', 'size'])
     var options = this.state.options
+    delete rest.selectedValue
     return react_1.default.createElement(
       'div',
       __assign(
@@ -175,11 +176,11 @@ var Select = /** @class */ (function(_super) {
             'span',
             { className: 'gerami-selected-options-container' },
             multiple
-              ? this.state.multipleSelectedItems.map(function(option, key) {
+              ? this.state.multipleSelectedItems.map(function(option, i) {
                   return react_1.default.createElement(
                     'span',
                     {
-                      key: key,
+                      key: i,
                       style: {
                         display: '' + (_this.state.showPlaceholder ? 'none' : 'inline')
                       },
@@ -247,11 +248,11 @@ var Select = /** @class */ (function(_super) {
             display: this.state.showOptions ? 'block' : 'none'
           }
         },
-        options.map(function(option, key) {
+        options.map(function(option, i) {
           return react_1.default.createElement(
             'div',
             {
-              key: key,
+              key: i,
               onClick: function() {
                 return _this.handleSelectedOption(option)
               }

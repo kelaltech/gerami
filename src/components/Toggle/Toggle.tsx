@@ -3,6 +3,7 @@ import React, { Component, LabelHTMLAttributes } from 'react'
 export interface IRadioProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string
   value?: string
+  selected?: boolean
 }
 
 interface IRadioState {
@@ -11,7 +12,11 @@ interface IRadioState {
 
 export class Toggle extends Component<IRadioProps, IRadioState> {
   state = {
-    status: false
+    status: this.props.selected || false
+  }
+
+  get value(): boolean {
+    return this.state.status
   }
 
   render() {
@@ -19,7 +24,7 @@ export class Toggle extends Component<IRadioProps, IRadioState> {
 
     return (
       <label className={'switch'} {...rest as any}>
-        <input type={'checkbox'} onClick={this.toggle} />
+        <input type={'checkbox'} defaultChecked={this.value} onChange={this.toggle} />
         <span className={`span${className ? ' ' + className : ''}  `}>{children}</span>
       </label>
     )

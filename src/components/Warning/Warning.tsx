@@ -36,7 +36,8 @@ export class Warning extends Component<IWarningProps, IWarningState> {
 
   render() {
     const { children, className, problem, shy, ...rest } = this.props
-    !rest || delete rest.bomb
+
+    delete rest.bomb
 
     return this.dead || this.state.hidden ? null : (
       <Content

@@ -62,7 +62,7 @@ var Toggle = /** @class */ (function(_super) {
   function Toggle() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {
-      status: false
+      status: _this.props.selected || false
     }
     _this.toggle = function() {
       _this.setState(function(state) {
@@ -71,6 +71,13 @@ var Toggle = /** @class */ (function(_super) {
     }
     return _this
   }
+  Object.defineProperty(Toggle.prototype, 'value', {
+    get: function() {
+      return this.state.status
+    },
+    enumerable: true,
+    configurable: true
+  })
   Toggle.prototype.render = function() {
     var _a = this.props,
       className = _a.className,
@@ -79,7 +86,11 @@ var Toggle = /** @class */ (function(_super) {
     return react_1.default.createElement(
       'label',
       __assign({ className: 'switch' }, rest),
-      react_1.default.createElement('input', { type: 'checkbox', onClick: this.toggle }),
+      react_1.default.createElement('input', {
+        type: 'checkbox',
+        defaultChecked: this.value,
+        onChange: this.toggle
+      }),
       react_1.default.createElement(
         'span',
         { className: 'span' + (className ? ' ' + className : '') + '  ' },

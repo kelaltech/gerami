@@ -72,8 +72,8 @@ var FlexSpacer = /** @class */ (function(_super) {
       className = _a.className,
       rest = __rest(_a, ['className'])
     return react_1.default.createElement(
-      'span',
-      __assign({ className: 'gerami-flex-spacer ' + className }, rest)
+      'div',
+      __assign({ className: 'gerami-flex-spacer ' + (className || '') }, rest)
     )
   }
   return FlexSpacer

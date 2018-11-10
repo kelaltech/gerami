@@ -1,5 +1,5 @@
 import { Component, HTMLAttributes } from 'react'
-export interface IFlexSpacerProps extends HTMLAttributes<HTMLSpanElement> {}
+export interface IFlexSpacerProps extends HTMLAttributes<HTMLDivElement> {}
 interface IFlexSpacerState {}
 /**
  * @deprecated Will be replaced by Flex.Space

@@ -97,7 +97,7 @@ var Input = /** @class */ (function(_super) {
         'onKeyUp',
         'placeholder'
       ])
-    !rest || delete rest.inputRef
+    delete rest.inputRef
     return react_1.default.createElement(
       'label',
       { className: 'gerami-label' + (className ? ' ' + className : '') },

@@ -68,9 +68,33 @@ var ImageInput = /** @class */ (function(_super) {
   __extends(ImageInput, _super)
   function ImageInput() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
-    _this.state = {}
+    _this.state = {
+      image: undefined
+    }
+    _this.innerRef = _this.props.innerRef || react_1.createRef()
+    _this.changeImg = function(e) {
+      var file = e.target.files[0]
+      if (!file) {
+        _this.setState({ image: undefined })
+        return
+      }
+      var reader = new FileReader()
+      reader.onload = function(ev) {
+        return _this.setState({
+          image: ev.target.result
+        })
+      }
+      reader.readAsDataURL(file)
+    }
     return _this
   }
+  Object.defineProperty(ImageInput.prototype, 'imageUrl', {
+    get: function() {
+      return this.state.image || null
+    },
+    enumerable: true,
+    configurable: true
+  })
   ImageInput.prototype.render = function() {
     var _a = this.props,
       circular = _a.circular,
@@ -89,7 +113,7 @@ var ImageInput = /** @class */ (function(_super) {
           { htmlFor: 'Cover' },
           React.createElement('img', {
             className: circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input',
-            src: placeholderSrc || _3_jpg_1.default,
+            src: this.imageUrl || placeholderSrc || _3_jpg_1.default,
             width: width ? width : '100px',
             height: width ? width : '100px',
             style: borderRadius ? { borderRadius: borderRadius } : {},
@@ -97,6 +121,7 @@ var ImageInput = /** @class */ (function(_super) {
           })
         ),
         React.createElement('input', {
+          ref: this.innerRef,
           className: 'gerami-imageInput-File gerami-imageInput-none',
           id: 'Cover',
           name: 'picture',
@@ -106,19 +131,6 @@ var ImageInput = /** @class */ (function(_super) {
         })
       )
     )
-  }
-  ImageInput.prototype.changeImg = function(e) {
-    var _this = this
-    var file = e.target.files[0]
-    if (!file) {
-      //this.setState({ image: this.props.image?this.props.image:icon})
-      return
-    }
-    var reader = new FileReader()
-    reader.onload = function(ev) {
-      return _this.setState({ image: ev.target.result })
-    }
-    reader.readAsDataURL(file)
   }
   return ImageInput
 })(react_1.Component)

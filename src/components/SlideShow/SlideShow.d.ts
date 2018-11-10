@@ -1,13 +1,13 @@
 import { Component, HTMLAttributes } from 'react'
 export interface ISlideShowProps extends HTMLAttributes<HTMLDivElement> {
   height?: number | string
-  Images?: {
-    Image: Object | string
-    Caption?: string
+  images?: {
+    image: string
+    caption?: string
   }[]
-  Data?: JSX.Element[]
+  data?: JSX.Element[]
   interval?: number
-  autoplay?: boolean
+  autoPlay?: boolean
   showControls?: boolean
   animation?: 'none' | 'fade'
 }

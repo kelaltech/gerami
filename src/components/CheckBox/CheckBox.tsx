@@ -13,20 +13,27 @@ export class CheckBox extends Component<ICheckBoxProps, ICheckBoxState> {
     status: this.props.checked || false
   }
 
+  get value(): boolean {
+    return this.state.status
+  }
+
   render() {
-    const { className, ...rest } = this.props
+    const { className, children, ...rest } = this.props
     const { status } = this.state
 
+    delete rest.checked
+
     return (
-      <div className={`gerami-checkbox ${className || ''}`}>
+      <div className={`gerami-checkbox ${className || ''}`} onClick={this.toggle}>
         <input
+          className="gerami-checkbox-input"
           type="checkbox"
           checked={status}
-          onClick={this.toggle}
+          onChange={this.toggle}
           {...rest as any}
-          className={'input-element'}
         />
-        <span className="check-mark" onClick={this.toggle} />
+        <span className="gerami-checkbox-span" />
+        <span className="gerami-checkbox-child">{children}</span>
       </div>
     )
   }

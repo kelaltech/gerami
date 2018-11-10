@@ -34,7 +34,8 @@ export class Input extends Component<IInputProps, IInputState> {
       ...rest
     } = this.props
 
-    !rest || delete rest.inputRef
+    delete rest.inputRef
+
     return (
       <label className={`gerami-label${className ? ' ' + className : ''}`}>
         <input

@@ -17,6 +17,9 @@ export class Radio extends Component<IRadioProps, IRadioState> {
 
   render() {
     const { className, value, name, children, ...rest } = this.props
+
+    delete rest.checked
+
     return (
       <div>
         <input
@@ -24,7 +27,7 @@ export class Radio extends Component<IRadioProps, IRadioState> {
           type={'radio'}
           name={name}
           value={value}
-          checked={this.state.status}
+          defaultChecked={this.state.status}
           onClick={this.toggle}
           {...rest as any}
         />

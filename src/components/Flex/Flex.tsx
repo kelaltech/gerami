@@ -8,8 +8,8 @@ export class Flex extends Component<IFlexProps, IFlexState> {
   state = {}
 
   render() {
-    const { className } = this.props
+    const { className, children } = this.props
 
-    return <div className={`gerami-flex ${className}`} />
+    return <div className={`gerami-flex ${className || ''}`}>{children}</div>
   }
 }

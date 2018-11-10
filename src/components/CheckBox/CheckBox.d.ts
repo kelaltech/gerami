@@ -9,6 +9,7 @@ export declare class CheckBox extends Component<ICheckBoxProps, ICheckBoxState> 
   state: {
     status: boolean
   }
+  readonly value: boolean
   render(): JSX.Element
   toggle: () => void
 }

@@ -1,6 +1,6 @@
 import React, { Component, HTMLAttributes } from 'react'
 
-export interface IFlexSpacerProps extends HTMLAttributes<HTMLSpanElement> {}
+export interface IFlexSpacerProps extends HTMLAttributes<HTMLDivElement> {}
 
 interface IFlexSpacerState {}
 
@@ -13,6 +13,6 @@ export class FlexSpacer extends Component<IFlexSpacerProps, IFlexSpacerState> {
   render() {
     const { className, ...rest } = this.props
 
-    return <span className={`gerami-flex-spacer ${className}`} {...rest as any} />
+    return <div className={`gerami-flex-spacer ${className || ''}`} {...rest as any} />
   }
 }
