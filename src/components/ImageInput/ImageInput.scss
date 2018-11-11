@@ -10,6 +10,17 @@
 
 .gerami-imageInput-Camera-Image {
   display: inline-block;
+
+  button {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    background: transparent none !important;
+    box-shadow: none !important;
+    color: inherit !important;
+  }
 }
 
 .gerami-imageInput-image {

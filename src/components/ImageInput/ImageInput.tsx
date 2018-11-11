@@ -1,6 +1,7 @@
 import * as React from 'react'
-import defaultPlaceholderSrc from './3.jpg'
 import { Component, createRef, InputHTMLAttributes, RefObject } from 'react'
+import { Button } from '../Button/Button.js'
+import defaultPlaceholderSrc from './3.jpg' // replace this with a font-awesome icon
 
 export interface IImageInputProps extends InputHTMLAttributes<HTMLInputElement> {
   innerRef?: RefObject<HTMLInputElement>
@@ -40,7 +41,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
     return (
       <div>
         <div className={'gerami-imageInput-Camera-Image'}>
-          <label htmlFor={'Cover'}>
+          <Button onClick={() => this.innerRef.current && this.innerRef.current.click()}>
             <img
               className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
               src={this.dataUrl || placeholderSrc || defaultPlaceholderSrc}
@@ -49,7 +50,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
               style={borderRadius ? { borderRadius } : {}}
               alt="Choose Image"
             />
-          </label>
+          </Button>
           <input
             name={'image'}
             {...rest as any}
