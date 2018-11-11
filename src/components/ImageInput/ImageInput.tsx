@@ -1,8 +1,8 @@
 import * as React from 'react'
 import defaultPlaceholderSrc from './3.jpg'
-import { Component, createRef, HTMLAttributes, RefObject } from 'react'
+import { Component, createRef, InputHTMLAttributes, RefObject } from 'react'
 
-export interface IImageInputProps extends HTMLAttributes<HTMLDivElement> {
+export interface IImageInputProps extends InputHTMLAttributes<HTMLInputElement> {
   innerRef?: RefObject<HTMLInputElement>
   placeholderSrc?: string
   className?: string
@@ -27,29 +27,40 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
   }
 
   render() {
-    const { circular, placeholderSrc, width, borderRadius, ...rest } = this.props
+    const {
+      circular,
+      placeholderSrc,
+      width,
+      borderRadius,
+      className,
+      onChange,
+      ...rest
+    } = this.props
 
     return (
-      <div {...rest as any}>
+      <div>
         <div className={'gerami-imageInput-Camera-Image'}>
           <label htmlFor={'Cover'}>
             <img
               className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
               src={this.imageUrl || placeholderSrc || defaultPlaceholderSrc}
-              width={width ? width : '100px'}
-              height={width ? width : '100px'}
+              width={width || '80px'}
+              height={width || '60px'}
               style={borderRadius ? { borderRadius } : {}}
-              alt="Insert image"
+              alt="Choose Image"
             />
           </label>
           <input
+            name={'image'}
+            {...rest as any}
             ref={this.innerRef}
-            className={'gerami-imageInput-File gerami-imageInput-none'}
-            id="Cover"
-            name="picture"
-            onChange={this.changeImg}
+            className={`gerami-imageInput-File gerami-imageInput-none ${className || ''}`}
+            onChange={e => {
+              this.changeImg(e)
+              onChange && onChange(e)
+            }}
             type="file"
-            required
+            id="Cover"
           />
         </div>
       </div>

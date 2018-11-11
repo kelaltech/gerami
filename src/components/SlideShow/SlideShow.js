@@ -135,12 +135,14 @@ var SlideShow = /** @class */ (function(_super) {
               images.map(function(Image, i) {
                 return react_1.default.createElement(
                   'div',
-                  { key: i, className: 'gerami-slideShow-slides ' + animation },
-                  react_1.default.createElement('img', {
-                    src: Image.image,
-                    style: { width: '100%' },
-                    height: height || ''
-                  }),
+                  {
+                    key: i,
+                    className: 'gerami-slideShow-slides ' + animation,
+                    style: {
+                      backgroundImage: 'url(' + Image.image + ')',
+                      height: height || '600px'
+                    }
+                  },
                   react_1.default.createElement(
                     'div',
                     { className: 'gerami-slideShow-text' },

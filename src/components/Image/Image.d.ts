@@ -11,7 +11,7 @@ export declare type IImageProps = IImageAttributes &
     to?: boolean | LocationDescriptor
     href?: string
   }
-export interface IImageState {}
+interface IImageState {}
 export declare class Image extends Component<IImageProps, IImageState> {
   state: {}
   render(): JSX.Element

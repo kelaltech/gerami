@@ -96,15 +96,25 @@ var ImageInput = /** @class */ (function(_super) {
     configurable: true
   })
   ImageInput.prototype.render = function() {
+    var _this = this
     var _a = this.props,
       circular = _a.circular,
       placeholderSrc = _a.placeholderSrc,
       width = _a.width,
       borderRadius = _a.borderRadius,
-      rest = __rest(_a, ['circular', 'placeholderSrc', 'width', 'borderRadius'])
+      className = _a.className,
+      onChange = _a.onChange,
+      rest = __rest(_a, [
+        'circular',
+        'placeholderSrc',
+        'width',
+        'borderRadius',
+        'className',
+        'onChange'
+      ])
     return React.createElement(
       'div',
-      __assign({}, rest),
+      null,
       React.createElement(
         'div',
         { className: 'gerami-imageInput-Camera-Image' },
@@ -114,21 +124,25 @@ var ImageInput = /** @class */ (function(_super) {
           React.createElement('img', {
             className: circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input',
             src: this.imageUrl || placeholderSrc || _3_jpg_1.default,
-            width: width ? width : '100px',
-            height: width ? width : '100px',
+            width: width || '80px',
+            height: width || '60px',
             style: borderRadius ? { borderRadius: borderRadius } : {},
-            alt: 'Insert image'
+            alt: 'Choose Image'
           })
         ),
-        React.createElement('input', {
-          ref: this.innerRef,
-          className: 'gerami-imageInput-File gerami-imageInput-none',
-          id: 'Cover',
-          name: 'picture',
-          onChange: this.changeImg,
-          type: 'file',
-          required: true
-        })
+        React.createElement(
+          'input',
+          __assign({ name: 'image' }, rest, {
+            ref: this.innerRef,
+            className: 'gerami-imageInput-File gerami-imageInput-none ' + (className || ''),
+            onChange: function(e) {
+              _this.changeImg(e)
+              onChange && onChange(e)
+            },
+            type: 'file',
+            id: 'Cover'
+          })
+        )
       )
     )
   }

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Component, HTMLAttributes, RefObject } from 'react'
-export interface IImageInputProps extends HTMLAttributes<HTMLDivElement> {
+import { Component, InputHTMLAttributes, RefObject } from 'react'
+export interface IImageInputProps extends InputHTMLAttributes<HTMLInputElement> {
   innerRef?: RefObject<HTMLInputElement>
   placeholderSrc?: string
   className?: string
