@@ -39,7 +39,7 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
                   className={'gerami-slideShow-slides ' + animation}
                   style={{
                     backgroundImage: `url(${Image.image})`,
-                    height: height || '600px'
+                    height: this.props.height ? this.props.height : '600px'
                   }}
                 >
                   <div className="gerami-slideShow-text">{Image.caption}</div>

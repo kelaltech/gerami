@@ -1,3 +1,4 @@
+export { AccordionSlider } from './components/AccordionSlider/AccordionSlider.js'
 export { Anchor } from './components/Anchor/Anchor.js'
 export { Block } from './components/Block/Block.js'
 export { Button } from './components/Button/Button.js'
