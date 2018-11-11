@@ -1,0 +1,55 @@
+@import '../../styles/theme';
+.gerami-accordion-container {
+  position: relative;
+}
+.gerami-modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: inherit;
+  height: inherit;
+  display: flex;
+}
+.gerami-modal-img {
+  position: relative;
+  background-size: cover;
+  background: no-repeat center center;
+  height: inherit;
+  transition: 1s all;
+  display: inline-block;
+  .gerami-modal-caption-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    transition: 0.75s all;
+    opacity: 0;
+    .gerami-modal-caption {
+      font-size: 14px;
+      text-align: center;
+    }
+    .gerami-modal-action {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      float: right;
+      * {
+        color: $accent !important;
+        &:hover {
+          color: #fefefe !important;
+        }
+      }
+    }
+  }
+}
+.gerami-modal-img {
+  &:hover {
+    width: 100% !important;
+    .gerami-modal-caption-container {
+      opacity: 1;
+    }
+  }
+}
