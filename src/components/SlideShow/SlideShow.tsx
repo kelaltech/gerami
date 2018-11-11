@@ -34,10 +34,14 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
           {images ? (
             <div>
               {images.map((Image, i) => (
-                <div key={i} className={'gerami-slideShow-slides ' + animation} 
-                    style={{backgroundImage:`url(${Image.Image})`,
-                    height:this.props.height?this.props.height:'600px'}} >
-
+                <div
+                  key={i}
+                  className={'gerami-slideShow-slides ' + animation}
+                  style={{
+                    backgroundImage: `url(${Image.image})`,
+                    height: height || '600px'
+                  }}
+                >
                   <div className="gerami-slideShow-text">{Image.caption}</div>
                 </div>
               ))}

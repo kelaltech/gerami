@@ -31,7 +31,7 @@ export type IImageProps = IImageAttributes &
     href?: string
   }
 
-export interface IImageState {}
+interface IImageState {}
 
 export class Image extends Component<IImageProps, IImageState> {
   state = {}
