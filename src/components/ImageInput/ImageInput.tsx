@@ -22,7 +22,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
 
   innerRef = this.props.innerRef || createRef<HTMLInputElement>()
 
-  get imageUrl(): string | null {
+  get dataUrl(): string | null {
     return this.state.image || null
   }
 
@@ -43,7 +43,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
           <label htmlFor={'Cover'}>
             <img
               className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
-              src={this.imageUrl || placeholderSrc || defaultPlaceholderSrc}
+              src={this.dataUrl || placeholderSrc || defaultPlaceholderSrc}
               width={width || '80px'}
               height={width || '60px'}
               style={borderRadius ? { borderRadius } : {}}
@@ -60,7 +60,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
               onChange && onChange(e)
             }}
             type="file"
-            id="Cover"
+            data-url={this.dataUrl}
           />
         </div>
       </div>

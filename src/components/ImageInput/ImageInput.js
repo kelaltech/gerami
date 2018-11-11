@@ -88,7 +88,7 @@ var ImageInput = /** @class */ (function(_super) {
     }
     return _this
   }
-  Object.defineProperty(ImageInput.prototype, 'imageUrl', {
+  Object.defineProperty(ImageInput.prototype, 'dataUrl', {
     get: function() {
       return this.state.image || null
     },
@@ -123,7 +123,7 @@ var ImageInput = /** @class */ (function(_super) {
           { htmlFor: 'Cover' },
           React.createElement('img', {
             className: circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input',
-            src: this.imageUrl || placeholderSrc || _3_jpg_1.default,
+            src: this.dataUrl || placeholderSrc || _3_jpg_1.default,
             width: width || '80px',
             height: width || '60px',
             style: borderRadius ? { borderRadius: borderRadius } : {},
@@ -140,7 +140,7 @@ var ImageInput = /** @class */ (function(_super) {
               onChange && onChange(e)
             },
             type: 'file',
-            id: 'Cover'
+            'data-url': this.dataUrl
           })
         )
       )

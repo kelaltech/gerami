@@ -16,7 +16,7 @@ export declare class ImageInput extends Component<IImageInputProps, IImageInputS
     image: undefined
   }
   innerRef: React.RefObject<HTMLInputElement>
-  readonly imageUrl: string | null
+  readonly dataUrl: string | null
   render(): JSX.Element
   private changeImg
 }
