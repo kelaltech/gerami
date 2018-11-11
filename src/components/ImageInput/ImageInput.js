@@ -62,8 +62,9 @@ var __importDefault =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var React = __importStar(require('react'))
-var _3_jpg_1 = __importDefault(require('./3.jpg'))
 var react_1 = require('react')
+var Button_js_1 = require('../Button/Button.js')
+var _3_jpg_1 = __importDefault(require('./3.jpg')) // replace this with a font-awesome icon
 var ImageInput = /** @class */ (function(_super) {
   __extends(ImageInput, _super)
   function ImageInput() {
@@ -119,8 +120,12 @@ var ImageInput = /** @class */ (function(_super) {
         'div',
         { className: 'gerami-imageInput-Camera-Image' },
         React.createElement(
-          'label',
-          { htmlFor: 'Cover' },
+          Button_js_1.Button,
+          {
+            onClick: function() {
+              return _this.innerRef.current && _this.innerRef.current.click()
+            }
+          },
           React.createElement('img', {
             className: circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input',
             src: this.dataUrl || placeholderSrc || _3_jpg_1.default,
