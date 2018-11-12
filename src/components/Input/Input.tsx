@@ -37,10 +37,10 @@ export class Input extends Component<IInputProps, IInputState> {
     delete rest.inputRef
 
     return (
-      <label className={`gerami-label${className ? ' ' + className : ''}`}>
+      <label className={`gerami-input-label ${className || ''}`}>
         <input
           type={'text'}
-          className={'gerami-Input'}
+          className={'gerami-input'}
           {...rest as any}
           onBlur={e => {
             this.updateFloat()
@@ -65,7 +65,7 @@ export class Input extends Component<IInputProps, IInputState> {
           placeholder={''}
           ref={this.input}
         />
-        <div className={'gerami-placeholder'} ref={this.placeholder}>
+        <div className={'gerami-input-placeholder'} ref={this.placeholder}>
           {placeholder || label}
         </div>
       </label>
@@ -74,6 +74,7 @@ export class Input extends Component<IInputProps, IInputState> {
 
   updateFloat() {
     this.placeholder.current &&
-      (this.placeholder.current.className = `gerami-placeholder ${this.value && 'gerami-float'}`)
+      (this.placeholder.current.className = `gerami-input-placeholder ${this.value &&
+        'gerami-input-float'}`)
   }
 }

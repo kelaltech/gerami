@@ -1,13 +1,56 @@
 @import '../../styles/theme';
 
+.gerami-button {
+  display: inline-block;
+  margin: 0;
+  padding: ($space / 2 - 2) ($space - 2);
+  border: $border solid darken($bg, 14%);
+  border-radius: $radius;
+  outline: 0;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  background-color: darken($bg, 3%);
+  box-shadow: $shade-S;
+  color: lighten($fg, 28%);
+  transition: all 150ms;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    border-color: $primary;
+    background-color: darken($bg, 7%);
+    box-shadow: $shade-M;
+    color: $fg;
+  }
+  &:active {
+    box-shadow: none;
+    filter: drop-shadow($shade-S);
+    transform: $touch;
+  }
+  &:disabled,
+  &:disabled:active,
+  &:disabled:focus,
+  &:disabled:hover {
+    border-color: transparent;
+    background-color: darken($bg, 7%);
+    box-shadow: none;
+    color: lighten($fg, 42%);
+    filter: none;
+    transform: none;
+    cursor: default;
+  }
+}
+
 .gerami-button-primary {
   border-color: $primary;
   background-color: $primary;
   color: darken($bg, 7%);
-}
-.gerami-button-primary:focus,
-.gerami-button-primary:hover {
-  border-color: $primary;
-  background-color: lighten($primary, 3%);
-  color: $bg;
+
+  &:focus,
+  &:hover {
+    border-color: $primary;
+    background-color: lighten($primary, 3%);
+    color: $bg;
+  }
 }

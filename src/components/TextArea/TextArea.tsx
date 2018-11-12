@@ -26,7 +26,7 @@ export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
     const { className, label, placeholder, ...rest } = this.props
 
     return (
-      <label className={`gerami-label${className ? ' ' + className : ''}`}>
+      <label className={`gerami-textarea-label${className ? ' ' + className : ''}`}>
         <textarea
           className={'textarea'}
           {...rest as any}
@@ -38,7 +38,7 @@ export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
           placeholder={''}
           ref={this.textarea}
         />
-        <div className={'gerami-placeholder'} ref={this.placeholder}>
+        <div className={'gerami-textarea-placeholder'} ref={this.placeholder}>
           {placeholder || label}
         </div>
       </label>
@@ -47,6 +47,7 @@ export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
 
   updateFloat = (): void => {
     this.placeholder.current &&
-      (this.placeholder.current.className = `gerami-placeholder ${this.value && 'gerami-float'}`)
+      (this.placeholder.current.className = `gerami-textarea-placeholder ${this.value &&
+        'gerami-textarea-float'}`)
   }
 }

@@ -18,14 +18,20 @@ export class Button extends Component<IButtonProps, IButtonState> {
       <button
         {...rest as any}
         className={`gerami-button ${
-          primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary' : ''
-        }${className ? ' ' + className : ''}`}
+          primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary ' : ''
+        }${className || ''}`}
         type={type || 'button'}
       >
         {children}
       </button>
     )
 
-    return to ? <Link to={to}>{button}</Link> : button
+    return to ? (
+      <Link className="gerami-anchor" to={to}>
+        {button}
+      </Link>
+    ) : (
+      button
+    )
   }
 }

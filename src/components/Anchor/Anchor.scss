@@ -1,1 +1,18 @@
 @import '../../styles/theme';
+
+.gerami-anchor {
+  display: inline-block;
+  text-decoration: underline;
+  color: darken($primary, 7%);
+  transition: all 150ms;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $primary;
+  }
+  &:active {
+    filter: drop-shadow($shade-S);
+    transform: $touch;
+  }
+}

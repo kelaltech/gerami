@@ -1,13 +1,51 @@
 @import '../../styles/theme';
 
-.gerami-label {
+.gerami-input {
+  display: inline-block;
+  margin: 0;
+  padding: ($space / 10) 0 ($space / 20);
+  width: inherit;
+  max-width: inherit;
+  min-width: inherit;
+  height: inherit;
+  max-height: inherit;
+  min-height: inherit;
+  border: 0;
+  border-radius: 0;
+  border-bottom: $border solid darken($bg, 14%);
+  outline: 0;
+  font: inherit;
+  background-color: transparent;
+  color: lighten($fg, 28%);
+  box-shadow: none;
+  transition: all 200ms ease;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $bg;
+    border-color: $primary;
+    color: $fg;
+  }
+  &:disabled {
+    border-color: darken($bg, 14%);
+    background-color: darken($bg, 3%);
+    box-shadow: none;
+    color: lighten($fg, 42%);
+    filter: none;
+    transform: none;
+    cursor: default;
+  }
+}
+
+.gerami-input-label {
   display: inline-block;
   position: relative;
   margin: 0;
   padding: ($font-S - $space / 10) 0 0;
 }
 
-.gerami-placeholder {
+.gerami-input-placeholder {
   position: absolute;
   top: $font-S;
   left: 0;
@@ -18,7 +56,7 @@
   pointer-events: none;
 }
 
-.gerami-float {
+.gerami-input-float {
   top: 0;
   font-size: $font-S;
   line-height: $font-S;
