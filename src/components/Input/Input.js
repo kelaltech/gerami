@@ -100,10 +100,10 @@ var Input = /** @class */ (function(_super) {
     delete rest.inputRef
     return react_1.default.createElement(
       'label',
-      { className: 'gerami-label' + (className ? ' ' + className : '') },
+      { className: 'gerami-input-label ' + (className || '') },
       react_1.default.createElement(
         'input',
-        __assign({ type: 'text', className: 'gerami-Input' }, rest, {
+        __assign({ type: 'text', className: 'gerami-input' }, rest, {
           onBlur: function(e) {
             _this.updateFloat()
             !(typeof onBlur === 'function') || onBlur(e)
@@ -130,14 +130,15 @@ var Input = /** @class */ (function(_super) {
       ),
       react_1.default.createElement(
         'div',
-        { className: 'gerami-placeholder', ref: this.placeholder },
+        { className: 'gerami-input-placeholder', ref: this.placeholder },
         placeholder || label
       )
     )
   }
   Input.prototype.updateFloat = function() {
     this.placeholder.current &&
-      (this.placeholder.current.className = 'gerami-placeholder ' + (this.value && 'gerami-float'))
+      (this.placeholder.current.className =
+        'gerami-input-placeholder ' + (this.value && 'gerami-input-float'))
   }
   return Input
 })(react_1.Component)

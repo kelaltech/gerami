@@ -78,13 +78,19 @@ var Button = /** @class */ (function(_super) {
       __assign({}, rest, {
         className:
           'gerami-button ' +
-          (primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary' : '') +
-          (className ? ' ' + className : ''),
+          (primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary ' : '') +
+          (className || ''),
         type: type || 'button'
       }),
       children
     )
-    return to ? react_1.default.createElement(react_router_dom_1.Link, { to: to }, button) : button
+    return to
+      ? react_1.default.createElement(
+          react_router_dom_1.Link,
+          { className: 'gerami-anchor', to: to },
+          button
+        )
+      : button
   }
   return Button
 })(react_1.Component)

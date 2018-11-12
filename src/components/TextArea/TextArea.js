@@ -67,7 +67,7 @@ var TextArea = /** @class */ (function(_super) {
     _this.updateFloat = function() {
       _this.placeholder.current &&
         (_this.placeholder.current.className =
-          'gerami-placeholder ' + (_this.value && 'gerami-float'))
+          'gerami-textarea-placeholder ' + (_this.value && 'gerami-textarea-float'))
     }
     return _this
   }
@@ -89,10 +89,10 @@ var TextArea = /** @class */ (function(_super) {
       rest = __rest(_a, ['className', 'label', 'placeholder'])
     return react_1.default.createElement(
       'label',
-      { className: 'gerami-label' + (className ? ' ' + className : '') },
+      { className: 'gerami-textarea-label' + (className ? ' ' + className : '') },
       react_1.default.createElement(
         'textarea',
-        __assign({ className: 'textarea' }, rest, {
+        __assign({ className: 'gerami-textarea' }, rest, {
           onBlur: this.updateFloat,
           onChange: this.updateFloat,
           onFocus: this.updateFloat,
@@ -104,7 +104,7 @@ var TextArea = /** @class */ (function(_super) {
       ),
       react_1.default.createElement(
         'div',
-        { className: 'gerami-placeholder', ref: this.placeholder },
+        { className: 'gerami-textarea-placeholder', ref: this.placeholder },
         placeholder || label
       )
     )

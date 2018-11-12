@@ -79,12 +79,12 @@ var Anchor = /** @class */ (function(_super) {
     return to
       ? react_1.default.createElement(
           react_router_dom_1.Link,
-          __assign({ to: to }, rest, { className: 'a ' + (className || '') }),
+          __assign({ to: to }, rest, { className: 'gerami-anchor ' + (className || '') }),
           child
         )
       : react_1.default.createElement(
           'a',
-          __assign({}, rest, { className: 'a ' + (className || '') }),
+          __assign({}, rest, { className: 'gerami-anchor ' + (className || '') }),
           child
         )
   }
