@@ -140,7 +140,7 @@ var SlideShow = /** @class */ (function(_super) {
                     className: 'gerami-slideShow-slides ' + animation,
                     style: {
                       backgroundImage: 'url(' + Image.image + ')',
-                      height: _this.props.height ? _this.props.height : '600px'
+                      height: height || '600px'
                     }
                   },
                   react_1.default.createElement(

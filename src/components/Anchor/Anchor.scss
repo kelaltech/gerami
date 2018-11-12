@@ -5,6 +5,7 @@
   text-decoration: underline;
   color: darken($primary, 7%);
   transition: all 150ms;
+  cursor: pointer;
 
   &:active,
   &:focus,

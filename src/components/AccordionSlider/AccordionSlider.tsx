@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './AccordionSlider.scss'
 import { Anchor } from '../Anchor/Anchor.js'
 
 interface IAccordionSliderProps {
@@ -15,6 +14,7 @@ export class AccordionSlider extends Component<IAccordionSliderProps, any> {
   render() {
     const { width, height, imgs } = this.props
     imgLength.length = imgs.length // to divide the space equally bn images
+
     return (
       <div
         style={{
