@@ -1,11 +1,14 @@
-import { Component } from 'react'
+import { Component, CSSProperties } from 'react'
 export interface IDialogProps {
   open?: boolean
-  width?: string | number
+  style?: CSSProperties
+  className?: string
+  top?: boolean
+  left?: boolean
+  right?: boolean
+  bottom?: boolean
 }
-interface IDialogState {}
-export declare class Dialog extends Component<IDialogProps, IDialogState> {
-  state: {}
+export declare class Dialog extends Component<IDialogProps, any> {
   render(): JSX.Element
+  handleDialigContainer: () => void
 }
-export {}

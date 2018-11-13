@@ -33,24 +33,44 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
+//style,class, children, open, top, bottom, left, right
 var Dialog = /** @class */ (function(_super) {
   __extends(Dialog, _super)
   function Dialog() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
-    _this.state = {}
+    _this.handleDialigContainer = function() {
+      var container = document.getElementById('gerami-dialog-container')
+      container.style.display = 'none'
+    }
     return _this
   }
   Dialog.prototype.render = function() {
     var _a = this.props,
       open = _a.open,
       children = _a.children,
-      width = _a.width
+      style = _a.style,
+      className = _a.className,
+      bottom = _a.bottom
     return react_1.default.createElement(
       'div',
-      { className: 'gerami-modal center', style: { display: open ? 'block' : 'none' } },
+      {
+        className: 'gerami-dialog-container',
+        id: 'gerami-dialog-container',
+        style: { display: open ? 'block' : 'none' },
+        onClick: this.handleDialigContainer
+      },
       react_1.default.createElement(
         'div',
-        { className: 'gerami-modal-content', style: { width: width } },
+        {
+          style: style,
+          id: 'gerami-dialog-box',
+          className:
+            'gerami-dialog-box ' +
+            (className ? className : '') +
+            ' ' +
+            (bottom ? 'gerami-bottom' : '')
+        },
+        String(bottom),
         children
       )
     )
