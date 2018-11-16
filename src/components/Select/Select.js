@@ -65,7 +65,7 @@ var Select = /** @class */ (function(_super) {
       options: _this.props.options || [],
       showOptions: false,
       multipleSelectedItems: [],
-      singleSelectedItem: null,
+      singleSelectedItem: { name: '', value: '' },
       showPlaceholder: true
     }
     _this.handleShow = function() {
@@ -78,7 +78,7 @@ var Select = /** @class */ (function(_super) {
         options: _this.props.options || [],
         showOptions: false,
         multipleSelectedItems: [],
-        singleSelectedItem: null,
+        singleSelectedItem: { name: '', value: '' },
         showPlaceholder: true
       })
       _this.props.selectedValue()
@@ -189,7 +189,7 @@ var Select = /** @class */ (function(_super) {
                     react_1.default.createElement(
                       'span',
                       { className: 'gerami-multi-option' },
-                      option,
+                      option.name,
                       react_1.default.createElement('i', {
                         className: 'fa fa-times',
                         onClick: function() {
@@ -210,7 +210,7 @@ var Select = /** @class */ (function(_super) {
                       display: '' + (this.state.showPlaceholder ? 'none' : 'inline')
                     }
                   },
-                  this.state.singleSelectedItem
+                  this.state.singleSelectedItem.name
                 ),
             react_1.default.createElement(
               'span',
@@ -257,7 +257,7 @@ var Select = /** @class */ (function(_super) {
                 return _this.handleSelectedOption(option)
               }
             },
-            react_1.default.createElement('span', null, option)
+            react_1.default.createElement('span', null, option.name)
           )
         })
       )

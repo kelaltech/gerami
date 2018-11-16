@@ -2,7 +2,10 @@ import { Component, HTMLAttributes } from 'react'
 export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
   placeholder?: string
-  options: any[]
+  options: {
+    name: string
+    value: string
+  }[]
   multiple?: boolean
   selectedValue?: any
   minWidth?: number | string
@@ -11,17 +14,32 @@ export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
 }
 interface ISelectState {
   showOptions: boolean
-  multipleSelectedItems: any[]
-  singleSelectedItem: any
-  options: any[]
+  multipleSelectedItems: {
+    name: string
+    value: string
+  }[]
+  singleSelectedItem: {
+    name: string
+    value: string
+  }
+  options: {
+    name: string
+    value: string
+  }[]
   showPlaceholder: boolean
 }
 export declare class Select extends Component<ISelectProps, ISelectState> {
   state: {
-    options: any[]
+    options: {
+      name: string
+      value: string
+    }[]
     showOptions: boolean
     multipleSelectedItems: never[]
-    singleSelectedItem: null
+    singleSelectedItem: {
+      name: string
+      value: string
+    }
     showPlaceholder: boolean
   }
   render(): JSX.Element

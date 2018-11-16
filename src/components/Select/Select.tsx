@@ -3,7 +3,7 @@ import React, { Component, HTMLAttributes } from 'react'
 export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
   placeholder?: string
-  options: any[]
+  options: { name: string; value: string }[]
   multiple?: boolean
   selectedValue?: any
   minWidth?: number | string
@@ -13,9 +13,9 @@ export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
 
 interface ISelectState {
   showOptions: boolean
-  multipleSelectedItems: any[]
-  singleSelectedItem: any
-  options: any[]
+  multipleSelectedItems: { name: string; value: string }[]
+  singleSelectedItem: { name: string; value: string }
+  options: { name: string; value: string }[]
   showPlaceholder: boolean
 }
 
@@ -24,7 +24,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
     options: this.props.options || [],
     showOptions: false,
     multipleSelectedItems: [],
-    singleSelectedItem: null,
+    singleSelectedItem: { name: '', value: '' },
     showPlaceholder: true
   }
 
@@ -48,20 +48,22 @@ export class Select extends Component<ISelectProps, ISelectState> {
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
             <span className={'gerami-selected-options-container'}>
               {multiple ? (
-                this.state.multipleSelectedItems.map((option, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      display: `${this.state.showPlaceholder ? 'none' : 'inline'}`
-                    }}
-                    className={'gerami-multi-option-container'}
-                  >
-                    <span className={'gerami-multi-option'}>
-                      {option}
-                      <i className={'fa fa-times'} onClick={() => this.handleDisSelect(option)} />
+                this.state.multipleSelectedItems.map(
+                  (option: { name: string; value: string }, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        display: `${this.state.showPlaceholder ? 'none' : 'inline'}`
+                      }}
+                      className={'gerami-multi-option-container'}
+                    >
+                      <span className={'gerami-multi-option'}>
+                        {option.name}
+                        <i className={'fa fa-times'} onClick={() => this.handleDisSelect(option)} />
+                      </span>
                     </span>
-                  </span>
-                ))
+                  )
+                )
               ) : (
                 <span
                   className={'gerami-single-option-container'}
@@ -70,7 +72,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
                     display: `${this.state.showPlaceholder ? 'none' : 'inline'}`
                   }}
                 >
-                  {this.state.singleSelectedItem}
+                  {this.state.singleSelectedItem.name}
                 </span>
               )}
               <span>{this.state.showPlaceholder ? `${placeholder || 'Select...'}` : ''}</span>
@@ -98,7 +100,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
         >
           {options.map((option, i) => (
             <div key={i} onClick={() => this.handleSelectedOption(option)}>
-              <span>{option}</span>
+              <span>{option.name}</span>
             </div>
           ))}
         </div>
@@ -117,7 +119,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
       options: this.props.options || [],
       showOptions: false,
       multipleSelectedItems: [],
-      singleSelectedItem: null,
+      singleSelectedItem: { name: '', value: '' },
       showPlaceholder: true
     })
     this.props.selectedValue()
@@ -149,7 +151,10 @@ export class Select extends Component<ISelectProps, ISelectState> {
   handleSelectedOption = (option: any) => {
     this.state.showPlaceholder = false
     if (this.props.multiple) {
-      let selectedItems: any = this.state.multipleSelectedItems.concat(option)
+      let selectedItems: {
+        name: string
+        value: string
+      }[] = this.state.multipleSelectedItems.concat(option)
       this.setState({
         multipleSelectedItems: selectedItems
       })
