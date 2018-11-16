@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-evenly;
   padding: $padding-S;
-  border-radius: $radius;
+  //border-radius: $radius;
 }
 
 .gerami-select-placeholder {
@@ -71,6 +71,7 @@
 }
 
 .gerami-options-container {
+  z-index: 1;
   box-shadow: $shade-L;
   border-radius: $radius;
   background-color: $bg;
@@ -78,11 +79,14 @@
   min-width: inherit;
   width: inherit !important;
 }
+.gerami-option-items-container {
+}
 .gerami-options-container > div {
   padding: $padding-S;
 }
 .gerami-options-container > div:hover {
   background-color: #ededed;
+  color: $primary;
   cursor: pointer;
 }
 
