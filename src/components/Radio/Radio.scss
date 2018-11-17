@@ -37,8 +37,22 @@
 
 .gerami-radio input:checked ~ .checkmark {
   background-color: $primary;
+  animation-name: radio;
+  animation-duration: 2s;
+}
+.gerami-radio:hover input:checked ~ .checkmark {
+  background-color: orange;
 }
 
+@keyframes radio {
+  0% {
+    background: blue;
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  100% {
+    background-color: $primary;
+  }
+}
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
   display: none;
