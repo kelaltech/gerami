@@ -34,50 +34,42 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var sizeSpec = {
-  XXS: 140,
-  XS: 280,
-  S: 420,
-  M: 560,
-  L: 700,
-  XL: 840,
-  XXL: 980,
-  '3XL': 1120,
-  '4XL': 1260,
-  '5XL': 1400,
-  '6XL': 1540,
-  '7XL': 1680,
-  '8XL': 1820,
-  '9XL': 1960
+  XXS: 14,
+  XS: 28,
+  S: 42,
+  M: 56,
+  L: 70,
+  XL: 84,
+  XXL: 98,
+  '3XL': 112,
+  '4XL': 126,
+  '5XL': 140,
+  '6XL': 154,
+  '7XL': 168,
+  '8XL': 182,
+  '9XL': 196
 }
 var Title = /** @class */ (function(_super) {
   __extends(Title, _super)
   function Title() {
-    var _this = (_super !== null && _super.apply(this, arguments)) || this
-    _this.state = {}
-    return _this
+    return (_super !== null && _super.apply(this, arguments)) || this
   }
   Title.prototype.render = function() {
     var _a = this.props,
       size = _a.size,
-      color = _a.color,
+      fontS = _a.fontS,
       className = _a.className,
       children = _a.children
     var header = size && (typeof size === 'string' ? sizeSpec[size] : size)
+    var font = fontS && (typeof fontS === 'string' ? fontS : '')
     return react_1.default.createElement(
       'div',
       {
-        className:
-          'gerami-title\n        ' +
-          (typeof color === 'string' && color.toLocaleLowerCase() === 'green'
-            ? 'gerami-title-green'
-            : '') +
-          '\n        ' +
-          (className ? ' ' + className : '') +
-          '  ',
-        color: color,
-        style: { fontSize: header }
+        className: 'gerami-title\n        ' + (className ? ' ' + className : '') + '  ',
+        style: { fontSize: header, fontStyle: font }
       },
       size ? '' : null,
+      fontS ? '' : null,
       children
     )
   }

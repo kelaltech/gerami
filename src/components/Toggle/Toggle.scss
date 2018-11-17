@@ -1,33 +1,33 @@
 @import '../../styles/theme';
-
 .switch input {
   display: none;
 }
 
-.span {
-  width: 30px;
-  height: 15px;
+.gerami-toggle {
+  width: 40px;
+  height: 10px;
   background-color: rgb(116, 116, 116);
-  border-radius: 45%;
+  border-radius: 10%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: absolute;
   cursor: pointer;
   transition: 0.4s;
 }
-.span:hover {
+.gerami-toggle:hover {
   box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.span:before {
+.gerami-toggle:before {
   position: absolute;
+  margin-top: -5px;
   border-radius: 100%;
   content: '';
-  height: 15px;
-  width: 15px;
-  background-color: greenyellow;
+  height: 20px;
+  width: 20px;
+  background-color: $primary;
   transition: 0.4s;
 }
 
-input:checked + .span:before {
-  transform: translateX(15px);
+input:checked + .gerami-toggle:before {
+  transform: translateX(20px);
 }

@@ -1,4 +1,62 @@
 @import '../../styles/theme';
 
 .gerami-radio {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.gerami-radio:hover {
+}
+
+/* Hide the default radio button */
+.gerami-radio input {
+  display: none;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.gerami-radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.gerami-radio input:checked ~ .checkmark {
+  background-color: $primary;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.gerami-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.gerami-radio .checkmark:after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }

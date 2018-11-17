@@ -18,26 +18,23 @@ export class Radio extends Component<IRadioProps, IRadioState> {
   render() {
     const { className, value, name, children, ...rest } = this.props
 
-    delete rest.checked
+    // delete rest.checked
 
     return (
-      <div>
+      <label className={'gerami-radio'}>
         <input
           className={`gerami-radio${className ? ' ' + className : ''}  `}
           type={'radio'}
           name={name}
           value={value}
           defaultChecked={this.state.status}
-          onClick={this.toggle}
           {...rest as any}
         />
-        {name ? '' : null}
+        <span className={'checkmark'} />
+        &emsp;&emsp;
         {children}
-      </div>
+        {name ? '' : null}
+      </label>
     )
-  }
-
-  toggle = () => {
-    this.setState(old => ({ status: !old.status }))
   }
 }

@@ -12,6 +12,5 @@ export declare class Radio extends Component<IRadioProps, IRadioState> {
     status: boolean
   }
   render(): JSX.Element
-  toggle: () => void
 }
 export {}

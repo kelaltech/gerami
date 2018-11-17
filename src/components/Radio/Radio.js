@@ -64,11 +64,6 @@ var Radio = /** @class */ (function(_super) {
     _this.state = {
       status: false
     }
-    _this.toggle = function() {
-      _this.setState(function(old) {
-        return { status: !old.status }
-      })
-    }
     return _this
   }
   Radio.prototype.render = function() {
@@ -78,10 +73,10 @@ var Radio = /** @class */ (function(_super) {
       name = _a.name,
       children = _a.children,
       rest = __rest(_a, ['className', 'value', 'name', 'children'])
-    delete rest.checked
+    // delete rest.checked
     return react_1.default.createElement(
-      'div',
-      null,
+      'label',
+      { className: 'gerami-radio' },
       react_1.default.createElement(
         'input',
         __assign(
@@ -90,14 +85,15 @@ var Radio = /** @class */ (function(_super) {
             type: 'radio',
             name: name,
             value: value,
-            defaultChecked: this.state.status,
-            onClick: this.toggle
+            defaultChecked: this.state.status
           },
           rest
         )
       ),
-      name ? '' : null,
-      children
+      react_1.default.createElement('span', { className: 'checkmark' }),
+      '\u2003\u2003',
+      children,
+      name ? '' : null
     )
   }
   return Radio

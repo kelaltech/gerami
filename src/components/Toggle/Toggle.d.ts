@@ -1,18 +1,15 @@
-import { Component, LabelHTMLAttributes } from 'react'
-export interface IRadioProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  className?: string
-  value?: string
-  selected?: boolean
-}
-interface IRadioState {
+import { Component } from 'react'
+interface IRadio {
   status: boolean
 }
-export declare class Toggle extends Component<IRadioProps, IRadioState> {
-  state: {
-    status: boolean
-  }
-  readonly value: boolean
+interface props {
+  className?: string
+  value?: string
+}
+export declare class Toggle extends Component<props, any> {
+  state: IRadio
+  constructor(props: any)
+  f(): void
   render(): JSX.Element
-  toggle: () => void
 }
 export {}
