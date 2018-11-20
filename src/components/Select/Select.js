@@ -96,12 +96,14 @@ var Select = /** @class */ (function(_super) {
         var arr = _this.state.multipleSelectedItems.filter(function(item) {
           return item !== option
         })
-        arr.length == 0 && _this.state.singleSelectedItem == null
-          ? (_this.state.showPlaceholder = true)
-          : (_this.state.showPlaceholder = false)
         _this.setState({
           multipleSelectedItems: arr
         })
+        if (arr.length == 0) {
+          _this.setState({
+            showPlaceholder: true
+          })
+        }
         _this.setState({
           options: _this.state.options.concat(option)
         })

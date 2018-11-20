@@ -47,6 +47,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
         className={`gerami-select-container ${className || ''}`}
         {...rest as any}
       >
+        {/*select header*/}
         <div className={'gerami-select-header'}>
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
             <span className={'gerami-selected-options-container'}>
@@ -144,12 +145,15 @@ export class Select extends Component<ISelectProps, ISelectState> {
   handleDisSelect = (option: any) => {
     if (this.props.multiple) {
       let arr = this.state.multipleSelectedItems.filter(item => item !== option)
-      arr.length == 0 && this.state.singleSelectedItem == null
-        ? (this.state.showPlaceholder = true)
-        : (this.state.showPlaceholder = false)
+
       this.setState({
         multipleSelectedItems: arr
       })
+      if (arr.length == 0) {
+        this.setState({
+          showPlaceholder: true
+        })
+      }
 
       this.setState({
         options: this.state.options.concat(option)
