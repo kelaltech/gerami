@@ -1,44 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
 
-const sizeSpec = {
-  XXS: 14,
-  XS: 28,
-  S: 42,
-  M: 56,
-  L: 70,
-  XL: 84,
-  XXL: 98,
-  '3XL': 112,
-  '4XL': 126,
-  '5XL': 140,
-  '6XL': 154,
-  '7XL': 168,
-  '8XL': 182,
-  '9XL': 196
+let sizeSpec={
+  'XXS': 10,
+  'XS': 10,
+  'S': 30,
+  'M': 40,
+  'L': 50,
+  'XL': 55,
+  'XXL': 60
 }
 
-export interface props
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  className?: string
-  fontS?: 'italic'
-  size?: geramiSizeTypes
+export interface ITitleProps extends HTMLAttributes<HTMLDivElement> {
+  size?:string | geramiSizeTypes
+  subTitle?:string
 }
 
-export class Title extends Component<props, any> {
+interface ITitleState {}
+
+export class Title extends Component<ITitleProps, ITitleState> {
+  state = {}
+
   render() {
-    const { size, fontS, className, children } = this.props
-    const header = size && (typeof size === 'string' ? sizeSpec[size] : size)
-    const font = fontS && (typeof fontS === 'string' ? fontS : '')
+    const { size, className,subTitle,children } = this.props
+    let fontSize = size && (typeof size === 'string' ? sizeSpec[size] : size)
     return (
-      <div
-        className={`gerami-title
-        ${className ? ' ' + className : ''}  `}
-        style={{ fontSize: header, fontStyle: font }}
+      <div className={`padding-vertical-normal light fg-primary ${className?className:''}`}
+           style={{fontSize:size?fontSize:''}}
       >
-        {size ? '' : null}
-        {fontS ? '' : null}
         {children}
+        <sub className={'gerami-title-subtitle fg-blackish'}>{subTitle}</sub>
       </div>
     )
   }
