@@ -1,46 +1,39 @@
-import React, { Component } from 'react'
+import React, { Component, InputHTMLAttributes} from 'react'
 
-interface IRadio {
+export interface IToggleProps extends InputHTMLAttributes<HTMLInputElement>{
+  className?: string
+  value?: string
+  selected?: boolean
+}
+
+interface IToggleState {
   status: boolean
 }
 
-interface props {
-  className?: string
-  value?: string
-}
-
-export class Toggle extends Component<props, any> {
-  state: IRadio = {
-    status: false
+export class Toggle extends Component<IToggleProps, IToggleState> {
+  state = {
+    status: this.props.selected || false
   }
 
-  constructor(props: any) {
-    super(props)
-    this.state = {
-      status: false
-    }
-  }
-
-  f() {
-    if (!this.state.status) {
-      this.setState({
-        status: true
-      })
-    } else {
-      this.setState({
-        status: false
-      })
-    }
+  get value(): boolean {
+    return this.state.status
   }
 
   render() {
-    const { className, children } = this.props
+    const { className, children, ...rest } = this.props
+
     return (
-      <label className={'switch'}>
-        <input type={'checkbox'} onClick={this.f.bind(this)} checked={this.state.status} />
-        <span className={`gerami-toggle ${className ? ' ' + className : ''}  `} />
-        {children}
+      <label className={'switch'} >
+        {children}&nbsp;&nbsp;
+        <span className={'gerami-toggle-left'}> </span>
+        <input type={'checkbox'} {...rest as any} defaultChecked={this.value} onChange={this.toggle} />
+        <span className={`gerami-toggle-span${className ? ' ' + className : ''}  ${this.state.status? 'gerami-toggle-span-selected' : ''}` }> </span>
+        <span className={'gerami-toggle-right'}>  </span>
       </label>
     )
+  }
+
+  toggle = () => {
+    this.setState(state => ({ status: !state.status }))
   }
 }
