@@ -1,20 +1,4 @@
-@import '../../styles/theme';
-//main css
-.gerami-title {
-  position: relative;
-  text-decoration: none;
-  width: inherit;
-  color: #000;
-}
-
-.gerami-title:hover {
-  cursor: default;
-}
-
-//features
-.gerami-title-color {
-  color: $primary;
-}
-.gerami-title-center {
-  text-align: center;
+@import '../../styles/_theme';
+.gerami-title-subtitle{
+  font-size: 12px;
 }
