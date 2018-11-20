@@ -1,33 +1,50 @@
-@import '../../styles/theme';
-.switch input {
+@import '../../styles/_theme';
+
+.gerami-toggle-switch input {
   display: none;
 }
+.gerami-toggle-left{
+  height: 12px;
+  width: 12px;
+  background: rgb(176, 176, 176);
+  display: inline-block;
+  border-radius: 50%;
+}
 
-.gerami-toggle {
-  width: 40px;
-  height: 10px;
-  background-color: rgb(116, 116, 116);
-  border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  position: absolute;
+.gerami-toggle-right{
+  height: 12px;
+  width: 12px;
+  background: rgb(176, 176, 176);
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.gerami-toggle-span {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(176, 176, 176);
   cursor: pointer;
+  margin: 0px -6px 0px -6px;
+  display: inline-block;
   transition: 0.4s;
 }
-.gerami-toggle:hover {
-  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
-.gerami-toggle:before {
+.gerami-toggle-span:before {
   position: absolute;
-  margin-top: -5px;
   border-radius: 100%;
   content: '';
-  height: 20px;
-  width: 20px;
-  background-color: $primary;
+  height: 15px;
+  width: 15px;
+  margin-top: -2px;
+  margin-left: -10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px grey;
   transition: 0.4s;
 }
+.gerami-toggle-span-selected:before{
+  background-color: $primary;
+}
 
-input:checked + .gerami-toggle:before {
-  transform: translateX(20px);
+input:checked + .gerami-toggle-span:before {
+  transform: translateX(18px);
 }
