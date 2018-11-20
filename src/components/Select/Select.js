@@ -57,6 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
+var MenuItem_js_1 = require('../MenuItem/MenuItem.js')
 var Select = /** @class */ (function(_super) {
   __extends(Select, _super)
   function Select() {
@@ -124,6 +125,7 @@ var Select = /** @class */ (function(_super) {
         _this.setState({
           singleSelectedItem: option
         })
+        _this.dropDown()
         _this.props.selectedValue(option)
       }
       //comment
@@ -147,20 +149,21 @@ var Select = /** @class */ (function(_super) {
       className = _a.className,
       placeholder = _a.placeholder,
       multiple = _a.multiple,
-      maxWidth = _a.maxWidth,
-      minWidth = _a.minWidth,
       size = _a.size,
-      rest = __rest(_a, ['className', 'placeholder', 'multiple', 'maxWidth', 'minWidth', 'size'])
-    var options = this.state.options
+      rest = __rest(_a, ['className', 'placeholder', 'multiple', 'size'])
+    var _b = this.state,
+      options = _b.options,
+      showOptions = _b.showOptions,
+      multipleSelectedItems = _b.multipleSelectedItems,
+      showPlaceholder = _b.showPlaceholder,
+      singleSelectedItem = _b.singleSelectedItem
     delete rest.selectedValue
     return react_1.default.createElement(
       'div',
       __assign(
         {
           style: {
-            width: size ? size : '',
-            minWidth: minWidth ? minWidth : '230px',
-            maxWidth: maxWidth ? maxWidth : '300px'
+            width: size ? size : ''
           },
           className: 'gerami-select-container ' + (className || '')
         },
@@ -176,13 +179,13 @@ var Select = /** @class */ (function(_super) {
             'span',
             { className: 'gerami-selected-options-container' },
             multiple
-              ? this.state.multipleSelectedItems.map(function(option, i) {
+              ? multipleSelectedItems.map(function(option, i) {
                   return react_1.default.createElement(
                     'span',
                     {
                       key: i,
                       style: {
-                        display: '' + (_this.state.showPlaceholder ? 'none' : 'inline')
+                        display: '' + (showPlaceholder ? 'none' : 'inline')
                       },
                       className: 'gerami-multi-option-container'
                     },
@@ -204,31 +207,31 @@ var Select = /** @class */ (function(_super) {
                   {
                     className: 'gerami-single-option-container',
                     onClick: function() {
-                      return _this.handleDisSelect(_this.state.singleSelectedItem)
+                      return _this.handleDisSelect(singleSelectedItem)
                     },
                     style: {
-                      display: '' + (this.state.showPlaceholder ? 'none' : 'inline')
+                      display: '' + (showPlaceholder ? 'none' : 'inline')
                     }
                   },
-                  this.state.singleSelectedItem.name
+                  singleSelectedItem.name
                 ),
             react_1.default.createElement(
               'span',
               null,
-              this.state.showPlaceholder ? '' + (placeholder || 'Select...') : ''
+              showPlaceholder ? '' + (placeholder || 'Select...') : ''
             )
           )
         ),
         react_1.default.createElement(
           'div',
           { className: 'gerami-arrow-container' },
-          this.state.showPlaceholder
+          showPlaceholder
             ? null
             : react_1.default.createElement('i', {
                 className: 'fa fa-times gerami-cancel-all',
                 onClick: this.clearAllSelection
               }),
-          this.state.showOptions
+          showOptions
             ? react_1.default.createElement('i', {
                 className: 'fa fa-chevron-up',
                 onClick: this.dropDown
@@ -239,27 +242,37 @@ var Select = /** @class */ (function(_super) {
               })
         )
       ),
+      react_1.default.createElement('div', {
+        onClick: this.dropDown,
+        style: {
+          display: showOptions ? 'block' : 'none'
+        },
+        className: 'gerami-background-container'
+      }),
       react_1.default.createElement(
         'div',
         {
-          className: 'gerami-options-container',
+          className: 'gerami-options-container-big',
           style: {
-            width: size ? size : '',
-            display: this.state.showOptions ? 'block' : 'none'
+            display: showOptions ? 'block' : 'none'
           }
         },
-        options.map(function(option, i) {
-          return react_1.default.createElement(
-            'div',
-            {
-              key: i,
-              onClick: function() {
-                return _this.handleSelectedOption(option)
-              }
-            },
-            react_1.default.createElement('span', null, option.name)
-          )
-        })
+        react_1.default.createElement(
+          'div',
+          { className: 'gerami-options-container' },
+          options.map(function(option, i) {
+            return react_1.default.createElement(
+              MenuItem_js_1.MenuItem,
+              {
+                key: i,
+                onClick: function() {
+                  return _this.handleSelectedOption(option)
+                }
+              },
+              option.name
+            )
+          })
+        )
       )
     )
   }

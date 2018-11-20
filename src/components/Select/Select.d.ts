@@ -8,8 +8,6 @@ export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   }[]
   multiple?: boolean
   selectedValue?: any
-  minWidth?: number | string
-  maxWidth?: number | string
   size?: number | string
 }
 interface ISelectState {

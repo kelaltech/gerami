@@ -1,4 +1,5 @@
 import React, { Component, HTMLAttributes } from 'react'
+import { MenuItem } from '../MenuItem/MenuItem.js'
 
 export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -6,8 +7,6 @@ export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   options: { name: string; value: string }[]
   multiple?: boolean
   selectedValue?: any
-  minWidth?: number | string
-  maxWidth?: number | string
   size?: number | string
 }
 
@@ -29,17 +28,21 @@ export class Select extends Component<ISelectProps, ISelectState> {
   }
 
   render() {
-    const { className, placeholder, multiple, maxWidth, minWidth, size, ...rest } = this.props
-    const { options } = this.state
+    const { className, placeholder, multiple, size, ...rest } = this.props
+    const {
+      options,
+      showOptions,
+      multipleSelectedItems,
+      showPlaceholder,
+      singleSelectedItem
+    } = this.state
 
     delete rest.selectedValue
 
     return (
       <div
         style={{
-          width: size ? size : '',
-          minWidth: minWidth ? minWidth : '230px',
-          maxWidth: maxWidth ? maxWidth : '300px'
+          width: size ? size : ''
         }}
         className={`gerami-select-container ${className || ''}`}
         {...rest as any}
@@ -48,41 +51,39 @@ export class Select extends Component<ISelectProps, ISelectState> {
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
             <span className={'gerami-selected-options-container'}>
               {multiple ? (
-                this.state.multipleSelectedItems.map(
-                  (option: { name: string; value: string }, i) => (
-                    <span
-                      key={i}
-                      style={{
-                        display: `${this.state.showPlaceholder ? 'none' : 'inline'}`
-                      }}
-                      className={'gerami-multi-option-container'}
-                    >
-                      <span className={'gerami-multi-option'}>
-                        {option.name}
-                        <i className={'fa fa-times'} onClick={() => this.handleDisSelect(option)} />
-                      </span>
+                multipleSelectedItems.map((option: { name: string; value: string }, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      display: `${showPlaceholder ? 'none' : 'inline'}`
+                    }}
+                    className={'gerami-multi-option-container'}
+                  >
+                    <span className={'gerami-multi-option'}>
+                      {option.name}
+                      <i className={'fa fa-times'} onClick={() => this.handleDisSelect(option)} />
                     </span>
-                  )
-                )
+                  </span>
+                ))
               ) : (
                 <span
                   className={'gerami-single-option-container'}
-                  onClick={() => this.handleDisSelect(this.state.singleSelectedItem)}
+                  onClick={() => this.handleDisSelect(singleSelectedItem)}
                   style={{
-                    display: `${this.state.showPlaceholder ? 'none' : 'inline'}`
+                    display: `${showPlaceholder ? 'none' : 'inline'}`
                   }}
                 >
-                  {this.state.singleSelectedItem.name}
+                  {singleSelectedItem.name}
                 </span>
               )}
-              <span>{this.state.showPlaceholder ? `${placeholder || 'Select...'}` : ''}</span>
+              <span>{showPlaceholder ? `${placeholder || 'Select...'}` : ''}</span>
             </span>
           </div>
           <div className={'gerami-arrow-container'}>
-            {this.state.showPlaceholder ? null : (
+            {showPlaceholder ? null : (
               <i className={'fa fa-times gerami-cancel-all'} onClick={this.clearAllSelection} />
             )}
-            {this.state.showOptions ? (
+            {showOptions ? (
               <i className={'fa fa-chevron-up'} onClick={this.dropDown} />
             ) : (
               <i className={'fa fa-chevron-down'} onClick={this.dropDown} />
@@ -90,19 +91,28 @@ export class Select extends Component<ISelectProps, ISelectState> {
           </div>
         </div>
 
-        {/*option container*/}
         <div
-          className={'gerami-options-container'}
+          onClick={this.dropDown}
           style={{
-            width: size ? size : '',
-            display: this.state.showOptions ? 'block' : 'none'
+            display: showOptions ? 'block' : 'none'
+          }}
+          className={'gerami-background-container'}
+        />
+        {/*option container*/}
+
+        <div
+          className={'gerami-options-container-big'}
+          style={{
+            display: showOptions ? 'block' : 'none'
           }}
         >
-          {options.map((option, i) => (
-            <div key={i} onClick={() => this.handleSelectedOption(option)}>
-              <span>{option.name}</span>
-            </div>
-          ))}
+          <div className={'gerami-options-container'}>
+            {options.map((option, i) => (
+              <MenuItem key={i} onClick={() => this.handleSelectedOption(option)}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </div>
         </div>
       </div>
     )
@@ -167,6 +177,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
       this.setState({
         singleSelectedItem: option
       })
+      this.dropDown()
       this.props.selectedValue(option)
     }
 
