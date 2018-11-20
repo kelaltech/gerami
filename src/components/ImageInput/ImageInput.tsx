@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { Component, createRef, InputHTMLAttributes, RefObject } from 'react'
-import { Button } from '../Button/Button.js'
-import defaultPlaceholderSrc from './3.jpg' // replace this with a font-awesome icon
 
 export interface IImageInputProps extends InputHTMLAttributes<HTMLInputElement> {
   innerRef?: RefObject<HTMLInputElement>
@@ -23,7 +21,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
 
   innerRef = this.props.innerRef || createRef<HTMLInputElement>()
 
-  get dataUrl(): string | null {
+  get imageUrl(): string | null {
     return this.state.image || null
   }
 
@@ -41,16 +39,19 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
     return (
       <div>
         <div className={'gerami-imageInput-Camera-Image'}>
-          <Button onClick={() => this.innerRef.current && this.innerRef.current.click()}>
-            <img
-              className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
-              src={this.dataUrl || placeholderSrc || defaultPlaceholderSrc}
-              width={width || '80px'}
-              height={width || '60px'}
-              style={borderRadius ? { borderRadius } : {}}
-              alt="Choose Image"
-            />
-          </Button>
+          <label htmlFor={'Cover'}>
+            {this.imageUrl ?
+              <img
+                className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
+                src={this.imageUrl || placeholderSrc}
+                width={width || '80px'}
+                height={width || '80px'}
+                style={borderRadius ? { borderRadius } : {}}
+                alt="Choose Image"
+              /> :
+              <i className={"fas fa-camera fa-5x gerami-imageInput-image-input"}></i>
+            }
+          </label>
           <input
             name={'image'}
             {...rest as any}
@@ -61,7 +62,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
               onChange && onChange(e)
             }}
             type="file"
-            data-url={this.dataUrl}
+            id="Cover"
           />
         </div>
       </div>
