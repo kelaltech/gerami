@@ -8,6 +8,7 @@ export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   multiple?: boolean
   selectedValue?: any
   size?: number | string
+  name?: string
 }
 
 interface ISelectState {
@@ -28,7 +29,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
   }
 
   render() {
-    const { className, placeholder, multiple, size, ...rest } = this.props
+    const { className, placeholder, multiple, size, name, ...rest } = this.props
     const {
       options,
       showOptions,
@@ -48,7 +49,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
         {...rest as any}
       >
         {/*select header*/}
-        <div className={'gerami-select-header'}>
+        <div className={'gerami-select-header'} tabIndex={0}>
           <div className={'gerami-select-placeholder'} onClick={this.handleShow}>
             <span className={'gerami-selected-options-container'}>
               {multiple ? (
@@ -91,6 +92,13 @@ export class Select extends Component<ISelectProps, ISelectState> {
             )}
           </div>
         </div>
+
+        {/*input field*/}
+        <input
+          type={'hidden'}
+          name={name ? name : ''}
+          value={multiple ? '' : singleSelectedItem.value}
+        />
 
         <div
           onClick={this.dropDown}

@@ -9,6 +9,7 @@ export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   multiple?: boolean
   selectedValue?: any
   size?: number | string
+  name?: string
 }
 interface ISelectState {
   showOptions: boolean

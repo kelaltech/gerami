@@ -152,7 +152,8 @@ var Select = /** @class */ (function(_super) {
       placeholder = _a.placeholder,
       multiple = _a.multiple,
       size = _a.size,
-      rest = __rest(_a, ['className', 'placeholder', 'multiple', 'size'])
+      name = _a.name,
+      rest = __rest(_a, ['className', 'placeholder', 'multiple', 'size', 'name'])
     var _b = this.state,
       options = _b.options,
       showOptions = _b.showOptions,
@@ -173,7 +174,7 @@ var Select = /** @class */ (function(_super) {
       ),
       react_1.default.createElement(
         'div',
-        { className: 'gerami-select-header' },
+        { className: 'gerami-select-header', tabIndex: 0 },
         react_1.default.createElement(
           'div',
           { className: 'gerami-select-placeholder', onClick: this.handleShow },
@@ -244,6 +245,11 @@ var Select = /** @class */ (function(_super) {
               })
         )
       ),
+      react_1.default.createElement('input', {
+        type: 'hidden',
+        name: name ? name : '',
+        value: multiple ? '' : singleSelectedItem.value
+      }),
       react_1.default.createElement('div', {
         onClick: this.dropDown,
         style: {

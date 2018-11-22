@@ -1,15 +1,18 @@
-import { Component } from 'react'
-interface IRadio {
-  status: boolean
-}
-interface props {
+import { Component, InputHTMLAttributes } from 'react'
+export interface IToggleProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   value?: string
+  selected?: boolean
 }
-export declare class Toggle extends Component<props, any> {
-  state: IRadio
-  constructor(props: any)
-  f(): void
+interface IToggleState {
+  status: boolean
+}
+export declare class Toggle extends Component<IToggleProps, IToggleState> {
+  state: {
+    status: boolean
+  }
+  readonly value: boolean
   render(): JSX.Element
+  toggle: () => void
 }
 export {}

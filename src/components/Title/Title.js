@@ -34,43 +34,40 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var sizeSpec = {
-  XXS: 14,
-  XS: 28,
-  S: 42,
-  M: 56,
-  L: 70,
-  XL: 84,
-  XXL: 98,
-  '3XL': 112,
-  '4XL': 126,
-  '5XL': 140,
-  '6XL': 154,
-  '7XL': 168,
-  '8XL': 182,
-  '9XL': 196
+  XXS: 10,
+  XS: 10,
+  S: 30,
+  M: 40,
+  L: 50,
+  XL: 55,
+  XXL: 60
 }
 var Title = /** @class */ (function(_super) {
   __extends(Title, _super)
   function Title() {
-    return (_super !== null && _super.apply(this, arguments)) || this
+    var _this = (_super !== null && _super.apply(this, arguments)) || this
+    _this.state = {}
+    return _this
   }
   Title.prototype.render = function() {
     var _a = this.props,
       size = _a.size,
-      fontS = _a.fontS,
       className = _a.className,
+      subTitle = _a.subTitle,
       children = _a.children
-    var header = size && (typeof size === 'string' ? sizeSpec[size] : size)
-    var font = fontS && (typeof fontS === 'string' ? fontS : '')
+    var fontSize = size && (typeof size === 'string' ? sizeSpec[size] : size)
     return react_1.default.createElement(
       'div',
       {
-        className: 'gerami-title\n        ' + (className ? ' ' + className : '') + '  ',
-        style: { fontSize: header, fontStyle: font }
+        className: 'padding-vertical-normal light fg-primary ' + (className ? className : ''),
+        style: { fontSize: size ? fontSize : '' }
       },
-      size ? '' : null,
-      fontS ? '' : null,
-      children
+      children,
+      react_1.default.createElement(
+        'sub',
+        { className: 'gerami-title-subtitle fg-blackish' },
+        subTitle
+      )
     )
   }
   return Title

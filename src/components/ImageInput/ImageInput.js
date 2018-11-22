@@ -55,16 +55,9 @@ var __importStar =
     result['default'] = mod
     return result
   }
-var __importDefault =
-  (this && this.__importDefault) ||
-  function(mod) {
-    return mod && mod.__esModule ? mod : { default: mod }
-  }
 Object.defineProperty(exports, '__esModule', { value: true })
 var React = __importStar(require('react'))
 var react_1 = require('react')
-var Button_js_1 = require('../Button/Button.js')
-var _3_jpg_1 = __importDefault(require('./3.jpg')) // replace this with a font-awesome icon
 var ImageInput = /** @class */ (function(_super) {
   __extends(ImageInput, _super)
   function ImageInput() {
@@ -89,7 +82,7 @@ var ImageInput = /** @class */ (function(_super) {
     }
     return _this
   }
-  Object.defineProperty(ImageInput.prototype, 'dataUrl', {
+  Object.defineProperty(ImageInput.prototype, 'imageUrl', {
     get: function() {
       return this.state.image || null
     },
@@ -120,20 +113,20 @@ var ImageInput = /** @class */ (function(_super) {
         'div',
         { className: 'gerami-imageInput-Camera-Image' },
         React.createElement(
-          Button_js_1.Button,
-          {
-            onClick: function() {
-              return _this.innerRef.current && _this.innerRef.current.click()
-            }
-          },
-          React.createElement('img', {
-            className: circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input',
-            src: this.dataUrl || placeholderSrc || _3_jpg_1.default,
-            width: width || '80px',
-            height: width || '60px',
-            style: borderRadius ? { borderRadius: borderRadius } : {},
-            alt: 'Choose Image'
-          })
+          'label',
+          { htmlFor: 'Cover' },
+          this.imageUrl
+            ? React.createElement('img', {
+                className: circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input',
+                src: this.imageUrl || placeholderSrc,
+                width: width || '80px',
+                height: width || '80px',
+                style: borderRadius ? { borderRadius: borderRadius } : {},
+                alt: 'Choose Image'
+              })
+            : React.createElement('i', {
+                className: 'fas fa-camera fa-5x gerami-imageInput-image-input'
+              })
         ),
         React.createElement(
           'input',
@@ -145,7 +138,7 @@ var ImageInput = /** @class */ (function(_super) {
               onChange && onChange(e)
             },
             type: 'file',
-            'data-url': this.dataUrl
+            id: 'Cover'
           })
         )
       )
