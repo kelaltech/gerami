@@ -19,16 +19,16 @@ export class Page extends Component<IPageProps, IPageState> {
         (top.toLowerCase() === 'auto' || top.toLowerCase() === 'adaptive'))
         ? '7%'
         : typeof top === 'number' || typeof top === 'string'
-          ? top
-          : 20
+        ? top
+        : 20
     const paddingBottom =
       bottom === true ||
       (typeof bottom === 'string' &&
         (bottom.toLowerCase() === 'auto' || bottom.toLowerCase() === 'adaptive'))
         ? '7%'
         : typeof bottom === 'number' || typeof bottom === 'string'
-          ? bottom
-          : 20
+        ? bottom
+        : 20
 
     return (
       <div

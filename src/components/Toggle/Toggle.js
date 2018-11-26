@@ -104,7 +104,7 @@ var Toggle = /** @class */ (function(_super) {
         },
         ' '
       ),
-      react_1.default.createElement('span', { className: 'gerami-toggle-right' }, '  ')
+      react_1.default.createElement('span', { className: 'gerami-toggle-right' }, ' ')
     )
   }
   return Toggle

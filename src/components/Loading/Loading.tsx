@@ -25,9 +25,12 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
     super(props)
 
     if (props.delay)
-      setTimeout(() => {
-        !(this.dead === false) || this.setState({ pastCustomDelay: true })
-      }, typeof props.delay === 'number' ? props.delay : 200)
+      setTimeout(
+        () => {
+          !(this.dead === false) || this.setState({ pastCustomDelay: true })
+        },
+        typeof props.delay === 'number' ? props.delay : 200
+      )
   }
 
   componentDidMount() {

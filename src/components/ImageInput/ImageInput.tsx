@@ -40,7 +40,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
       <div>
         <div className={'gerami-imageInput-Camera-Image'}>
           <label htmlFor={'Cover'}>
-            {this.imageUrl ?
+            {this.imageUrl ? (
               <img
                 className={circular ? 'gerami-imageInput-image' : 'gerami-imageInput-image-input'}
                 src={this.imageUrl || placeholderSrc}
@@ -48,9 +48,10 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
                 height={width || '80px'}
                 style={borderRadius ? { borderRadius } : {}}
                 alt="Choose Image"
-              /> :
-              <i className={"fas fa-camera fa-5x gerami-imageInput-image-input"}></i>
-            }
+              />
+            ) : (
+              <i className={'fas fa-camera fa-5x gerami-imageInput-image-input'} />
+            )}
           </label>
           <input
             name={'image'}

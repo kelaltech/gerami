@@ -1,6 +1,6 @@
-import React, { Component, InputHTMLAttributes} from 'react'
+import React, { Component, InputHTMLAttributes } from 'react'
 
-export interface IToggleProps extends InputHTMLAttributes<HTMLInputElement>{
+export interface IToggleProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   value?: string
   selected?: boolean
@@ -23,12 +23,23 @@ export class Toggle extends Component<IToggleProps, IToggleState> {
     const { className, children, ...rest } = this.props
 
     return (
-      <label className={'switch'} >
+      <label className={'switch'}>
         {children}&nbsp;&nbsp;
         <span className={'gerami-toggle-left'}> </span>
-        <input type={'checkbox'} {...rest as any} defaultChecked={this.value} onChange={this.toggle} />
-        <span className={`gerami-toggle-span${className ? ' ' + className : ''}  ${this.state.status? 'gerami-toggle-span-selected' : ''}` }> </span>
-        <span className={'gerami-toggle-right'}>  </span>
+        <input
+          type={'checkbox'}
+          {...rest as any}
+          defaultChecked={this.value}
+          onChange={this.toggle}
+        />
+        <span
+          className={`gerami-toggle-span${className ? ' ' + className : ''}  ${
+            this.state.status ? 'gerami-toggle-span-selected' : ''
+          }`}
+        >
+          {' '}
+        </span>
+        <span className={'gerami-toggle-right'}> </span>
       </label>
     )
   }

@@ -59,6 +59,11 @@ export interface IRangeProps extends HTMLAttributes<HTMLDivElement> {
    * @param e An IRangeMovedEvent, with the new 'min' and 'max' values.
    */
   onMoved?: (e: IRangeMovedEvent) => void
+  /**
+   * Name of the form control.
+   * Used to access the value in the form of "min,max" from a container form.
+   */
+  name?: string
 }
 interface IRangeState {
   checked: boolean

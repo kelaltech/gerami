@@ -62,6 +62,11 @@ export interface IRangeProps extends HTMLAttributes<HTMLDivElement> {
    * @param e An IRangeMovedEvent, with the new 'min' and 'max' values.
    */
   onMoved?: (e: IRangeMovedEvent) => void
+  /**
+   * Name of the form control.
+   * Used to access the value in the form of "min,max" from a container form.
+   */
+  name?: string
 }
 
 interface IRangeState {
@@ -107,7 +112,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
   }
 
   render() {
-    const { absoluteMin, absoluteMax, className, ...rest } = this.props
+    const { absoluteMin, absoluteMax, className, name, ...rest } = this.props
     const { checked, currentMin, currentMax, minMoving, maxMoving } = this.state
 
     if (!checked) return null
@@ -133,7 +138,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
     return (
       <div {...rest as any} className={`gerami-range ${className || ''}`} ref={this.topEle}>
-        <input type="hidden" value={`${currentMin},${currentMax}`} />
+        <input type="hidden" name={name} value={`${currentMin},${currentMax}`} />
 
         <div className={'gerami-range-background-line'} />
         <div className={'gerami-range-selected-line'} style={selectedLineStyle} />

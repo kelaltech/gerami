@@ -190,7 +190,8 @@ var Range = /** @class */ (function(_super) {
       absoluteMin = _a.absoluteMin,
       absoluteMax = _a.absoluteMax,
       className = _a.className,
-      rest = __rest(_a, ['absoluteMin', 'absoluteMax', 'className'])
+      name = _a.name,
+      rest = __rest(_a, ['absoluteMin', 'absoluteMax', 'className', 'name'])
     var _b = this.state,
       checked = _b.checked,
       currentMin = _b.currentMin,
@@ -219,6 +220,7 @@ var Range = /** @class */ (function(_super) {
       __assign({}, rest, { className: 'gerami-range ' + (className || ''), ref: this.topEle }),
       react_1.default.createElement('input', {
         type: 'hidden',
+        name: name,
         value: currentMin + ',' + currentMax
       }),
       react_1.default.createElement('div', { className: 'gerami-range-background-line' }),
