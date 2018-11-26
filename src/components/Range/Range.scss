@@ -46,6 +46,7 @@ $geramiRangeButtonDiameter: $space * 1.25;
   float: left;
   margin-top: -$geramiRangeButtonDiameter / 2 + $geramiRangeLineHeight / 2;
   margin-left: -$geramiRangeButtonDiameter / 2 + $geramiRangeLineHeight / 2;
+  padding: 0;
   width: $geramiRangeButtonDiameter;
   height: $geramiRangeButtonDiameter;
   border-radius: 50%;

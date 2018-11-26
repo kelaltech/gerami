@@ -57,7 +57,7 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-var Anchor_js_1 = require('../Anchor/Anchor.js')
+var Button_js_1 = require('../Button/Button.js')
 /**
  * A gerami form control element that receives absolute minimum and maximum
  * numbers (optionally, with a unit) and allows the user to select a range of
@@ -217,6 +217,10 @@ var Range = /** @class */ (function(_super) {
     return react_1.default.createElement(
       'div',
       __assign({}, rest, { className: 'gerami-range ' + (className || ''), ref: this.topEle }),
+      react_1.default.createElement('input', {
+        type: 'hidden',
+        value: currentMin + ',' + currentMax
+      }),
       react_1.default.createElement('div', { className: 'gerami-range-background-line' }),
       react_1.default.createElement('div', {
         className: 'gerami-range-selected-line',
@@ -225,7 +229,7 @@ var Range = /** @class */ (function(_super) {
       react_1.default.createElement(
         'div',
         { className: 'gerami-range-btn-vault', style: minBtnVaultStyle },
-        react_1.default.createElement(Anchor_js_1.Anchor, {
+        react_1.default.createElement(Button_js_1.Button, {
           className: 'gerami-range-btn',
           draggable: false,
           onClick: function(e) {
@@ -256,14 +260,14 @@ var Range = /** @class */ (function(_super) {
       react_1.default.createElement(
         'div',
         { className: 'gerami-range-btn-vault', style: maxBtnVaultStyle },
-        react_1.default.createElement(Anchor_js_1.Anchor, {
+        react_1.default.createElement(Button_js_1.Button, {
           className: 'gerami-range-btn',
           draggable: false,
           onClick: function(e) {
             return e.preventDefault()
           },
           onTouchMove: function(e) {
-            return _this.dragMin(e.touches[0].clientX)
+            return _this.dragMax(e.touches[0].clientX)
           },
           onTouchEnd: function(e) {
             return _this.stopDrag(_this.dragMax, e.touches[0].clientX)

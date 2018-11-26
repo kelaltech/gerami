@@ -1,5 +1,5 @@
 import React, { Component, CSSProperties, createRef, HTMLAttributes } from 'react'
-import { Anchor } from '../Anchor/Anchor.js'
+import { Button } from '../Button/Button.js'
 
 export interface IRangeMovedEvent {
   min: number
@@ -133,11 +133,13 @@ export class Range extends Component<IRangeProps, IRangeState> {
 
     return (
       <div {...rest as any} className={`gerami-range ${className || ''}`} ref={this.topEle}>
+        <input type="hidden" value={`${currentMin},${currentMax}`} />
+
         <div className={'gerami-range-background-line'} />
         <div className={'gerami-range-selected-line'} style={selectedLineStyle} />
 
         <div className={'gerami-range-btn-vault'} style={minBtnVaultStyle}>
-          <Anchor
+          <Button
             className={'gerami-range-btn'}
             draggable={false}
             onClick={e => e.preventDefault()}
@@ -157,11 +159,11 @@ export class Range extends Component<IRangeProps, IRangeState> {
           )}
         </div>
         <div className={'gerami-range-btn-vault'} style={maxBtnVaultStyle}>
-          <Anchor
+          <Button
             className={'gerami-range-btn'}
             draggable={false}
             onClick={e => e.preventDefault()}
-            onTouchMove={e => this.dragMin(e.touches[0].clientX)}
+            onTouchMove={e => this.dragMax(e.touches[0].clientX)}
             onTouchEnd={e => this.stopDrag(this.dragMax, e.touches[0].clientX)}
             onMouseDown={e => {
               e.preventDefault()
