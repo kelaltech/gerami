@@ -26,7 +26,7 @@ See component on [https://gerami.kelaltech.com](https://gerami.kelaltech.com).
 
 Made with &hearts; in Addis Ababa.
 
-[MIT License](LICENSE.md) &copy; 2019, kelal tech.
+[MIT License](LICENSE) &copy; 2019, kelal tech.
 
 [npm-badge]: https://img.shields.io/npm/v/gerami.png?style
 
