@@ -3,12 +3,19 @@ import { geramiSizeTypes } from '../../index'
 
 const sizeSpec = {
   XXS: 10,
-  XS: 10,
-  S: 30,
-  M: 40,
-  L: 50,
-  XL: 55,
-  XXL: 60
+  XS: 12,
+  S: 16,
+  M: 18,
+  L: 20,
+  XL: 24,
+  XXL: 32,
+  '3XL': 36,
+  '4XL': 42,
+  '5XL': 48,
+  '6XL': 52,
+  '7XL': 58,
+  '8XL': 64,
+  '9XL': 70
 }
 
 export interface ITitleProps extends HTMLAttributes<HTMLDivElement> {
@@ -23,7 +30,7 @@ export class Title extends Component<ITitleProps, ITitleState> {
 
   render() {
     const { size, className, subTitle, children } = this.props
-    const fontSize = (size && (typeof size === 'string' ? sizeSpec[size] : size)) || undefined
+    const fontSize = size && (typeof size === 'string' ? sizeSpec[size] : size)
 
     return (
       <div

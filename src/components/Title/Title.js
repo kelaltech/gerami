@@ -35,12 +35,19 @@ Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var sizeSpec = {
   XXS: 10,
-  XS: 10,
-  S: 30,
-  M: 40,
-  L: 50,
-  XL: 55,
-  XXL: 60
+  XS: 12,
+  S: 16,
+  M: 18,
+  L: 20,
+  XL: 24,
+  XXL: 32,
+  '3XL': 36,
+  '4XL': 42,
+  '5XL': 48,
+  '6XL': 52,
+  '7XL': 58,
+  '8XL': 64,
+  '9XL': 70
 }
 var Title = /** @class */ (function(_super) {
   __extends(Title, _super)
@@ -55,7 +62,7 @@ var Title = /** @class */ (function(_super) {
       className = _a.className,
       subTitle = _a.subTitle,
       children = _a.children
-    var fontSize = (size && (typeof size === 'string' ? sizeSpec[size] : size)) || undefined
+    var fontSize = size && (typeof size === 'string' ? sizeSpec[size] : size)
     return react_1.default.createElement(
       'div',
       {
