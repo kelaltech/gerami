@@ -10,14 +10,14 @@
   display: inline-block !important;
 }
 
-.flex-left {
-  align-items: left !important;
+.flex-start {
+  align-items: flex-start !important;
 }
 .flex-center {
   align-items: center !important;
 }
-.flex-right {
-  align-items: right !important;
+.flex-end {
+  align-items: flex-end !important;
 }
 
 .absolute {

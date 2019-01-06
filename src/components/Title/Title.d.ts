@@ -1,7 +1,7 @@
 import { Component, HTMLAttributes } from 'react'
 import { geramiSizeTypes } from '../../index'
 export interface ITitleProps extends HTMLAttributes<HTMLDivElement> {
-  size?: string | geramiSizeTypes
+  size?: geramiSizeTypes
   subTitle?: string
 }
 interface ITitleState {}

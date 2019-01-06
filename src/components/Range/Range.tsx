@@ -148,8 +148,15 @@ export class Range extends Component<IRangeProps, IRangeState> {
             className={'gerami-range-btn'}
             draggable={false}
             onClick={e => e.preventDefault()}
-            onTouchMove={e => this.dragMin(e.touches[0].clientX)}
-            onTouchEnd={e => this.stopDrag(this.dragMin, e.touches[0].clientX)}
+            onTouchMove={e =>
+              this.dragMin(e.touches && e.touches.length ? e.touches[0].clientX : null)
+            }
+            onTouchEnd={e =>
+              this.stopDrag(
+                this.dragMin,
+                e.touches && e.touches.length ? e.touches[0].clientX : null
+              )
+            }
             onMouseDown={e => {
               e.preventDefault()
               this.setState({ minMoving: true })
@@ -168,8 +175,15 @@ export class Range extends Component<IRangeProps, IRangeState> {
             className={'gerami-range-btn'}
             draggable={false}
             onClick={e => e.preventDefault()}
-            onTouchMove={e => this.dragMax(e.touches[0].clientX)}
-            onTouchEnd={e => this.stopDrag(this.dragMax, e.touches[0].clientX)}
+            onTouchMove={e =>
+              this.dragMax(e.touches && e.touches.length ? e.touches[0].clientX : null)
+            }
+            onTouchEnd={e =>
+              this.stopDrag(
+                this.dragMax,
+                e.touches && e.touches.length ? e.touches[0].clientX : null
+              )
+            }
             onMouseDown={e => {
               e.preventDefault()
               this.setState({ maxMoving: true })
@@ -211,14 +225,18 @@ export class Range extends Component<IRangeProps, IRangeState> {
     this.setState({ checked: true })
   }
 
-  private dragMin = (clientX: number): void => {
+  private dragMin = (clientX: number | null): void => {
+    if (clientX === null) return
+
     const { currentMax } = this.state
 
     let currentMin = this._calcDrag(clientX)
     if (currentMin != null && currentMin < currentMax) this.setState({ currentMin })
   }
 
-  private dragMax = (clientX: number) => {
+  private dragMax = (clientX: number | null) => {
+    if (clientX === null) return
+
     const { currentMin } = this.state
 
     let currentMax = this._calcDrag(clientX)
@@ -241,7 +259,9 @@ export class Range extends Component<IRangeProps, IRangeState> {
     return ret >= absoluteMin && ret <= absoluteMax ? ret : null
   }
 
-  private stopDrag = (dragFunc: Function, clientX: number) => {
+  private stopDrag = (dragFunc: Function, clientX: number | null) => {
+    if (clientX === null) return
+
     const { onMoved } = this.props
     const { currentMin: min, currentMax: max } = this.state
 

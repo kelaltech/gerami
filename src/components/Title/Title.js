@@ -55,12 +55,12 @@ var Title = /** @class */ (function(_super) {
       className = _a.className,
       subTitle = _a.subTitle,
       children = _a.children
-    var fontSize = size && (typeof size === 'string' ? sizeSpec[size] : size)
+    var fontSize = (size && (typeof size === 'string' ? sizeSpec[size] : size)) || undefined
     return react_1.default.createElement(
       'div',
       {
-        className: 'padding-vertical-normal light fg-primary ' + (className ? className : ''),
-        style: { fontSize: size ? fontSize : '' }
+        className: 'padding-vertical-normal light fg-primary ' + (className || ''),
+        style: { fontSize: fontSize }
       },
       children,
       react_1.default.createElement(

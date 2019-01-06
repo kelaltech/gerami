@@ -127,11 +127,13 @@ var Range = /** @class */ (function(_super) {
       _this.setState({ checked: true })
     }
     _this.dragMin = function(clientX) {
+      if (clientX === null) return
       var currentMax = _this.state.currentMax
       var currentMin = _this._calcDrag(clientX)
       if (currentMin != null && currentMin < currentMax) _this.setState({ currentMin: currentMin })
     }
     _this.dragMax = function(clientX) {
+      if (clientX === null) return
       var currentMin = _this.state.currentMin
       var currentMax = _this._calcDrag(clientX)
       if (currentMax != null && currentMin < currentMax) _this.setState({ currentMax: currentMax })
@@ -151,6 +153,7 @@ var Range = /** @class */ (function(_super) {
       return ret >= absoluteMin && ret <= absoluteMax ? ret : null
     }
     _this.stopDrag = function(dragFunc, clientX) {
+      if (clientX === null) return
       var onMoved = _this.props.onMoved
       var _a = _this.state,
         min = _a.currentMin,
@@ -238,10 +241,13 @@ var Range = /** @class */ (function(_super) {
             return e.preventDefault()
           },
           onTouchMove: function(e) {
-            return _this.dragMin(e.touches[0].clientX)
+            return _this.dragMin(e.touches && e.touches.length ? e.touches[0].clientX : null)
           },
           onTouchEnd: function(e) {
-            return _this.stopDrag(_this.dragMin, e.touches[0].clientX)
+            return _this.stopDrag(
+              _this.dragMin,
+              e.touches && e.touches.length ? e.touches[0].clientX : null
+            )
           },
           onMouseDown: function(e) {
             e.preventDefault()
@@ -269,10 +275,13 @@ var Range = /** @class */ (function(_super) {
             return e.preventDefault()
           },
           onTouchMove: function(e) {
-            return _this.dragMax(e.touches[0].clientX)
+            return _this.dragMax(e.touches && e.touches.length ? e.touches[0].clientX : null)
           },
           onTouchEnd: function(e) {
-            return _this.stopDrag(_this.dragMax, e.touches[0].clientX)
+            return _this.stopDrag(
+              _this.dragMax,
+              e.touches && e.touches.length ? e.touches[0].clientX : null
+            )
           },
           onMouseDown: function(e) {
             e.preventDefault()
