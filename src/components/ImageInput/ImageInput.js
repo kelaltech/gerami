@@ -58,6 +58,8 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true })
 var React = __importStar(require('react'))
 var react_1 = require('react')
+var react_fontawesome_1 = require('@fortawesome/react-fontawesome')
+var free_solid_svg_icons_1 = require('@fortawesome/free-solid-svg-icons')
 var ImageInput = /** @class */ (function(_super) {
   __extends(ImageInput, _super)
   function ImageInput() {
@@ -124,8 +126,10 @@ var ImageInput = /** @class */ (function(_super) {
                 style: borderRadius ? { borderRadius: borderRadius } : {},
                 alt: 'Choose Image'
               })
-            : React.createElement('i', {
-                className: 'fas fa-camera fa-5x gerami-imageInput-image-input'
+            : React.createElement(react_fontawesome_1.FontAwesomeIcon, {
+                icon: free_solid_svg_icons_1.faCamera,
+                size: '5x',
+                className: 'gerami-imageInput-image-input'
               })
         ),
         React.createElement(

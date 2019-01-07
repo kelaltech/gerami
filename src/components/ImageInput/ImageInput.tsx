@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { Component, createRef, InputHTMLAttributes, RefObject } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
 export interface IImageInputProps extends InputHTMLAttributes<HTMLInputElement> {
   innerRef?: RefObject<HTMLInputElement>
@@ -50,7 +52,11 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
                 alt="Choose Image"
               />
             ) : (
-              <i className={'fas fa-camera fa-5x gerami-imageInput-image-input'} />
+              <FontAwesomeIcon
+                icon={faCamera}
+                size={'5x'}
+                className={'gerami-imageInput-image-input'}
+              />
             )}
           </label>
           <input
