@@ -10,5 +10,5 @@ export interface IDialogProps {
 }
 export declare class Dialog extends Component<IDialogProps, any> {
   render(): JSX.Element
-  handleDialigContainer: () => void
+  handleDialogContainer: () => void
 }

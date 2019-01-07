@@ -21,7 +21,7 @@ export class Dialog extends Component<IDialogProps, any> {
         className="gerami-dialog-container"
         id={'gerami-dialog-container'}
         style={{ display: open ? 'block' : 'none' }}
-        onClick={this.handleDialigContainer}
+        onClick={this.handleDialogContainer}
       >
         <div
           style={style}
@@ -30,14 +30,13 @@ export class Dialog extends Component<IDialogProps, any> {
             bottom ? 'gerami-bottom' : ''
           }`}
         >
-          {String(bottom)}
           {children}
         </div>
       </div>
     )
   }
 
-  handleDialigContainer = () => {
+  handleDialogContainer = () => {
     let container: any = document.getElementById('gerami-dialog-container')
     container.style.display = 'none'
   }

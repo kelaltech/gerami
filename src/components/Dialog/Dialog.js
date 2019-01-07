@@ -38,7 +38,7 @@ var Dialog = /** @class */ (function(_super) {
   __extends(Dialog, _super)
   function Dialog() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
-    _this.handleDialigContainer = function() {
+    _this.handleDialogContainer = function() {
       var container = document.getElementById('gerami-dialog-container')
       container.style.display = 'none'
     }
@@ -57,7 +57,7 @@ var Dialog = /** @class */ (function(_super) {
         className: 'gerami-dialog-container',
         id: 'gerami-dialog-container',
         style: { display: open ? 'block' : 'none' },
-        onClick: this.handleDialigContainer
+        onClick: this.handleDialogContainer
       },
       react_1.default.createElement(
         'div',
@@ -70,7 +70,6 @@ var Dialog = /** @class */ (function(_super) {
             ' ' +
             (bottom ? 'gerami-bottom' : '')
         },
-        String(bottom),
         children
       )
     )

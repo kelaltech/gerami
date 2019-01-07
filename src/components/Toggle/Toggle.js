@@ -85,7 +85,7 @@ var Toggle = /** @class */ (function(_super) {
       rest = __rest(_a, ['className', 'children'])
     return react_1.default.createElement(
       'label',
-      { className: 'switch' },
+      { className: 'gerami-toggle-switch' },
       children,
       '\u00A0\u00A0',
       react_1.default.createElement('span', { className: 'gerami-toggle-left' }, ' '),

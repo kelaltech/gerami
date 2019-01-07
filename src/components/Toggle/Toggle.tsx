@@ -23,7 +23,7 @@ export class Toggle extends Component<IToggleProps, IToggleState> {
     const { className, children, ...rest } = this.props
 
     return (
-      <label className={'switch'}>
+      <label className={'gerami-toggle-switch'}>
         {children}&nbsp;&nbsp;
         <span className={'gerami-toggle-left'}> </span>
         <input
