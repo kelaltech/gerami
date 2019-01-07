@@ -1,6 +1,6 @@
 {
   "name": "gerami",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "gerami react components",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
