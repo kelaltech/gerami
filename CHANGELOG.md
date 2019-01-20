@@ -1,5 +1,9 @@
 # Gerami Changelog
 
+### v0.1.2
+
+- Several bug fixes and improvements
+
 ### v0.1.1
 
 - Several bug fixes and quality improvements in the components
