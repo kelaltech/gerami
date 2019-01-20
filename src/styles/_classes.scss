@@ -420,20 +420,20 @@
 }
 
 .fg-primary {
-  color: transparentize($primary, 0.05) !important;
+  color: transparentize($primary, 0.09) !important;
 }
 .fg-accent {
-  color: transparentize($accent, 0.05) !important;
+  color: transparentize($accent, 0.09) !important;
 }
 .fg-blackish {
-  color: transparentize(lighten($fg, 22%), 0.05) !important; // todo
+  color: transparentize(lighten($fg, 28%), 0.14) !important; // todo
 }
 .fg-whitish {
-  color: transparentize(darken($bg, 3%), 0.05) !important; // todo
+  color: transparentize(darken($bg, 7%), 0.28) !important; // todo
 }
 .fg-black {
-  color: transparentize($fg, 0.05) !important;
+  color: transparentize($fg, 0.09) !important;
 }
 .fg-white {
-  color: transparentize($bg, 0.05) !important;
+  color: transparentize($bg, 0.09) !important;
 }

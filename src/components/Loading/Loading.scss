@@ -21,7 +21,7 @@
 
 .gerami-big-circle {
   fill: none;
-  stroke: lighten($fg, 91%);
+  stroke: transparentize($fg, 0.91);
 }
 
 .gerami-small-circle {

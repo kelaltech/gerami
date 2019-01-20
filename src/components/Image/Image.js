@@ -96,7 +96,7 @@ var Image = /** @class */ (function(_super) {
       ? react_1.default.createElement(
           Anchor_js_1.Anchor,
           __assign({ to: to }, rest, {
-            className: 'image' + (className ? ' ' + className : ''),
+            className: 'gerami-image ' + (className || ''),
             style: Object.assign(
               { width: width, height: height, backgroundImage: "url('" + src + "')" },
               style
@@ -106,7 +106,7 @@ var Image = /** @class */ (function(_super) {
       : react_1.default.createElement(
           'div',
           __assign({}, rest, {
-            className: 'gerami-image' + (className ? ' ' + className : ''),
+            className: 'gerami-image ' + (className || ''),
             style: Object.assign(
               { width: width, height: height, backgroundImage: "url('" + src + "')" },
               style

@@ -11,7 +11,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100vh;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -21,15 +22,15 @@ body {
   font-size: $font-M;
   font-style: normal;
   font-weight: 400;
-  background-color: darken($bg, 5%);
+  background-color: transparentize(darken($bg, 3%), 0.05);
 }
 
 code {
   display: inline-block;
-  padding: ($space / 6) ($space / 3);
+  padding: ($space / 8) ($space / 2);
   border-radius: $radius;
-  font-family: consolas, monospace;
-  background-color: darken($bg, 7%);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background-color: darken($bg, 5%);
 }
 
 hr {
@@ -39,7 +40,7 @@ hr {
   border: 0;
   border-radius: 50%;
   outline: 0;
-  background: lighten($fg, 84%) linear-gradient(lighten($fg, 77%) 50%, lighten($fg, 91%) 50%);
+  background: lighten($fg, 91%) linear-gradient(to bottom, lighten($fg, 84%), lighten($fg, 95%));
 }
 
 h1,

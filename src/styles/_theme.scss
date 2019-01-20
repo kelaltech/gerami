@@ -30,13 +30,13 @@ $warn: rgb(240, 70, 90) !default;
 /* EFFECTS */
 
 // shadows:
-$shade-S: 0 1px 3px 1px transparentize($fg, 0.98), 0 0px 1px 0px transparentize($fg, 0.945) !default;
-$shade-M: 0 2px 5px 0 transparentize($fg, 0.945), 0 0px 1px 0px transparentize($fg, 0.91) !default;
-$shade-L: 0 3px 7px 0 transparentize($fg, 0.91), 0 0px 1px 0px transparentize($fg, 0.84) !default;
+$shade-S: 0 1px 3px transparentize(black, 0.91) !default;
+$shade-M: 0 2px 7px transparentize(black, 0.93) !default;
+$shade-L: 0 3px 14px transparentize(black, 0.95) !default;
 
 // filters:
-$shy: opacity(0.84);
+$shy: opacity(0.84) drop-shadow(0 1px 3px transparentize(black, 0.91)) !default;
 
 // transforms:
-$touch: scale3d(0.98, 0.98, 1) !default;
-$poke: scale3d(1.7, 1.7, 1.7) !default;
+$touch: scale3d(1.03, 1.03, 1.03) !default;
+$poke: scale3d(1.03, 1.03, 1.03) !default;

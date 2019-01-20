@@ -28,6 +28,8 @@
   position: relative;
   padding: ($space / 2) 0;
   width: initial;
+  min-width: $mobile / 2;
+  overflow-y: auto;
   text-align: left;
   animation: fade-in 200ms linear 0ms 1 forwards;
 }

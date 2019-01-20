@@ -13,7 +13,9 @@
     color: $primary;
   }
   &:active {
-    filter: drop-shadow($shade-S);
+    filter: $shy;
     transform: $touch;
+    transition-delay: 0ms;
+    transition-duration: 50ms;
   }
 }

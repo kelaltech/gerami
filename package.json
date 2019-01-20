@@ -5,15 +5,17 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "repository": "git@gitlab.com/kelal/_dev/gerami.git",
-  "author": "Kelal",
+  "author": "kelal tech. (kelaltech.com) <kelaltech@gmail.com>",
   "license": "MIT",
   "private": false,
   "keywords": [
     "gerami",
-    "kelal",
-    "react components"
+    "react components",
+    "kelal tech",
+    "kelal open source"
   ],
   "scripts": {
+    "watch": "tsc -w",
     "build": "tsc",
     "lint": "prettier ./{*,src/**/*}.{tsx,ts,jsx,js,scss,sass,css,json,md} --write",
     "prod": "yarn build && yarn lint",

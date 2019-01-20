@@ -48,13 +48,13 @@ export class Image extends Component<IImageProps, IImageState> {
       <Anchor
         to={to}
         {...rest as any}
-        className={`image${className ? ' ' + className : ''}`}
+        className={`gerami-image ${className || ''}`}
         style={Object.assign({ width, height, backgroundImage: `url('${src}')` }, style)}
       />
     ) : (
       <div
         {...rest as any}
-        className={`gerami-image${className ? ' ' + className : ''}`}
+        className={`gerami-image ${className || ''}`}
         style={Object.assign({ width, height, backgroundImage: `url('${src}')` }, style)}
       />
     )
