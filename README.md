@@ -1,61 +1,32 @@
-# gerami
+# gerami react components
 
 [![gerami][npm-badge]][npm]
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-gerami react components
+To install, inside a [React](https://reactjs.org) project:
 
-### Installation
+```bash
+# If you're using Yarn:
 
-Inside a [React](https://reactjs.org) project, using yarn:
-
-```
 yarn add gerami
-```
 
-Or
+# Or, using npm:
 
-gerami react components
-
-### Installation
-
-Inside a rn add gerami
-
-```
-
-Or, us project, using yarn:
-
-```
-
-```
-
-O
-```
-
-Or, using npm:
-
-```
-
-```
-
-#
-
+npm i gerami --save
 ```
 
 ### Components
 
-See component on Made with &hearts; in Addis Ababa.
+See all of the latest gerami components on [gerami.kelaltech.com](https://gerami.kelaltech.com)
 
-[MIT License](LICENSE).
+### License
 
-### Licence
+Proudly, made with &hearts; in Addis Ababa.
 
-Made with ense](LI in Addis Ababa.
-
-
-[npm-badge]: https:/ img.sh 2019, kelal tech.
+[MIT License](LICENSE) &copy; 2019, [kelal tech.](https://www.kelaltech.com) / [kelal OpenDev](https://gitlab.com/kelal/_dev).
 
 [npm-badge]: https://img.shields.io/npm/v/gerami.png?style
+
 [npm-badge]: https://img.shields.io/npm/v/gerami.
 [npm-badge]: https://img.shields.io/npm/v/gerami.png?style=flat-square
 [npm]: https://www.npmjs.org/package/gerami
-```
