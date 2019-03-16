@@ -10,11 +10,28 @@ export interface IDialogProps {
   bottom?: boolean
 }
 
-//style,class, children, open, top, bottom, left, right
-
 export class Dialog extends Component<IDialogProps, any> {
+  constructor(props: IDialogProps) {
+    super(props)
+  }
+
+  componentDidUpdate(props: IDialogProps) {
+    console.log('component did update fired')
+    let modal: any = document.getElementById('gerami-dialog-box')
+    if (props.bottom) {
+      modal.classList.add('anime-bottom')
+    } else if (props.left) {
+      modal.classList.add('anime-left')
+    } else if (props.right) {
+      modal.classList.add('anime-right')
+    } else if (props.top) {
+      modal.classList.add('anime-top')
+    } else {
+      modal.classList.remove('anime-right', 'anime-left', 'anime-top', 'anime-bottom')
+    }
+  }
   render() {
-    const { open, children, style, className, bottom } = this.props
+    const { open, children, style, className } = this.props
 
     return (
       <div
@@ -26,9 +43,7 @@ export class Dialog extends Component<IDialogProps, any> {
         <div
           style={style}
           id={'gerami-dialog-box'}
-          className={`gerami-dialog-box ${className ? className : ''} ${
-            bottom ? 'gerami-bottom' : ''
-          }`}
+          className={`gerami-dialog-box ${className ? className : ''}`}
         >
           {children}
         </div>

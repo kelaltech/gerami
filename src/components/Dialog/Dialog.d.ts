@@ -9,6 +9,8 @@ export interface IDialogProps {
   bottom?: boolean
 }
 export declare class Dialog extends Component<IDialogProps, any> {
+  constructor(props: IDialogProps)
+  componentDidUpdate(props: IDialogProps): void
   render(): JSX.Element
   handleDialogContainer: () => void
 }

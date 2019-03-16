@@ -33,24 +33,37 @@ var __importStar =
   }
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
-//style,class, children, open, top, bottom, left, right
 var Dialog = /** @class */ (function(_super) {
   __extends(Dialog, _super)
-  function Dialog() {
-    var _this = (_super !== null && _super.apply(this, arguments)) || this
+  function Dialog(props) {
+    var _this = _super.call(this, props) || this
     _this.handleDialogContainer = function() {
       var container = document.getElementById('gerami-dialog-container')
       container.style.display = 'none'
     }
     return _this
   }
+  Dialog.prototype.componentDidUpdate = function(props) {
+    console.log('component did update fired')
+    var modal = document.getElementById('gerami-dialog-box')
+    if (props.bottom) {
+      modal.classList.add('anime-bottom')
+    } else if (props.left) {
+      modal.classList.add('anime-left')
+    } else if (props.right) {
+      modal.classList.add('anime-right')
+    } else if (props.top) {
+      modal.classList.add('anime-top')
+    } else {
+      modal.classList.remove('anime-right', 'anime-left', 'anime-top', 'anime-bottom')
+    }
+  }
   Dialog.prototype.render = function() {
     var _a = this.props,
       open = _a.open,
       children = _a.children,
       style = _a.style,
-      className = _a.className,
-      bottom = _a.bottom
+      className = _a.className
     return react_1.default.createElement(
       'div',
       {
@@ -64,11 +77,7 @@ var Dialog = /** @class */ (function(_super) {
         {
           style: style,
           id: 'gerami-dialog-box',
-          className:
-            'gerami-dialog-box ' +
-            (className ? className : '') +
-            ' ' +
-            (bottom ? 'gerami-bottom' : '')
+          className: 'gerami-dialog-box ' + (className ? className : '')
         },
         children
       )
