@@ -1,5 +1,7 @@
 import React, { Component, HTMLAttributes } from 'react'
 import { MenuItem } from '../MenuItem/MenuItem.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export interface ISelectProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -63,7 +65,9 @@ export class Select extends Component<ISelectProps, ISelectState> {
                   >
                     <span className={'gerami-multi-option'}>
                       {option.name}
-                      <i className={'fa fa-times'} onClick={() => this.handleDisSelect(option)} />
+                      <span onClick={() => this.handleDisSelect(option)}>
+                        <FontAwesomeIcon icon={faTimes} />
+                      </span>
                     </span>
                   </span>
                 ))

@@ -58,6 +58,8 @@ var __importStar =
 Object.defineProperty(exports, '__esModule', { value: true })
 var react_1 = __importStar(require('react'))
 var MenuItem_js_1 = require('../MenuItem/MenuItem.js')
+var react_fontawesome_1 = require('@fortawesome/react-fontawesome')
+var free_solid_svg_icons_1 = require('@fortawesome/free-solid-svg-icons')
 var Select = /** @class */ (function(_super) {
   __extends(Select, _super)
   function Select() {
@@ -196,12 +198,17 @@ var Select = /** @class */ (function(_super) {
                       'span',
                       { className: 'gerami-multi-option' },
                       option.name,
-                      react_1.default.createElement('i', {
-                        className: 'fa fa-times',
-                        onClick: function() {
-                          return _this.handleDisSelect(option)
-                        }
-                      })
+                      react_1.default.createElement(
+                        'span',
+                        {
+                          onClick: function() {
+                            return _this.handleDisSelect(option)
+                          }
+                        },
+                        react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, {
+                          icon: free_solid_svg_icons_1.faTimes
+                        })
+                      )
                     )
                   )
                 })
