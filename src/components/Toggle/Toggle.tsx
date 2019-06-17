@@ -28,7 +28,7 @@ export class Toggle extends Component<IToggleProps, IToggleState> {
         <span className={'gerami-toggle-left'}> </span>
         <input
           type={'checkbox'}
-          {...rest as any}
+          {...(rest as any)}
           defaultChecked={this.value}
           onChange={this.toggle}
         />

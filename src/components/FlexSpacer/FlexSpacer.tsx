@@ -13,6 +13,6 @@ export class FlexSpacer extends Component<IFlexSpacerProps, IFlexSpacerState> {
   render() {
     const { className, ...rest } = this.props
 
-    return <div className={`gerami-flex-spacer ${className || ''}`} {...rest as any} />
+    return <div className={`gerami-flex-spacer ${className || ''}`} {...(rest as any)} />
   }
 }

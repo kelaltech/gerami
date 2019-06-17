@@ -61,7 +61,7 @@ export class ImageInput extends Component<IImageInputProps, IImageInputState> {
           </label>
           <input
             name={'image'}
-            {...rest as any}
+            {...(rest as any)}
             ref={this.innerRef}
             className={`gerami-imageInput-File gerami-imageInput-none ${className || ''}`}
             onChange={e => {

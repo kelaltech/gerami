@@ -41,7 +41,7 @@ export class Input extends Component<IInputProps, IInputState> {
         <input
           type={'text'}
           className={'gerami-input'}
-          {...rest as any}
+          {...(rest as any)}
           onBlur={e => {
             this.updateFloat()
             !(typeof onBlur === 'function') || onBlur(e)

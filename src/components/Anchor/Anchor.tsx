@@ -20,11 +20,11 @@ export class Anchor extends Component<IAnchorProps, IAnchorState> {
     const child = button ? <Button>{children}</Button> : children
 
     return to ? (
-      <Link to={to} {...rest as any} className={`gerami-anchor ${className || ''}`}>
+      <Link to={to} {...(rest as any)} className={`gerami-anchor ${className || ''}`}>
         {child}
       </Link>
     ) : (
-      <a {...rest as any} className={`gerami-anchor ${className || ''}`}>
+      <a {...(rest as any)} className={`gerami-anchor ${className || ''}`}>
         {child}
       </a>
     )

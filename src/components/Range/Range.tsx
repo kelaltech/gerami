@@ -137,7 +137,7 @@ export class Range extends Component<IRangeProps, IRangeState> {
     delete rest.onMoved
 
     return (
-      <div {...rest as any} className={`gerami-range ${className || ''}`} ref={this.topEle}>
+      <div {...(rest as any)} className={`gerami-range ${className || ''}`} ref={this.topEle}>
         <input type="hidden" name={name} value={`${currentMin},${currentMax}`} />
 
         <div className={'gerami-range-background-line'} />

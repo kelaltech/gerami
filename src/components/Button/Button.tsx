@@ -16,7 +16,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
 
     const button = (
       <button
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-button ${
           primary || (type && type.toLowerCase() === 'submit') ? 'gerami-button-primary ' : ''
         }${className || ''}`}

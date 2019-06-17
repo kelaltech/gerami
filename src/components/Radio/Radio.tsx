@@ -28,7 +28,7 @@ export class Radio extends Component<IRadioProps, IRadioState> {
           name={name}
           value={value}
           defaultChecked={this.state.status}
-          {...rest as any}
+          {...(rest as any)}
         />
         <span className={'checkmark'} />
         &emsp;&emsp;

@@ -2,10 +2,13 @@
 
 %gerami-yoga {
   display: inline-block;
-  padding: $space / 2;
+  margin-right: -($space / 2);
+  margin-left: -($space / 2);
+  padding: ($space / 2) 0;
 
   > * {
     display: inline-block;
+    vertical-align: top;
     width: 100%;
   }
 }

@@ -58,7 +58,7 @@ export class Yoga extends Component<IYogaProps, IYogaState> {
 
     return (
       <div
-        {...rest as any}
+        {...(rest as any)}
         style={Object.assign({ marginLeft: 'auto', marginRight: 'auto', maxWidth }, style)}
       >
         {content}

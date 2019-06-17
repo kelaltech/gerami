@@ -34,7 +34,7 @@ export class Content extends Component<IContentProps, IContentState> {
 
     return (
       <div
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-content ${(!transparent && 'gerami-content-card') || ''} ${className ||
           ''}`}
         style={Object.assign({ maxWidth }, style)}

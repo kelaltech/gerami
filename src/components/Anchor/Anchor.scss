@@ -2,20 +2,25 @@
 
 .gerami-anchor {
   display: inline-block;
-  text-decoration: underline;
+  outline: 0;
+  text-decoration: none;
   color: darken($primary, 7%);
+  box-shadow: none;
   transition: all 150ms;
   cursor: pointer;
 
-  &:active,
-  &:focus,
-  &:hover {
-    color: $primary;
-  }
   &:active {
+    color: $accent;
     filter: $shy;
     transform: $touch;
     transition-delay: 0ms;
     transition-duration: 50ms;
+  }
+  &:focus {
+    color: $accent;
+  }
+  &:hover {
+    color: $primary;
+    box-shadow: inset 0 -1.07em 0 -1em currentColor;
   }
 }

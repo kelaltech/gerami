@@ -42,7 +42,7 @@ export class Warning extends Component<IWarningProps, IWarningState> {
     return this.dead || this.state.hidden ? null : (
       <Content
         title={shy ? 'Double click to hide Warning' : undefined}
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-warning${className ? ' ' + className : ''}`}
         onDoubleClick={(e: any) => {
           this.shyAway()

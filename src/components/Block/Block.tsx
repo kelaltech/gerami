@@ -19,7 +19,7 @@ export class Block extends Component<IBlockProps, IBlockState> {
           paddingTop: first ? 30 : 10,
           paddingBottom: last ? 30 : 10
         }}
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-block ${className || ''}`}
       >
         {children}

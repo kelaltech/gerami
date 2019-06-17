@@ -30,7 +30,7 @@ export class CheckBox extends Component<ICheckBoxProps, ICheckBoxState> {
           type="checkbox"
           checked={status}
           onChange={this.toggle}
-          {...rest as any}
+          {...(rest as any)}
         />
         <span className="gerami-checkbox-span" />
         <span className="gerami-checkbox-child">{children}</span>

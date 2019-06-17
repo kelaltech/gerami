@@ -29,7 +29,7 @@ export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
       <label className={`gerami-textarea-label${className ? ' ' + className : ''}`}>
         <textarea
           className={'gerami-textarea'}
-          {...rest as any}
+          {...(rest as any)}
           onBlur={this.updateFloat}
           onChange={this.updateFloat}
           onFocus={this.updateFloat}

@@ -18,7 +18,7 @@ export class Card extends Component<ICardProps, ICardState> {
     const { actions, children, className, imgSrc, imgStyle, subtitle, title, ...rest } = this.props
 
     return (
-      <Content {...rest as any} className={`gerami-card ${className || ''}`}>
+      <Content {...(rest as any)} className={`gerami-card ${className || ''}`}>
         {imgSrc ? (
           <div
             className={`gerami-card-img`}

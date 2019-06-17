@@ -48,7 +48,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
           width: size ? size : ''
         }}
         className={`gerami-select-container ${className || ''}`}
-        {...rest as any}
+        {...(rest as any)}
       >
         {/*select header*/}
         <div className={'gerami-select-header'} tabIndex={0}>

@@ -64,7 +64,7 @@ export class MenuDrop extends Component<IMenuDropProps, IMenuDropState> {
 
     return !open || this.state.closed ? null : (
       <div
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-menu-drop${className ? ' ' + className : ''}`}
         style={Object.assign(
           {

@@ -32,7 +32,7 @@ export class Page extends Component<IPageProps, IPageState> {
 
     return (
       <div
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-page${className ? ' ' + className : ''}`}
         style={Object.assign(
           {

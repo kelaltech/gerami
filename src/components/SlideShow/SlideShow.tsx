@@ -29,7 +29,7 @@ export class SlideShow extends Component<ISlideShowProps, ISlideShowState> {
     delete rest.autoPlay
 
     return (
-      <div {...rest as any}>
+      <div {...(rest as any)}>
         <div className="gerami-slideShow-SlideShowContainer">
           {images ? (
             <div>
