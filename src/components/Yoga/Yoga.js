@@ -88,10 +88,11 @@ var Yoga = /** @class */ (function(_super) {
   Yoga.prototype.render = function() {
     var _a = this.props,
       children = _a.children,
+      className = _a.className,
       maxCol = _a.maxCol,
       size = _a.size,
       style = _a.style,
-      rest = __rest(_a, ['children', 'maxCol', 'size', 'style'])
+      rest = __rest(_a, ['children', 'className', 'maxCol', 'size', 'style'])
     var content = react_1.default.createElement(
       'div',
       { className: 'gerami-yoga-' + maxCol },
@@ -115,9 +116,10 @@ var Yoga = /** @class */ (function(_super) {
     return react_1.default.createElement(
       'div',
       __assign({}, rest, {
-        style: Object.assign({ marginLeft: 'auto', marginRight: 'auto', maxWidth: maxWidth }, style)
+        className: 'gerami-yoga ' + (className || ''),
+        style: Object.assign({ maxWidth: maxWidth }, style)
       }),
-      content
+      react_1.default.createElement('div', { className: 'gerami-yoga-anti-space' }, content)
     )
   }
   return Yoga

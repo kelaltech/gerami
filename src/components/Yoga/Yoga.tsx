@@ -38,7 +38,7 @@ export class Yoga extends Component<IYogaProps, IYogaState> {
   state = {}
 
   render() {
-    const { children, maxCol, size, style, ...rest } = this.props
+    const { children, className, maxCol, size, style, ...rest } = this.props
 
     let content: ReactNode = <div className={`gerami-yoga-${maxCol}`}>{children}</div>
 
@@ -59,9 +59,10 @@ export class Yoga extends Component<IYogaProps, IYogaState> {
     return (
       <div
         {...(rest as any)}
-        style={Object.assign({ marginLeft: 'auto', marginRight: 'auto', maxWidth }, style)}
+        className={`gerami-yoga ${className || ''}`}
+        style={Object.assign({ maxWidth }, style)}
       >
-        {content}
+        <div className={`gerami-yoga-anti-space`}>{content}</div>
       </div>
     )
   }

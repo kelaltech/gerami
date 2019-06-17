@@ -1,10 +1,17 @@
 @import '../../styles/theme';
 
-%gerami-yoga {
+.gerami-yoga {
+  display: block;
+  margin: 0 auto;
+}
+
+.gerami-yoga-anti-space {
+  margin: -($space / 2);
+}
+
+%gerami-yoga-item {
   display: inline-block;
-  margin-right: -($space / 2);
-  margin-left: -($space / 2);
-  padding: ($space / 2) 0;
+  padding: $space / 2;
 
   > * {
     display: inline-block;
@@ -15,7 +22,7 @@
 
 @for $i from 1 through 9 {
   .gerami-yoga-#{$i} {
-    @extend %gerami-yoga;
+    @extend %gerami-yoga-item;
     width: 100% / $i;
   }
 
