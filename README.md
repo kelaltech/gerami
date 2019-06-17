@@ -26,7 +26,6 @@ Proudly, made with &hearts; in Addis Ababa.
 [MIT License](LICENSE) &copy; 2019, [kelal tech.](https://www.kelaltech.com) / [kelal OpenDev](https://gitlab.com/kelal/_dev).
 
 [npm-badge]: https://img.shields.io/npm/v/gerami.png?style
-
 [npm-badge]: https://img.shields.io/npm/v/gerami.
 [npm-badge]: https://img.shields.io/npm/v/gerami.png?style=flat-square
 [npm]: https://www.npmjs.org/package/gerami

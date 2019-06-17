@@ -3,7 +3,7 @@
 $mobile: 480px !default;
 
 $space: 20px !default;
-$radius: 20px !default;
+$radius: 4px !default;
 $border: 1px !default;
 
 /* PADDING */
@@ -30,13 +30,13 @@ $warn: rgb(240, 70, 90) !default;
 /* EFFECTS */
 
 // shadows:
-$shade-S: 0 1px 3px transparentize(black, 0.91) !default;
-$shade-M: 0 2px 7px transparentize(black, 0.93) !default;
-$shade-L: 0 3px 14px transparentize(black, 0.95) !default;
+$shade-S: 0 1px 3px transparentize(black, 0.93) !default;
+$shade-M: 0 2px 7px transparentize(black, 0.97) !default;
+$shade-L: 0 3px 14px transparentize(black, 0.99) !default;
 
 // filters:
 $shy: opacity(0.84) drop-shadow(0 1px 3px transparentize(black, 0.91)) !default;
 
 // transforms:
-$touch: scale3d(1.03, 1.03, 1.03) !default;
-$poke: scale3d(1.03, 1.03, 1.03) !default;
+$touch: scale3d(0.98, 0.98, 0.98) !default;
+$poke: scale3d(1.07, 1.07, 1.07) !default;
