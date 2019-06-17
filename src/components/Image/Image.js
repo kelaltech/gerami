@@ -42,8 +42,10 @@ var __rest =
     var t = {}
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p]
     if (s != null && typeof Object.getOwnPropertySymbols === 'function')
-      for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)
-        if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]]
+      for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+          t[p[i]] = s[p[i]]
+      }
     return t
   }
 var __importStar =
@@ -88,17 +90,39 @@ var Image = /** @class */ (function(_super) {
       style = _a.style,
       to = _a.to,
       src = _a.src,
-      rest = __rest(_a, ['className', 'size', 'style', 'to', 'src'])
-    var width = size && (typeof size === 'string' ? sizeSpec[size] : size)
-    var height = size && (typeof size === 'string' ? sizeSpec[size] : size)
+      w = _a.width,
+      h = _a.height,
+      backgroundSize = _a.backgroundSize,
+      rest = __rest(_a, [
+        'className',
+        'size',
+        'style',
+        'to',
+        'src',
+        'width',
+        'height',
+        'backgroundSize'
+      ])
+    var width =
+      (w && (typeof w === 'string' ? sizeSpec[w] : w)) ||
+      (size && (typeof size === 'string' ? sizeSpec[size] : size))
+    var height =
+      (h && (typeof h === 'string' ? sizeSpec[h] : h)) ||
+      (size && (typeof size === 'string' ? sizeSpec[size] : size))
     if (to === true) to = '/'
+    // todo: receive these styles as props: backgroundSize
     return to || rest.href != undefined
       ? react_1.default.createElement(
           Anchor_js_1.Anchor,
           __assign({ to: to }, rest, {
             className: 'gerami-image ' + (className || ''),
-            style: Object.assign(
-              { width: width, height: height, backgroundImage: "url('" + src + "')" },
+            style: __assign(
+              {
+                width: width,
+                height: height,
+                backgroundImage: "url('" + src + "')",
+                backgroundSize: backgroundSize
+              },
               style
             )
           })
@@ -107,8 +131,13 @@ var Image = /** @class */ (function(_super) {
           'div',
           __assign({}, rest, {
             className: 'gerami-image ' + (className || ''),
-            style: Object.assign(
-              { width: width, height: height, backgroundImage: "url('" + src + "')" },
+            style: __assign(
+              {
+                width: width,
+                height: height,
+                backgroundImage: "url('" + src + "')",
+                backgroundSize: backgroundSize
+              },
               style
             )
           })

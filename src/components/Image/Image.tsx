@@ -2,6 +2,7 @@ import React, { Component, HTMLAttributes } from 'react'
 import { LocationDescriptor } from 'history'
 import { geramiSizeTypes } from '../../index'
 import { Anchor, IAnchorProps } from '../Anchor/Anchor.js'
+import { BackgroundSizeProperty } from 'csstype'
 
 const sizeSpec = {
   XXS: 14,
@@ -23,6 +24,15 @@ const sizeSpec = {
 interface IImageAttributes {
   src: string
   size?: geramiSizeTypes
+  /**
+   * Overrides size.
+   */
+  width?: geramiSizeTypes
+  /**
+   * Overrides size.
+   */
+  height?: geramiSizeTypes
+  backgroundSize?: BackgroundSizeProperty<any>
 }
 
 export type IImageProps = IImageAttributes &
@@ -37,25 +47,56 @@ export class Image extends Component<IImageProps, IImageState> {
   state = {}
 
   render() {
-    let { className, size, style, to, src, ...rest } = this.props
+    let {
+      className,
+      size,
+      style,
+      to,
+      src,
+      width: w,
+      height: h,
+      backgroundSize,
+      ...rest
+    } = this.props
 
-    const width = size && (typeof size === 'string' ? sizeSpec[size] : size)
-    const height = size && (typeof size === 'string' ? sizeSpec[size] : size)
+    const width =
+      (w && (typeof w === 'string' ? sizeSpec[w] : w)) ||
+      (size && (typeof size === 'string' ? sizeSpec[size] : size))
+    const height =
+      (h && (typeof h === 'string' ? sizeSpec[h] : h)) ||
+      (size && (typeof size === 'string' ? sizeSpec[size] : size))
 
     if (to === true) to = '/'
 
+    // todo: receive these styles as props: backgroundSize
     return to || rest.href != undefined ? (
       <Anchor
         to={to}
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-image ${className || ''}`}
-        style={Object.assign({ width, height, backgroundImage: `url('${src}')` }, style)}
+        style={{
+          ...{
+            width,
+            height,
+            backgroundImage: `url('${src}')`,
+            backgroundSize
+          },
+          ...style
+        }}
       />
     ) : (
       <div
-        {...rest as any}
+        {...(rest as any)}
         className={`gerami-image ${className || ''}`}
-        style={Object.assign({ width, height, backgroundImage: `url('${src}')` }, style)}
+        style={{
+          ...{
+            width,
+            height,
+            backgroundImage: `url('${src}')`,
+            backgroundSize
+          },
+          ...style
+        }}
       />
     )
   }
