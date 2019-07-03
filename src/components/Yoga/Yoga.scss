@@ -1,12 +1,20 @@
 @import '../../styles/theme';
 
 .gerami-yoga {
-  display: block;
+  display: flex;
   margin: 0 auto;
 }
 
 .gerami-yoga-anti-space {
-  margin: -($space / 2);
+  flex: 1;
+  display: inline-block;
+  margin: ($space / 2) (-$space / 2);
+}
+.gerami-yoga-anti-space-no-first {
+  margin-top: (-$space / 2);
+}
+.gerami-yoga-anti-space-no-last {
+  margin-bottom: (-$space / 2);
 }
 
 %gerami-yoga-item {
@@ -21,7 +29,7 @@
 }
 
 @for $i from 1 through 9 {
-  .gerami-yoga-#{$i} {
+  .gerami-yoga-item-#{$i} {
     @extend %gerami-yoga-item;
     width: 100% / $i;
   }
@@ -29,7 +37,7 @@
   @if ($i > 1) {
     @for $j from $i through 1 {
       @media (max-width: $mobile * $j / 2) {
-        .gerami-yoga-#{$i} {
+        .gerami-yoga-item-#{$i} {
           width: 100% / ($j - 1);
         }
       }

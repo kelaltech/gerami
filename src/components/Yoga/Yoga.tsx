@@ -27,6 +27,17 @@ export interface IYogaProps extends HTMLAttributes<HTMLDivElement> {
    * Horizontal width (named 'geramiSizeTypes' or amount of pixels).
    */
   size?: geramiSizeTypes
+
+  /**
+   * Removes the container's top margin if set to true
+   * @default false
+   */
+  noFirst?: boolean
+  /**
+   * Removes the container's bottom margin if set to true
+   * @default false
+   */
+  noLast?: boolean
 }
 
 interface IYogaState {}
@@ -38,16 +49,16 @@ export class Yoga extends Component<IYogaProps, IYogaState> {
   state = {}
 
   render() {
-    const { children, className, maxCol, size, style, ...rest } = this.props
+    const { children, className, noFirst, noLast, maxCol, size, style, ...rest } = this.props
 
-    let content: ReactNode = <div className={`gerami-yoga-${maxCol}`}>{children}</div>
+    let content: ReactNode = <div className={`gerami-yoga-item-${maxCol}`}>{children}</div>
 
     if (Array.isArray(children)) {
       content = []
       let i = 0
       for (const child of children) {
         ;(content as ReactNodeArray).push(
-          <div key={i++} className={`gerami-yoga-${maxCol}`}>
+          <div key={i++} className={`gerami-yoga-item-${maxCol}`}>
             {child}
           </div>
         )
@@ -62,7 +73,13 @@ export class Yoga extends Component<IYogaProps, IYogaState> {
         className={`gerami-yoga ${className || ''}`}
         style={Object.assign({ maxWidth }, style)}
       >
-        <div className={`gerami-yoga-anti-space`}>{content}</div>
+        <div
+          className={`gerami-yoga-anti-space ${noFirst ? 'gerami-yoga-anti-space-no-first' : ''} ${
+            noLast ? 'gerami-yoga-anti-space-no-last' : ''
+          }`}
+        >
+          {content}
+        </div>
       </div>
     )
   }

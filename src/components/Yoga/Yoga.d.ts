@@ -9,6 +9,16 @@ export interface IYogaProps extends HTMLAttributes<HTMLDivElement> {
    * Horizontal width (named 'geramiSizeTypes' or amount of pixels).
    */
   size?: geramiSizeTypes
+  /**
+   * Removes the container's top margin if set to true
+   * @default false
+   */
+  noFirst?: boolean
+  /**
+   * Removes the container's bottom margin if set to true
+   * @default false
+   */
+  noLast?: boolean
 }
 interface IYogaState {}
 /**

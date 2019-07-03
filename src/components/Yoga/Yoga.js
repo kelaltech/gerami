@@ -89,13 +89,15 @@ var Yoga = /** @class */ (function(_super) {
     var _a = this.props,
       children = _a.children,
       className = _a.className,
+      noFirst = _a.noFirst,
+      noLast = _a.noLast,
       maxCol = _a.maxCol,
       size = _a.size,
       style = _a.style,
-      rest = __rest(_a, ['children', 'className', 'maxCol', 'size', 'style'])
+      rest = __rest(_a, ['children', 'className', 'noFirst', 'noLast', 'maxCol', 'size', 'style'])
     var content = react_1.default.createElement(
       'div',
-      { className: 'gerami-yoga-' + maxCol },
+      { className: 'gerami-yoga-item-' + maxCol },
       children
     )
     if (Array.isArray(children)) {
@@ -106,7 +108,7 @@ var Yoga = /** @class */ (function(_super) {
         content.push(
           react_1.default.createElement(
             'div',
-            { key: i++, className: 'gerami-yoga-' + maxCol },
+            { key: i++, className: 'gerami-yoga-item-' + maxCol },
             child
           )
         )
@@ -119,7 +121,17 @@ var Yoga = /** @class */ (function(_super) {
         className: 'gerami-yoga ' + (className || ''),
         style: Object.assign({ maxWidth: maxWidth }, style)
       }),
-      react_1.default.createElement('div', { className: 'gerami-yoga-anti-space' }, content)
+      react_1.default.createElement(
+        'div',
+        {
+          className:
+            'gerami-yoga-anti-space ' +
+            (noFirst ? 'gerami-yoga-anti-space-no-first' : '') +
+            ' ' +
+            (noLast ? 'gerami-yoga-anti-space-no-last' : '')
+        },
+        content
+      )
     )
   }
   return Yoga
