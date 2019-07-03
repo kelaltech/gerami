@@ -426,14 +426,44 @@
   color: transparentize($accent, 0.09) !important;
 }
 .fg-blackish {
-  color: transparentize(lighten($fg, 28%), 0.14) !important; // todo
+  color: transparentize(lighten($fg, 28%), 0.14) !important;
 }
 .fg-whitish {
-  color: transparentize(darken($bg, 7%), 0.28) !important; // todo
+  color: transparentize(darken($bg, 7%), 0.28) !important;
 }
 .fg-black {
   color: transparentize($fg, 0.09) !important;
 }
 .fg-white {
   color: transparentize($bg, 0.09) !important;
+}
+
+.shade-S {
+  box-shadow: $shade-S;
+}
+.shade-M {
+  box-shadow: $shade-S;
+}
+.shade-L {
+  box-shadow: $shade-S;
+}
+
+.inset-shade-S {
+  box-shadow: $inset-shade-S;
+}
+.inset-shade-M {
+  box-shadow: $inset-shade-S;
+}
+.inset-shade-L {
+  box-shadow: $inset-shade-S;
+}
+
+.text-shade-S {
+  text-shadow: $text-shade-S;
+}
+.text-shade-M {
+  text-shadow: $text-shade-S;
+}
+.text-shade-L {
+  text-shadow: $text-shade-S;
 }
