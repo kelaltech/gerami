@@ -3,7 +3,7 @@
 ### v0.1.4
 
 - Fix issues regarding to `Yoga> container spacings
-- Significant improvements to styles of `Button`, `Content` and the global _theme.scss and _classes.scss
+- Significant improvements to styles of `Button`, `Content` and the global \_theme.scss and \_classes.scss
 
 ### v0.1.3
 
