@@ -22,12 +22,12 @@
   &:hover {
     border-color: $primary;
     background-color: darken($bg, 7%);
-    box-shadow: $shade-M;
+    box-shadow: $shade-S, $shade-M, $shade-L;
     color: $fg;
   }
   &:active {
     box-shadow: none;
-    filter: drop-shadow($shade-S);
+    filter: drop-shadow($text-shade-S);
     transform: $touch;
   }
   &:disabled,

@@ -5,6 +5,7 @@
 - Fix issues regarding to `Yoga> container spacings
 - Significant improvements to styles of `Button`, `Content` and the global \_theme.scss and \_classes.scss
 - Rename full-wordmark casing to "GERAMI react components"
+- Style fixes in `_theme.scss`, `Button` and `Checkbox`
 
 ### v0.1.3
 
