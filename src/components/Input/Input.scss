@@ -23,8 +23,10 @@
   &:active,
   &:focus,
   &:hover {
-    background-color: $bg;
+    margin-bottom: -$border;
     border-color: $primary;
+    border-bottom-width: $border * 2;
+    background-color: transparent;
     color: $fg;
   }
   &:disabled {

@@ -3,6 +3,7 @@
 ### v0.1.5
 
 - Fix \*-shade-\* style implementation bug
+- Enhance some global styles (esp. for smoother scrolls and accurate overflow handling)
 
 ### v0.1.4
 
