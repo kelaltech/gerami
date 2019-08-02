@@ -64,7 +64,7 @@ var TextArea = /** @class */ (function(_super) {
   function TextArea() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this
     _this.state = {}
-    _this.textarea = react_1.createRef()
+    _this.textarea = _this.props.innerRef || react_1.createRef()
     _this.placeholder = react_1.createRef()
     _this.updateFloat = function() {
       _this.placeholder.current &&
@@ -84,22 +84,53 @@ var TextArea = /** @class */ (function(_super) {
     this.updateFloat()
   }
   TextArea.prototype.render = function() {
+    var _this = this
     var _a = this.props,
       className = _a.className,
       label = _a.label,
+      onBlur = _a.onBlur,
+      onChange = _a.onChange,
+      onFocus = _a.onFocus,
+      onKeyDown = _a.onKeyDown,
+      onKeyUp = _a.onKeyUp,
       placeholder = _a.placeholder,
-      rest = __rest(_a, ['className', 'label', 'placeholder'])
+      rest = __rest(_a, [
+        'className',
+        'label',
+        'onBlur',
+        'onChange',
+        'onFocus',
+        'onKeyDown',
+        'onKeyUp',
+        'placeholder'
+      ])
+    delete rest.innerRef
     return react_1.default.createElement(
       'label',
       { className: 'gerami-textarea-label' + (className ? ' ' + className : '') },
       react_1.default.createElement(
         'textarea',
         __assign({ className: 'gerami-textarea' }, rest, {
-          onBlur: this.updateFloat,
-          onChange: this.updateFloat,
-          onFocus: this.updateFloat,
-          onKeyDown: this.updateFloat,
-          onKeyUp: this.updateFloat,
+          onBlur: function(e) {
+            _this.updateFloat()
+            !(typeof onBlur === 'function') || onBlur(e)
+          },
+          onChange: function(e) {
+            _this.updateFloat()
+            !(typeof onChange === 'function') || onChange(e)
+          },
+          onFocus: function(e) {
+            _this.updateFloat()
+            !(typeof onFocus === 'function') || onFocus(e)
+          },
+          onKeyDown: function(e) {
+            _this.updateFloat()
+            !(typeof onKeyDown === 'function') || onKeyDown(e)
+          },
+          onKeyUp: function(e) {
+            _this.updateFloat()
+            !(typeof onKeyUp === 'function') || onKeyUp(e)
+          },
           placeholder: '',
           ref: this.textarea
         })
