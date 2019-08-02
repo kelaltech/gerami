@@ -1,9 +1,9 @@
-import React, { Component, createRef, TextareaHTMLAttributes } from 'react'
+import React, { Component, createRef, RefObject, TextareaHTMLAttributes } from 'react'
 
 export interface ITextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  className?: string
   label?: string
   placeholder?: string
+  innerRef?: RefObject<HTMLInputElement>
 }
 
 interface ITextAreaState {}
@@ -11,7 +11,7 @@ interface ITextAreaState {}
 export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
   state = {}
 
-  textarea = createRef<HTMLTextAreaElement>()
+  textarea = this.props.innerRef || createRef<HTMLTextAreaElement>()
   placeholder = createRef<HTMLDivElement>()
 
   get value(): string | null {
@@ -23,18 +23,45 @@ export class TextArea extends Component<ITextAreaProps, ITextAreaState> {
   }
 
   render() {
-    const { className, label, placeholder, ...rest } = this.props
+    const {
+      className,
+      label,
+      onBlur,
+      onChange,
+      onFocus,
+      onKeyDown,
+      onKeyUp,
+      placeholder,
+      ...rest
+    } = this.props
+
+    delete rest.innerRef
 
     return (
       <label className={`gerami-textarea-label${className ? ' ' + className : ''}`}>
         <textarea
           className={'gerami-textarea'}
           {...(rest as any)}
-          onBlur={this.updateFloat}
-          onChange={this.updateFloat}
-          onFocus={this.updateFloat}
-          onKeyDown={this.updateFloat}
-          onKeyUp={this.updateFloat}
+          onBlur={e => {
+            this.updateFloat()
+            !(typeof onBlur === 'function') || onBlur(e)
+          }}
+          onChange={e => {
+            this.updateFloat()
+            !(typeof onChange === 'function') || onChange(e)
+          }}
+          onFocus={e => {
+            this.updateFloat()
+            !(typeof onFocus === 'function') || onFocus(e)
+          }}
+          onKeyDown={e => {
+            this.updateFloat()
+            !(typeof onKeyDown === 'function') || onKeyDown(e)
+          }}
+          onKeyUp={e => {
+            this.updateFloat()
+            !(typeof onKeyUp === 'function') || onKeyUp(e)
+          }}
           placeholder={''}
           ref={this.textarea}
         />

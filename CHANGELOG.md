@@ -1,5 +1,9 @@
 # GERAMI CHANGELOG
 
+### v0.1.6
+
+- Several bug fixes for a properly controlled TextArea
+
 ### v0.1.5
 
 - Fix \*-shade-\* style implementation bug
