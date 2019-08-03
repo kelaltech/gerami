@@ -15,18 +15,18 @@
 }
 
 .gerami-modal-img {
-  position: relative;
-  background-size: cover;
-  background: no-repeat center center;
-  height: inherit;
-  transition: 1s all;
-  display: inline-block;
+  position: relative !important;
+  background-size: cover !important;
+  background: no-repeat center center !important;
+  height: inherit !important;
+  transition: 1s all !important;
+  display: inline-block !important;
 
   &:hover {
     width: 100% !important;
 
     .gerami-modal-caption-container {
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
 
