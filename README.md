@@ -1,6 +1,8 @@
 # GERAMI react components
 
-[![gerami][npm-badge]][npm]
+[![meseret](https://img.shields.io/npm/v/gerami.png?style=flat-square)](https://www.npmjs.org/package/gerami)
+[![npm downloads](https://img.shields.io/npm/dm/gerami.svg?style=flat-square)](https://www.npmjs.org/package/gerami)
+[![npm](https://img.shields.io/npm/dt/gerami.svg?style=flat-square)](https://www.npmjs.org/package/gerami)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 To install, inside a [React](https://reactjs.org) project:
@@ -24,8 +26,3 @@ See all of the latest gerami components on [gerami.kelaltech.com](https://gerami
 Proudly, made with &hearts; in Addis Ababa.
 
 [MIT License](LICENSE) &copy; 2019, [kelal tech.](https://www.kelaltech.com) / [kelal OpenDev](https://gitlab.com/kelal/_dev).
-
-[npm-badge]: https://img.shields.io/npm/v/gerami.png?style
-[npm-badge]: https://img.shields.io/npm/v/gerami.
-[npm-badge]: https://img.shields.io/npm/v/gerami.png?style=flat-square
-[npm]: https://www.npmjs.org/package/gerami
