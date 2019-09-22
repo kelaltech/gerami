@@ -1,6 +1,6 @@
 # GERAMI react components
 
-[![meseret](https://img.shields.io/npm/v/gerami.png?style=flat-square)](https://www.npmjs.org/package/gerami)
+[![gerami](https://img.shields.io/npm/v/gerami.png?style=flat-square)](https://www.npmjs.org/package/gerami)
 [![npm downloads](https://img.shields.io/npm/dm/gerami.svg?style=flat-square)](https://www.npmjs.org/package/gerami)
 [![npm](https://img.shields.io/npm/dt/gerami.svg?style=flat-square)](https://www.npmjs.org/package/gerami)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
