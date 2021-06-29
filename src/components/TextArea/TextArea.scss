@@ -42,7 +42,7 @@
   display: inline-block;
   position: relative;
   margin: 0;
-  padding: ($font-S - $space / 10) 0 0;
+  padding: ($font-S - $space * 0.1) 0 0;
 }
 
 .gerami-textarea-placeholder {

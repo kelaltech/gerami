@@ -61,5 +61,5 @@ $geramiCheckBoxSize: $space * 1.4;
 }
 
 .gerami-checkbox-child {
-  margin: 0 0 0 ($geramiCheckBoxSize + $space / 2);
+  margin: 0 0 0 ($geramiCheckBoxSize + $space * 0.5);
 }

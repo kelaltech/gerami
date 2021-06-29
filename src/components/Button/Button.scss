@@ -3,7 +3,7 @@
 .gerami-button {
   display: inline-block;
   margin: 0;
-  padding: ($space / 2 - 2) ($space - 2);
+  padding: ($space * 0.5 - 2) ($space - 2);
   border: $border solid darken($bg, 14%);
   border-radius: $radius;
   outline: 0;
