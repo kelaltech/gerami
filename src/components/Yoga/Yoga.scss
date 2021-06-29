@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import '../../styles/theme';
 
 .gerami-yoga {
@@ -8,18 +10,18 @@
 .gerami-yoga-anti-space {
   flex: 1;
   display: inline-block;
-  margin: ($space / 2) (-$space / 2);
+  margin: ($space * 0.5) (-$space * 0.5);
 }
 .gerami-yoga-anti-space-no-first {
-  margin-top: (-$space / 2);
+  margin-top: (-$space * 0.5);
 }
 .gerami-yoga-anti-space-no-last {
-  margin-bottom: (-$space / 2);
+  margin-bottom: (-$space * 0.5);
 }
 
 %gerami-yoga-item {
   display: inline-block;
-  padding: $space / 2;
+  padding: $space * 0.5;
 
   > * {
     display: inline-block;
@@ -31,14 +33,14 @@
 @for $i from 1 through 9 {
   .gerami-yoga-item-#{$i} {
     @extend %gerami-yoga-item;
-    width: 100% / $i;
+    width: math.div(100%, $i);
   }
 
   @if ($i > 1) {
     @for $j from $i through 1 {
-      @media (max-width: $mobile * $j / 2) {
+      @media (max-width: $mobile * $j * 0.5) {
         .gerami-yoga-item-#{$i} {
-          width: 100% / ($j - 1);
+          width: math.div(100%, $j - 1);
         }
       }
     }

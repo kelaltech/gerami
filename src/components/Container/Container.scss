@@ -7,7 +7,7 @@
 
 @media (max-width: $mobile) {
   .gerami-container {
-    margin-right: -$space / 2;
-    margin-left: -$space / 2;
+    margin-right: -$space * 0.5;
+    margin-left: -$space * 0.5;
   }
 }

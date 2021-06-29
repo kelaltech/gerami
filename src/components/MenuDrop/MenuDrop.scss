@@ -26,9 +26,9 @@
 
 .gerami-menu {
   position: relative;
-  padding: ($space / 2) 0;
+  padding: ($space * 0.5) 0;
   width: initial;
-  min-width: $mobile / 2;
+  min-width: $mobile * 0.5;
   overflow-y: auto;
   text-align: left;
   animation: fade-in 200ms linear 0ms 1 forwards;

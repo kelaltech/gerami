@@ -37,7 +37,7 @@ body {
 
 code {
   display: inline-block;
-  padding: ($space / 8) ($space / 2);
+  padding: ($space * 0.125) ($space * 0.5);
   border-radius: $radius;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   background-color: darken($bg, 5%);
@@ -66,12 +66,12 @@ h6 {
 h1,
 h2,
 h3 {
-  margin: 0 0 $space / 2;
+  margin: 0 0 $space * 0.5;
 }
 h4,
 h5,
 h6 {
-  margin: 0 0 $space / 4;
+  margin: 0 0 $space * 0.25;
 }
 
 pre {

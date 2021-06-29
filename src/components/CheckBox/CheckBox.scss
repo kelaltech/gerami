@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import '../../styles/theme';
 
 $geramiCheckBoxSize: $space * 1.4;
@@ -45,10 +47,10 @@ $geramiCheckBoxSize: $space * 1.4;
     &:after {
       content: '';
       position: absolute;
-      top: $geramiCheckBoxSize / 3 - $border;
-      left: $geramiCheckBoxSize / 3.7 - $border;
-      width: $geramiCheckBoxSize / 2;
-      height: $geramiCheckBoxSize / 5;
+      top: math.div($geramiCheckBoxSize, 3) - $border;
+      left: math.div($geramiCheckBoxSize, 3.7) - $border;
+      width: $geramiCheckBoxSize * 0.5;
+      height: $geramiCheckBoxSize * 0.2;
       border: 0 solid darken($bg, 7%);
       border-bottom-left-radius: $border;
       border-bottom-width: $border * 2;
